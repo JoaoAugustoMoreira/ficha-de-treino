@@ -254,7 +254,13 @@ function arrangeDays(days,dows,pf){
   if(days.length<=6) perm(idx.slice(),0);
   return {order:best,pen:bc}; }
 function sportSummary(pf){ return (pf.esportes||[]).map(s=>`${s.mod} (${s.int||"moderada"}, ${(s.dias||[]).map(d=>DOWN[d]).join("/")||"sem dia"}${s.min?", "+s.min+" min":""})`).join("; "); }
+/* séries de trabalho de uma sessão: as da carga mais pesada; mas UMA série mais pesada no fim, depois de 2+ séries com a mesma carga,
+   é tentativa (não vira base). Mais leves antes = aquecimento; mais leves depois = back-off: nenhuma entra na progressão. */
+function workSets(sets){ const kgs=sets.map(s=>s.kg||0), mx=Math.max(...kgs), top=sets.filter(s=>(s.kg||0)===mx);
+  if(top.length===1&&sets.length>=3&&sets[sets.length-1]===top[0]){ const cnt={}; kgs.slice(0,-1).forEach(k=>cnt[k]=(cnt[k]||0)+1);
+    const mode=Object.keys(cnt).map(Number).filter(k=>cnt[k]>=2).sort((a,b)=>cnt[b]-cnt[a]||b-a)[0]; if(mode!=null) return sets.filter(s=>(s.kg||0)===mode); }
+  return top; }
 const e1rm=(kg,reps,rpe)=>kg*(1+(reps+(rpe>=5&&rpe<=10?10-rpe:2))/30);
 const sessE1=sets=>Math.max(0,...sets.map(s=>e1rm(s.kg||0,s.reps||0,s.rpe)));
 const roundTo=(v,s)=>Math.round(v/s)*s;
-if(typeof module!=="undefined") module.exports={complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
+if(typeof module!=="undefined") module.exports={workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};

@@ -240,3 +240,13 @@ test("id do exercício não depende da posição: dia + padrão, único no plano
   const sq = p => p.days[0].ex.find(e => e.p === "squat").id;
   assert.equal(sq(a), sq(b));
 });
+
+test("séries de trabalho: tentativa mais pesada no fim, aquecimento e back-off não viram base", () => {
+  const s = (kg, reps) => ({ kg, reps });
+  const kgs = a => M.workSets(a).map(x => x.kg);
+  assert.deepEqual(kgs([s(40, 7), s(40, 7), s(45, 3)]), [40, 40]);          // tentativa
+  assert.deepEqual(kgs([s(30, 8), s(35, 8), s(40, 6)]), [40]);              // rampa de aquecimento
+  assert.deepEqual(kgs([s(40, 6), s(40, 6), s(35, 8)]), [40, 40]);          // back-off
+  assert.deepEqual(kgs([s(40, 8), s(45, 6), s(45, 6)]), [45, 45]);          // subiu no meio e manteve
+  assert.deepEqual(kgs([s(160, 10), s(200, 8)]), [200]);                    // 2 séries: a mais pesada
+});

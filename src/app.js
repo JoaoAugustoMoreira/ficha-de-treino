@@ -57,12 +57,12 @@ function suggest(ex){
   const U=ex.secs?" s":" reps";
   if(!h.length) return {kg:ex.secs?0:"",reps:ex.secs?ex.lo:ex.hi,cls:"",html:ex.secs?`<span class="tag t-new">★ 1ª vez</span> Segure ${ex.lo} s com boa postura; se for fácil, vá até ${ex.hi} s`:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${ex.hi} reps saírem fáceis, suba na próxima série`};
   if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
-  const last=h[0].sets, L=Math.max(...last.map(s=>s.kg||0)); const work=last.filter(s=>(s.kg||0)===L);
+  const last=h[0].sets, work=workSets(last), L=work[0].kg||0;
   const allTop=work.length>=Math.min(ex.sets,last.length)&&work.every(s=>s.reps>=ex.hi); const lr=work[work.length-1]?.rpe; const tgt=ex.rpe[ex.rpe.length-1];
   if(allTop&&L===0) return {kg:0,reps:ex.secs?ex.hi+5:ex.hi,cls:"up",html:ex.secs?`<span class="tag t-up">⬆ Evolua</span> Tente <strong>${ex.hi+5} s</strong>, ou acrescente carga nas costas`:/elástico/i.test(chosen(ex))?`<span class="tag t-up">⬆ Evolua</span> Topo da faixa: use um elástico mais forte ou encurte o elástico`:`<span class="tag t-up">⬆ Evolua</span> Peso do corpo no topo: faça mais reps, acrescente carga (mochila) ou troque por uma variação mais difícil no ⇄`};
   if(allTop&&!(lr>tgt+0.5)){ const pct=ex.k==="C"?(ex.low?0.05:0.025):0.05; let nk=roundTo(L*(1+pct),inc); if(nk<=L) nk=L+inc;
     return {kg:nk,reps:ex.lo,cls:"up",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${ex.lo} reps`}; }
-  const below=s=>s.sets.filter(x=>(x.kg||0)===Math.max(...s.sets.map(y=>y.kg||0))).some(x=>x.reps<ex.lo);
+  const below=s=>workSets(s.sets).some(x=>x.reps<ex.lo);
   if(h.length>=2&&below(h[0])&&below(h[1])){ const nk=Math.max(0,roundTo(L*0.9,inc)); return {kg:nk,reps:ex.hi,cls:"stall",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong>`}; }
   const minR=Math.min(...work.map(s=>s.reps)); const tr=Math.min(ex.hi,minR+1);
   return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> ${L?`<strong>${fmt(L)} kg</strong> · `:""}meta ${tr}${U}`};

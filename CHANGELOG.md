@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.12.2 — 2026-10-20 · séries de trabalho
+- **Tentativa mais pesada no fim não vira base.** Quem fazia 40 kg × 7, 7 e tentava 45 kg × 3 no fim recebia a sugestão a partir dos 45 kg. Agora uma única série mais pesada no fim, depois de 2+ séries com a mesma carga, conta como tentativa; a base continua 40 kg. Mais leves antes (aquecimento) e depois (back-off) também não entram. Regra em `workSets` (engine.js), com teste.
+
 ## 0.12.1 — 2026-10-20 · adicionar durante o treino
 - Cada exercício ganhou um botão **＋** que adiciona outro **logo depois dele**, a qualquer momento do treino (o botão do fim continua para adicionar no final). A posição fica salva.
 
