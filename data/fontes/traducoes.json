@@ -4,7 +4,7 @@
   "Alternate Incline Dumbbell Curl": "Rosca alternada no banco inclinado",
   "Barbell Curl": "Rosca direta com barra",
   "Barbell Curls Lying Against An Incline": null,
-  "Cable Hammer Curls - Rope Attachment": "Rosca martelo no cabo com corda",
+  "Cable Hammer Curls - Rope Attachment": "Rosca martelo no cabo (corda)",
   "Cable Preacher Curl": "Rosca Scott no cabo",
   "Close-Grip EZ-Bar Curl with Band": null,
   "Close-Grip EZ Bar Curl": "Rosca com barra W pegada fechada",
@@ -49,7 +49,6 @@
   "Wide-Grip Standing Barbell Curl": "Rosca direta pegada aberta",
   "Zottman Curl": "Rosca Zottman",
   "Zottman Preacher Curl": null,
-
   "Barbell Seated Calf Raise": "Panturrilha sentado com barra",
   "Calf Press": "Panturrilha na máquina (calf press)",
   "Calf Press On The Leg Press Machine": "Panturrilha no leg press",
@@ -63,7 +62,6 @@
   "Standing Barbell Calf Raise": "Panturrilha em pé com barra",
   "Standing Calf Raises": "Panturrilha em pé",
   "Standing Dumbbell Calf Raise": "Panturrilha com halteres",
-
   "Bodyweight Flyes": null,
   "Butterfly": "Peck deck",
   "Cable Crossover": "Crossover alto-baixo",
@@ -76,7 +74,6 @@
   "Low Cable Crossover": "Crossover baixo-alto",
   "One-Arm Flat Bench Dumbbell Flye": null,
   "Single-Arm Cable Crossover": "Crossover unilateral",
-
   "3/4 Sit-Up": null,
   "Ab Crunch Machine": "Abdominal na máquina",
   "Barbell Ab Rollout": "Rollout com barra em pé",
@@ -114,7 +111,6 @@
   "Sit-Up": "Abdominal completo (sit-up)",
   "Standing Rope Crunch": null,
   "Tuck Crunch": "Abdominal grupado",
-
   "Barbell Glute Bridge": "Ponte de glúteo com barra",
   "Barbell Hip Thrust": "Elevação pélvica com barra",
   "Butt Lift (Bridge)": "Ponte de glúteo",
@@ -123,13 +119,11 @@
   "One-Legged Cable Kickback": "Glúteo no cabo (coice)",
   "Pull Through": "Pull-through no cabo",
   "Single Leg Glute Bridge": "Ponte unilateral",
-
   "Glute Ham Raise": "Glute ham raise",
   "Lying Leg Curls": "Mesa flexora",
   "Natural Glute Ham Raise": "Nordic (com assistência)",
   "Seated Leg Curl": "Cadeira flexora",
   "Standing Leg Curl": "Flexora em pé",
-
   "Band Good Morning": "Good morning com elástico",
   "Band Good Morning (Pull Through)": null,
   "Good Morning": "Good morning",
@@ -144,7 +138,6 @@
   "Sumo Deadlift": "Levantamento terra sumô",
   "Sumo Deadlift with Bands": null,
   "Sumo Deadlift with Chains": null,
-
   "Alternating Kettlebell Row": "Remada alternada com kettlebell",
   "Alternating Renegade Row": "Remada renegada",
   "Bent Over Barbell Row": "Remada curvada com barra",
@@ -171,7 +164,6 @@
   "Straight Bar Bench Mid Rows": null,
   "T-Bar Row with Handle": null,
   "Two-Arm Kettlebell Row": "Remada com kettlebells",
-
   "Alternating Floor Press": "Supino alternado no chão com halteres",
   "Barbell Bench Press - Medium Grip": "Supino reto com barra",
   "Barbell Guillotine Bench Press": null,
@@ -202,7 +194,6 @@
   "Standing Cable Chest Press": "Supino em pé no cabo",
   "Wide-Grip Barbell Bench Press": "Supino reto pegada aberta",
   "Wide-Grip Decline Barbell Bench Press": null,
-
   "Barbell Incline Bench Press - Medium Grip": "Supino inclinado com barra",
   "Hammer Grip Incline DB Bench Press": "Supino inclinado pegada neutra",
   "Incline Cable Chest Press": "Supino inclinado no cabo",
@@ -214,11 +205,19 @@
   "Incline Push-Up Wide": null,
   "Leverage Incline Chest Press": "Supino inclinado articulado",
   "Smith Machine Incline Bench Press": "Supino inclinado no smith",
-
-  "Bent Over Low-Pulley Side Lateral": {"nome":"Crucifixo inverso no cabo unilateral","padrao":"rear"},
+  "Bent Over Low-Pulley Side Lateral": {
+    "nome": "Crucifixo inverso no cabo unilateral",
+    "padrao": "rear"
+  },
   "Cable Seated Lateral Raise": "Elevação lateral sentado no cabo",
-  "Dumbbell Lying One-Arm Rear Lateral Raise": {"nome":"Crucifixo inverso unilateral deitado","padrao":"rear"},
-  "Dumbbell Lying Rear Lateral Raise": {"nome":"Crucifixo inverso deitado no banco","padrao":"rear"},
+  "Dumbbell Lying One-Arm Rear Lateral Raise": {
+    "nome": "Crucifixo inverso unilateral deitado",
+    "padrao": "rear"
+  },
+  "Dumbbell Lying Rear Lateral Raise": {
+    "nome": "Crucifixo inverso deitado no banco",
+    "padrao": "rear"
+  },
   "Lateral Raise - With Bands": "Elevação lateral com elástico",
   "Lying One-Arm Lateral Raise": "Elevação lateral deitado de lado",
   "One-Arm Incline Lateral Raise": "Elevação lateral inclinada",
@@ -226,13 +225,15 @@
   "Seated Side Lateral Raise": "Elevação lateral sentado",
   "Side Lateral Raise": "Elevação lateral com halteres",
   "Side Laterals to Front Raise": null,
-
   "Barbell Lunge": "Afundo com barra",
   "Barbell Side Split Squat": null,
   "Barbell Step Ups": "Step-up com barra",
   "Barbell Walking Lunge": "Passada com barra",
   "Cable Deadlifts": null,
-  "Cable Hip Adduction": {"nome":"Adução no cabo","padrao":"glute"},
+  "Cable Hip Adduction": {
+    "nome": "Adução no cabo",
+    "padrao": "glute"
+  },
   "Dumbbell Lunges": "Afundo com halteres",
   "Dumbbell Rear Lunge": "Afundo reverso",
   "Dumbbell Step Ups": "Step-up com halteres",
@@ -246,7 +247,6 @@
   "Smith Single-Leg Split Squat": "Agachamento búlgaro no smith",
   "Split Squat with Dumbbells": "Agachamento afundo com halteres (split squat)",
   "Weighted Sissy Squat": "Agachamento sissy",
-
   "Barbell Rear Delt Row": "Remada alta para deltoide posterior com barra",
   "Bent Over Dumbbell Rear Delt Raise With Head On Bench": "Crucifixo inverso com a testa apoiada",
   "Cable Rear Delt Fly": "Crucifixo inverso no cabo",
@@ -256,7 +256,6 @@
   "Reverse Flyes": "Crucifixo inverso com halteres",
   "Reverse Flyes With External Rotation": "Crucifixo inverso com rotação externa",
   "Seated Bent-Over Rear Delt Raise": "Crucifixo inverso sentado",
-
   "Barbell Full Squat": "Agachamento livre profundo",
   "Barbell Hack Squat": null,
   "Barbell Squat": "Agachamento livre",
@@ -296,7 +295,6 @@
   "Squats - With Bands": "Agachamento com elástico",
   "Wide Stance Barbell Squat": "Agachamento livre com base aberta",
   "Zercher Squats": null,
-
   "Band Skull Crusher": null,
   "Bench Dips": "Mergulho no banco",
   "Cable Incline Triceps Extension": null,
@@ -342,7 +340,6 @@
   "Triceps Pushdown": "Tríceps no cabo",
   "Triceps Pushdown - Rope Attachment": "Tríceps corda",
   "Triceps Pushdown - V-Bar Attachment": "Tríceps no cabo com barra V",
-
   "Chin-Up": "Barra fixa supinada",
   "Close-Grip Front Lat Pulldown": "Puxada alta pegada fechada",
   "Full Range-Of-Motion Lat Pulldown": null,
@@ -356,7 +353,6 @@
   "Wide-Grip Lat Pulldown": "Puxada alta",
   "Wide-Grip Pulldown Behind The Neck": null,
   "Wide-Grip Rear Pull-Up": null,
-
   "Alternating Cable Shoulder Press": null,
   "Alternating Kettlebell Press": "Desenvolvimento alternado com kettlebell",
   "Anti-Gravity Press": null,

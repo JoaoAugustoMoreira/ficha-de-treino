@@ -24,7 +24,7 @@ Abra o `index.html` no navegador ou publique pelo GitHub Pages (Settings → Pag
 | Questionário | Objetivo (hipertrofia, força, saúde, emagrecimento, misto), experiência, dias, tempo, local, dores, prioridades, rotina, outras atividades, cardio e relógio |
 | Divisões | Automático ou escolha: corpo inteiro, superior/inferior, superior/inferior + corpo inteiro, empurrar/puxar/pernas, ABC, ABCD, ABCDE. Mostra a frequência de cada grupo muscular antes de confirmar |
 | Outros esportes | Organiza os dias para não colocar perna no mesmo dia ou na véspera de atividade forte de pernas, reduz séries quando o esporte já cansa a região e desconta do cardio |
-| Exercícios | 343 exercícios em 17 padrões de movimento (curados + free-exercise-db), de 6 a 39 opções por movimento, filtradas pelo local (academia completa, básica ou casa) e trocadas por versões mais seguras quando há dor no joelho, ombro ou lombar |
+| Exercícios | 353 exercícios em 17 padrões de movimento (curados + free-exercise-db), com máquinas, cabo, barra, halteres, kettlebell, elástico e peso do corpo, e sinônimos populares (voador, gêmeos, pulley…), filtradas pelo local (academia completa, básica ou casa) e trocadas por versões mais seguras quando há dor no joelho, ombro ou lombar |
 | Volume | Conta as séries semanais por músculo (contagem fracionada) e compara com a meta do objetivo |
 | Progressão | Dupla progressão: sobe a carga (+2,5% tronco, +5% pernas) quando todas as séries chegam ao topo da faixa |
 | RPE | Lê a 1ª série e diz se deve subir, manter ou reduzir a carga nas próximas |

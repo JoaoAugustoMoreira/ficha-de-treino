@@ -33,7 +33,8 @@ function pickOpts(def,pf){
   const loc=pf.local||"completa"; let opts=(def.o[loc]||def.o.completa).slice();
   (pf.dores||[]).forEach(d=>{ if(def[d]) opts=def[d].concat(opts.filter(x=>!def[d].includes(x))); });
   const ban=(pf.evitar||"").toLowerCase().split(/[,;\n]/).map(s=>s.trim()).filter(s=>s.length>=4);
-  const ok=opts.filter(o=>!ban.some(b=>o.toLowerCase().includes(b)));
+  const nomes=o=>[o].concat((EXBYNAME[o]&&EXBYNAME[o].sinonimos)||[]).map(x=>x.toLowerCase());
+  const ok=opts.filter(o=>!ban.some(b=>nomes(o).some(n=>n.includes(b))));
   return (ok.length?ok:opts).filter((x,i,a)=>a.indexOf(x)===i);
 }
 function splitFor(pf,lift){ const k=pf.divisao&&pf.divisao!=="auto"&&SPLITS[pf.divisao]?pf.divisao:autoSplit(lift,pf); return k; }

@@ -103,3 +103,20 @@ test("força estimada (e1RM): mais reps ou mais reps sobrando = mais forte", () 
 test("toda evidência tem regra, tipo, força e fonte", () => {
   for (const e of M.DATA.evidencias) { assert.ok(e.regra && e.tipo && e.forca); assert.ok(e.fontes.length); }
 });
+
+test("sem nomes repetidos dentro do mesmo movimento", () => {
+  const vistos = new Set();
+  for (const e of M.DATA.exercicios) { const k = e.padrao + "|" + e.nome.toLowerCase(); assert.ok(!vistos.has(k), "repetido: " + k); vistos.add(k); }
+});
+
+test("máquinas comuns de academia brasileira estão na base", () => {
+  const nomes = new Set(M.DATA.exercicios.map(e => e.nome));
+  for (const n of ["Supino articulado", "Cadeira adutora", "Barra fixa no graviton", "Leg press vertical", "Panturrilha sentado na máquina", "Crucifixo na máquina", "Remada baixa na máquina"])
+    assert.ok(nomes.has(n), n);
+});
+
+test("'evitar' também reconhece o nome popular (voador = peck deck)", () => {
+  const pl = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4, 5, 6], divisao: "ppl", evitar: "voador" }));
+  for (const d of pl.days) for (const e of d.ex) assert.notEqual(e.opts[0], "Peck deck");
+  assert.ok(!M.pickOpts(M.LIB.chest, { local: "completa", evitar: "voador" }).includes("Peck deck"));
+});

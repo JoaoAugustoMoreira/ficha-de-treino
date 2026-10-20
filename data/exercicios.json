@@ -23,6 +23,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "leg 45"
+    ],
     "idExterno": "Leg_Press",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -36,6 +39,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "hack squat"
+    ],
     "idExterno": "Hack_Squat",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -233,6 +239,10 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "RDL",
+      "terra romeno"
+    ],
     "idExterno": "Romanian_Deadlift",
     "nivel": "intermediario",
     "equipamento": "barra"
@@ -258,6 +268,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "stiff"
+    ],
     "idExterno": "Stiff-Legged_Dumbbell_Deadlift",
     "nivel": "iniciante",
     "equipamento": "halteres"
@@ -406,6 +419,9 @@
       "lombar": 0
     },
     "fonte": "curado",
+    "sinonimos": [
+      "hip thrust"
+    ],
     "idExterno": "Barbell_Hip_Thrust",
     "nivel": "intermediario",
     "equipamento": "barra"
@@ -499,6 +515,9 @@
       "ombro": 3
     },
     "fonte": "curado",
+    "sinonimos": [
+      "supino máquina articulada"
+    ],
     "idExterno": "Leverage_Chest_Press",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -728,6 +747,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "desenvolvimento halteres"
+    ],
     "idExterno": "Dumbbell_Shoulder_Press",
     "nivel": "intermediario",
     "equipamento": "halteres"
@@ -867,6 +889,9 @@
       "ombro": 2
     },
     "fonte": "curado",
+    "sinonimos": [
+      "elevação lateral"
+    ],
     "idExterno": "Side_Lateral_Raise",
     "nivel": "iniciante",
     "equipamento": "halteres"
@@ -896,6 +921,10 @@
       "lombar": 2
     },
     "fonte": "curado",
+    "sinonimos": [
+      "remada baixa",
+      "remada triângulo"
+    ],
     "idExterno": "Seated_Cable_Rows",
     "nivel": "iniciante",
     "equipamento": "cabo"
@@ -989,6 +1018,9 @@
       "lombar": 3
     },
     "fonte": "curado",
+    "sinonimos": [
+      "remada máquina articulada"
+    ],
     "idExterno": "Leverage_Iso_Row",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -1050,6 +1082,10 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "pulldown",
+      "puxada frente"
+    ],
     "idExterno": "Wide-Grip_Lat_Pulldown",
     "nivel": "iniciante",
     "equipamento": "cabo"
@@ -1144,7 +1180,10 @@
       "completa": 7
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "pulldown articulado"
+    ]
   },
   {
     "id": "vpull/barra-fixa-com-elastico",
@@ -1206,6 +1245,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "extensora"
+    ],
     "idExterno": "Leg_Extensions",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -1349,6 +1391,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "flexora deitada"
+    ],
     "idExterno": "Lying_Leg_Curls",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -1363,6 +1408,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "flexora sentada"
+    ],
     "idExterno": "Seated_Leg_Curl",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -1428,7 +1476,10 @@
       "basica": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "stiff"
+    ]
   },
   {
     "id": "ham/stiff-unilateral-com-halter",
@@ -1479,7 +1530,10 @@
       "basica": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "hip thrust"
+    ]
   },
   {
     "id": "glute/elevacao-pelvica-na-maquina",
@@ -1500,7 +1554,11 @@
       "basica": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "abdutora",
+      "cadeira abdutora"
+    ]
   },
   {
     "id": "glute/gluteo-no-cabo-coice",
@@ -1612,7 +1670,10 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "elevação lateral"
+    ]
   },
   {
     "id": "lateral/elevacao-lateral-no-cabo",
@@ -1730,7 +1791,11 @@
       "basica": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "sinonimos": [
+      "crucifixo inverso máquina",
+      "voador inverso"
+    ]
   },
   {
     "id": "rear/crucifixo-inverso-no-cabo",
@@ -1824,6 +1889,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "voador"
+    ],
     "idExterno": "Butterfly",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -1853,6 +1921,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "crucifixo no crossover"
+    ],
     "idExterno": "Cable_Crossover",
     "nivel": "iniciante",
     "equipamento": "cabo"
@@ -2023,7 +2094,10 @@
       "completa": 8
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "idExterno": "Cable_Hammer_Curls_-_Rope_Attachment",
+    "nivel": "iniciante",
+    "equipamento": "cabo"
   },
   {
     "id": "biceps/rosca-com-elastico",
@@ -2047,6 +2121,10 @@
       "ombro": 0
     },
     "fonte": "curado",
+    "sinonimos": [
+      "tríceps polia",
+      "tríceps pulley"
+    ],
     "idExterno": "Triceps_Pushdown",
     "nivel": "iniciante",
     "equipamento": "cabo"
@@ -2088,6 +2166,9 @@
       "ombro": 1
     },
     "fonte": "curado",
+    "sinonimos": [
+      "tríceps pulley corda"
+    ],
     "idExterno": "Triceps_Pushdown_-_Rope_Attachment",
     "nivel": "iniciante",
     "equipamento": "cabo"
@@ -2221,6 +2302,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "gêmeos em pé"
+    ],
     "idExterno": "Standing_Calf_Raises",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -2235,6 +2319,9 @@
     },
     "seguroPara": {},
     "fonte": "curado",
+    "sinonimos": [
+      "gêmeos sentado"
+    ],
     "idExterno": "Seated_Calf_Raise",
     "nivel": "iniciante",
     "equipamento": "máquina"
@@ -2495,6 +2582,164 @@
       "lombar": 1
     },
     "fonte": "curado"
+  },
+  {
+    "id": "glute/cadeira-adutora",
+    "nome": "Cadeira adutora",
+    "padrao": "glute",
+    "locais": {
+      "completa": 60,
+      "basica": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "adutora",
+      "adução na máquina"
+    ],
+    "dica": "Trabalha os adutores (parte interna da coxa). Feche as pernas controlando a volta."
+  },
+  {
+    "id": "vpull/barra-fixa-no-graviton",
+    "nome": "Barra fixa no graviton",
+    "padrao": "vpull",
+    "locais": {
+      "completa": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "graviton",
+      "barra assistida"
+    ],
+    "dica": "O apoio de joelhos tira parte do peso do corpo: quanto mais carga na máquina, mais fácil."
+  },
+  {
+    "id": "triceps/mergulho-no-graviton",
+    "nome": "Mergulho no graviton",
+    "padrao": "triceps",
+    "locais": {
+      "completa": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "graviton",
+      "paralela assistida"
+    ],
+    "dica": "Mesmo princípio da barra no graviton: a carga ajuda a subir."
+  },
+  {
+    "id": "hpush/supino-vertical-na-maquina-chest-press",
+    "nome": "Supino vertical na máquina (chest press)",
+    "padrao": "hpush",
+    "locais": {
+      "completa": 60,
+      "basica": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "chest press",
+      "supino sentado máquina"
+    ]
+  },
+  {
+    "id": "chest/crucifixo-na-maquina",
+    "nome": "Crucifixo na máquina",
+    "padrao": "chest",
+    "locais": {
+      "completa": 60,
+      "basica": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "fly máquina"
+    ]
+  },
+  {
+    "id": "squat/leg-press-vertical",
+    "nome": "Leg press vertical",
+    "padrao": "squat",
+    "locais": {
+      "completa": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "leg vertical"
+    ]
+  },
+  {
+    "id": "glute/gluteo-na-maquina-coice",
+    "nome": "Glúteo na máquina (coice)",
+    "padrao": "glute",
+    "locais": {
+      "completa": 61
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "glúteo coice máquina",
+      "kickback máquina"
+    ]
+  },
+  {
+    "id": "calves/panturrilha-sentado-na-maquina",
+    "nome": "Panturrilha sentado na máquina",
+    "padrao": "calves",
+    "locais": {
+      "completa": 60,
+      "basica": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "gêmeos sentado",
+      "sóleo"
+    ]
+  },
+  {
+    "id": "hpull/remada-baixa-na-maquina",
+    "nome": "Remada baixa na máquina",
+    "padrao": "hpull",
+    "locais": {
+      "completa": 60,
+      "basica": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "remada sentada máquina"
+    ]
+  },
+  {
+    "id": "hpull/remada-cavalinho-na-maquina",
+    "nome": "Remada cavalinho na máquina",
+    "padrao": "hpull",
+    "locais": {
+      "completa": 61
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "T-bar máquina"
+    ]
+  },
+  {
+    "id": "hinge/extensao-lombar-na-maquina",
+    "nome": "Extensão lombar na máquina",
+    "padrao": "hinge",
+    "locais": {
+      "completa": 60
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "lombar máquina"
+    ],
+    "dica": "Movimento curto e controlado; não force a extensão além da posição neutra."
   },
   {
     "id": "biceps/rosca-martelo-alternada",
@@ -2867,26 +3112,12 @@
     "equipamento": "cabo"
   },
   {
-    "id": "biceps/rosca-martelo-no-cabo-com-corda",
-    "nome": "Rosca martelo no cabo com corda",
-    "padrao": "biceps",
-    "locais": {
-      "completa": 126,
-      "basica": 126
-    },
-    "seguroPara": {},
-    "fonte": "free-exercise-db",
-    "idExterno": "Cable_Hammer_Curls_-_Rope_Attachment",
-    "nivel": "iniciante",
-    "equipamento": "cabo"
-  },
-  {
     "id": "glute/aducao-no-cabo",
     "nome": "Adução no cabo",
     "padrao": "glute",
     "locais": {
-      "completa": 127,
-      "basica": 127
+      "completa": 126,
+      "basica": 126
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2899,8 +3130,8 @@
     "nome": "Tríceps testa no cabo",
     "padrao": "triceps",
     "locais": {
-      "completa": 128,
-      "basica": 128
+      "completa": 127,
+      "basica": 127
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2913,8 +3144,8 @@
     "nome": "Tríceps unilateral no cabo",
     "padrao": "triceps",
     "locais": {
-      "completa": 129,
-      "basica": 129
+      "completa": 128,
+      "basica": 128
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2927,8 +3158,8 @@
     "nome": "Rosca Scott no cabo",
     "padrao": "biceps",
     "locais": {
-      "completa": 130,
-      "basica": 130
+      "completa": 129,
+      "basica": 129
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2941,8 +3172,8 @@
     "nome": "Abdominal reverso no cabo",
     "padrao": "core",
     "locais": {
-      "completa": 131,
-      "basica": 131
+      "completa": 130,
+      "basica": 130
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2955,8 +3186,8 @@
     "nome": "Tríceps francês no cabo com corda",
     "padrao": "triceps",
     "locais": {
-      "completa": 132,
-      "basica": 132
+      "completa": 131,
+      "basica": 131
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2969,8 +3200,8 @@
     "nome": "Remada para o rosto na corda",
     "padrao": "rear",
     "locais": {
-      "completa": 133,
-      "basica": 133
+      "completa": 132,
+      "basica": 132
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2983,8 +3214,8 @@
     "nome": "Rotação russa no cabo",
     "padrao": "core",
     "locais": {
-      "completa": 134,
-      "basica": 134
+      "completa": 133,
+      "basica": 133
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -2997,8 +3228,8 @@
     "nome": "Elevação lateral sentado no cabo",
     "padrao": "lateral",
     "locais": {
-      "completa": 135,
-      "basica": 135
+      "completa": 134,
+      "basica": 134
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3011,8 +3242,8 @@
     "nome": "Desenvolvimento no cabo",
     "padrao": "vpush",
     "locais": {
-      "completa": 136,
-      "basica": 136
+      "completa": 135,
+      "basica": 135
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3025,7 +3256,7 @@
     "nome": "Panturrilha na máquina (calf press)",
     "padrao": "calves",
     "locais": {
-      "completa": 137
+      "completa": 136
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3038,8 +3269,8 @@
     "nome": "Panturrilha com elástico",
     "padrao": "calves",
     "locais": {
-      "casa": 138,
-      "basica": 138
+      "casa": 137,
+      "basica": 137
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3052,9 +3283,9 @@
     "nome": "Supino fechado com halteres",
     "padrao": "triceps",
     "locais": {
-      "completa": 139,
-      "basica": 139,
-      "casa": 139
+      "completa": 138,
+      "basica": 138,
+      "casa": 138
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3067,8 +3298,8 @@
     "nome": "Rosca com barra W pegada fechada",
     "padrao": "biceps",
     "locais": {
-      "completa": 140,
-      "basica": 140
+      "completa": 139,
+      "basica": 139
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3081,8 +3312,8 @@
     "nome": "Puxada alta pegada fechada",
     "padrao": "vpull",
     "locais": {
-      "completa": 141,
-      "basica": 141
+      "completa": 140,
+      "basica": 140
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3095,8 +3326,8 @@
     "nome": "Rosca direta pegada fechada",
     "padrao": "biceps",
     "locais": {
-      "completa": 142,
-      "basica": 142
+      "completa": 141,
+      "basica": 141
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3109,9 +3340,9 @@
     "nome": "Abdominal cruzado",
     "padrao": "core",
     "locais": {
-      "completa": 143,
-      "basica": 143,
-      "casa": 143
+      "completa": 142,
+      "basica": 142,
+      "casa": 142
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3124,9 +3355,9 @@
     "nome": "Rosca martelo cruzada",
     "padrao": "biceps",
     "locais": {
-      "completa": 144,
-      "basica": 144,
-      "casa": 144
+      "completa": 143,
+      "basica": 143,
+      "casa": 143
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3139,8 +3370,8 @@
     "nome": "Supino declinado com barra",
     "padrao": "hpush",
     "locais": {
-      "completa": 145,
-      "basica": 145
+      "completa": 144,
+      "basica": 144
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3153,9 +3384,9 @@
     "nome": "Abdominal declinado",
     "padrao": "core",
     "locais": {
-      "completa": 146,
-      "basica": 146,
-      "casa": 146
+      "completa": 145,
+      "basica": 145,
+      "casa": 145
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3168,9 +3399,9 @@
     "nome": "Supino declinado com halteres",
     "padrao": "hpush",
     "locais": {
-      "completa": 147,
-      "basica": 147,
-      "casa": 147
+      "completa": 146,
+      "basica": 146,
+      "casa": 146
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3183,9 +3414,9 @@
     "nome": "Crucifixo declinado com halteres",
     "padrao": "chest",
     "locais": {
-      "completa": 148,
-      "basica": 148,
-      "casa": 148
+      "completa": 147,
+      "basica": 147,
+      "casa": 147
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3198,9 +3429,9 @@
     "nome": "Abdominal oblíquo declinado",
     "padrao": "core",
     "locais": {
-      "completa": 149,
-      "basica": 149,
-      "casa": 149
+      "completa": 148,
+      "basica": 148,
+      "casa": 148
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3213,9 +3444,9 @@
     "nome": "Abdominal reverso declinado",
     "padrao": "core",
     "locais": {
-      "completa": 150,
-      "basica": 150,
-      "casa": 150
+      "completa": 149,
+      "basica": 149,
+      "casa": 149
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3228,7 +3459,7 @@
     "nome": "Supino declinado no smith",
     "padrao": "hpush",
     "locais": {
-      "completa": 151
+      "completa": 150
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3241,7 +3472,7 @@
     "nome": "Tríceps na máquina de mergulho",
     "padrao": "triceps",
     "locais": {
-      "completa": 152
+      "completa": 151
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3254,8 +3485,8 @@
     "nome": "Rosca arrastada (drag curl)",
     "padrao": "biceps",
     "locais": {
-      "completa": 153,
-      "basica": 153
+      "completa": 152,
+      "basica": 152
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3268,9 +3499,9 @@
     "nome": "Rosca simultânea com halteres",
     "padrao": "biceps",
     "locais": {
-      "completa": 154,
-      "basica": 154,
-      "casa": 154
+      "completa": 153,
+      "basica": 153,
+      "casa": 153
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3283,9 +3514,9 @@
     "nome": "Crucifixo inverso unilateral deitado",
     "padrao": "rear",
     "locais": {
-      "completa": 155,
-      "basica": 155,
-      "casa": 155
+      "completa": 154,
+      "basica": 154,
+      "casa": 154
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3298,9 +3529,9 @@
     "nome": "Tríceps francês unilateral com halter",
     "padrao": "triceps",
     "locais": {
-      "completa": 156,
-      "basica": 156,
-      "casa": 156
+      "completa": 155,
+      "basica": 155,
+      "casa": 155
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3313,9 +3544,9 @@
     "nome": "Rosca deitado de bruços no banco inclinado",
     "padrao": "biceps",
     "locais": {
-      "completa": 157,
-      "basica": 157,
-      "casa": 157
+      "completa": 156,
+      "basica": 156,
+      "casa": 156
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3328,9 +3559,9 @@
     "nome": "Panturrilha sentado unilateral com halter",
     "padrao": "calves",
     "locais": {
-      "completa": 158,
-      "basica": 158,
-      "casa": 158
+      "completa": 157,
+      "basica": 157,
+      "casa": 157
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3343,9 +3574,9 @@
     "nome": "Agachamento com halteres até o banco",
     "padrao": "squat",
     "locais": {
-      "completa": 159,
-      "basica": 159,
-      "casa": 159
+      "completa": 158,
+      "basica": 158,
+      "casa": 158
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3358,8 +3589,8 @@
     "nome": "Rosca com barra W",
     "padrao": "biceps",
     "locais": {
-      "completa": 160,
-      "basica": 160
+      "completa": 159,
+      "basica": 159
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3372,8 +3603,8 @@
     "nome": "Tríceps testa com barra W",
     "padrao": "triceps",
     "locais": {
-      "completa": 161,
-      "basica": 161
+      "completa": 160,
+      "basica": 160
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3386,8 +3617,8 @@
     "nome": "Afundo reverso com pé à frente elevado",
     "padrao": "quad",
     "locais": {
-      "completa": 162,
-      "basica": 162
+      "completa": 161,
+      "basica": 161
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3400,8 +3631,8 @@
     "nome": "Crucifixo no cabo deitado",
     "padrao": "chest",
     "locais": {
-      "completa": 163,
-      "basica": 163
+      "completa": 162,
+      "basica": 162
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3414,9 +3645,9 @@
     "nome": "Elevação de pernas no banco",
     "padrao": "core",
     "locais": {
-      "completa": 164,
-      "basica": 164,
-      "casa": 164
+      "completa": 163,
+      "basica": 163,
+      "casa": 163
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3429,8 +3660,8 @@
     "nome": "Agachamento frontal com kettlebells",
     "padrao": "squat",
     "locais": {
-      "completa": 165,
-      "casa": 165
+      "completa": 164,
+      "casa": 164
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3443,9 +3674,9 @@
     "nome": "Coice de glúteo (quatro apoios)",
     "padrao": "glute",
     "locais": {
-      "completa": 166,
-      "basica": 166,
-      "casa": 166
+      "completa": 165,
+      "basica": 165,
+      "casa": 165
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3458,9 +3689,9 @@
     "nome": "Supino inclinado pegada neutra",
     "padrao": "incline",
     "locais": {
-      "completa": 167,
-      "basica": 167,
-      "casa": 167
+      "completa": 166,
+      "basica": 166,
+      "casa": 166
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3473,8 +3704,8 @@
     "nome": "Rosca no cabo alto (bíceps no crossover)",
     "padrao": "biceps",
     "locais": {
-      "completa": 168,
-      "basica": 168
+      "completa": 167,
+      "basica": 167
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3487,8 +3718,8 @@
     "nome": "Extensão de quadril com elástico",
     "padrao": "glute",
     "locais": {
-      "casa": 169,
-      "basica": 169
+      "casa": 168,
+      "basica": 168
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3501,8 +3732,8 @@
     "nome": "Supino inclinado no cabo",
     "padrao": "incline",
     "locais": {
-      "completa": 170,
-      "basica": 170
+      "completa": 169,
+      "basica": 169
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3515,8 +3746,8 @@
     "nome": "Crucifixo inclinado no cabo",
     "padrao": "chest",
     "locais": {
-      "completa": 171,
-      "basica": 171
+      "completa": 170,
+      "basica": 170
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3529,9 +3760,9 @@
     "nome": "Rosca martelo no banco inclinado",
     "padrao": "biceps",
     "locais": {
-      "completa": 172,
-      "basica": 172,
-      "casa": 172
+      "completa": 171,
+      "basica": 171,
+      "casa": 171
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3544,9 +3775,9 @@
     "nome": "Flexão inclinada (mãos no banco)",
     "padrao": "incline",
     "locais": {
-      "completa": 173,
-      "basica": 173,
-      "casa": 173
+      "completa": 172,
+      "basica": 172,
+      "casa": 172
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3559,9 +3790,9 @@
     "nome": "Abdominal canivete",
     "padrao": "core",
     "locais": {
-      "completa": 174,
-      "basica": 174,
-      "casa": 174
+      "completa": 173,
+      "basica": 173,
+      "casa": 173
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3574,8 +3805,8 @@
     "nome": "Stiff unilateral com kettlebell",
     "padrao": "hinge",
     "locais": {
-      "completa": 175,
-      "casa": 175
+      "completa": 174,
+      "casa": 174
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3588,8 +3819,8 @@
     "nome": "Tríceps francês com kettlebell",
     "padrao": "triceps",
     "locais": {
-      "completa": 176,
-      "casa": 176
+      "completa": 175,
+      "casa": 175
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3602,8 +3833,8 @@
     "nome": "Desenvolvimento sentado com kettlebell",
     "padrao": "vpush",
     "locais": {
-      "completa": 177,
-      "casa": 177
+      "completa": 176,
+      "casa": 176
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3616,7 +3847,7 @@
     "nome": "Supino declinado articulado",
     "padrao": "hpush",
     "locais": {
-      "completa": 178
+      "completa": 177
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3629,7 +3860,7 @@
     "nome": "Remada alta articulada",
     "padrao": "hpull",
     "locais": {
-      "completa": 179
+      "completa": 178
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3642,7 +3873,7 @@
     "nome": "Supino inclinado articulado",
     "padrao": "incline",
     "locais": {
-      "completa": 180
+      "completa": 179
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3655,7 +3886,7 @@
     "nome": "Desenvolvimento articulado",
     "padrao": "vpush",
     "locais": {
-      "completa": 181
+      "completa": 180
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3668,8 +3899,8 @@
     "nome": "Rosca deitado no cabo",
     "padrao": "biceps",
     "locais": {
-      "completa": 182,
-      "basica": 182
+      "completa": 181,
+      "basica": 181
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3682,9 +3913,9 @@
     "nome": "Elevação lateral deitado de lado",
     "padrao": "lateral",
     "locais": {
-      "completa": 183,
-      "basica": 183,
-      "casa": 183
+      "completa": 182,
+      "basica": 182,
+      "casa": 182
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3697,7 +3928,7 @@
     "nome": "Remada cavalinho apoiada",
     "padrao": "hpull",
     "locais": {
-      "completa": 184
+      "completa": 183
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3710,7 +3941,7 @@
     "nome": "Rosca Scott na máquina",
     "padrao": "biceps",
     "locais": {
-      "completa": 185
+      "completa": 184
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3723,7 +3954,7 @@
     "nome": "Hack com pés juntos",
     "padrao": "squat",
     "locais": {
-      "completa": 186
+      "completa": 185
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3736,7 +3967,7 @@
     "nome": "Leg press com pés juntos",
     "padrao": "squat",
     "locais": {
-      "completa": 187
+      "completa": 186
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3749,9 +3980,9 @@
     "nome": "Abdominal oblíquo",
     "padrao": "core",
     "locais": {
-      "completa": 188,
-      "basica": 188,
-      "casa": 188
+      "completa": 187,
+      "basica": 187,
+      "casa": 187
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3764,8 +3995,8 @@
     "nome": "Remada unilateral com kettlebell",
     "padrao": "hpull",
     "locais": {
-      "completa": 189,
-      "casa": 189
+      "completa": 188,
+      "casa": 188
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3778,9 +4009,9 @@
     "nome": "Supino unilateral com halter",
     "padrao": "hpush",
     "locais": {
-      "completa": 190,
-      "basica": 190,
-      "casa": 190
+      "completa": 189,
+      "basica": 189,
+      "casa": 189
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3793,9 +4024,9 @@
     "nome": "Rosca Scott unilateral com halter",
     "padrao": "biceps",
     "locais": {
-      "completa": 191,
-      "basica": 191,
-      "casa": 191
+      "completa": 190,
+      "basica": 190,
+      "casa": 190
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3808,8 +4039,8 @@
     "nome": "Pallof press com rotação",
     "padrao": "core",
     "locais": {
-      "completa": 192,
-      "basica": 192
+      "completa": 191,
+      "basica": 191
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3822,9 +4053,9 @@
     "nome": "Prancha (seg)",
     "padrao": "core",
     "locais": {
-      "completa": 193,
-      "basica": 193,
-      "casa": 193
+      "completa": 192,
+      "basica": 192,
+      "casa": 192
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3837,9 +4068,9 @@
     "nome": "Agachamento sumô com halter",
     "padrao": "squat",
     "locais": {
-      "completa": 194,
-      "basica": 194,
-      "casa": 194
+      "completa": 193,
+      "basica": 193,
+      "casa": 193
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3852,9 +4083,9 @@
     "nome": "Rosca Scott martelo com halter",
     "padrao": "biceps",
     "locais": {
-      "completa": 195,
-      "basica": 195,
-      "casa": 195
+      "completa": 194,
+      "basica": 194,
+      "casa": 194
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3867,9 +4098,9 @@
     "nome": "Flexão de braço aberta",
     "padrao": "hpush",
     "locais": {
-      "completa": 196,
-      "basica": 196,
-      "casa": 196
+      "completa": 195,
+      "basica": 195,
+      "casa": 195
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3882,8 +4113,8 @@
     "nome": "Rosca inversa com barra",
     "padrao": "biceps",
     "locais": {
-      "completa": 197,
-      "basica": 197
+      "completa": 196,
+      "basica": 196
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3896,8 +4127,8 @@
     "nome": "Rosca Scott inversa",
     "padrao": "biceps",
     "locais": {
-      "completa": 198,
-      "basica": 198
+      "completa": 197,
+      "basica": 197
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3910,8 +4141,8 @@
     "nome": "Rosca inversa no cabo",
     "padrao": "biceps",
     "locais": {
-      "completa": 199,
-      "basica": 199
+      "completa": 198,
+      "basica": 198
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3924,9 +4155,9 @@
     "nome": "Crucifixo inverso com rotação externa",
     "padrao": "rear",
     "locais": {
-      "completa": 200,
-      "basica": 200,
-      "casa": 200
+      "completa": 199,
+      "basica": 199,
+      "casa": 199
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3939,8 +4170,8 @@
     "nome": "Remada curvada supinada",
     "padrao": "hpull",
     "locais": {
-      "completa": 201,
-      "basica": 201
+      "completa": 200,
+      "basica": 200
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3953,8 +4184,8 @@
     "nome": "Tríceps no cabo pegada invertida",
     "padrao": "triceps",
     "locais": {
-      "completa": 202,
-      "basica": 202
+      "completa": 201,
+      "basica": 201
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3967,8 +4198,8 @@
     "nome": "Abdominal na corda (cabo)",
     "padrao": "core",
     "locais": {
-      "completa": 203,
-      "basica": 203
+      "completa": 202,
+      "basica": 202
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3981,8 +4212,8 @@
     "nome": "Pulldown braços estendidos na corda",
     "padrao": "vpull",
     "locais": {
-      "completa": 204,
-      "basica": 204
+      "completa": 203,
+      "basica": 203
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -3995,9 +4226,9 @@
     "nome": "Rotação russa",
     "padrao": "core",
     "locais": {
-      "completa": 205,
-      "basica": 205,
-      "casa": 205
+      "completa": 204,
+      "basica": 204,
+      "casa": 204
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4010,9 +4241,9 @@
     "nome": "Crucifixo inverso sentado",
     "padrao": "rear",
     "locais": {
-      "completa": 206,
-      "basica": 206,
-      "casa": 206
+      "completa": 205,
+      "basica": 205,
+      "casa": 205
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4025,9 +4256,9 @@
     "nome": "Rosca sentado com halteres",
     "padrao": "biceps",
     "locais": {
-      "completa": 207,
-      "basica": 207,
-      "casa": 207
+      "completa": 206,
+      "basica": 206,
+      "casa": 206
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4040,8 +4271,8 @@
     "nome": "Remada unilateral no cabo sentado",
     "padrao": "hpull",
     "locais": {
-      "completa": 208,
-      "basica": 208
+      "completa": 207,
+      "basica": 207
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4054,9 +4285,9 @@
     "nome": "Elevação lateral sentado",
     "padrao": "lateral",
     "locais": {
-      "completa": 209,
-      "basica": 209,
-      "casa": 209
+      "completa": 208,
+      "basica": 208,
+      "casa": 208
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4069,8 +4300,8 @@
     "nome": "Crossover unilateral",
     "padrao": "chest",
     "locais": {
-      "completa": 210,
-      "basica": 210
+      "completa": 209,
+      "basica": 209
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4083,7 +4314,7 @@
     "nome": "Cadeira extensora unilateral",
     "padrao": "quad",
     "locais": {
-      "completa": 211
+      "completa": 210
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4096,9 +4327,9 @@
     "nome": "Abdominal completo (sit-up)",
     "padrao": "core",
     "locais": {
-      "completa": 212,
-      "basica": 212,
-      "casa": 212
+      "completa": 211,
+      "basica": 211,
+      "casa": 211
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4111,7 +4342,7 @@
     "nome": "Supino fechado no smith",
     "padrao": "triceps",
     "locais": {
-      "completa": 213
+      "completa": 212
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4124,7 +4355,7 @@
     "nome": "Tibial no smith (elevação da ponta do pé)",
     "padrao": "calves",
     "locais": {
-      "completa": 214
+      "completa": 213
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4137,7 +4368,7 @@
     "nome": "Stiff no smith",
     "padrao": "hinge",
     "locais": {
-      "completa": 215
+      "completa": 214
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4150,7 +4381,7 @@
     "nome": "Agachamento búlgaro no smith",
     "padrao": "quad",
     "locais": {
-      "completa": 216
+      "completa": 215
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4163,8 +4394,8 @@
     "nome": "Rosca spider",
     "padrao": "biceps",
     "locais": {
-      "completa": 217,
-      "basica": 217
+      "completa": 216,
+      "basica": 216
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4177,9 +4408,9 @@
     "nome": "Agachamento afundo com halteres (split squat)",
     "padrao": "quad",
     "locais": {
-      "completa": 218,
-      "basica": 218,
-      "casa": 218
+      "completa": 217,
+      "basica": 217,
+      "casa": 217
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4192,9 +4423,9 @@
     "nome": "Desenvolvimento alternado em pé",
     "padrao": "vpush",
     "locais": {
-      "completa": 219,
-      "basica": 219,
-      "casa": 219
+      "completa": 218,
+      "basica": 218,
+      "casa": 218
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4207,8 +4438,8 @@
     "nome": "Panturrilha em pé com barra",
     "padrao": "calves",
     "locais": {
-      "completa": 220,
-      "basica": 220
+      "completa": 219,
+      "basica": 219
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4221,8 +4452,8 @@
     "nome": "Rosca no cabo em pé",
     "padrao": "biceps",
     "locais": {
-      "completa": 221,
-      "basica": 221
+      "completa": 220,
+      "basica": 220
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4235,8 +4466,8 @@
     "nome": "Supino em pé no cabo",
     "padrao": "hpush",
     "locais": {
-      "completa": 222,
-      "basica": 222
+      "completa": 221,
+      "basica": 221
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4249,9 +4480,9 @@
     "nome": "Desenvolvimento com halteres em pé",
     "padrao": "vpush",
     "locais": {
-      "completa": 223,
-      "basica": 223,
-      "casa": 223
+      "completa": 222,
+      "basica": 222,
+      "casa": 222
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4264,9 +4495,9 @@
     "nome": "Rosca inversa com halteres",
     "padrao": "biceps",
     "locais": {
-      "completa": 224,
-      "basica": 224,
-      "casa": 224
+      "completa": 223,
+      "basica": 223,
+      "casa": 223
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4279,8 +4510,8 @@
     "nome": "Rosca unilateral no cabo",
     "padrao": "biceps",
     "locais": {
-      "completa": 225,
-      "basica": 225
+      "completa": 224,
+      "basica": 224
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4293,8 +4524,8 @@
     "nome": "Tríceps francês com barra",
     "padrao": "triceps",
     "locais": {
-      "completa": 226,
-      "basica": 226
+      "completa": 225,
+      "basica": 225
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4307,9 +4538,9 @@
     "nome": "Desenvolvimento pegada neutra em pé",
     "padrao": "vpush",
     "locais": {
-      "completa": 227,
-      "basica": 227,
-      "casa": 227
+      "completa": 226,
+      "basica": 226,
+      "casa": 226
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4322,8 +4553,8 @@
     "nome": "Stiff com barra",
     "padrao": "hinge",
     "locais": {
-      "completa": 228,
-      "basica": 228
+      "completa": 227,
+      "basica": 227
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4336,8 +4567,8 @@
     "nome": "Tríceps no cabo com barra V",
     "padrao": "triceps",
     "locais": {
-      "completa": 229,
-      "basica": 229
+      "completa": 228,
+      "basica": 228
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4350,9 +4581,9 @@
     "nome": "Abdominal grupado",
     "padrao": "core",
     "locais": {
-      "completa": 230,
-      "basica": 230,
-      "casa": 230
+      "completa": 229,
+      "basica": 229,
+      "casa": 229
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4365,9 +4596,9 @@
     "nome": "Rosca Scott com halteres",
     "padrao": "biceps",
     "locais": {
-      "completa": 231,
-      "basica": 231,
-      "casa": 231
+      "completa": 230,
+      "basica": 230,
+      "casa": 230
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4380,8 +4611,8 @@
     "nome": "Desenvolvimento com kettlebells",
     "padrao": "vpush",
     "locais": {
-      "completa": 232,
-      "casa": 232
+      "completa": 231,
+      "casa": 231
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4394,8 +4625,8 @@
     "nome": "Remada com kettlebells",
     "padrao": "hpull",
     "locais": {
-      "completa": 233,
-      "casa": 233
+      "completa": 232,
+      "casa": 232
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4408,9 +4639,9 @@
     "nome": "Barra fixa pegada neutra",
     "padrao": "vpull",
     "locais": {
-      "completa": 234,
-      "basica": 234,
-      "casa": 234
+      "completa": 233,
+      "basica": 233,
+      "casa": 233
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4423,8 +4654,8 @@
     "nome": "Supino reto pegada aberta",
     "padrao": "hpush",
     "locais": {
-      "completa": 235,
-      "basica": 235
+      "completa": 234,
+      "basica": 234
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4437,8 +4668,8 @@
     "nome": "Rosca direta pegada aberta",
     "padrao": "biceps",
     "locais": {
-      "completa": 236,
-      "basica": 236
+      "completa": 235,
+      "basica": 235
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4451,8 +4682,8 @@
     "nome": "Agachamento livre com base aberta",
     "padrao": "squat",
     "locais": {
-      "completa": 237,
-      "basica": 237
+      "completa": 236,
+      "basica": 236
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",
@@ -4465,9 +4696,9 @@
     "nome": "Rosca Zottman",
     "padrao": "biceps",
     "locais": {
-      "completa": 238,
-      "basica": 238,
-      "casa": 238
+      "completa": 237,
+      "basica": 237,
+      "casa": 237
     },
     "seguroPara": {},
     "fonte": "free-exercise-db",

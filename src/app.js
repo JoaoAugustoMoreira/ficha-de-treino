@@ -207,13 +207,13 @@ function renderDay(){
       <div class="ctop"><div class="ctitle"><div class="kind ${ex.k==="C"?"c":""}">${ex.k==="C"?"Principal":"Acessório"} · ${esc(ex.m)}</div><div class="exname">${esc(name)}</div>
       <div class="plain">${plainRx(ex,n)}</div>
       <div class="rx">${n}×${ex.lo}–${ex.hi} · RPE ${ex.rpe.map(fmt).join("/")} · descanso ${Math.round(ex.rest/60*10)/10>=1?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
-      <label class="swapbtn">⇄ Trocar<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}</option>`).join("")}</select></label></div>
+      <label class="swapbtn">⇄ Trocar<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}</select></label></div>
       <div class="donesum"></div><div class="body">
       ${lastTxt(name)?`<div class="last"><b>Última:</b> ${lastTxt(name)}</div>`:""}
       <div class="sug ${sg.cls}">${sg.html}</div>
       <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><span class="h">RPE <button type="button" class="qm" aria-label="O que é RPE">?</button></span><span></span>${rows}</div>
       <div class="rd" id="rd-${ex.id}" hidden></div>
-      ${ex.how?`<details class="how"><summary>Como fazer</summary><p>${esc(ex.how)}</p></details>`:""}
+      ${(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how?`<details class="how"><summary>Como fazer</summary><p>${esc((EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how)}</p></details>`:""}
       ${h.length>1?`<div class="hist">${h.map(x=>`<span>${dstr(x.date)} · ${x.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join("  ")}${x.leve?" (leve)":""}</span>`).join("")}</div>`:""}
       </div></article>`; }).join("");
   const c=state.plan.cardio, wear=state.pf.wear;
