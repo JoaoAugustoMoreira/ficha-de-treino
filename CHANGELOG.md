@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.12.3 — 2026-10-20 · série mais pesada que deu certo vira a carga nova
+- A regra da 0.12.2 tratava toda série mais pesada no fim como tentativa. Quem fazia 20 × 9, 20 × 10 e subia para 25 × 7 a RPE 8,5 tinha a progressão calculada a partir dos 20. Agora a série mais pesada do fim só é tentativa se **não superou a força estimada (e1RM)** das outras; se superou, é a carga nova.
+
 ## 0.12.2 — 2026-10-20 · séries de trabalho
 - **Tentativa mais pesada no fim não vira base.** Quem fazia 40 kg × 7, 7 e tentava 45 kg × 3 no fim recebia a sugestão a partir dos 45 kg. Agora uma única série mais pesada no fim, depois de 2+ séries com a mesma carga, conta como tentativa; a base continua 40 kg. Mais leves antes (aquecimento) e depois (back-off) também não entram. Regra em `workSets` (engine.js), com teste.
 
