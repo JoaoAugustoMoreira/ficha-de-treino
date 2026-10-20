@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.8.2 — 2026-10-20
+- Boneco com mais definição: sombreamento de volume, joelhos, banda iliotibial, tensor da fáscia lata, sartório, fibular, braço e antebraço mais cheios e mais linhas de separação muscular.
+
 ## 0.8.1 — 2026-10-20
 - Boneco com físico de fisiculturista: ombros largos, cintura fina, deltoide em 2 cabeças, peitoral superior e inferior, serrátil, abdômen em 8 gomos, bíceps/braquial, tríceps em 2 cabeças, antebraço, trapézio superior e médio, infraespinal, redondo maior, dorsais, lombar, glúteo médio e máximo, quadríceps em 3 cabeças, posteriores em 2, panturrilha em 3 partes, e linhas de definição.
 - Corrigido: o balão de informação do músculo sumia só ao tocar fora; agora some ao trocar de aba ou rolar a tela.
