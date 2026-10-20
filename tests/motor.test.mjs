@@ -63,10 +63,18 @@ test("treino em casa só oferece exercícios de casa", () => {
     assert.ok(casa.has(o) || Object.values(M.LIB[e.p]).some(v => Array.isArray(v) && v.includes(o)), o);
 });
 
-test("perna não fica no dia nem na véspera de esporte forte de pernas quando há alternativa", () => {
-  const pf = perfil({ exp: "mais1", dias: [1, 2, 3, 4], esportes: [{ mod: "Jiu-jitsu / luta", dias: [1, 3], int: "forte" }] });
-  const pl = M.buildPlan(pf);
-  for (const d of pl.days) if (M.regionOf(d).L > 0.6) assert.ok(![1, 3].includes(d.dow[0]), `${d.n} na ${d.dow[0]}`);
+test("perna não fica no dia nem na véspera de atividade forte de pernas, para qualquer esporte de pernas", () => {
+  const dePernas = Object.entries(M.SPORTS).filter(([, v]) => v.leg >= 0.6).map(([k]) => k);
+  assert.ok(dePernas.length >= 5);
+  for (const mod of dePernas) {
+    const pl = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4], esportes: [{ mod, dias: [1, 3], int: "forte" }] }));
+    for (const d of pl.days) if (M.regionOf(d).L > 0.6) assert.ok(![1, 3].includes(d.dow[0]), `${mod}: ${d.n} na ${d.dow[0]}`);
+  }
+});
+
+test("quem só faz musculação recebe o plano sem ajustes de esporte", () => {
+  const pl = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4] }));
+  assert.ok(pl.days.every(d => !d.sport.length && !d.warn));
 });
 
 test("esportes moderados/fortes descontam o cardio", () => {
