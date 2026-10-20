@@ -28,11 +28,13 @@ const FIBER={chest:-18,deltoids:78,biceps:80,triceps:80,forearm:74,abs:90,obliqu
 let bodyUid=0;
 function bodyFigure(side,frac,tip,cls){ const uid="kb"+(++bodyUid); const mid=side==="front"?362:1086; const angs=new Set();
   const parts=CORPO[side].map(([m,slug,d,cx,cy])=>{ const k=BULK[slug]; const tr=k?` transform="translate(${cx} ${cy}) scale(${k[0]} ${k[1]}) translate(${-cx} ${-cy})"`:"";
-    if(!m){ const fill=slug==="hair"?"var(--body-line)":"var(--body-base)"; return `<path d="${d}" fill="${fill}"${tr}/>`; }
+    const sh=`<path d="${d}" fill="url(#${uid}sh)"${tr} stroke="none" pointer-events="none"/>`;
+    if(!m){ const fill=slug==="hair"?"var(--body-line)":"var(--body-base)"; return `<path d="${d}" fill="${fill}"${tr}/>`+sh; }
     const f=Math.max(0,Math.min(1,frac[m]||0)); const fill=f>0?`fill="var(--accent)" fill-opacity="${(0.16+0.84*f).toFixed(2)}"`:`fill="var(--body-mus)"`;
     let fib=""; if(FIBER[slug]!=null){ const a=Math.round(cx<mid?FIBER[slug]:180-FIBER[slug]); angs.add(a); fib=`<path d="${d}" fill="url(#${uid}f${a})"${tr} stroke="none" pointer-events="none"/>`; }
-    return `<path class="mus" d="${d}" ${fill}${tr} data-tip="${esc(tip?tip[m]||"":"")}"/>${fib}`; }).join("");
-  const defs=[...angs].map(a=>`<pattern id="${uid}f${a}" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(${a-90})"><line x1="0" y1="0" x2="0" y2="9" stroke="var(--surface)" stroke-opacity=".4" stroke-width="1.7"/></pattern>`).join("");
+    return `<path class="mus" d="${d}" ${fill}${tr} data-tip="${esc(tip?tip[m]||"":"")}"/>${sh}${fib}`; }).join("");
+  const shade=`<linearGradient id="${uid}sh" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".42" stop-color="#fff" stop-opacity=".04"/><stop offset=".75" stop-color="#000" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>`;
+  const defs=shade+[...angs].map(a=>`<pattern id="${uid}f${a}" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(${a-90})"><line x1="0" y1="0" x2="0" y2="9" stroke="var(--surface)" stroke-opacity=".4" stroke-width="1.7"/></pattern>`).join("");
   return `<svg class="body ${cls||""}" viewBox="${BODY_VB[side]}" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}"><defs>${defs}</defs><g stroke="var(--surface)" stroke-width="3" stroke-linejoin="round">${parts}</g></svg>`; }
 function bodyPair(frac,tip,cls){ return `<div class="bodypair ${cls||""}">${bodyFigure("front",frac,tip,cls)}${bodyFigure("back",frac,tip,cls)}</div>`; }
 

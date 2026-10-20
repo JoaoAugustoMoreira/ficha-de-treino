@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.4 — 2026-10-20
+- Degradê de luz e sombra em cada músculo (mais claro em cima, mais escuro embaixo), além das fibras: o boneco ganha volume 3D, no nível dos apps de treino.
+
 ## 0.9.3 — 2026-10-20
 - Boneco com mais volume (largura de braços, pernas, panturrilha, trapézio e dorsais), mantendo o ombro sem arredondar demais e as fibras.
 
