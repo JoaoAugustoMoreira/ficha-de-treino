@@ -81,11 +81,11 @@ function radar(actual,target){ const ms=MUSCLES, n=ms.length, W=320, H=280, cx=W
 
 /* ---------- seção "Desempenho" da aba Progresso ---------- */
 function perfSection(){
-  const ss=state.sessions.filter(lifted); if(!state.sessions.length) return "";
-  const target=state.plan.target||{};
-  // carga muscular: últimos 7 dias × meta semanal
-  const since=isoDaysAgo(6); const v7=setsByMuscle(ss.filter(s=>s.date>=since));
-  const frac={}, tip={}; MUSCLES.forEach(m=>{ const t=target[m]||1; frac[m]=v7[m]/t; tip[m]=`${MUS_LBL[m]}: ${fmt(r1(v7[m]))} de ${fmt(target[m]||0)} séries (meta da semana)`; });
+  const ss=state.sessions.filter(lifted); const empty=!ss.length;
+  const target=state.plan.target||{}; const planned=(state.plan.vol&&state.plan.vol.v)||{};
+  // carga muscular: últimos 7 dias × meta semanal (sem treinos ainda: mostra o que o plano prevê)
+  const since=isoDaysAgo(6); const v7=empty?planned:setsByMuscle(ss.filter(s=>s.date>=since));
+  const frac={}, tip={}; MUSCLES.forEach(m=>{ const t=target[m]||1; frac[m]=v7[m]/t; tip[m]=`${MUS_LBL[m]}: ${fmt(r1(v7[m]))} de ${fmt(target[m]||0)} séries ${empty?"previstas no plano":"(meta da semana)"}`; });
   const ranked=MUSCLES.filter(m=>target[m]).map(m=>[m,frac[m]]).sort((a,b)=>b[1]-a[1]);
   const top=ranked.filter(x=>x[1]>0).slice(0,2).map(x=>MUS_LBL[x[0]].toLowerCase()), low=ranked.filter(x=>x[1]<0.5).slice(-2).map(x=>MUS_LBL[x[0]].toLowerCase());
   const weeks=lastWeeks(12), cw=weekStart(todayISO());
@@ -96,18 +96,18 @@ function perfSection(){
   const vpw=barChart(perW.map((x,i)=>({v:vol[i],cur:x.w===cw,lbl:i%3===0?mlbl(x.w):"",tip:`Semana de ${dstr(x.w)}: ${kfmt(vol[i])} levantados`})),{label:"Volume semanal",ticks:[0,vmx/2,vmx],yfmt:t=>t>=1000?fmt(Math.round(t/100)/10)+"t":fmt(Math.round(t))});
   const vNow=vol[vol.length-2]||0, vPrev=vol[vol.length-3]||0;
   // equilíbrio: média semanal das últimas 4 semanas
-  const since28=isoDaysAgo(27); const v28=setsByMuscle(ss.filter(s=>s.date>=since28)); const wk4=Math.max(1,Math.min(4,new Set(ss.filter(s=>s.date>=since28).map(s=>weekStart(s.date))).size)); const avg={}; MUSCLES.forEach(m=>avg[m]=v28[m]/wk4);
+  const since28=isoDaysAgo(27); const v28=empty?Object.fromEntries(MUSCLES.map(m=>[m,(planned[m]||0)])):setsByMuscle(ss.filter(s=>s.date>=since28)); const wk4=Math.max(1,Math.min(4,new Set(ss.filter(s=>s.date>=since28).map(s=>weekStart(s.date))).size)); const avg={}; MUSCLES.forEach(m=>avg[m]=v28[m]/wk4);
   const under=MUSCLES.filter(m=>target[m]&&avg[m]<target[m]*0.7).map(m=>MUS_LBL[m].toLowerCase());
   const days=new Set(state.sessions.filter(s=>s.date>=isoDaysAgo(83)).map(s=>s.date)).size;
   return `<div class="dayhead perfh"><h2>Desempenho</h2></div>
-    <article class="card perf"><div class="exname">Carga muscular</div><p class="note">Últimos 7 dias. Mais escuro = mais perto da meta de séries da semana. Toque num músculo.</p>
+    <article class="card perf"><div class="exname">Carga muscular</div><p class="note">${empty?"Você ainda não salvou treinos: o mapa mostra quanto o seu plano trabalha cada músculo por semana. Depois do 1º treino, ele passa a mostrar o que você fez nos últimos 7 dias.":"Últimos 7 dias. Mais escuro = mais perto da meta de séries da semana."} Toque num músculo.</p>
       ${bodyPair(frac,tip)}
       <div class="legend"><span>pouco</span><i class="lgramp"></i><span>meta</span></div>
-      <p class="note">${top.length?`Mais trabalhado: <b>${top.join(" e ")}</b>.`:""}${low.length?` Abaixo da metade da meta: <b>${low.join(" e ")}</b>.`:""}</p></article>
-    <article class="card perf"><div class="exname">Treinos por semana</div><p class="note">Sessões de musculação. Linha tracejada: a meta do seu plano (${state.plan.lift} por semana).</p>${tpw}</article>
+      <p class="note">${empty?"":top.length?`Mais trabalhado: <b>${top.join(" e ")}</b>.`:""}${!empty&&low.length?` Abaixo da metade da meta: <b>${low.join(" e ")}</b>.`:""}</p></article>
+    <article class="card perf"><div class="exname">Treinos por semana</div><p class="note">Sessões de musculação. Linha tracejada: a meta do seu plano (${state.plan.lift} por semana).${empty?" As barras aparecem quando você salvar treinos.":""}</p>${tpw}</article>
     <article class="card perf"><div class="exname">Dias de treino</div><p class="note">Últimas 12 semanas · ${days} dia${days===1?"":"s"} com treino. Verde-claro: só cardio.</p><div class="gridwrap">${dayGrid(state.sessions,weeks)}</div></article>
-    <article class="card perf"><div class="exname">Volume semanal</div><p class="note">Peso total levantado (kg × repetições) por semana${vPrev&&vNow?` · semana passada ${kfmt(vNow)} (${vNow>=vPrev?"+":""}${fmt(Math.round((vNow/vPrev-1)*100))}% vs. a anterior)`:""}. A barra escura é a semana atual, ainda em andamento.</p>${vpw}</article>
-    <article class="card perf"><div class="exname">Equilíbrio muscular</div><p class="note">Séries por semana em cada grupo (média das últimas ${wk4} semana${wk4>1?"s":""}). Área verde: o que você fez. Tracejado: a meta do plano.</p>${radar(avg,target)}
+    <article class="card perf"><div class="exname">Volume semanal</div><p class="note">${empty?"Aparece quando você salvar treinos. ":""}Peso total levantado (kg × repetições) por semana${vPrev&&vNow?` · semana passada ${kfmt(vNow)} (${vNow>=vPrev?"+":""}${fmt(Math.round((vNow/vPrev-1)*100))}% vs. a anterior)`:""}. A barra escura é a semana atual, ainda em andamento.</p>${vpw}</article>
+    <article class="card perf"><div class="exname">Equilíbrio muscular</div><p class="note">${empty?"Prévia: séries que o seu plano prevê por grupo (área verde) × a meta (tracejado). Com treinos salvos, mostra a média das últimas 4 semanas.":`Séries por semana em cada grupo (média das últimas ${wk4} semana${wk4>1?"s":""}). Área verde: o que você fez. Tracejado: a meta do plano.`}</p>${radar(avg,target)}
       ${under.length?`<p class="note">Abaixo de 70% da meta: <b>${under.join(", ")}</b>.</p>`:`<p class="note">Todos os grupos perto da meta: treino equilibrado.</p>`}
       <details class="how"><summary>Ver em tabela</summary><table class="mt"><thead><tr><th>Grupo</th><th>Feito/sem.</th><th>Meta</th></tr></thead><tbody>${MUSCLES.map(m=>`<tr><td>${MUS_LBL[m]}</td><td>${fmt(r1(avg[m]))}</td><td>${fmt(target[m]||0)}</td></tr>`).join("")}</tbody></table></details></article>
     ${recentSessions(ss)}`; }

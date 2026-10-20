@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.1 — 2026-10-20
+- Desempenho aparece desde o 1º acesso: sem treinos salvos, o mapa muscular e o equilíbrio mostram o que o plano prevê; os gráficos de semana mostram a meta e se preenchem com os treinos.
+
 ## 0.7.0 — 2026-10-20
 - Aba Progresso ganha a seção **Desempenho**:
   - **Carga muscular**: mapa do corpo (frente e costas, desenho próprio) com a intensidade de cada músculo nos últimos 7 dias em relação à meta de séries.
