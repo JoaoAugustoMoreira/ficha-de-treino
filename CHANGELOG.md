@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.1 — 2026-10-20
+- Boneco mais forte e volumoso: cada músculo é engrossado a partir do próprio centro (deltoides, braços, antebraço, trapézio, dorsais, peitoral, quadríceps, posteriores e panturrilha), pescoço mais grosso e cabeça um pouco menor.
+
 ## 0.9.0 — 2026-10-20
 - Mapa muscular com contornos anatômicos detalhados (cabeça, mãos e pés; peitoral, deltoides, abdômen, oblíquos, serrátil, bíceps, tríceps, antebraço, trapézio, dorsais, lombar, glúteos, quadríceps, adutores, posteriores, tibial e panturrilha), no lugar do desenho geométrico. Contornos adaptados de react-native-body-highlighter (MIT).
 

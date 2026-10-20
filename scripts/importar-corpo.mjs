@@ -7,7 +7,10 @@ const front = require(base + "bodyFront.js").bodyFront, back = require(base + "b
 const MAP = { chest:"peito", obliques:"abdômen", abs:"abdômen", biceps:"braços", triceps:"braços", forearm:"braços", deltoids:"ombros",
   trapezius:"costas", "upper-back":"costas", "lower-back":"costas", adductors:"adutores", quadriceps:"pernas", hamstring:"posterior",
   gluteal:"glúteos", calves:"panturrilha", tibialis:"panturrilha" };
-const pack = arr => arr.map(x => [MAP[x.slug] || "", x.slug, [...(x.path.left||[]), ...(x.path.right||[]), ...(x.path.common||[])].join(" ")]);
+const { svgPathBbox } = await import(process.argv[3] || "svg-path-bbox");
+// um item por contorno (lado esquerdo e direito separados), com o centro da caixa: o app engrossa cada músculo a partir do próprio centro
+const r1 = v => Math.round(v * 10) / 10;
+const pack = arr => arr.flatMap(x => [...(x.path.left||[]), ...(x.path.right||[]), ...(x.path.common||[])].map(d => { const [x0,y0,x1,y1] = svgPathBbox(d); return [MAP[x.slug] || "", x.slug, d, r1((x0+x1)/2), r1((y0+y1)/2)]; }));
 const lic = readFileSync(new URL("../vendor/react-native-body-highlighter.LICENSE", import.meta.url), "utf8").trim().split("\n").map(l => " * " + l).join("\n");
 const out = `/* Contornos anatômicos do corpo (frente e costas), adaptados de react-native-body-highlighter.
 ${lic}

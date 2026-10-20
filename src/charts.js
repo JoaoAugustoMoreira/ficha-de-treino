@@ -20,11 +20,14 @@ const kfmt=v=>v>=1000?fmt(Math.round(v/100)/10)+" t":fmt(Math.round(v))+" kg";
 /* ---------- mapa muscular: contornos anatômicos (src/corpo.js), frente e costas ----------
    Cada contorno pertence a um dos 10 grupos do app; os sem grupo (cabeça, mãos, joelhos, pés) ficam em tom neutro. */
 const BODY_VB={front:"0 0 724 1448",back:"724 0 724 1448"};
+/* físico de fisiculturista: cada músculo é engrossado a partir do próprio centro (largura, altura) */
+const BULK={deltoids:[1.32,1.16],chest:[1.12,1.09],biceps:[1.42,1.08],triceps:[1.38,1.06],forearm:[1.32,1.03],trapezius:[1.16,1.14],"upper-back":[1.12,1.05],
+  "lower-back":[1.08,1.02],abs:[1.06,1.02],obliques:[1.16,1.03],quadriceps:[1.3,1.04],adductors:[1.16,1.02],hamstring:[1.28,1.03],gluteal:[1.12,1.08],calves:[1.4,1.06],tibialis:[1.26,1.02],neck:[1.4,1.0],head:[.92,.92],hair:[.92,.92]};
 function bodyFigure(side,frac,tip,cls){
-  const parts=CORPO[side].map(([m,slug,d])=>{
-    if(!m){ const fill=slug==="hair"?"var(--body-line)":"var(--body-base)"; return `<path d="${d}" fill="${fill}"/>`; }
+  const parts=CORPO[side].map(([m,slug,d,cx,cy])=>{ const k=BULK[slug]; const tr=k?` transform="translate(${cx} ${cy}) scale(${k[0]} ${k[1]}) translate(${-cx} ${-cy})"`:"";
+    if(!m){ const fill=slug==="hair"?"var(--body-line)":"var(--body-base)"; return `<path d="${d}" fill="${fill}"${tr}/>`; }
     const f=Math.max(0,Math.min(1,frac[m]||0)); const fill=f>0?`fill="var(--accent)" fill-opacity="${(0.16+0.84*f).toFixed(2)}"`:`fill="var(--body-mus)"`;
-    return `<path class="mus" d="${d}" ${fill} data-tip="${esc(tip?tip[m]||"":"")}"/>`; }).join("");
+    return `<path class="mus" d="${d}" ${fill}${tr} data-tip="${esc(tip?tip[m]||"":"")}"/>`; }).join("");
   return `<svg class="body ${cls||""}" viewBox="${BODY_VB[side]}" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}"><g stroke="var(--surface)" stroke-width="3" stroke-linejoin="round">${parts}</g></svg>`; }
 function bodyPair(frac,tip,cls){ return `<div class="bodypair ${cls||""}">${bodyFigure("front",frac,tip,cls)}${bodyFigure("back",frac,tip,cls)}</div>`; }
 
