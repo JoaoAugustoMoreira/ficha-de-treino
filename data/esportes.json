@@ -132,5 +132,231 @@
     ],
     "Yoga / pilates / mobilidade": [],
     "Outro": []
+  },
+  "perfis": {
+    "Corrida": {
+      "pernasPesado": true,
+      "potencia": true,
+      "prevencao": [
+        {
+          "nome": "Nordic (com assistência)",
+          "padrao": "ham",
+          "motivo": "o Nordic reduz pela metade as lesões de posterior de coxa",
+          "ev": "nordic"
+        }
+      ],
+      "recomendados": [
+        "Panturrilha em pé",
+        "Agachamento com salto"
+      ],
+      "resumo": "Força pesada nas pernas + saltos melhoram a economia de corrida; Nordic previne lesão de posterior.",
+      "ev": [
+        "corrida-forca",
+        "nordic"
+      ]
+    },
+    "Futebol": {
+      "potencia": true,
+      "prevencao": [
+        {
+          "nome": "Nordic (com assistência)",
+          "padrao": "ham",
+          "motivo": "o Nordic reduz pela metade as lesões de posterior de coxa",
+          "ev": "nordic"
+        },
+        {
+          "nome": "Prancha de Copenhagen",
+          "padrao": "adductor",
+          "motivo": "o programa de adutores (Copenhagen) reduziu em 41% os problemas de virilha no futebol",
+          "ev": "copenhagen"
+        }
+      ],
+      "recomendados": [
+        "Afundo com halteres"
+      ],
+      "resumo": "Nordic e Copenhagen previnem as lesões mais comuns; saltos e força melhoram sprint.",
+      "ev": [
+        "nordic",
+        "copenhagen",
+        "coletivos-sprint"
+      ]
+    },
+    "Ciclismo / spinning": {
+      "pernasPesado": true,
+      "prevencao": [],
+      "recomendados": [
+        "Agachamento livre",
+        "Leg press 45°"
+      ],
+      "resumo": "Força pesada nas pernas melhora a economia e o desempenho no ciclismo.",
+      "ev": [
+        "ciclismo-forca"
+      ]
+    },
+    "Natação": {
+      "prevencao": [
+        {
+          "nome": "Rotação externa no cabo",
+          "alt": [
+            "Rotação externa com elástico",
+            "Rotação externa deitado de lado com halter"
+          ],
+          "padrao": "rear",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "ev": "ombro-arremesso"
+        }
+      ],
+      "recomendados": [
+        "Puxada alta",
+        "Face pull"
+      ],
+      "resumo": "Força fora da água melhora o desempenho em ~2–2,5%; rotação externa protege o ombro.",
+      "ev": [
+        "natacao-forca",
+        "ombro-arremesso"
+      ]
+    },
+    "Tênis / beach tennis / padel": {
+      "prevencao": [
+        {
+          "nome": "Rotação externa no cabo",
+          "alt": [
+            "Rotação externa com elástico",
+            "Rotação externa deitado de lado com halter"
+          ],
+          "padrao": "rear",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "ev": "ombro-arremesso"
+        }
+      ],
+      "recomendados": [
+        "Pallof press no cabo"
+      ],
+      "resumo": "Rotação externa protege o ombro do saque; core de rotação ajuda o golpe.",
+      "ev": [
+        "ombro-arremesso"
+      ]
+    },
+    "Vôlei / basquete / handebol": {
+      "potencia": true,
+      "prevencao": [
+        {
+          "nome": "Rotação externa no cabo",
+          "alt": [
+            "Rotação externa com elástico",
+            "Rotação externa deitado de lado com halter"
+          ],
+          "padrao": "rear",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "ev": "ombro-arremesso"
+        }
+      ],
+      "recomendados": [
+        "Salto na caixa",
+        "Panturrilha em pé"
+      ],
+      "resumo": "Saltos melhoram impulsão; rotação externa protege o ombro em quem ataca e arremessa.",
+      "ev": [
+        "coletivos-sprint",
+        "ombro-arremesso"
+      ]
+    },
+    "Jiu-jitsu / luta": {
+      "prevencao": [
+        {
+          "nome": "Pallof press no cabo",
+          "alt": [
+            "Pallof press com elástico",
+            "Dead bug"
+          ],
+          "padrao": "core",
+          "motivo": "core de estabilidade melhora golpes e transferência de força",
+          "ev": "core-lutas"
+        }
+      ],
+      "recomendados": [
+        "Remada apoiada no banco",
+        "Levantamento romeno"
+      ],
+      "resumo": "Core de estabilidade, costas e posterior fortes para pegada, quedas e golpes.",
+      "ev": [
+        "core-lutas",
+        "prevencao-geral"
+      ]
+    },
+    "Crossfit / funcional": {
+      "prevencao": [
+        {
+          "nome": "Rotação externa no cabo",
+          "alt": [
+            "Rotação externa com elástico",
+            "Rotação externa deitado de lado com halter"
+          ],
+          "padrao": "rear",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "ev": "ombro-arremesso"
+        }
+      ],
+      "recomendados": [],
+      "resumo": "Ombro protegido para o alto volume de movimentos acima da cabeça.",
+      "ev": [
+        "prevencao-geral"
+      ]
+    },
+    "Escalada": {
+      "prevencao": [
+        {
+          "nome": "Rotação externa no cabo",
+          "alt": [
+            "Rotação externa com elástico",
+            "Rotação externa deitado de lado com halter"
+          ],
+          "padrao": "rear",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "ev": "ombro-arremesso"
+        }
+      ],
+      "recomendados": [
+        "Barra fixa negativa",
+        "Remada apoiada no banco"
+      ],
+      "resumo": "Costas e ombro equilibrados; força de pegada vem da própria escalada.",
+      "ev": [
+        "prevencao-geral"
+      ]
+    },
+    "Remo / canoagem": {
+      "prevencao": [],
+      "recomendados": [
+        "Remada apoiada no banco",
+        "Levantamento romeno"
+      ],
+      "resumo": "Costas e posterior fortes sustentam a remada.",
+      "ev": [
+        "prevencao-geral"
+      ]
+    },
+    "Dança": {
+      "prevencao": [],
+      "recomendados": [
+        "Panturrilha em pé",
+        "Dead bug"
+      ],
+      "resumo": "Panturrilha, quadril e core para saltos e equilíbrio.",
+      "ev": [
+        "prevencao-geral"
+      ]
+    },
+    "Caminhada / trilha": {
+      "prevencao": [],
+      "recomendados": [
+        "Panturrilha em pé",
+        "Step-up com halteres"
+      ],
+      "resumo": "Pernas e panturrilha para subidas e descidas.",
+      "ev": [
+        "prevencao-geral"
+      ]
+    }
   }
 }

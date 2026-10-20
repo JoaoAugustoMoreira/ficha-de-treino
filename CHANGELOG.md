@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.0 — 2026-10-19
+**Esportes com base científica própria**
+- Cada esporte tem recomendações com fonte: futebol (Nordic e Copenhagen: −51% lesão de posterior, −41% virilha), corrida (força pesada + saltos melhoram a economia), ciclismo (força pesada nas pernas), natação, tênis/vôlei/handebol (rotação externa do ombro: −28% problemas de ombro), lutas (core), coletivos (saltos melhoram sprint), escalada, remo, dança, caminhada.
+- O plano inclui o exercício de prevenção do esporte 1× por semana no dia certo, coloca saltos para quem corre/joga, usa carga alta (4–6 reps) nas pernas de corredores e ciclistas e dá preferência aos exercícios recomendados.
+- 9 evidências novas com DOI (agora 27); 3 exercícios de rotação externa do ombro.
+
+**Recuperação sem corte automático**
+- Sono curto e estresse alto não reduzem mais o volume: viram um aviso. Nova pergunta: volume que você prefere (menor, padrão, alto).
+
+**Mais limpo e mais rápido**
+- Questionário em 7 telas curtas com barra de progresso; escolha de divisão recolhida.
+- Cartão do exercício enxuto: nome, "3 × 6–10 · RPE 8 · 2 min", sugestão em uma linha; "ⓘ Por quê" recolhido.
+- Sem o tutorial longo na tela do treino (fica no Guia e em Dúvidas); Perfil com blocos recolhidos.
+- Correção: no navegador fora do Claude, elementos ocultos apareciam.
+
 ## 0.3.0 — 2026-10-19
 **Novo planejador: o plano é calculado, não copiado de um molde.**
 1. Recuperação: sono, estresse e idade ajustam o volume inicial.

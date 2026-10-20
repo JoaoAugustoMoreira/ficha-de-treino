@@ -32,17 +32,17 @@ function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") retur
 function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.opts[0]; }
 function suggest(ex){
   const name=chosen(ex), inc=incOf(ex,name); const h=historyFor(name).filter(x=>!x.leve);
-  if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ POTÊNCIA</span> <strong>Velocidade, não cansaço.</strong> Use o peso do corpo ou carga leve; anote 0 kg se for sem peso.`}; }
-  if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ PRIMEIRA VEZ</span> <strong>Descubra sua carga.</strong> Escolha uma carga em que você faria ${ex.hi} reps sobrando 3 (RPE 7). Anote o que fizer: a ficha calcula a próxima.`};
-  if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= MANTER</span> <strong>Fase de técnica: mantenha ${fmt(L)} kg.</strong> Foque em fazer todas as reps bem feitas.`}; }
+  if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ Potência</span> Rápido, longe da falha`}; }
+  if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ 1ª vez</span> Escolha uma carga para ${ex.hi} reps com folga`};
+  if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
   const last=h[0].sets, L=Math.max(...last.map(s=>s.kg||0)); const work=last.filter(s=>(s.kg||0)===L);
   const allTop=work.length>=Math.min(ex.sets,last.length)&&work.every(s=>s.reps>=ex.hi); const lr=work[work.length-1]?.rpe; const tgt=ex.rpe[ex.rpe.length-1];
   if(allTop&&!(lr>tgt+0.5)){ const pct=ex.k==="C"?(ex.low?0.05:0.025):0.05; let nk=roundTo(L*(1+pct),inc); if(nk<=L) nk=L+inc;
-    return {kg:nk,reps:ex.lo,cls:"up",html:`<span class="tag t-up">⬆ SUBIR</span> <strong>Suba para ${fmt(nk)} kg</strong> (+${fmt(Math.round((nk/L-1)*1000)/10)}%). Você bateu ${ex.hi} reps em todas as séries. Recomece em ${ex.lo} reps.`}; }
+    return {kg:nk,reps:ex.lo,cls:"up",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${ex.lo} reps`}; }
   const below=s=>s.sets.filter(x=>(x.kg||0)===Math.max(...s.sets.map(y=>y.kg||0))).some(x=>x.reps<ex.lo);
-  if(h.length>=2&&below(h[0])&&below(h[1])){ const nk=Math.max(0,roundTo(L*0.9,inc)); return {kg:nk,reps:ex.hi,cls:"stall",html:`<span class="tag t-down">⬇ REDUZIR</span> <strong>Reduza para ${fmt(nk)} kg</strong> (−10%). Duas sessões abaixo de ${ex.lo} reps: recomece mais leve e suba de novo.`}; }
+  if(h.length>=2&&below(h[0])&&below(h[1])){ const nk=Math.max(0,roundTo(L*0.9,inc)); return {kg:nk,reps:ex.hi,cls:"stall",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong>`}; }
   const minR=Math.min(...work.map(s=>s.reps)); const tr=Math.min(ex.hi,minR+1);
-  return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= MANTER</span> <strong>Mantenha ${fmt(L)} kg e busque +1 rep</strong> por série (meta: ${tr}). Quando fizer ${ex.hi} em todas, a carga sobe.`};
+  return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> <strong>${fmt(L)} kg</strong> · meta ${tr} reps`};
 }
 function readiness(id){
   const d=state.plan&&state.plan.days.find(x=>x.key===state.current); const ex=d&&d.ex.find(e=>e.id===id); const box=document.getElementById("rd-"+id); if(!ex||!box) return;
@@ -54,7 +54,7 @@ function readiness(id){
   if(rpe>=t+1){ cls="bad"; why=`Série 1 com RPE ${fmt(rpe)}; o alvo era ${fmt(t)}.`; act=rpe-t>=2&&nk<kg?`Considere reduzir ${fmt(Math.abs(pr))}% → ${fmt(nk)} kg nas próximas séries.`:`Mantenha ${fmt(kg)} kg e faça 1 rep a menos nas próximas séries.`; }
   else if(rpe<=t-1){ cls="good"; why=`Série 1 com RPE ${fmt(rpe)}; o alvo era ${fmt(t)}.`; act=t-rpe>=2&&nk>kg&&nk<=target*1.05?`Considere aumentar +${fmt(pr)}% → ${fmt(nk)} kg nas próximas séries.`:`Mantenha ${fmt(kg)} kg e faça +${t-rpe>=2?2:"1–2"} reps nas próximas séries.`; }
   else { act="Mantenha a carga e as reps. Siga o plano."; why=`Série 1 no alvo (RPE ${fmt(rpe)}).`; }
-  box.className="rd "+cls; box.innerHTML=`<b>${act}</b><br><small>${why}</small>`; box.hidden=false;
+  box.className="rd "+cls; box.innerHTML=`<b>${act}</b>`; box.title=why; box.hidden=false;
 }
 
 /* ---------- rascunho à prova de perda (mesclagem campo a campo, só grava quem digitou) ---------- */
@@ -105,13 +105,8 @@ const Q_OBJ=[["hipertrofia","Hipertrofia (ganhar músculo)"],["forca","Força"],
 function chipset(name,opts,sel,multi){ return `<div class="qchips" data-name="${name}" data-multi="${multi?1:0}">${opts.map(([v,l])=>`<button type="button" class="qc" data-v="${v}" aria-pressed="${(multi?(sel||[]).map(String).includes(String(v)):String(sel)===String(v))}">${esc(l)}</button>`).join("")}</div>`; }
 function renderOnb(){
   const p=state.onbDraft||state.pf||{};
-  $("#day").innerHTML=`<div class="col"><article class="card"><div class="exname">${state.pf?"Editar objetivo e rotina":"Vamos montar o seu treino"}</div>
-  <p class="exnote">Responda com calma: o plano é gerado a partir daqui e você pode mudar tudo depois na aba Perfil. Seu histórico de cargas é mantido.</p>
-  ${state.pf?"":`<div class="how3"><p><b>Como funciona, em 3 passos</b></p><ol>
-    <li><b>Responda as perguntas abaixo.</b> A ficha monta um plano com base em estudos científicos sobre treino.</li>
-    <li><b>No treino, anote carga, repetições e RPE</b> de cada série. RPE é uma nota de 1 a 10 de quão difícil foi: <b>10 − quantas repetições ainda sairiam</b>. Sobraram 2? RPE 8.</li>
-    <li><b>A ficha diz quando subir o peso</b> e, uma vez por semana, o Claude analisa sua evolução.</li></ol>
-    <button type="button" class="ghost" id="goGuia">Ler o guia completo (RPE, divisões, cardio…)</button></div>`}</article>
+  $("#day").innerHTML=`<div class="col"><div class="wizhead"><div class="exname">${state.pf?"Editar seu plano":"Vamos montar seu treino"}</div><span class="note" id="wizN"></span></div>
+  <div class="prog"><div class="bar"><i id="wizBar"></i></div></div>
   <article class="card q"><h3>1. Sobre você</h3><div class="ckgrid">
     <label>Nome<input id="q-nome" value="${esc(p.nome||"")}" autocomplete="given-name"></label>
     <label>Idade<input id="q-idade" inputmode="numeric" value="${esc(p.idade||"")}"></label>
@@ -141,16 +136,18 @@ function renderOnb(){
   <article class="card q"><h3>10. Rotina</h3><div class="ckgrid">
     <label>Trabalho (horário)<input id="q-trabalho" value="${esc(p.trabalho||"")}" placeholder="ex.: 9h–18h"></label>
     <label>Sono médio (h)<input id="q-sono" inputmode="decimal" value="${esc(fmt(p.sono)||"")}" placeholder="7"></label></div>
-    <p class="ql">Nível de estresse</p>${chipset("estresse",[[1,"1 baixo"],[2,"2"],[3,"3"],[4,"4"],[5,"5 alto"]],p.estresse||3)}</article>
+    <p class="ql">Nível de estresse</p>${chipset("estresse",[[1,"1 baixo"],[2,"2"],[3,"3"],[4,"4"],[5,"5 alto"]],p.estresse||3)}
+    <p class="ql">Volume de treino que você prefere</p>${chipset("volume",[["menor","Menor"],["padrao","Padrão"],["alto","Alto"]],p.volume||"padrao")}</article>
   <article class="card q"><h3>11. Cardio e relógio</h3><p class="ql">Quer cardio no plano?</p>${chipset("cardio",[["sim","Sim"],["nao","Não"]],p.cardio||"sim")}
     <p class="ql">Modalidades que prefere</p>${chipset("cardioMods",[["Bike","Bike"],["Corrida","Corrida"],["Esteira (caminhada inclinada)","Esteira"],["Escada","Escada"],["Elíptico","Elíptico"],["Natação","Natação"]],p.cardioMods||["Bike"],true)}
     <p class="ql">Relógio ou pulseira</p>${chipset("wear",[["whoop","Whoop"],["garmin","Garmin"],["apple","Apple Watch"],["outro","Outro relógio"],["nenhum","Nenhum"]],p.wear||"nenhum")}</article>
-  <div class="askrow">${state.pf?'<button class="ghost" id="q-cancel" type="button">Cancelar</button>':''}<button class="ckbtn" id="q-go" type="button">${state.pf?"Atualizar meu plano":"Gerar meu plano"}</button></div></div>`;
+  <div class="askrow wiznav"><button class="ghost" id="q-back" type="button">Voltar</button><button class="ckbtn" id="q-next" type="button">Continuar</button><button class="ckbtn" id="q-go" type="button">${state.pf?"Atualizar plano":"Gerar meu plano"}</button></div>
+  ${state.pf?'<button class="link" id="q-cancel" type="button">Cancelar</button>':''}</div>`;
   $("#day").onclick=e=>{ const b=e.target.closest(".qc"); if(b){ const g=b.parentElement; if(g.dataset.multi==="1") b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true"); else g.querySelectorAll(".qc").forEach(c=>c.setAttribute("aria-pressed",String(c===b))); splitHint(); return; }
     const del=e.target.closest(".espdel"); if(del){ del.closest(".esprow").remove(); splitHint(); } };
   $("#day").onchange=e=>{ if(e.target.closest(".esprow")) splitHint(); };
   let espN=(p.esportes||[]).length; $("#espAdd").onclick=()=>{ $("#espList").insertAdjacentHTML("beforeend",espRow({},espN++)); };
-  splitHint();
+  splitHint(); wizard();
   if($("#q-cancel")) $("#q-cancel").onclick=()=>{ state.editing=false; state.current="perfil"; render(); };
   $("#q-go").onclick=saveProfile; if($("#goGuia")) $("#goGuia").onclick=()=>{ state.onbDraft=readForm(); state.current="guia"; render(); window.scrollTo({top:0}); };
 }
@@ -161,15 +158,26 @@ function splitHint(){ const box=$("#splitHint"); if(!box) return;
   const fq=big.map(m=>`${m} ${fr[m]}×`).join(" · "), low=big.filter(m=>fr[m]<2);
   box.className="rd "+(low.length?"bad":"good");
   box.innerHTML=`<b>${esc(sp.nome)} · ${pl.lift} dias${chipVal("divisao")==="auto"?" (escolha automática)":""}</b><br>${esc(pl.days.map(d=>(d.dow.length?DOWN[d.dow[0]]+" ":"")+d.n+(d.sport&&d.sport.length?" + "+d.sport.map(x=>x.split(" (")[0]).join(", "):"")).join(" → "))}<br><small>Frequência por semana: ${fq}. ${low.length?`${low.join(", ")} treina${low.length>1?"m":""} só 1× por semana: funciona, mas 2× costuma render mais, principalmente para iniciante.`:"Todos os grupos grandes 2× ou mais por semana: ótimo."} Nível: ${esc(sp.nivel)}.</small>`; }
+/* assistente: perguntas agrupadas em 7 telas curtas */
+const WIZ=["Sobre você","Objetivo","Agenda","Onde e cuidados","Esportes e cardio","Metas","Recuperação"];
+const WIZMAP=[0,1,1,2,2,3,4,3,5,5,6,4];
+function wizard(){ const cards=$$("#day article.card.q"); cards.forEach((c,i)=>{ c.dataset.step=WIZMAP[i]??6; const h=c.querySelector("h3"); if(h) h.textContent=h.textContent.replace(/^\d+b?\.\s*/,""); });
+  const div=cards[4]; if(div&&!div.closest("details")){ const d=document.createElement("details"); d.className="gd"; d.innerHTML="<summary>Escolher a divisão (opcional)</summary>"; div.replaceWith(d); d.appendChild(div); }
+  const show=()=>{ const st=state.onbStep||0; cards.forEach(c=>{ (c.closest("details.gd")||c).hidden=Number(c.dataset.step)!==st; });
+    $("#wizN").textContent=`${st+1} de ${WIZ.length} · ${WIZ[st]}`; $("#wizBar").style.width=((st+1)/WIZ.length*100)+"%";
+    $("#q-back").hidden=st===0; $("#q-next").hidden=st===WIZ.length-1; $("#q-go").hidden=st!==WIZ.length-1&&!state.pf; window.scrollTo({top:0}); };
+  $("#q-next").onclick=()=>{ if((state.onbStep||0)===2&&chipVal("dias",true).length<2){ setStatus("Escolha pelo menos 2 dias."); return; } state.onbStep=(state.onbStep||0)+1; show(); };
+  $("#q-back").onclick=()=>{ state.onbStep=Math.max(0,(state.onbStep||0)-1); show(); };
+  show(); }
 function chipVal(name,multi){ const g=$(`.qchips[data-name="${name}"]`); const on=[...g.querySelectorAll('.qc[aria-pressed="true"]')].map(b=>b.dataset.v); return multi?on:(on[0]??""); }
 function readForm(){
   const v=id=>$("#q-"+id).value.trim();
   return Object.assign({},state.pf||{},{type:"perfil",nome:v("nome"),idade:v("idade"),peso:num(v("peso"))||null,altura:v("altura"),saudeQ:chipVal("saudeQ"),exp:chipVal("exp"),parado:v("parado"),
     objetivo:chipVal("objetivo")||"misto",secundario:chipVal("secundario"),dias:chipVal("dias",true).map(Number),horario:v("horario"),tempo:Number(chipVal("tempo"))||60,local:chipVal("local")||"completa",
     esportes:readSports(),dores:chipVal("dores",true),doresTxt:v("doresTxt"),prioridades:chipVal("prioridades",true),habilidades:chipVal("habilidades",true),evitar:v("evitar"),trabalho:v("trabalho"),sono:num(v("sono"))||null,
-    estresse:Number(chipVal("estresse"))||3,divisao:chipVal("divisao")||"auto",cardio:chipVal("cardio")||"sim",cardioMods:chipVal("cardioMods",true),wear:chipVal("wear")||"nenhum",ts:Date.now()}); }
+    estresse:Number(chipVal("estresse"))||3,volume:chipVal("volume")||"padrao",divisao:chipVal("divisao")||"auto",cardio:chipVal("cardio")||"sim",cardioMods:chipVal("cardioMods",true),wear:chipVal("wear")||"nenhum",ts:Date.now()}); }
 async function saveProfile(){
-  const pf=readForm(); state.onbDraft=null;
+  const pf=readForm(); state.onbDraft=null; state.onbStep=0;
   if(pf.dias.length<2){ setStatus("Escolha pelo menos 2 dias."); window.scrollTo({top:document.querySelector('[data-name="dias"]').getBoundingClientRect().top+scrollY-120}); return; }
   if(pf.secundario===pf.objetivo) pf.secundario="";
   if(!pf.inicio) pf.inicio=todayISO();
@@ -207,15 +215,14 @@ function renderDay(){
     const h=historyFor(name).slice(0,3);
     return `<article class="card ex ${ex.k==="C"?"big":"small"}" data-ex="${ex.id}" data-sets="${n}">
       <div class="ctop"><div class="ctitle"><div class="kind ${ex.k==="C"||ex.k==="P"?"c":""}">${ex.k==="C"?"Principal":ex.k==="P"?"Potência":"Acessório"} · ${esc(ex.k==="P"?"explosão":ex.m)}</div><div class="exname">${esc(name)}</div>
-      <div class="plain">${plainRx(ex,n)}</div>
-      <div class="rx">${n}×${ex.lo}–${ex.hi} · RPE ${ex.rpe.map(fmt).join("/")} · descanso ${Math.round(ex.rest/60*10)/10>=1?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
+      <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
       <label class="swapbtn">⇄ Trocar<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}</select></label></div>
       <div class="donesum"></div><div class="body">
       ${lastTxt(name)?`<div class="last"><b>Última:</b> ${lastTxt(name)}</div>`:""}
       <div class="sug ${sg.cls}">${sg.html}</div>
       <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><span class="h">RPE <button type="button" class="qm" aria-label="O que é RPE">?</button></span><span></span>${rows}</div>
       <div class="rd" id="rd-${ex.id}" hidden></div>
-      ${(ex.why||[]).length?`<details class="how"><summary>Por que este exercício</summary>${ex.why.map(w=>`<p>${esc(w.t)}</p>`).join("")}</details>`:""}
+      ${(ex.why||[]).length?`<details class="how"><summary>ⓘ Por quê</summary>${ex.why.map(w=>`<p>${esc(w.t)}</p>`).join("")}</details>`:""}
       ${(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how?`<details class="how"><summary>Como fazer</summary><p>${esc((EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how)}</p></details>`:""}
       ${h.length>1?`<div class="hist">${h.map(x=>`<span>${dstr(x.date)} · ${x.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join("  ")}${x.leve?" (leve)":""}</span>`).join("")}</div>`:""}
       </div></article>`; }).join("");
@@ -224,7 +231,7 @@ function renderDay(){
     ${d.mob?`<details class="how mobb"><summary>Mobilidade antes de começar (5 min)</summary><p>${d.mob.map(esc).join("<br>")}</p></details>`:""}
     ${d.sport&&d.sport.length?`<p class="note">Hoje também: <b>${esc(d.sport.join(", "))}</b>.</p>`:""}${d.warn?`<div class="banner">${esc(d.warn)}</div>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
-    ${!state.prefs.tourVisto?tourHtml():`<button class="link" id="tourShow" type="button">❔ Como ler esta tela</button>`}
+
     ${state.plan.notes.filter(n=>n.startsWith("Semanas 1 e 2")).map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}
     ${sampleFn&&needsWeekly()?`<button class="banner bl" id="goAn" type="button">📊 Sua análise semanal está pronta para fazer → abrir Histórico</button>`:""}
     ${state.analysis&&state.analysis.deload&&state.analysis.deload.recomendar?`<div class="banner">A última análise recomenda uma semana leve: ${esc(state.analysis.deload.motivo||"")}</div>`:""}
@@ -469,16 +476,13 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
     ${p.saudeQ==="sim"?'<div class="banner">Você marcou um sinal de alerta de saúde: passe por um médico antes de começar e leve este plano para ele ver.</div>':""}
     <article class="card"><div class="exname">Seu plano</div>
       <p class="exnote"><b>Objetivo:</b> ${esc(pl.goal)}${pl.goal2?" + "+esc(pl.goal2):""} · <b>Divisão:</b> ${esc(pl.split)} (${pl.lift} dias) · <b>Tempo:</b> ${p.tempo} min · <b>Cardio:</b> ${pl.cardio.n}×/sem</p>
-      <p class="exnote">${esc(pl.por)}</p>${(p.esportes||[]).length?`<p class="exnote"><b>Outras atividades:</b> ${esc(sportSummary(p))}.</p>`:""}
-      <p class="exnote"><b>Principais:</b> ${G.C.sets} séries de ${G.C.lo}–${G.C.hi} reps · <b>Acessórios:</b> ${G.A.sets} séries de ${G.A.lo}–${G.A.hi} reps${beginner(p)?" · RPE máximo 8 (iniciante: sobra sempre pelo menos 2 reps)":""}.</p>
-      <p class="exnote"><b>Como progride:</b> quando você faz o topo da faixa de reps em todas as séries, a carga sobe (+2,5% a 5%). Se não, mantenha a carga e busque +1 rep.</p>
-      <ul class="plist">${ex}</ul>${pl.notes.map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}</article>
-    <article class="card"><div class="exname">Volume semanal por músculo</div>
+<ul class="plist">${ex}</ul>${pl.notes.map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}</article>
+    <details class="gd"><summary>Volume semanal por músculo</summary><div class="gb">
       <p class="exnote">Séries de trabalho por semana (exercícios que ajudam contam meia série). A meta de cada músculo foi calculada para você (objetivo, nível, prioridades, recuperação e esportes).</p>
       <table class="gt"><tbody>${(prioSet=new Set(p.prioridades||[]),"")}${MUSCLES.map(m=>{ const v=Math.round(pl.vol.v[m]*10)/10, f=pl.vol.f[m]; const t=pl.target[m]; const st=v<t*0.75?["Abaixo","bad"]:v>t*1.3?["Acima","good"]:["Na meta","good"];
         return `<tr><td>${m[0].toUpperCase()+m.slice(1)}${(pl.tWhy[m]||[]).length?`<br><small class="note">${esc(pl.tWhy[m].join("; "))}</small>`:""}</td><td class="tr">${fmt(v)} / ${t} · ${f}×</td><td class="${st[1]}">${st[0]}</td></tr>`; }).join("")}</tbody></table>
-      <p class="note">Coluna do meio: séries do plano / meta da semana · treinos por semana. "Abaixo" quase sempre é falta de tempo: aumente o tempo por treino ou marque o músculo como prioridade.</p></article>
-    <article class="card"><div class="exname">Como o plano foi montado</div><ol class="plist">${pl.why.map(w=>{ const ev=DATA.evidencias.find(x=>x.id===w.ev); return `<li>${esc(w.t)}${ev?` <small class="note">· ${esc(ev.tema)} (evidência ${esc(ev.forca)})</small>`:""}</li>`; }).join("")}</ol></article>
+      <p class="note">Coluna do meio: séries do plano / meta da semana · treinos por semana. "Abaixo" quase sempre é falta de tempo: aumente o tempo por treino ou marque o músculo como prioridade.</p></div></details>
+    <details class="gd" open><summary>Como o plano foi montado</summary><ol class="plist">${pl.why.map(w=>{ const ev=DATA.evidencias.find(x=>x.id===w.ev); return `<li>${esc(w.t)}${ev?` <small class="note">· ${esc(ev.tema)} (evidência ${esc(ev.forca)})</small>`:""}</li>`; }).join("")}</ol></details>
     <div class="askrow"><button class="ckbtn" id="editPf" type="button">Editar objetivo e rotina</button></div>
     <details id="resetBox"><summary>Recomeçar do zero</summary><div class="gb">
       <p>Apaga o perfil, o plano, os treinos, os gráficos e as análises desta ficha, e volta para o questionário. Não dá para desfazer. Se quiser guardar os treinos, copie antes o Backup dos dados.</p>

@@ -64,12 +64,11 @@ function buildPlan(pf){
   const why=[], add=(t,ev)=>why.push({t,ev});
   const want=(pf.dias||[]).length||3, lift=liftDays(pf), sk=splitFor(pf,lift), sp=SPLITS[sk];
   const G=GOALS[pf.objetivo]||GOALS.misto, G2=pf.secundario?GOALS[pf.secundario]:null, lv=nivel(pf), skills=(pf.habilidades||[]).filter(h=>HAB[h]);
-  /* 1. recuperação */
-  let rf=1; const rr=[];
-  if(pf.sono&&pf.sono<6){ rf*=0.8; rr.push(`sono de ${pf.sono} h`); } else if(pf.sono&&pf.sono<7){ rf*=0.9; rr.push(`sono de ${pf.sono} h`); }
-  if(pf.estresse>=5){ rf*=0.85; rr.push("estresse alto"); } else if(pf.estresse==4){ rf*=0.9; rr.push("estresse moderado-alto"); }
-  if(Number(pf.idade)>=50){ rf*=0.9; rr.push(`${pf.idade} anos`); }
-  rf=Math.max(0.7,rf); if(rr.length) add(`Volume inicial ${Math.round((1-rf)*100)}% menor por causa de ${rr.join(", ")}. Melhorando a recuperação, refaça o plano no Perfil.`,"recuperacao");
+  /* 1. recuperação: a ficha avisa, mas não corta o volume (a pessoa escolhe a preferência de volume) */
+  const rf=1, rr=[];
+  if(pf.sono&&pf.sono<6.5) rr.push(`sono de ${fmt(pf.sono)} h`); if(pf.estresse>=4) rr.push("estresse alto");
+  if(rr.length) add(`Atenção à recuperação (${rr.join(", ")}): o volume não foi reduzido. Se as cargas começarem a cair, use o Treino leve ou escolha volume menor no Perfil.`,"recuperacao");
+  const volPos={menor:-0.15,padrao:0,alto:0.25}[pf.volume||"padrao"]||0;
   /* 2. prioridades efetivas: as escolhidas + as que vêm das habilidades e do esporte */
   const prio=new Map(); (pf.prioridades||[]).forEach(m=>prio.set(m,"você marcou como prioridade"));
   skills.forEach(h=>(HAB[h].prioridades||[]).forEach(m=>{ if(!prio.has(m)) prio.set(m,"habilidade: "+HAB[h].nome.toLowerCase()); }));
@@ -77,15 +76,19 @@ function buildPlan(pf){
   /* esportes: carga nas pernas/tronco e cardio */
   const esp=pf.esportes||[]; let legW=0, upW=0, aerN=0;
   esp.forEach(x=>{ const S=SPORTS[x.mod]||SPORTS.Outro, k=INT[x.int]||0.6, n=(x.dias||[]).length; legW+=S.leg*k*n; upW+=S.up*k*n; if(S.aer&&k>=0.6) aerN+=n; });
+  const PERF=DATA.esportes.perfis||{}; const espAtivos=esp.filter(x=>(INT[x.int]||0.6)>=0.6&&PERF[x.mod]);
+  const pernasPesado=espAtivos.some(x=>PERF[x.mod].pernasPesado), espPot=espAtivos.find(x=>PERF[x.mod].potencia)&&!skills.includes("potencia");
+  const recom=new Map(); espAtivos.forEach(x=>(PERF[x.mod].recomendados||[]).forEach(n=>{ if(!recom.has(n)) recom.set(n,x.mod); }));
+  espAtivos.forEach(x=>add(`${x.mod}: ${PERF[x.mod].resumo}`,PERF[x.mod].ev[0]));
   /* metas semanais por músculo */
-  const range=beginner(pf)?G.volIni:G.vol, pos=[0.3,0.45,0.6][lv], target={}, tWhy={};
+  const range=beginner(pf)?G.volIni:G.vol, pos=Math.max(0,Math.min(1,[0.3,0.45,0.6][lv]+volPos)), target={}, tWhy={};
   MUSCLES.forEach(m=>{ let t=range[0]+(range[1]-range[0])*pos, w=[];
     if(SMALL.has(m)&&!prio.has(m)){ t=Math.max(3,range[0]*0.6); w.push("músculo pequeno, já trabalhado nos exercícios grandes"); }
     if(prio.has(m)){ t=Math.min(range[1]+2,t*1.3); w.push(prio.get(m)); }
     if(legW>=1.8&&["pernas","posterior","glúteos","adutores","panturrilha"].includes(m)&&!prio.has(m)){ t*=0.8; w.push("seu esporte já cansa as pernas"); }
     if(upW>=1.8&&m==="braços"){ t*=0.8; w.push("seu esporte já exige a pegada e os braços"); }
-    target[m]=Math.max(2,Math.round(t*rf)); tWhy[m]=w; });
-  add(`Meta de séries por músculo na semana: ${range[0]}–${range[1]} para o seu objetivo (${G.nome.toLowerCase()}) e nível; você começa perto de ${Math.round(range[0]+(range[1]-range[0])*pos)}.`,"volume");
+    target[m]=Math.max(2,Math.round(t)); tWhy[m]=w; });
+  add(`Meta de séries por músculo na semana: ${range[0]}–${range[1]} para o seu objetivo (${G.nome.toLowerCase()}) e nível; você começa perto de ${Math.round(range[0]+(range[1]-range[0])*pos)}${volPos>0?" (você prefere volume alto)":volPos<0?" (você prefere volume menor)":""}.`,"volume");
   /* 3. divisão e frequência */
   const tms=[...Array(lift).keys()].map(i=>T[sp.t[i%sp.t.length]]);
   add(`${lift} dias de musculação → ${sp.nome}. ${sp.por}`,"frequencia");
@@ -98,12 +101,13 @@ function buildPlan(pf){
   const perSession=m=>Math.min(cap+(prio.has(m)?2:0),Math.ceil(target[m]/Math.max(1,freq[m])));
   /* blocos de habilidade (vão para o início do treino) */
   const blocks=[]; skills.forEach(h=>{ const b=HAB[h].bloco; if(b) blocks.push({h,...b}); });
+  if(espPot) blocks.push({h:"potencia",padrao:"power",vezes:1,esp:espPot.mod});
   const used={}; /* exercícios já usados na semana, para variar */
   days.forEach(d=>{ const slots=d.tm.s.map((s,i)=>({...s,i,def:LIB[s.p]})); let t=0;
     const sess={}; const fit=e=>t+exMinutes(e)<=minutes;
     /* blocos de habilidade: no máximo 1 por treino, nos primeiros treinos compatíveis */
     for(const b of blocks){ if(b.feitos>=b.vezes) continue; const ok=b.padrao==="vpull"?slots.some(s=>s.p==="vpull"||s.p==="hpull"):true; if(!ok) continue;
-      const e=makeEx(b.padrao,3,pf,G,[{t:`Habilidade: ${HAB[b.h].nome.toLowerCase()}. ${HAB[b.h].porque}`,ev:HAB[b.h].ev}]); e.skill=b.h; e.pref=b.preferir&&b.preferir[String(lv)];
+      const e=makeEx(b.padrao,3,pf,G,[b.esp?{t:`Saltos 1× por semana: melhoram sprint e impulsão em quem joga ${b.esp.toLowerCase()}.`,ev:"coletivos-sprint"}:{t:`Habilidade: ${HAB[b.h].nome.toLowerCase()}. ${HAB[b.h].porque}`,ev:HAB[b.h].ev}]); e.skill=b.h; e.pref=b.preferir&&b.preferir[String(lv)];
       if(b.padrao==="vpull"){ e.k="C"; } if(fit(e)){ d.ex.push(e); t+=exMinutes(e); b.feitos=(b.feitos||0)+1; credit(e.p,e.sets); sess[e.m]=(sess[e.m]||0)+e.sets; break; } }
     const comp=slots.filter(s=>s.def.k==="C"&&!(s.p==="vpull"&&d.ex.some(e=>e.skill==="barra")));
     const left=m=>target[m]-got[m];
@@ -116,6 +120,7 @@ function buildPlan(pf){
     for(const s of comp){ const m=s.def.m, need=perSession(m)-(sess[m]||0); if(need<2) continue;
       const sets=Math.min(maxSets,Math.max(2,Math.min(need,G.C.sets+(lv===2?1:0))));
       const e=makeEx(s.p,2,pf,G,[{t:`${m[0].toUpperCase()+m.slice(1)}: meta de ${target[m]} séries/semana em ${freq[m]} treino${freq[m]>1?"s":""} → ~${perSession(m)} hoje.`,ev:"volume-sessao"}]); e.o=s.o; e.i=s.i;
+      if(pernasPesado&&LIB[s.p].low&&!beginner(pf)){ e.lo=4; e.hi=6; e.rest=180; e.why.push({t:"Carga alta (4–6 reps) nas pernas: é o que mais melhora a economia na corrida e no ciclismo.",ev:"corrida-forca"}); }
       if(put(e)) planned.set(e,sets); }
     const acc=slots.filter(s=>s.def.k!=="C");
     acc.sort((a,b)=>(left(b.def.m)/target[b.def.m]-left(a.def.m)/target[a.def.m])||a.i-b.i);
@@ -128,6 +133,13 @@ function buildPlan(pf){
     /* ordem: habilidade, compostos, acessórios na ordem do modelo */
     const ord=e=>e.skill?-1:e.k==="C"?0:1; d.ex.sort((a,b)=>ord(a)-ord(b)||(a.i||0)-(b.i||0));
     d.min=Math.round(t+5); delete d.tm; });
+  /* prevenção por esporte: exercício específico 1× por semana (2 séries), num dia da região certa */
+  const prev=[]; espAtivos.forEach(x=>(PERF[x.mod].prevencao||[]).forEach(p=>{ if(!prev.some(q=>q.nome===p.nome)) prev.push({...p,esp:x.mod}); }));
+  prev.forEach(p=>{ const low=LOWER.has(p.padrao); let cand=days.filter(d=>low?regionOf(d).L>0.4:regionOf(d).U>0.4); if(!cand.length) cand=days.slice(); cand.sort((a,b)=>a.min-b.min);
+    for(const d of cand){ if(d.ex.some(e=>e.prevNome===p.nome)) break; const e=makeEx(p.padrao,2,pf,G,[{t:`Prevenção para ${p.esp.toLowerCase()}: ${p.motivo}.`,ev:p.ev}]); e.prevNome=p.nome; e.prevAlt=p.alt||[];
+      /* sem espaço: tira séries do maior acessório do dia (até 2) para caber a prevenção */
+      for(let k=0;k<2&&d.min-5+exMinutes(e)>minutes;k++){ const big=d.ex.filter(x=>x.k==="A"&&!x.prevNome&&x.sets>=3).sort((a,b)=>b.sets-a.sets)[0]; if(!big) break; const before=exMinutes(big); big.sets--; big.rpe=big.rpe.slice(0,big.sets); d.min=Math.round(d.min-before+exMinutes(big)); credit(big.p,-1); }
+      if(d.min-5+exMinutes(e)<=minutes){ d.ex.push(e); d.min=Math.round(d.min+exMinutes(e)); credit(p.padrao,2); break; } } });
   /* passe final: músculo que ficou abaixo da metade da meta ganha 2 séries onde ainda couber no tempo */
   MUSCLES.forEach(m=>{ if(got[m]>=target[m]*0.5) return;
     for(const d of days){ const tm=T[sp.t[days.indexOf(d)%sp.t.length]]; const s=tm.s.find(x=>LIB[x.p].m===m&&LIB[x.p].k!=="C"&&!d.ex.some(e=>e.p===x.p)); if(!s) continue;
@@ -137,14 +149,15 @@ function buildPlan(pf){
   const W=[2.5,1,0][lv]; const habCore=skills.includes("costas")?HAB.costas.core:null;
   days.forEach(d=>d.ex.forEach((e,i)=>{ e.id=d.key+"x"+i; const def=LIB[e.p]; let opts=pickOpts(def,pf);
     const rot=(e.o||0)%opts.length; opts=opts.slice(rot).concat(opts.slice(0,rot));
-    const score=(n,ix)=>ix+(Math.max(0,complexity(n)-1))*W+((used[e.p]||[]).includes(n)?4:0)-(e.pref&&e.pref.includes(n)?20-e.pref.indexOf(n):0)-(habCore&&e.p==="core"&&habCore.includes(n)?10:0);
+    const score=(n,ix)=>(e.prevNome?(n===e.prevNome?-100:e.prevAlt.includes(n)?-90+e.prevAlt.indexOf(n):0):0)-(recom.has(n)?6:0)+ix+(Math.max(0,complexity(n)-1))*W+((used[e.p]||[]).includes(n)?4:0)-(e.pref&&e.pref.includes(n)?20-e.pref.indexOf(n):0)-(habCore&&e.p==="core"&&habCore.includes(n)?10:0);
     let best=0; opts.forEach((n,ix)=>{ if(score(n,ix)<score(opts[best],best)) best=ix; });
     const pick=opts[best]; e.opts=[pick].concat(opts.filter(x=>x!==pick));
-    if(e.pref&&e.pref.includes(pick)) e.why.push({t:`${pick}: a progressão certa para o seu nível.`,ev:"progressao"});
+    if(recom.has(pick)&&!e.prevNome) e.why.push({t:`${pick}: recomendado para quem faz ${recom.get(pick).toLowerCase()}.`,ev:(PERF[recom.get(pick)].ev||[])[0]});
+    else if(e.pref&&e.pref.includes(pick)) e.why.push({t:`${pick}: a progressão certa para o seu nível.`,ev:"progressao"});
     else if(habCore&&e.p==="core"&&habCore.includes(pick)) e.why.push({t:`${pick}: estabiliza a coluna sem flexioná-la (habilidade: proteger as costas).`,ev:"volume"});
     else if(best>0&&lv===0&&complexity(pick)<complexity(opts[0]===pick?opts[1]||pick:opts[0])) e.why.push({t:`${pick}: mais estável e fácil de aprender que ${opts.find(x=>x!==pick)}; quando dominar, troque no menu.`,ev:"selecao"});
     else if((used[e.p]||[]).length&&!used[e.p].includes(pick)) e.why.push({t:`${pick}: variação diferente do outro treino da semana.`,ev:"variacao"});
-    (used[e.p]=used[e.p]||[]).push(pick); delete e.pref; delete e.o; delete e.i; }));
+    (used[e.p]=used[e.p]||[]).push(pick); delete e.pref; delete e.o; delete e.i; delete e.prevAlt; }));
   /* dias da semana: organiza em volta dos esportes */
   const dows=(pf.dias||[1,3,5]).map(Number).sort((a,b)=>((a+6)%7)-((b+6)%7));
   const arr=arrangeDays(days,dows,pf); const ordered=arr.order.map(i=>days[i]);

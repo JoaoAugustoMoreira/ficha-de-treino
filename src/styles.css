@@ -445,3 +445,14 @@ h1{font:700 22px/1.15 var(--display);letter-spacing:-.02em}
 .kpi b{font:700 28px/1 var(--display);letter-spacing:-.03em}
 .rest-t{font:600 28px/1 var(--display);letter-spacing:-.02em}
 summary{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
+
+/* ---------- 0.4: mais limpo ---------- */
+.wizhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.wiznav{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+.wiznav [hidden]{display:none}
+.card .rx{font-size:14px;color:var(--muted)} .card .rx b{color:var(--fg);font-weight:600}
+.sug{padding:9px 12px;font-size:14px}
+.how summary{font-size:13px}
+.mobb{background:var(--butter)}
+details.gd>.card.q{border:0;padding:0;background:transparent}
+[hidden]{display:none!important}

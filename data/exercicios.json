@@ -4858,5 +4858,52 @@
     "sinonimos": [
       "agachamento explosivo"
     ]
+  },
+  {
+    "id": "rear/rotacao-externa-no-cabo",
+    "nome": "Rotação externa no cabo",
+    "padrao": "rear",
+    "locais": {
+      "completa": 3,
+      "basica": 3
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "manguito rotador"
+    ],
+    "dica": "Cotovelo colado ao corpo, a 90°; gire o antebraço para fora devagar. Carga leve."
+  },
+  {
+    "id": "rear/rotacao-externa-com-elastico",
+    "nome": "Rotação externa com elástico",
+    "padrao": "rear",
+    "locais": {
+      "casa": 2,
+      "basica": 5,
+      "completa": 6
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "manguito rotador"
+    ],
+    "dica": "Cotovelo colado ao corpo; gire o antebraço para fora contra o elástico."
+  },
+  {
+    "id": "rear/rotacao-externa-deitado-com-halter",
+    "nome": "Rotação externa deitado de lado com halter",
+    "padrao": "rear",
+    "locais": {
+      "completa": 7,
+      "basica": 6,
+      "casa": 3
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "manguito rotador"
+    ],
+    "dica": "Deitado de lado, cotovelo apoiado no quadril; gire o halter para cima. Carga bem leve."
   }
 ]

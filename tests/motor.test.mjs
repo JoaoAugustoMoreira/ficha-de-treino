@@ -146,9 +146,26 @@ test("iniciante recebe exercícios principais mais estáveis que o avançado", (
   assert.ok(media("nunca") < media("mais1"), `${media("nunca")} < ${media("mais1")}`);
 });
 
-test("sono curto e estresse alto reduzem o volume da semana", () => {
+test("sono curto não corta o volume; a preferência de volume decide", () => {
   const tot = pf => Object.values(M.buildPlan(pf).vol.v).reduce((a, b) => a + b, 0);
-  assert.ok(tot(perfil({ exp: "mais1", dias: [1, 2, 3, 4], sono: 5, estresse: 5 })) < tot(perfil({ exp: "mais1", dias: [1, 2, 3, 4], sono: 8, estresse: 2 })));
+  const base = perfil({ exp: "mais1", dias: [1, 2, 3, 4], tempo: 90 });
+  assert.equal(tot({ ...base, sono: 5, estresse: 5 }), tot({ ...base, sono: 8, estresse: 2 }));
+  assert.ok(tot({ ...base, volume: "alto" }) > tot(base) && tot(base) > tot({ ...base, volume: "menor" }));
+  assert.ok(M.buildPlan({ ...base, sono: 5 }).why.some(w => w.ev === "recuperacao"));
+});
+
+test("cada esporte traz o que a ciência recomenda para ele", () => {
+  const ex = pf => M.buildPlan(pf).days.flatMap(d => d.ex.map(e => e.opts[0]));
+  const b = perfil({ exp: "6a12", dias: [1, 2, 4, 5], tempo: 75 });
+  const fut = ex({ ...b, esportes: [{ mod: "Futebol", dias: [6], int: "forte" }] });
+  assert.ok(fut.includes("Nordic (com assistência)") && fut.includes("Prancha de Copenhagen"), fut.join(", "));
+  const pl = M.buildPlan({ ...b, esportes: [{ mod: "Futebol", dias: [6], int: "forte" }] });
+  for (const d of pl.days) { assert.ok(d.min <= 76, d.n + " " + d.min); if (d.ex.some(e => e.opts[0] === "Nordic (com assistência)")) assert.ok(M.regionOf(d).L > 0.4, "Nordic em dia de perna"); }
+  const nat = ex({ ...b, esportes: [{ mod: "Natação", dias: [6], int: "moderada" }] });
+  assert.ok(nat.some(n => /Rotação externa/.test(n)), nat.join(", "));
+  const run = M.buildPlan({ ...b, esportes: [{ mod: "Corrida", dias: [3, 6], int: "moderada" }] });
+  assert.ok(run.days.flatMap(d => d.ex).some(e => e.p === "power"));
+  assert.ok(run.days.flatMap(d => d.ex).filter(e => e.k === "C" && M.LIB[e.p].low).every(e => e.hi === 6));
 });
 
 test("habilidades mudam o plano: barra fixa, potência, mobilidade e corrida", () => {
