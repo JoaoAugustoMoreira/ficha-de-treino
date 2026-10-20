@@ -1,6 +1,6 @@
 {
   "name": "ficha-de-treino",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "private": true,
   "description": "Ficha de musculação que monta o treino pela rotina da pessoa, com base em evidências.",
   "license": "MIT",

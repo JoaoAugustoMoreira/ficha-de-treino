@@ -605,3 +605,15 @@ header h1 .tagline{font:400 12.5px/1.2 var(--body);letter-spacing:0;color:var(--
 
 .body .mus.on-tip{stroke:var(--fg);stroke-width:6}
 .bodypair{gap:0}
+
+/* ---------- trocar exercício (lista própria, sem menu nativo) ---------- */
+.sheet{position:fixed;inset:0;z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.sheet-bg{position:absolute;inset:0;background:rgba(20,24,16,.45)}
+.sheet-in{position:relative;width:100%;max-width:640px;max-height:80vh;overflow:auto;background:var(--surface);border-radius:22px 22px 0 0;padding:18px 16px calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+.sheet-in h3{margin:0 0 4px;font:600 21px/1.15 "Fraunces",Georgia,serif;color:var(--accent)}
+.sheetl{display:flex;flex-direction:column;gap:8px}
+.sopt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;width:100%;font:600 16px var(--body);color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer}
+.sopt .syn{font:400 12.5px var(--body);color:var(--muted)}
+.sopt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.sopt[aria-pressed="true"] span::after{content:" · atual";font-weight:500;color:var(--muted)}
+.sheet .link{align-self:center}

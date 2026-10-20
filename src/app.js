@@ -31,6 +31,22 @@ const store={mode:"local",db:null,uid:null,
 function historyFor(name){ return state.sessions.filter(s=>s.ex&&s.ex[name]).sort((a,b)=>b.ts-a.ts).map(s=>({date:s.date,leve:s.leve,sets:s.ex[name]})); }
 function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") return ex.low?5:2.5; return /cabo|máquina|cadeira|mesa|peck|leg press|flexora|extensora|abdução/i.test(name)?2.5:1; }
 function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.opts[0]; }
+/* Trocar exercício: lista própria da página. O menu nativo (<select> transparente por cima do botão) não abria no app do Claude no celular. */
+function openSwap(ex,btn,all){ const cur=chosen(ex); const sh=$("#sheet"); const syn=o=>EXBYNAME[o]&&EXBYNAME[o].sinonimos?`<small class="syn">${esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))}</small>`:"";
+  const list=ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>all||i<5||o===cur);
+  $("#sheetL").innerHTML=list.map(([o,i])=>`<button type="button" class="sopt" data-i="${i}" aria-pressed="${o===cur}"><span>${esc(o)}</span>${syn(o)}</button>`).join("")
+    +(!all&&ex.opts.length>list.length?`<button type="button" class="link" id="sheetAll">Ver todas (${ex.opts.length})</button>`:"");
+  sh.hidden=false; document.body.style.overflow="hidden";
+  const close=()=>{ sh.hidden=true; document.body.style.overflow=""; document.removeEventListener("keydown",onKey); try{ btn.focus({preventScroll:true}); }catch(e){} };
+  const onKey=e=>{ if(e.key==="Escape") close(); }; document.removeEventListener("keydown",sh._k||(()=>{})); sh._k=onKey; document.addEventListener("keydown",onKey);
+  $("#sheetX").onclick=close; sh.querySelector(".sheet-bg").onclick=close;
+  if($("#sheetAll")) $("#sheetAll").onclick=()=>openSwap(ex,btn,true);
+  $$("#sheet .sopt").forEach(b=>b.onclick=()=>{ close(); applySwap(ex,Number(b.dataset.i)); });
+  const f=$('#sheet .sopt[aria-pressed="true"]')||$("#sheet .sopt"); if(f) f.focus({preventScroll:true}); }
+async function applySwap(ex,i){ if(ex.opts[i]===chosen(ex)) return; flushDraft();
+  Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(ex.id+"-")) draft.data.values[k]=""; });
+  state.prefs.swap[ex.id]=i; renderDay(); setStatus("Trocado para "+ex.opts[i]);
+  try{ await store.put("prefs",state.prefs); }catch(err){ setStatus("Trocado só nesta tela: não consegui salvar."); } }
 /* exercícios por tempo (prancha): a faixa vira segundos; o resto do plano não muda */
 const isTimed=n=>/\(seg\)|prancha/i.test(n||"");
 function viewEx(ex,name){ return isTimed(name)?Object.assign({},ex,{lo:20,hi:40,secs:true}):ex; }
@@ -288,7 +304,7 @@ function renderDay(){
     return `<article class="card ex" data-ex="${ex.id}" data-sets="${n}">
       <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
       <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
-      <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><label class="ib swapbtn" aria-label="Trocar exercício">⇄<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>(state.swapAll||{})[ex.id]||i<5||o===name).map(([o,i])=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}${!(state.swapAll||{})[ex.id]&&ex.opts.length>5?`<option value="all">Ver todas (${ex.opts.length})…</option>`:""}</select></label></div></div>
+      <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><button type="button" class="ib swapbtn" data-swap="${ex.id}" aria-haspopup="dialog" aria-label="Trocar exercício">⇄</button></div></div>
       <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}</div>
       <div class="donesum"></div><div class="body">
       <div class="sug ${sg.cls}">${sg.html}${last?`<span class="lastl"> · última ${last.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join(" ")}</span>`:""}</div>
@@ -315,7 +331,7 @@ function renderDay(){
   $$(".okb").forEach(b=>b.onclick=()=>okSet(b));
   $$(".rpeh").forEach(b=>b.onclick=()=>{ const r=b.closest(".card").querySelector(".rpescale"); r.hidden=!r.hidden; });
   $$(".infob").forEach(b=>b.onclick=()=>{ const i=b.closest(".card").querySelector(".info"); i.hidden=!i.hidden; });
-  $$(".swapsel").forEach(s=>s.onchange=async e=>{ const id=s.id.slice(5); if(s.value==="all"){ state.swapAll=Object.assign(state.swapAll||{},{[id]:true}); flushDraft(); renderDay(); const ns=document.getElementById("swap-"+id); if(ns){ try{ ns.showPicker&&ns.showPicker(); }catch(err){} ns.focus(); } return; } state.prefs.swap[id]=Number(s.value); Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(id+"-")) draft.data.values[k]=""; }); try{ await store.put("prefs",state.prefs); }catch(err){} renderDay(); });
+  $$("[data-swap]").forEach(b=>b.onclick=e=>{ e.stopPropagation(); const ex=d.ex.find(x=>x.id===b.dataset.swap); if(ex) openSwap(ex,b,false); });
   $$(".card.ex .ctop").forEach(t=>t.onclick=e=>{ if(e.target.closest(".icons")) return; const c=t.closest(".card"); if(c.classList.contains("done")) c.classList.toggle("open"); });
   $("#leve").onchange=e=>{ state.leve=e.target.checked; renderDay(); };
   $("#recBtn").onclick=recoverBak; if($("#goAn")) $("#goAn").onclick=()=>{ flushDraft(); state.current="hist"; render(); window.scrollTo({top:0}); };

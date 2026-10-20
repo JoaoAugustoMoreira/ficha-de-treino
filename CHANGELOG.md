@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.2 — 2026-10-20 · trocar exercício
+- **⇄ Trocar não funcionava no celular:** o botão era um menu nativo (`<select>`) invisível por cima do ícone, e no app do Claude o menu não abria. Agora o botão abre uma lista própria do Kora (variações com sinônimos, "Ver todas" e Cancelar), que funciona igual em qualquer aparelho.
+- A tela troca na hora e só depois salva; antes, ela esperava o salvamento terminar para mudar o exercício.
+
 ## 0.10.1 — 2026-10-20 · caça a bugs
 Teste com 3.000 perfis aleatórios no motor + robô usando o app (4 perfis, claro e escuro, salvar, trocar, editar, recarregar).
 - **Treino em casa com máquina (1.599 casos no teste):** quem marcava dor (joelho/ombro/lombar) e treinava em casa recebia leg press, cadeira extensora, belt squat… Agora as opções seguras para a dor respeitam o local.
