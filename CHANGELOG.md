@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 — 2026-10-19
+- Questionário em 4 passos (Objetivo, Agenda, Local e metas, Sobre você); ajustes finos ficam em "Mais ajustes".
+- Nova tela "Seu plano está pronto": dias, tempo, cardio, por que assim e como usar.
+- Navegação com 4 abas (Treino, Progresso, Ajuda, Perfil) e chips de dia dentro de Treino.
+- Tela do treino mais limpa: ⓘ único (por quê + como fazer), troca com ícone, opções do dia no menu ⋯.
+- RPE mantido, com escala explicada ao tocar em "RPE ⓘ" (aberta no 1º exercício do 1º treino).
+- Troca de exercício mostra as 5 melhores opções + "Ver todas".
+- Avisos viraram toasts no topo; rodapé do questionário com fundo (não cobre conteúdo).
+- Progresso com estado vazio; texto de 1ª vez mais prático.
+
 ## 0.4.0 — 2026-10-19
 **Esportes com base científica própria**
 - Cada esporte tem recomendações com fonte: futebol (Nordic e Copenhagen: −51% lesão de posterior, −41% virilha), corrida (força pesada + saltos melhoram a economia), ciclismo (força pesada nas pernas), natação, tênis/vôlei/handebol (rotação externa do ombro: −28% problemas de ombro), lutas (core), coletivos (saltos melhoram sprint), escalada, remo, dança, caminhada.

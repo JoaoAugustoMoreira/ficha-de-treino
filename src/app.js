@@ -1,6 +1,7 @@
 /* Ficha de Treino — interface: telas, registro, rascunho, histórico e análise. Usa o motor (engine.js). */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-function setStatus(t){ const s=$("#status"); if(s) s.textContent=t; }
+let toastT=null;
+function setStatus(t){ const s=$("#status"); if(!s) return; s.textContent=t; s.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>s.classList.remove("on"),2600); }
 function espRow(s,i){ s=s||{}; const mods=Object.keys(SPORTS);
   return `<div class="esprow" data-i="${i}"><div class="esphead"><select class="espmod" aria-label="Atividade">${mods.map(m=>`<option ${m===s.mod?"selected":""}>${esc(m)}</option>`).join("")}</select>
     <button type="button" class="link espdel" aria-label="Remover atividade">Remover</button></div>
@@ -33,7 +34,7 @@ function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.o
 function suggest(ex){
   const name=chosen(ex), inc=incOf(ex,name); const h=historyFor(name).filter(x=>!x.leve);
   if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ Potência</span> Rápido, longe da falha`}; }
-  if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ 1ª vez</span> Escolha uma carga para ${ex.hi} reps com folga`};
+  if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${ex.hi} reps saírem fáceis, suba na próxima série`};
   if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
   const last=h[0].sets, L=Math.max(...last.map(s=>s.kg||0)); const work=last.filter(s=>(s.kg||0)===L);
   const allTop=work.length>=Math.min(ex.sets,last.length)&&work.every(s=>s.reps>=ex.hi); const lr=work[work.length-1]?.rpe; const tgt=ex.rpe[ex.rpe.length-1];
@@ -86,19 +87,32 @@ const isTrainDay=()=>state.current&&(state.current.startsWith("d")||state.curren
 
 /* ---------- abas ---------- */
 function tabs(){
-  const t=new Date().getDay(); const sh=n=>n.replace("Corpo inteiro","Corpo").replace("Superior","Sup").replace("Inferior","Inf").replace("Empurrar","Emp").replace("Puxar","Pux").replace("Pernas","Pern");
-  const list=state.plan?state.plan.days.map((d,i)=>[d.key,d.dow.length?DOWN[d.dow[0]]:"T"+(i+1),sh(d.n),d.dow.includes(t)]):[];
-  list.push(["cardio","Cardio",state.plan&&state.plan.cardio.n?state.plan.cardio.n+"×/sem":"opcional",false],["hist","Hist.","e gráficos",false],["guia","Guia","como usar",false],["faq","Dúvidas","perguntas",false],["perfil","Perfil","objetivo",false]);
-  $("#tabs").classList.toggle("scroll",list.length>7); $("#tabs").style.gridTemplateColumns=list.length>7?"":`repeat(${list.length},1fr)`;
-  $("#tabs").innerHTML=list.map(([k,a,b,today])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${k===state.current}" data-k="${k}" type="button"><b>${a}</b><small>${esc(b)}</small>${today?'<i class="dot" aria-label="hoje"></i>':''}</button>`).join("");
-  $$("#tabs .tab").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); });
+  const t=new Date().getDay(), td=state.plan&&state.plan.days.find(d=>d.dow.includes(t));
+  const list=[["treino","Treino",td?"hoje: "+td.n.replace("Corpo inteiro","Corpo"):"seus dias"],["hist","Progresso","gráficos"],["faq","Ajuda","dúvidas"],["perfil","Perfil","plano"]];
+  $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(4,1fr)";
+  const sel=k=>k==="treino"?isTrainDay():k===state.current;
+  $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${sel(k)}" data-k="${k}" type="button"><b>${a}</b><small>${esc(b)}</small></button>`).join("");
+  $$("#tabs .tab").forEach(b=>b.onclick=()=>{ flushDraft(); const k=b.dataset.k; state.current=k==="treino"?(isTrainDay()?state.current:defaultTab()):k; state.leve=false; render(); window.scrollTo({top:0}); });
 }
-function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionário"],["guia","Guia","como funciona"],["faq","Dúvidas","perguntas"]];
-  $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(3,1fr)";
+function dayChips(){ const t=new Date().getDay();
+  const list=state.plan.days.map((d,i)=>[d.key,d.dow.length?DOWN[d.dow[0]]:"Treino "+(i+1),d.n.replace("Corpo inteiro","Corpo"),d.dow.includes(t)]);
+  if(state.plan.cardio.n) list.push(["cardio","Cardio",state.plan.cardio.n+"×/sem",state.plan.cardio.dias.includes(t)]);
+  return `<div class="daychips" role="tablist" aria-label="Dia de treino">${list.map(([k,a,b,today])=>`<button type="button" class="dchip${today?" today":""}" data-k="${k}" aria-pressed="${k===state.current}"><b>${a}</b><small>${esc(b)}</small></button>`).join("")}</div>`; }
+function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionário"],["faq","Ajuda","dúvidas"]];
+  $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(2,1fr)";
   $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${(["guia","faq"].includes(state.current)?state.current:"onb")===k}" data-k="${k}" type="button"><b>${a}</b><small>${b}</small></button>`).join("");
   $$("#tabs .tab").forEach(b=>b.onclick=()=>{ if($("#q-go")) state.onbDraft=readForm(); state.current=b.dataset.k; render(); window.scrollTo({top:0}); }); }
 function render(){ $("#day").onclick=null; $("#day").onchange=null; $("#saveBar").hidden=!(state.plan&&isTrainDay()&&!state.editing); if(!state.pf||state.editing){ onbTabs(); if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else renderOnb(); return; } tabs();
-  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay(); }
+  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="plano") renderPlano(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay();
+  if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
+  if(state.current==="hist"&&!state.sessions.length) $("#day").insertAdjacentHTML("afterbegin",`<article class="card empty"><div class="exname">Ainda sem treinos</div><p class="note">Salve o 1º treino e a evolução de cada exercício aparece aqui.</p></article>`); }
+function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
+  $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
+    <article class="card"><ul class="plano">${pl.days.map(d=>`<li><b>${d.dow.length?DOWN[d.dow[0]]:"—"}</b><span>${esc(d.n)}</span><small>${d.ex.length} exercícios · ~${d.min} min</small></li>`).join("")}${c.n?`<li><b>Cardio</b><span>${c.n}× por semana</span><small>${esc((c.mods||[]).join(", "))}</small></li>`:""}</ul></article>
+    <article class="card"><div class="exname">Por que assim</div><ul class="why3">${pl.why.slice(0,3).map(w=>`<li>${esc(w.t)}</li>`).join("")}</ul><p class="note">Tudo baseado em estudos. Detalhes no Perfil.</p></article>
+    <article class="card"><div class="exname">Como usar</div><ol class="why3"><li>Abra o treino do dia e faça cada série.</li><li>Anote kg, repetições e o <b>RPE</b> (esforço de 1 a 10) e toque ✓. O descanso começa sozinho.</li><li>Salve no fim. Na próxima vez a ficha diz se é hora de subir a carga.</li></ol></article>
+    <button class="btn" id="goTreino" type="button">Ver meu primeiro treino</button></div>`;
+  $("#goTreino").onclick=()=>{ state.current=defaultTab(); render(); window.scrollTo({top:0}); }; }
 
 /* ---------- questionário ---------- */
 const Q_OBJ=[["hipertrofia","Hipertrofia (ganhar músculo)"],["forca","Força"],["saude","Saúde e condicionamento cardiovascular"],["emagrecimento","Emagrecimento"],["misto","Um pouco de tudo"]];
@@ -107,7 +121,7 @@ function renderOnb(){
   const p=state.onbDraft||state.pf||{};
   $("#day").innerHTML=`<div class="col"><div class="wizhead"><div class="exname">${state.pf?"Editar seu plano":"Vamos montar seu treino"}</div><span class="note" id="wizN"></span></div>
   <div class="prog"><div class="bar"><i id="wizBar"></i></div></div>
-  <article class="card q"><h3>1. Sobre você</h3><div class="ckgrid">
+  <article class="card q"><h3>1. Sobre você</h3><p class="exnote">Opcional, menos a pergunta de saúde.</p><div class="ckgrid">
     <label>Nome<input id="q-nome" value="${esc(p.nome||"")}" autocomplete="given-name"></label>
     <label>Idade<input id="q-idade" inputmode="numeric" value="${esc(p.idade||"")}"></label>
     <label>Peso (kg)<input id="q-peso" inputmode="decimal" value="${esc(fmt(p.peso)||"")}"></label>
@@ -121,16 +135,16 @@ function renderOnb(){
   <article class="card q"><h3>4. Disponibilidade</h3><p class="ql">Dias em que pode fazer musculação</p>${chipset("dias",[1,2,3,4,5,6,0].map(d=>[d,DOWN[d]]),p.dias||[1,3,5],true)}
     <label class="ql">Horário<input id="q-horario" value="${esc(p.horario||"")}" placeholder="ex.: 7h ou depois das 18h"></label>
     <p class="ql">Tempo por treino</p>${chipset("tempo",[[30,"30 min"],[45,"45 min"],[60,"1 h"],[75,"1h15"],[90,"1h30"]],p.tempo||60)}</article>
-  <article class="card q"><h3>4b. Divisão do treino</h3><p class="exnote">Como os músculos se distribuem na semana. Na dúvida, deixe <b>Automático</b>: a ficha escolhe a mais indicada para seus dias e sua experiência. A explicação de cada uma está na aba Guia.</p>
+  <article class="card q"><h3>4b. Divisão do treino</h3><p class="exnote">Na dúvida, deixe <b>Automático</b>.</p>
     ${chipset("divisao",[["auto","Automático (recomendado)"]].concat(Object.entries(SPLITS).map(([k,v])=>[k,v.nome])),p.divisao||"auto")}
     <div class="rd" id="splitHint"></div></article>
   <article class="card q"><h3>5. Onde treina</h3>${chipset("local",[["completa","Academia completa"],["basica","Academia básica / de prédio"],["casa","Casa com halteres"]],p.local||"completa")}</article>
-  <article class="card q"><h3>6. Outras atividades da semana</h3><p class="exnote">Esportes, lutas, corrida, futebol... Informe dias e intensidade: a ficha organiza a musculação para não atrapalhar (por exemplo, não coloca perna na véspera do futebol) e desconta do cardio. Só faz musculação? Deixe vazio.</p>
+  <article class="card q"><h3>6. Outras atividades da semana</h3><p class="exnote">Pratica esporte ou luta? Informe os dias e a ficha evita treinar perna na véspera.</p>
     <div id="espList" class="col">${(p.esportes||[]).map((x,i)=>espRow(x,i)).join("")}</div>
     <button type="button" class="ghost" id="espAdd">＋ Adicionar atividade</button></article>
   <article class="card q"><h3>7. Dores e limitações</h3>${chipset("dores",[["joelho","Joelho"],["ombro","Ombro"],["lombar","Lombar"]],p.dores||[],true)}
     <label class="ql">Outra ou detalhes<input id="q-doresTxt" value="${esc(p.doresTxt||"")}"></label></article>
-  <article class="card q"><h3>8. O que você quer conseguir?</h3><p class="exnote">Opcional. Cada escolha muda o plano: entra um bloco específico, a ordem dos exercícios ou o cardio.</p>${chipset("habilidades",Object.entries(DATA.habilidades).map(([k,v])=>[k,v.nome]),p.habilidades||[],true)}</article>
+  <article class="card q"><h3>8. O que você quer conseguir?</h3><p class="exnote">Opcional. Cada escolha muda o plano.</p>${chipset("habilidades",Object.entries(DATA.habilidades).map(([k,v])=>[k,v.nome]),p.habilidades||[],true)}</article>
   <article class="card q"><h3>9. Prioridades</h3><p class="ql">Músculos que quer priorizar (ganham mais séries)</p>${chipset("prioridades",MUSCLES.map(m=>[m,m[0].toUpperCase()+m.slice(1)]),p.prioridades||[],true)}
     <label class="ql">Exercícios que não gosta ou não pode fazer (separe por vírgula)<input id="q-evitar" value="${esc(p.evitar||"")}" placeholder="ex.: agachamento livre, barra fixa"></label></article>
   <article class="card q"><h3>10. Rotina</h3><div class="ckgrid">
@@ -159,14 +173,16 @@ function splitHint(){ const box=$("#splitHint"); if(!box) return;
   box.className="rd "+(low.length?"bad":"good");
   box.innerHTML=`<b>${esc(sp.nome)} · ${pl.lift} dias${chipVal("divisao")==="auto"?" (escolha automática)":""}</b><br>${esc(pl.days.map(d=>(d.dow.length?DOWN[d.dow[0]]+" ":"")+d.n+(d.sport&&d.sport.length?" + "+d.sport.map(x=>x.split(" (")[0]).join(", "):"")).join(" → "))}<br><small>Frequência por semana: ${fq}. ${low.length?`${low.join(", ")} treina${low.length>1?"m":""} só 1× por semana: funciona, mas 2× costuma render mais, principalmente para iniciante.`:"Todos os grupos grandes 2× ou mais por semana: ótimo."} Nível: ${esc(sp.nivel)}.</small>`; }
 /* assistente: perguntas agrupadas em 7 telas curtas */
-const WIZ=["Sobre você","Objetivo","Agenda","Onde e cuidados","Esportes e cardio","Metas","Recuperação"];
-const WIZMAP=[0,1,1,2,2,3,4,3,5,5,6,4];
-function wizard(){ const cards=$$("#day article.card.q"); cards.forEach((c,i)=>{ c.dataset.step=WIZMAP[i]??6; const h=c.querySelector("h3"); if(h) h.textContent=h.textContent.replace(/^\d+b?\.\s*/,""); });
-  const div=cards[4]; if(div&&!div.closest("details")){ const d=document.createElement("details"); d.className="gd"; d.innerHTML="<summary>Escolher a divisão (opcional)</summary>"; div.replaceWith(d); d.appendChild(div); }
+const WIZ=["Objetivo","Agenda","Local e metas","Sobre você"];
+const WIZORD=[2,1,3,4,6,5,7,8,0,9,10,11], WIZSTEP=[0,0,1,1,1,2,2,2,3,3,3,3];
+function wizard(){ const orig=$$("#day article.card.q"), nav=$(".wiznav"); orig.forEach(c=>{ const h=c.querySelector("h3"); if(h) h.textContent=h.textContent.replace(/^\d+b?\.\s*/,""); });
+  const cards=WIZORD.map(i=>orig[i]).filter(Boolean); cards.forEach((c,j)=>{ c.dataset.step=WIZSTEP[j]; nav.before(c); });
+  const wrap=(els,title)=>{ const d=document.createElement("details"); d.className="gd"; d.innerHTML=`<summary>${title}</summary>`; els[0].before(d); els.forEach(e=>d.appendChild(e)); };
+  wrap([orig[4]],"Escolher a divisão (opcional)"); wrap([orig[9],orig[10],orig[11]],"Mais ajustes: prioridades, sono, cardio, relógio");
   const show=()=>{ const st=state.onbStep||0; cards.forEach(c=>{ (c.closest("details.gd")||c).hidden=Number(c.dataset.step)!==st; });
     $("#wizN").textContent=`${st+1} de ${WIZ.length} · ${WIZ[st]}`; $("#wizBar").style.width=((st+1)/WIZ.length*100)+"%";
-    $("#q-back").hidden=st===0; $("#q-next").hidden=st===WIZ.length-1; $("#q-go").hidden=st!==WIZ.length-1&&!state.pf; window.scrollTo({top:0}); };
-  $("#q-next").onclick=()=>{ if((state.onbStep||0)===2&&chipVal("dias",true).length<2){ setStatus("Escolha pelo menos 2 dias."); return; } state.onbStep=(state.onbStep||0)+1; show(); };
+    $("#q-back").hidden=st===0; if($("#q-cancel")) $("#q-cancel").hidden=false; $("#q-next").hidden=st===WIZ.length-1; $("#q-go").hidden=st!==WIZ.length-1&&!state.pf; window.scrollTo({top:0}); };
+  $("#q-next").onclick=()=>{ if((state.onbStep||0)===1&&chipVal("dias",true).length<2){ setStatus("Escolha pelo menos 2 dias."); return; } state.onbStep=(state.onbStep||0)+1; show(); };
   $("#q-back").onclick=()=>{ state.onbStep=Math.max(0,(state.onbStep||0)-1); show(); };
   show(); }
 function chipVal(name,multi){ const g=$(`.qchips[data-name="${name}"]`); const on=[...g.querySelectorAll('.qc[aria-pressed="true"]')].map(b=>b.dataset.v); return multi?on:(on[0]??""); }
@@ -183,7 +199,7 @@ async function saveProfile(){
   if(!pf.inicio) pf.inicio=todayISO();
   const old=state.pf; state.pf=pf; state.plan=buildPlan(pf); state.editing=false;
   try{ await store.put("perfil",pf); setStatus(old?"Plano atualizado.":"Plano criado. Bom treino!"); }catch(e){ setStatus("Não consegui salvar o perfil. Tente de novo."); }
-  state.current=defaultTab(); render(); window.scrollTo({top:0});
+  state.current=old?defaultTab():"plano"; render(); window.scrollTo({top:0});
 }
 function defaultTab(){ const t=new Date().getDay(); const d=state.plan&&state.plan.days.find(x=>x.dow.includes(t)); return d?d.key:(state.plan&&state.plan.cardio.dias.includes(t)?"cardio":(state.plan?state.plan.days[0].key:"perfil")); }
 
@@ -206,53 +222,47 @@ function tourHtml(){ return `<article class="card tour" id="tour"><div class="ex
   <div class="askrow"><button class="ckbtn" id="tourOk" type="button">Entendi</button><button class="ghost" id="tourGuia" type="button">Ver o guia completo</button></div></article>`; }
 function renderDay(){
   const d=state.plan.days.find(x=>x.key===state.current); if(!d){ state.current=state.plan.days[0].key; return renderDay(); }
-  const cards=d.ex.map((ex,ei)=>{ const name=chosen(ex), sg=suggest(ex), n=nSets(ex);
+  const cards=d.ex.map(ex=>{ const name=chosen(ex), sg=suggest(ex), n=nSets(ex), last=historyFor(name)[0];
     const rows=[...Array(n).keys()].map(i=>`<span class="n">${i+1}</span>
       <input inputmode="decimal" id="${ex.id}-kg-${i}" aria-label="Série ${i+1} carga em kg" placeholder="${sg.kg!==""?fmt(sg.kg):"kg"}">
       <input inputmode="numeric" id="${ex.id}-r-${i}" aria-label="Série ${i+1} repetições" placeholder="${state.leve?Math.max(ex.lo,sg.reps-2):sg.reps}">
       <input inputmode="decimal" id="${ex.id}-p-${i}" aria-label="Série ${i+1} RPE" placeholder="${fmt(state.leve?6:ex.rpe[i]||ex.rpe[ex.rpe.length-1])}">
       <input type="hidden" id="${ex.id}-d-${i}"><button type="button" class="okb" data-i="${i}" aria-pressed="false" aria-label="Série ${i+1} feita">✓</button>`).join("");
-    const h=historyFor(name).slice(0,3);
-    return `<article class="card ex ${ex.k==="C"?"big":"small"}" data-ex="${ex.id}" data-sets="${n}">
-      <div class="ctop"><div class="ctitle"><div class="kind ${ex.k==="C"||ex.k==="P"?"c":""}">${ex.k==="C"?"Principal":ex.k==="P"?"Potência":"Acessório"} · ${esc(ex.k==="P"?"explosão":ex.m)}</div><div class="exname">${esc(name)}</div>
+    const dica=(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how;
+    return `<article class="card ex" data-ex="${ex.id}" data-sets="${n}">
+      <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
       <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
-      <label class="swapbtn">⇄ Trocar<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}</select></label></div>
+      <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><label class="ib swapbtn" aria-label="Trocar exercício">⇄<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>(state.swapAll||{})[ex.id]||i<5||o===name).map(([o,i])=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}${!(state.swapAll||{})[ex.id]&&ex.opts.length>5?`<option value="all">Ver todas (${ex.opts.length})…</option>`:""}</select></label></div></div>
+      <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}</div>
       <div class="donesum"></div><div class="body">
-      ${lastTxt(name)?`<div class="last"><b>Última:</b> ${lastTxt(name)}</div>`:""}
-      <div class="sug ${sg.cls}">${sg.html}</div>
-      <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><span class="h">RPE <button type="button" class="qm" aria-label="O que é RPE">?</button></span><span></span>${rows}</div>
+      <div class="sug ${sg.cls}">${sg.html}${last?`<span class="lastl"> · última ${last.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join(" ")}</span>`:""}</div>
+      <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><button type="button" class="h rpeh" aria-label="O que é RPE">RPE ⓘ</button><span></span>${rows}</div>
+      <div class="rpescale" ${state.sessions.length||ex!==d.ex[0]?"hidden":""}><b>RPE = esforço de 1 a 10</b><span>10 falha</span><span>9 sobra 1</span><span>8 sobram 2</span><span>7 sobram 3</span><span>≤6 leve</span></div>
       <div class="rd" id="rd-${ex.id}" hidden></div>
-      ${(ex.why||[]).length?`<details class="how"><summary>ⓘ Por quê</summary>${ex.why.map(w=>`<p>${esc(w.t)}</p>`).join("")}</details>`:""}
-      ${(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how?`<details class="how"><summary>Como fazer</summary><p>${esc((EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how)}</p></details>`:""}
-      ${h.length>1?`<div class="hist">${h.map(x=>`<span>${dstr(x.date)} · ${x.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join("  ")}${x.leve?" (leve)":""}</span>`).join("")}</div>`:""}
       </div></article>`; }).join("");
-  const c=state.plan.cardio, wear=state.pf.wear;
-  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>${esc(d.n)}</h2><span class="note">${d.dow.length?DOWN[d.dow[0]]+" · ":""}~${d.min||""} min</span></div>
-    ${d.mob?`<details class="how mobb"><summary>Mobilidade antes de começar (5 min)</summary><p>${d.mob.map(esc).join("<br>")}</p></details>`:""}
-    ${d.sport&&d.sport.length?`<p class="note">Hoje também: <b>${esc(d.sport.join(", "))}</b>.</p>`:""}${d.warn?`<div class="banner">${esc(d.warn)}</div>`:""}
+  const wear=state.pf.wear;
+  const avisos=[d.warn, state.analysis&&state.analysis.deload&&state.analysis.deload.recomendar?"A última análise recomenda uma semana leve.":""].filter(Boolean);
+  $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>${esc(d.n)}</h2><p class="meta">${d.dow.length?DOWN[d.dow[0]]+" · ":""}${d.ex.length} exercícios · ~${d.min||""} min${d.sport&&d.sport.length?" · + "+esc(d.sport.map(x=>x.split(" (")[0]).join(", ")):""}</p></div>
+      <details class="menu"><summary aria-label="Opções do dia">⋯</summary><div class="menub">
+        <label class="toggle"><input type="checkbox" id="leve" ${state.leve?"checked":""}> Treino leve hoje</label>
+        <button class="link" id="recBtn" type="button">Recuperar o que digitei</button></div></details></div>
+    ${avisos.map(a=>`<p class="aviso">${esc(a)}</p>`).join("")}
+    ${sampleFn&&needsWeekly()?`<button class="link" id="goAn" type="button">Fazer a análise da semana →</button>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
-
-    ${state.plan.notes.filter(n=>n.startsWith("Semanas 1 e 2")).map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}
-    ${sampleFn&&needsWeekly()?`<button class="banner bl" id="goAn" type="button">📊 Sua análise semanal está pronta para fazer → abrir Histórico</button>`:""}
-    ${state.analysis&&state.analysis.deload&&state.analysis.deload.recomendar?`<div class="banner">A última análise recomenda uma semana leve: ${esc(state.analysis.deload.motivo||"")}</div>`:""}
-    <details class="opts" id="opts"><summary>Opções do dia${state.leve?" · <b>semana leve</b>":""}</summary><div class="ob">
-      <label class="toggle"><input type="checkbox" id="leve" ${state.leve?"checked":""}> Treino leve (metade das séries, RPE 6): cansado, dormiu mal ou semana de recuperação</label>
-      <button class="ghost" id="recBtn" type="button">Recuperar o que digitei hoje</button>
-      <p class="note">✓ aceita a carga e as reps sugeridas (em cinza) e inicia o descanso. Fez diferente? Digite antes de tocar em ✓. RPE: 10 = falha, 9 = sobrava 1 rep, 8 = sobravam 2, 7 = sobravam 3.</p></div></details>
+    ${d.mob?`<details class="gd mobb"><summary>Mobilidade · 5 min</summary><div class="gb"><p>${d.mob.map(esc).join("<br>")}</p></div></details>`:""}
     ${cards}
-    <article class="card small"><div class="kind">Dados do treino${wear!=="nenhum"?" · "+wearName(wear):""} (opcional)</div><div class="cgrid">
+    <details class="gd"><summary>Dados do ${wear!=="nenhum"?wearName(wear):"treino"} (opcional)</summary><div class="cgrid">
       ${effortFields(d.key+"-w",wear)}
       <label>FC média<input inputmode="numeric" id="${d.key}-w-fc" placeholder="bpm"></label>
-      <label>Duração (min)<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></article>
-    ${c.n&&!c.dias.length?`<p class="note">Cardio de hoje (opcional): ${c.z2min} min de zona 2 depois da musculação, se não fez cardio em outro dia. Registre na aba Cardio.</p>`:""}</div>`;
+      <label>Minutos<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></details></div>`;
   restoreDraft(); syncDone(); d.ex.forEach(e=>readiness(e.id));
-  $$(".okb").forEach(b=>b.onclick=()=>okSet(b)); $$(".qm").forEach(b=>b.onclick=()=>setStatus("RPE = 10 − reps que ainda sairiam. Sobraram 2 → RPE 8; sobrou 1 → 9; nenhuma → 10. Detalhes na aba Guia."));
-  $$(".swapsel").forEach(s=>s.onchange=async e=>{ const id=s.id.slice(5); state.prefs.swap[id]=Number(s.value); Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(id+"-")) draft.data.values[k]=""; }); try{ await store.put("prefs",state.prefs); }catch(err){} renderDay(); });
-  $$(".card.ex .ctop").forEach(t=>t.onclick=e=>{ if(e.target.closest(".swapbtn")) return; const c=t.closest(".card"); if(c.classList.contains("done")) c.classList.toggle("open"); });
+  $$(".okb").forEach(b=>b.onclick=()=>okSet(b));
+  $$(".rpeh").forEach(b=>b.onclick=()=>{ const r=b.closest(".card").querySelector(".rpescale"); r.hidden=!r.hidden; });
+  $$(".infob").forEach(b=>b.onclick=()=>{ const i=b.closest(".card").querySelector(".info"); i.hidden=!i.hidden; });
+  $$(".swapsel").forEach(s=>s.onchange=async e=>{ const id=s.id.slice(5); if(s.value==="all"){ state.swapAll=Object.assign(state.swapAll||{},{[id]:true}); flushDraft(); renderDay(); const ns=document.getElementById("swap-"+id); if(ns){ try{ ns.showPicker&&ns.showPicker(); }catch(err){} ns.focus(); } return; } state.prefs.swap[id]=Number(s.value); Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(id+"-")) draft.data.values[k]=""; }); try{ await store.put("prefs",state.prefs); }catch(err){} renderDay(); });
+  $$(".card.ex .ctop").forEach(t=>t.onclick=e=>{ if(e.target.closest(".icons")) return; const c=t.closest(".card"); if(c.classList.contains("done")) c.classList.toggle("open"); });
   $("#leve").onchange=e=>{ state.leve=e.target.checked; renderDay(); };
-  $("#recBtn").onclick=recoverBak; if($("#tourOk")) $("#tourOk").onclick=()=>{ state.prefs.tourVisto=true; store.put("prefs",state.prefs).catch(()=>{}); renderDay(); };
-  if($("#tourGuia")) $("#tourGuia").onclick=()=>{ flushDraft(); state.current="guia"; render(); window.scrollTo({top:0}); };
-  if($("#tourShow")) $("#tourShow").onclick=()=>{ state.prefs.tourVisto=false; renderDay(); }; if($("#goAn")) $("#goAn").onclick=()=>{ flushDraft(); state.current="hist"; render(); window.scrollTo({top:0}); };
+  $("#recBtn").onclick=recoverBak; if($("#goAn")) $("#goAn").onclick=()=>{ flushDraft(); state.current="hist"; render(); window.scrollTo({top:0}); };
 }
 const wearName=w=>({whoop:"Whoop",apple:"Apple Watch",garmin:"Garmin"}[w]||"relógio");
 /* campos de esforço por aparelho: Whoop = Strain (0–21); Garmin = Training Effect aeróbico (0–5) + carga de treino; outros = esforço 1–10 */
@@ -466,7 +476,8 @@ const FAQ=[
 function renderFaq(){
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Dúvidas</h2>${!state.pf||state.editing?'<button class="link" id="backOnb" type="button">← Voltar ao questionário</button>':""}</div>
     ${FAQ.map(([q,a],i)=>`<details class="gd"${i?"":" open"}><summary>${esc(q)}</summary><div class="gb"><p>${esc(a)}</p></div></details>`).join("")}
-    <p class="note">Não achou sua dúvida? Veja a aba Guia.</p></div>`;
+    <button class="ghost" id="toGuia" type="button">Guia completo: RPE, divisões, cardio, ciência</button></div>`;
+  $("#toGuia").onclick=()=>{ state.current="guia"; render(); window.scrollTo({top:0}); };
   if($("#backOnb")) $("#backOnb").onclick=()=>{ state.current="onb"; render(); window.scrollTo({top:0}); }; }
 /* ---------- perfil ---------- */
 let prioSet=new Set();
@@ -531,14 +542,14 @@ function needsWeekly(){ const wk=weekStart(todayISO()); const recent=state.sessi
 $("#saveBtn").onclick=saveDay; $("#restX").onclick=closeRest; $("#restAdd").onclick=()=>{ rest.end=Math.max(rest.end,Date.now())+30000; rest.fired=false; $("#rest").classList.remove("over"); tickRest(); };
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"&&!$("#rest").hidden) tickRest(); });
 (async()=>{
-  draft.data=draftLocal(); setStatus("Carregando…");
+  draft.data=draftLocal(); 
   await store.init(); const o=await store.load();
   state.sessions=o.sessions||[]; state.checkins=o.checkins||[]; state.prefs=Object.assign({swap:{}},o.prefs||{}); state.pf=o.pf||null; state.analysis=o.analysis||null; state.anHist=(o.anHist||[]).sort((a,b)=>a.semana<b.semana?1:-1);
   if(state.pf) state.plan=buildPlan(state.pf);
   const dd=o.draft&&o.draft.type==="draft"&&o.draft.date===todayISO()?o.draft:null; draft.remote=!!dd; draft.bakR=!!(o.bak&&o.bak.date===todayISO()); draft.bak=draft.bakR?o.bak:null;
   draft.data=mergeD(dd,draft.data); draft.ready=true;
   state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")?draft.data.day:defaultTab();
-  render(); setStatus(store.mode==="db"?(state.sessions.length?`${state.sessions.length} treinos registrados`:"Pronto"):"Registros salvos só neste aparelho");
+  render(); 
   try{ if(window.claude&&claude.use) claude.use("sample").then(f=>{ sampleFn=f||null; if(sampleFn&&state.pf&&!state.editing&&state.current!=="perfil"&&state.current!=="guia"&&state.current!=="cardio") render(); }).catch(()=>{}); }catch(e){}
 })();
 
