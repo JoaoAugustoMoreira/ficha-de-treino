@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.0 — 2026-10-20 · adicionar exercício
+- **＋ Adicionar exercício** no fim de cada treino: busca nos 366 exercícios da base (pelo nome ou pelo nome popular, ex.: "voador"), mostrando primeiro os que existem no local da pessoa; escolhe 2, 3 ou 4 séries. Não achou? Digita o nome e escolhe o músculo.
+- O exercício adicionado ganha reps, RPE e descanso do objetivo, sugestão de carga, histórico e progressão como os outros, conta no volume da semana e pode ser trocado (⇄) ou removido (ⓘ → Remover da ficha; o histórico continua salvo).
+- Se o treino passar do tempo marcado no perfil, a ficha avisa quantos minutos ficou.
+- Fica em `prefs.extra` (por dia) e sobrevive às atualizações do motor: o id usa um código fixo, não a posição.
+
 ## 0.11.2 — 2026-10-20 · leitura da série pela última série feita
 - **Aviso durante o treino olhava só a 1ª série.** Um aluno fez 160 kg × 10 a RPE 6, subiu para 200 kg × 8 a RPE 9, e a ficha mandava "Mantenha 160 kg". Agora o aviso usa a **última série com RPE** e compara com o alvo da próxima série; vale para todos os exercícios. As séries seguintes ainda vazias passam a sugerir (em cinza) a carga e as reps recomendadas, então o ✓ já preenche certo.
 

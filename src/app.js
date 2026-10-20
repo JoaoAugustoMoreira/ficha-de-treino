@@ -33,7 +33,7 @@ function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") retur
 /* a troca guarda o NOME escolhido (versões antigas guardavam a posição na lista); nome que saiu das opções volta para a 1ª */
 function chosen(ex){ const v=state.prefs.swap[ex.id]; if(typeof v==="string") return ex.opts.includes(v)?v:ex.opts[0]; return ex.opts[v||0]||ex.opts[0]; }
 /* Trocar exercício: lista própria da página. O menu nativo (<select> transparente por cima do botão) não abria no app do Claude no celular. */
-function openSwap(ex,btn,all){ const cur=chosen(ex); const sh=$("#sheet"); const syn=o=>EXBYNAME[o]&&EXBYNAME[o].sinonimos?`<small class="syn">${esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))}</small>`:"";
+function openSwap(ex,btn,all){ const cur=chosen(ex); const sh=$("#sheet"); $("#sheetT").textContent="Trocar exercício"; const syn=o=>EXBYNAME[o]&&EXBYNAME[o].sinonimos?`<small class="syn">${esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))}</small>`:"";
   const list=ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>all||i<5||o===cur);
   $("#sheetL").innerHTML=list.map(([o,i])=>`<button type="button" class="sopt" data-i="${i}" aria-pressed="${o===cur}"><span>${esc(o)}</span>${syn(o)}</button>`).join("")
     +(!all&&ex.opts.length>list.length?`<button type="button" class="link" id="sheetAll">Ver todas (${ex.opts.length})</button>`:"");
@@ -186,7 +186,7 @@ function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
     <article class="card"><div class="exname">Por que assim</div><ul class="why3">${pl.why.filter(w=>w.ev!=="frequencia"&&!/divis|corpo inteiro|full body|superior\/inferior/i.test(w.t)).slice(0,3).map(w=>`<li>${esc(w.t)}</li>`).join("")}</ul><p class="note">Tudo baseado em estudos. Detalhes no Perfil.</p></article>
     <article class="card"><div class="exname">Como usar</div><ol class="why3"><li>Abra o treino do dia e faça cada série.</li><li>Anote kg, repetições e o <b>RPE</b> (esforço de 1 a 10) e toque ✓. O descanso começa sozinho.</li><li>Salve no fim. Na próxima vez a ficha diz se é hora de subir a carga.</li></ol></article>
     <button class="btn" id="goTreino" type="button">Ver meu primeiro treino</button></div>`;
-  $$(".usesplit").forEach(b=>b.onclick=async()=>{ state.pf=Object.assign({},state.pf,{divisao:b.dataset.k}); state.plan=buildPlan(state.pf); try{ await store.put("perfil",state.pf); setStatus("Divisão alterada."); }catch(e){ setStatus("Não consegui salvar."); } renderPlano(); window.scrollTo({top:0}); });
+  $$(".usesplit").forEach(b=>b.onclick=async()=>{ state.pf=Object.assign({},state.pf,{divisao:b.dataset.k}); state.plan=withExtras(buildPlan(state.pf)); try{ await store.put("perfil",state.pf); setStatus("Divisão alterada."); }catch(e){ setStatus("Não consegui salvar."); } renderPlano(); window.scrollTo({top:0}); });
   $("#goTreino").onclick=()=>{ state.current=defaultTab(); render(); window.scrollTo({top:0}); }; }
 
 /* ---------- questionário ---------- */
@@ -281,7 +281,7 @@ async function saveProfile(){
   if(pf.dias.length<2){ setStatus("Escolha pelo menos 2 dias."); window.scrollTo({top:document.querySelector('[data-name="dias"]').getBoundingClientRect().top+scrollY-120}); return; }
   if(pf.secundario===pf.objetivo) pf.secundario="";
   if(!pf.inicio) pf.inicio=todayISO();
-  const old=state.pf; state.pf=pf; state.plan=buildPlan(pf); state.editing=false;
+  const old=state.pf; state.pf=pf; state.plan=withExtras(buildPlan(pf)); state.editing=false;
   try{ await store.put("perfil",pf); setStatus(old?"Plano atualizado.":"Plano criado. Bom treino!"); }catch(e){ setStatus("Não consegui salvar o perfil. Tente de novo."); }
   state.current=old?"inicio":"plano"; render(); window.scrollTo({top:0});
 }
@@ -304,6 +304,42 @@ function tourHtml(){ return `<article class="card tour" id="tour"><div class="ex
     <li><b>⇄ Trocar</b> muda o exercício (aparelho ocupado, dor, não gostou). <b>Como fazer</b> explica a execução.</li>
     <li>No fim, toque em <b>Salvar treino de hoje</b>. Pronto: no próximo treino a ficha já calcula as cargas.</li></ol>
   <div class="askrow"><button class="ckbtn" id="tourOk" type="button">Entendi</button><button class="ghost" id="tourGuia" type="button">Ver o guia completo</button></div></article>`; }
+/* ---------- exercícios que a pessoa adiciona (prefs.extra[dia] = [{uid, nome, p, sets}]) ----------
+   Entram no fim do treino com séries, reps, RPE e descanso do objetivo; têm histórico e progressão como os outros.
+   O id usa um uid fixo (não a posição), para o rascunho e a troca nunca irem parar em outro exercício. */
+const MUS2P={peito:"chest",costas:"hpull",pernas:"quad",posterior:"ham","glúteos":"glute",ombros:"lateral","braços":"biceps",panturrilha:"calves","abdômen":"core",adutores:"adductor"};
+function withExtras(plan){ const pf=state.pf, X=(state.prefs&&state.prefs.extra)||{}; if(!plan||!pf) return plan;
+  plan.days.forEach(d=>(X[d.key]||[]).forEach(x=>{ const p=LIB[x.p]?x.p:"core";
+    const e=makeEx(p,x.sets||3,pf,GOALS[pf.objetivo]||GOALS.misto,[{t:"Você adicionou este exercício à sua ficha.",ev:null}]);
+    e.id=d.key+"_u"+x.uid; e.custom=x.uid; e.opts=[x.nome].concat(pickOpts(LIB[p],pf).filter(o=>o!==x.nome));
+    d.ex.push(e); d.min=Math.round((d.min||0)+exMinutes(e)); }));
+  plan.vol=weeklyVolume(plan.days); return plan; }
+const normTxt=t=>String(t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+async function saveExtras(msg){ state.plan=withExtras(buildPlan(state.pf)); renderDay(); setStatus(msg); try{ await store.put("prefs",state.prefs); }catch(e){ setStatus("Mudou só nesta tela: não consegui salvar."); } }
+function openAdd(d,btn){ const sh=$("#sheet"), loc=state.pf.local||"completa", can=AVAIL[loc]||AVAIL.completa; let sets=3;
+  $("#sheetT").textContent="Adicionar exercício";
+  $("#sheetL").innerHTML=`<input id="addQ" class="addq" type="search" placeholder="Buscar: supino, voador, rosca…" aria-label="Buscar exercício" autocomplete="off">
+    <div class="addsets"><span>Séries</span>${[2,3,4].map(n=>`<button type="button" class="qc" data-n="${n}" aria-pressed="${n===sets}">${n}</button>`).join("")}</div>
+    <div id="addR" class="sheetl"></div>`;
+  const close=()=>{ sh.hidden=true; document.body.style.overflow=""; try{ btn.focus({preventScroll:true}); }catch(e){} };
+  const add=async(nome,p)=>{ close(); const X=state.prefs.extra=state.prefs.extra||{}; (X[d.key]=X[d.key]||[]).push({uid:Date.now().toString(36),nome,p,sets});
+    await saveExtras(`${nome} adicionado ao ${d.n}.`);
+    const nd=state.plan.days.find(x=>x.key===d.key), tp=Number(state.pf.tempo)||60; if(nd&&nd.min>tp+2) setStatus(`${nome} adicionado. O treino agora tem ~${nd.min} min (você marcou ${tp}).`); };
+  const show=()=>{ const q=normTxt($("#addQ").value.trim());
+    const hits=q.length<2?[]:DATA.exercicios.filter(e=>LIB[e.padrao]&&[e.nome].concat(e.sinonimos||[]).some(n=>normTxt(n).includes(q)))
+      .sort((a,b)=>(can.has(b.nome)-can.has(a.nome))||a.nome.length-b.nome.length).slice(0,25);
+    $("#addR").innerHTML=(q.length<2?`<p class="note">Digite pelo menos 2 letras.</p>`:"")
+      +hits.map(e=>`<button type="button" class="sopt" data-n="${esc(e.nome)}" data-p="${e.padrao}"><span>${esc(e.nome)}</span><small>${esc(LIB[e.padrao].m)}${can.has(e.nome)?"":" · não está no seu local"}</small></button>`).join("")
+      +(q.length>=2?`<details class="gd"><summary>Não achei: usar "${esc($("#addQ").value.trim())}"</summary><p class="note">Qual músculo ele trabalha?</p><div class="qchips">${Object.keys(MUS2P).map(m=>`<button type="button" class="qc addown" data-m="${m}">${m[0].toUpperCase()+m.slice(1)}</button>`).join("")}</div></details>`:"");
+    $$("#addR .sopt").forEach(b=>b.onclick=()=>add(b.dataset.n,b.dataset.p));
+    $$("#addR .addown").forEach(b=>b.onclick=()=>add($("#addQ").value.trim().slice(0,60),MUS2P[b.dataset.m])); };
+  $("#addQ").oninput=show; show();
+  $$("#sheetL .addsets .qc").forEach(b=>b.onclick=()=>{ sets=Number(b.dataset.n); $$("#sheetL .addsets .qc").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); });
+  $("#sheetX").onclick=close; sh.querySelector(".sheet-bg").onclick=close;
+  sh.hidden=false; document.body.style.overflow="hidden"; setTimeout(()=>$("#addQ").focus(),50); }
+async function removeExtra(d,ex){ const X=state.prefs.extra||{}; X[d.key]=(X[d.key]||[]).filter(x=>x.uid!==ex.custom);
+  Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(ex.id+"-")) draft.data.values[k]=""; });
+  await saveExtras(`${chosen(ex)} removido da ficha.`); }
 function renderDay(){
   const d=state.plan.days.find(x=>x.key===state.current); if(!d){ state.current=state.plan.days[0].key; return renderDay(); }
   const cards=d.ex.map(ex0=>{ const name=chosen(ex0), ex=viewEx(ex0,name), sg=suggest(ex), n=nSets(ex), last=historyFor(name)[0];
@@ -317,7 +353,7 @@ function renderDay(){
       <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
       <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
       <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><button type="button" class="ib swapbtn" data-swap="${ex.id}" aria-haspopup="dialog" aria-label="Trocar exercício">⇄</button></div></div>
-      <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}</div>
+      <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}${ex.custom?`<button type="button" class="link rmex" data-rm="${ex.id}">Remover da ficha</button>`:""}</div>
       <div class="donesum"></div><div class="body">
       <div class="sug ${sg.cls}">${sg.html}${last?`<span class="lastl"> · última ${last.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join(" ")}</span>`:""}</div>
       <div class="sets"><span></span><span class="h">kg</span><span class="h">${ex.secs?"seg":"reps"}</span><button type="button" class="h rpeh" aria-label="O que é RPE">RPE ⓘ</button><span></span>${rows}</div>
@@ -335,11 +371,14 @@ function renderDay(){
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
     ${d.mob?`<details class="gd mobb"><summary>Mobilidade · 5 min</summary><div class="gb"><p>${d.mob.map(esc).join("<br>")}</p></div></details>`:""}
     ${cards}
+    <button type="button" class="ghost" id="addEx">＋ Adicionar exercício</button>
     <details class="gd"><summary>Dados do ${wear!=="nenhum"?wearName(wear):"treino"} (opcional)</summary><div class="cgrid">
       ${effortFields(d.key+"-w",wear)}
       <label>FC média<input inputmode="numeric" id="${d.key}-w-fc" placeholder="bpm"></label>
       <label>Minutos<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></details></div>`;
   restoreDraft(); syncDone(); d.ex.forEach(e=>readiness(e.id));
+  $("#addEx").onclick=()=>{ flushDraft(); openAdd(d,$("#addEx")); };
+  $$(".rmex").forEach(b=>b.onclick=()=>{ const ex=d.ex.find(e=>e.id===b.dataset.rm); if(ex&&confirm(`Remover ${chosen(ex)} da ficha? O histórico dele continua salvo.`)) { flushDraft(); removeExtra(d,ex); } });
   $$(".okb").forEach(b=>b.onclick=()=>okSet(b));
   $$(".rpeh").forEach(b=>b.onclick=()=>{ const r=b.closest(".card").querySelector(".rpescale"); r.hidden=!r.hidden; });
   $$(".infob").forEach(b=>b.onclick=()=>{ const i=b.closest(".card").querySelector(".info"); i.hidden=!i.hidden; });
@@ -638,7 +677,7 @@ document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==
   draft.data=draftLocal(); if($("#koraH")) $("#koraH").onclick=koraNote; 
   await store.init(); const o=await store.load();
   state.sessions=o.sessions||[]; state.checkins=o.checkins||[]; state.prefs=Object.assign({swap:{}},o.prefs||{}); state.pf=o.pf||null; state.analysis=o.analysis||null; state.anHist=(o.anHist||[]).sort((a,b)=>a.semana<b.semana?1:-1);
-  if(state.pf) state.plan=buildPlan(state.pf);
+  if(state.pf) state.plan=withExtras(buildPlan(state.pf));
   const dd=o.draft&&o.draft.type==="draft"&&o.draft.date===todayISO()?o.draft:null; draft.remote=!!dd; draft.bakR=!!(o.bak&&o.bak.date===todayISO()); draft.bak=draft.bakR?o.bak:null;
   draft.data=mergeD(dd,draft.data); draft.ready=true;
   state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")&&Object.values(draft.data.values||{}).some(v=>v!=="")?draft.data.day:"inicio";

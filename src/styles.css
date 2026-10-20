@@ -617,3 +617,9 @@ header h1 .tagline{font:400 12.5px/1.2 var(--body);letter-spacing:0;color:var(--
 .sopt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .sopt[aria-pressed="true"] span::after{content:" · atual";font-weight:500;color:var(--muted)}
 .sheet .link{align-self:center}
+
+/* adicionar exercício */
+.addq{width:100%;box-sizing:border-box;font:500 16px var(--body);padding:11px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--fg)}
+.addsets{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.sheetl .sopt small{display:block}
+#addEx{align-self:stretch}
