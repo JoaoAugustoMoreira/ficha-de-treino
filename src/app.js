@@ -426,6 +426,13 @@ function renderGuia(){ if(state.pf&&!state.prefs.guiaVisto){ state.prefs.guiaVis
   if($("#backOnb")) $("#backOnb").onclick=()=>{ state.current="onb"; render(); window.scrollTo({top:0}); };
 }
 
+/* ---------- recomeçar do zero: apaga tudo desta pessoa (só depois da confirmação na própria tela) ---------- */
+async function resetAll(){ const b=$("#resetYes"); b.disabled=true; setStatus("Apagando…");
+  try{ if(store.mode==="db"){ const snap=await store.col().get(); for(const d of snap.docs) await store.col().doc(d.id).delete(); }
+    [LS,DK].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
+    state={pf:null,plan:null,sessions:[],checkins:[],prefs:{swap:{}},analysis:null,anHist:[],current:"onb",leve:false,editing:false};
+    Object.assign(draft,{data:null,dirty:false,remote:false,bakR:false,bak:null}); setStatus("Tudo apagado. Vamos começar."); render(); window.scrollTo({top:0}); }
+  catch(e){ b.disabled=false; setStatus("Não consegui apagar tudo. Tente de novo."); } }
 /* ---------- perfil ---------- */
 let prioSet=new Set();
 function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
@@ -444,9 +451,16 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
         return `<tr><td>${m[0].toUpperCase()+m.slice(1)}</td><td class="tr">${fmt(v)} séries · ${f}×/sem</td><td class="${st[1]}">${st[0]}</td></tr>`; }).join("")}</tbody></table>
       <p class="note">"Pouco": marque o músculo como prioridade ou aumente o tempo por treino (panturrilha, adutores e abdômen com pouco volume é normal se não forem prioridade). "Acima": braços e ombros recebem séries indiretas dos exercícios de peito, costas e desenvolvimento; não é problema.</p></article>
     <div class="askrow"><button class="ckbtn" id="editPf" type="button">Editar objetivo e rotina</button></div>
+    <details id="resetBox"><summary>Recomeçar do zero</summary><div class="gb">
+      <p>Apaga o perfil, o plano, os treinos, os gráficos e as análises desta ficha, e volta para o questionário. Não dá para desfazer. Se quiser guardar os treinos, copie antes o Backup dos dados.</p>
+      <div class="askrow"><button class="ghost" id="resetAsk" type="button">Apagar tudo e recomeçar</button></div>
+      <div class="askrow" id="resetConfirm" hidden><button class="ckbtn" id="resetYes" type="button" style="background:var(--plate-red)">Sim, apagar tudo</button><button class="ghost" id="resetNo" type="button">Cancelar</button></div></div></details>
     <details><summary>Backup dos dados</summary><p class="note">Copie o texto abaixo e guarde (ex.: nas Notas). Para restaurar, cole e toque em Importar.</p>
       <textarea id="bk" rows="5" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px">${esc(JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs}))}</textarea>
       <div class="askrow" style="margin-top:8px"><button class="ghost" id="bkImp" type="button">Importar</button></div></details></div>`;
+  $("#resetAsk").onclick=()=>{ $("#resetConfirm").hidden=false; $("#resetAsk").hidden=true; };
+  $("#resetNo").onclick=()=>{ $("#resetConfirm").hidden=true; $("#resetAsk").hidden=false; };
+  $("#resetYes").onclick=resetAll;
   $("#editPf").onclick=()=>{ state.editing=true; render(); window.scrollTo({top:0}); };
   $("#bkImp").onclick=async()=>{ let o; try{ o=JSON.parse($("#bk").value); }catch(e){ setStatus("Texto de backup inválido."); return; }
     const ids=new Set(state.sessions.map(s=>s.ts)); const add=(o.sessions||[]).filter(s=>s&&s.type==="session"&&!ids.has(s.ts));

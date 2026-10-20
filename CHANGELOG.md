@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 — 2026-10-19
+- Perfil → **Recomeçar do zero**: apaga perfil, treinos e análises e volta ao questionário, com confirmação na própria tela.
+- Correção: em "exercícios a evitar", nomes separados por "e", "ou" ou "/" não eram reconhecidos (ex.: "agachamento livre e elevação pélvica").
+
 ## 0.2.2 — 2026-10-19
 - Novo grupo muscular **Adutores** (parte interna da coxa): cadeira adutora, adução no cabo, prancha de Copenhagen, adução com elástico, adução deitado de lado e agachamento sumô.
 - Entra no fim dos treinos de perna quando o tempo permite; pode ser marcado como prioridade e aparece no volume semanal.

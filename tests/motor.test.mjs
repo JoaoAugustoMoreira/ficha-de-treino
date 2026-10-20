@@ -128,3 +128,8 @@ test("grupo adutores: existe, tem opções em todo local e aparece como priorida
   const com = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4], prioridades: ["adutores"] })).vol.v.adutores;
   assert.ok(com > sem, `${com} > ${sem}`);
 });
+
+test("'evitar' separa por vírgula, barra, 'e' e 'ou'", () => {
+  const o = M.pickOpts(M.LIB.squat, { local: "completa", evitar: "Agachamento livre e leg press" });
+  assert.ok(!o.includes("Agachamento livre") && !o.some(x => /leg press/i.test(x)));
+});
