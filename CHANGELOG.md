@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.5 — 2026-10-20 · revisão crítica da base
+- **Falha muscular:** corrigido. Para hipertrofia, terminar mais perto da falha (0–2 reps sobrando) rende um pouco mais (Robinson 2024); para força, quase não importa. Hipertrofia passa a RPE 7,5–8,5 nos compostos e 8,5–9 nos acessórios (iniciante segue no máximo 8).
+- **Frequência e volume:** atualizados com Pelland et al. (Sports Medicine, 2026): frequência quase não muda a hipertrofia mas aumenta a força; o volume tem retorno decrescente, mais acentuado na força; contagem fracionada confirmada.
+- **Proteína:** 1,6 g/kg já dá quase todo o benefício; fonte da divisão em refeições adicionada (Schoenfeld & Aragon 2018).
+- **Honestidade das fontes:** limite de séries por treino e "manter 4–8 semanas" marcados como convenção prática; Nordic na corrida, rotação externa fora do handebol e core no jiu-jitsu marcados como extrapolação.
+- **Nova evidência:** prevenção de dor lombar (Steffens 2016, JAMA Intern Med) passa a sustentar a habilidade "Proteger as costas".
+- **Anos das fontes corrigidos** pela publicação impressa: Lauersen 2014, Harøy 2019, Andersson 2017, Rønnestad & Mujika 2014; DOIs adicionados.
+- **Exercícios:** removida "Remada alta com elástico" das puxadas verticais (trabalha trapézio e ombro, não dorsal).
+
 ## 0.9.4 — 2026-10-20
 - Degradê de luz e sombra em cada músculo (mais claro em cima, mais escuro embaixo), além das fibras: o boneco ganha volume 3D, no nível dos apps de treino.
 

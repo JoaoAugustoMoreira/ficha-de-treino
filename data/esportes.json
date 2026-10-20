@@ -141,7 +141,7 @@
         {
           "nome": "Nordic (com assistência)",
           "padrao": "ham",
-          "motivo": "o Nordic reduz pela metade as lesões de posterior de coxa",
+          "motivo": "o Nordic reduz pela metade as lesões de posterior em esportes com sprint; em corrida de fundo a evidência é menor, mas o risco é baixo e o ganho de força excêntrica ajuda",
           "ev": "nordic"
         }
       ],
@@ -149,7 +149,7 @@
         "Panturrilha em pé",
         "Agachamento com salto"
       ],
-      "resumo": "Força pesada nas pernas + saltos melhoram a economia de corrida; Nordic previne lesão de posterior.",
+      "resumo": "Força pesada nas pernas + saltos melhoram a economia de corrida; Nordic como prevenção (evidência forte em esportes com sprint, extrapolada para corrida).",
       "ev": [
         "corrida-forca",
         "nordic"
@@ -202,7 +202,7 @@
             "Rotação externa deitado de lado com halter"
           ],
           "padrao": "rear",
-          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro no handebol; para natação é uma extrapolação razoável",
           "ev": "ombro-arremesso"
         }
       ],
@@ -225,7 +225,7 @@
             "Rotação externa deitado de lado com halter"
           ],
           "padrao": "rear",
-          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro no handebol; para tênis é uma extrapolação razoável",
           "ev": "ombro-arremesso"
         }
       ],
@@ -270,7 +270,7 @@
             "Dead bug"
           ],
           "padrao": "core",
-          "motivo": "core de estabilidade melhora golpes e transferência de força",
+          "motivo": "core de estabilidade melhora golpes e transferência de força (estudos em lutas de golpe; para o grappling é extrapolação)",
           "ev": "core-lutas"
         }
       ],
@@ -293,7 +293,7 @@
             "Rotação externa deitado de lado com halter"
           ],
           "padrao": "rear",
-          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro no handebol; para crossfit é uma extrapolação razoável",
           "ev": "ombro-arremesso"
         }
       ],
@@ -312,7 +312,7 @@
             "Rotação externa deitado de lado com halter"
           ],
           "padrao": "rear",
-          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro em esportes de arremesso",
+          "motivo": "fortalecer a rotação externa do ombro reduziu em 28% os problemas de ombro no handebol; para escalada é uma extrapolação razoável",
           "ev": "ombro-arremesso"
         }
       ],

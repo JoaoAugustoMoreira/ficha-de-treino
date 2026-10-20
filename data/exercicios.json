@@ -1206,16 +1206,6 @@
     "fonte": "curado"
   },
   {
-    "id": "vpull/remada-alta-com-elastico",
-    "nome": "Remada alta com elástico",
-    "padrao": "vpull",
-    "locais": {
-      "casa": 2
-    },
-    "seguroPara": {},
-    "fonte": "curado"
-  },
-  {
     "id": "vpull/puxada-com-elastico",
     "nome": "Puxada com elástico",
     "padrao": "vpull",
