@@ -1,0 +1,167 @@
+{
+  "hipertrofia": {
+    "nome": "Hipertrofia",
+    "C": {
+      "sets": 3,
+      "lo": 6,
+      "hi": 10,
+      "rpe": [
+        7,
+        7.5,
+        8
+      ],
+      "rest": 120
+    },
+    "A": {
+      "sets": 3,
+      "lo": 10,
+      "hi": 15,
+      "rpe": [
+        8,
+        8,
+        8.5
+      ],
+      "rest": 90
+    },
+    "cardio": 1,
+    "vol": [
+      10,
+      20
+    ],
+    "volIni": [
+      6,
+      12
+    ]
+  },
+  "forca": {
+    "nome": "Força",
+    "C": {
+      "sets": 3,
+      "lo": 4,
+      "hi": 6,
+      "rpe": [
+        7,
+        7.5,
+        8
+      ],
+      "rest": 180
+    },
+    "A": {
+      "sets": 2,
+      "lo": 8,
+      "hi": 12,
+      "rpe": [
+        8,
+        8
+      ],
+      "rest": 90
+    },
+    "cardio": 1,
+    "vol": [
+      6,
+      12
+    ],
+    "volIni": [
+      6,
+      10
+    ]
+  },
+  "saude": {
+    "nome": "Saúde e condicionamento",
+    "C": {
+      "sets": 2,
+      "lo": 8,
+      "hi": 12,
+      "rpe": [
+        7,
+        7
+      ],
+      "rest": 90
+    },
+    "A": {
+      "sets": 2,
+      "lo": 12,
+      "hi": 15,
+      "rpe": [
+        7.5,
+        8
+      ],
+      "rest": 60
+    },
+    "cardio": 3,
+    "vol": [
+      4,
+      10
+    ],
+    "volIni": [
+      4,
+      8
+    ]
+  },
+  "emagrecimento": {
+    "nome": "Emagrecimento",
+    "C": {
+      "sets": 3,
+      "lo": 8,
+      "hi": 12,
+      "rpe": [
+        7,
+        7.5,
+        8
+      ],
+      "rest": 90
+    },
+    "A": {
+      "sets": 2,
+      "lo": 12,
+      "hi": 15,
+      "rpe": [
+        8,
+        8
+      ],
+      "rest": 60
+    },
+    "cardio": 3,
+    "vol": [
+      6,
+      14
+    ],
+    "volIni": [
+      6,
+      10
+    ]
+  },
+  "misto": {
+    "nome": "Um pouco de tudo",
+    "C": {
+      "sets": 3,
+      "lo": 6,
+      "hi": 10,
+      "rpe": [
+        7,
+        7.5,
+        8
+      ],
+      "rest": 120
+    },
+    "A": {
+      "sets": 2,
+      "lo": 10,
+      "hi": 15,
+      "rpe": [
+        8,
+        8
+      ],
+      "rest": 75
+    },
+    "cardio": 2,
+    "vol": [
+      8,
+      16
+    ],
+    "volIni": [
+      6,
+      12
+    ]
+  }
+}

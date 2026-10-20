@@ -2,12 +2,12 @@
 
 Ficha de musculação que **monta o treino a partir da sua rotina**: objetivo, dias livres, tempo por sessão, local, dores, prioridades e as outras atividades da semana (jiu-jitsu, corrida, futebol...). Também registra cargas e RPE, sugere a carga de cada treino, mostra gráficos de evolução e lê dados de Whoop, Garmin ou Apple Watch.
 
-É um único arquivo HTML, sem instalação e sem servidor.
+O app final é um único arquivo HTML, sem instalação e sem servidor.
 
 ## Como usar
 
 ### Opção 1: dentro do Claude (recomendado)
-1. Baixe o arquivo `index.html`.
+1. Baixe o arquivo [`dist/ficha-de-treino.html`](dist/ficha-de-treino.html).
 2. No Claude (app ou claude.ai), abra uma conversa nova, anexe o arquivo e escreva:
    > Publique este arquivo como artifact, sem alterar nada no código, com as capabilities db, user e sample. Depois fixe na barra lateral.
 3. Abra a ficha e responda o questionário.
@@ -24,7 +24,7 @@ Abra o `index.html` no navegador ou publique pelo GitHub Pages (Settings → Pag
 | Questionário | Objetivo (hipertrofia, força, saúde, emagrecimento, misto), experiência, dias, tempo, local, dores, prioridades, rotina, outras atividades, cardio e relógio |
 | Divisões | Automático ou escolha: corpo inteiro, superior/inferior, superior/inferior + corpo inteiro, empurrar/puxar/pernas, ABC, ABCD, ABCDE. Mostra a frequência de cada grupo muscular antes de confirmar |
 | Outros esportes | Organiza os dias para não colocar perna no mesmo dia ou na véspera de atividade forte de pernas, reduz séries quando o esporte já cansa a região e desconta do cardio |
-| Exercícios | De 4 a 10 opções por movimento, filtradas pelo local (academia completa, básica ou casa) e trocadas por versões mais seguras quando há dor no joelho, ombro ou lombar |
+| Exercícios | 343 exercícios em 17 padrões de movimento (curados + free-exercise-db), de 6 a 39 opções por movimento, filtradas pelo local (academia completa, básica ou casa) e trocadas por versões mais seguras quando há dor no joelho, ombro ou lombar |
 | Volume | Conta as séries semanais por músculo (contagem fracionada) e compara com a meta do objetivo |
 | Progressão | Dupla progressão: sobe a carga (+2,5% tronco, +5% pernas) quando todas as séries chegam ao topo da faixa |
 | RPE | Lê a 1ª série e diz se deve subir, manter ou reduzir a carga nas próximas |
@@ -46,6 +46,39 @@ Abra o `index.html` no navegador ou publique pelo GitHub Pages (Settings → Pag
 - Intervalado 4×4: Helgerud et al. (2007, *MSSE*)
 - Proteína: Morton et al. (2018, *British Journal of Sports Medicine*)
 - Atividade física: Organização Mundial da Saúde (2020)
+
+## Para quem vai mexer no código
+
+```
+data/
+  exercicios.json   exercícios: padrão de movimento, locais (completa/basica/casa), opções seguras por dor, fonte
+  padroes.json      padrões de movimento: músculo principal e auxiliares (peso fracionado), dica de execução
+  divisoes.json     modelos de treino e divisões (corpo inteiro, superior/inferior, ABC...)
+  objetivos.json    séries, repetições, RPE, descanso e cardio por objetivo
+  esportes.json     quanto cada esporte cansa pernas e tronco
+  evidencias.json   cada regra do app com tipo de estudo, força da evidência e fonte
+  fontes/           free-exercise-db original, candidatos classificados e traduções
+src/
+  engine.js         motor: gera o plano (sem DOM, testado)
+  app.js            interface
+  styles.css, shell.html
+scripts/
+  build.mjs                         gera index.html e dist/ficha-de-treino.html
+  classificar-free-exercise-db.mjs  classifica a base aberta nos padrões da ficha
+  importar-free-exercise-db.mjs     junta os aprovados em data/exercicios.json
+tests/              testes do motor (node --test)
+```
+
+```bash
+npm test     # gera o app e roda os testes
+```
+
+**Adicionar um exercício:** inclua um item em `data/exercicios.json` com `padrao`, `locais` (a ordem define a posição no menu) e, se for seguro para dor, `seguroPara`. Rode `npm test` e faça o commit de `index.html` e `dist/` junto.
+
+**Mudar uma regra:** altere o dado e registre a fonte em `data/evidencias.json`.
+
+## Créditos
+Parte dos exercícios vem da [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (domínio público), classificada e traduzida para esta ficha.
 
 ## Aviso
 Ferramenta **educacional**. Não substitui avaliação médica nem o acompanhamento de um profissional de educação física. Quem marcar sinais de alerta no questionário deve procurar um médico antes de começar.

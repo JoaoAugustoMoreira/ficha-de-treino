@@ -1,0 +1,79 @@
+{
+  "intensidade": {
+    "leve": 0.3,
+    "moderada": 0.6,
+    "forte": 1
+  },
+  "modalidades": {
+    "Jiu-jitsu / luta": {
+      "leg": 1,
+      "up": 1,
+      "aer": true
+    },
+    "Corrida": {
+      "leg": 1,
+      "up": 0,
+      "aer": true
+    },
+    "Futebol": {
+      "leg": 1,
+      "up": 0.1,
+      "aer": true
+    },
+    "Ciclismo / spinning": {
+      "leg": 0.7,
+      "up": 0,
+      "aer": true
+    },
+    "Natação": {
+      "leg": 0.3,
+      "up": 1,
+      "aer": true
+    },
+    "Crossfit / funcional": {
+      "leg": 1,
+      "up": 1,
+      "aer": true
+    },
+    "Tênis / beach tennis / padel": {
+      "leg": 0.6,
+      "up": 0.6,
+      "aer": true
+    },
+    "Vôlei / basquete / handebol": {
+      "leg": 1,
+      "up": 0.5,
+      "aer": true
+    },
+    "Caminhada / trilha": {
+      "leg": 0.3,
+      "up": 0,
+      "aer": true
+    },
+    "Remo / canoagem": {
+      "leg": 0.4,
+      "up": 1,
+      "aer": true
+    },
+    "Escalada": {
+      "leg": 0.2,
+      "up": 1,
+      "aer": false
+    },
+    "Dança": {
+      "leg": 0.6,
+      "up": 0.2,
+      "aer": true
+    },
+    "Yoga / pilates / mobilidade": {
+      "leg": 0,
+      "up": 0,
+      "aer": false
+    },
+    "Outro": {
+      "leg": 0.5,
+      "up": 0.5,
+      "aer": true
+    }
+  }
+}

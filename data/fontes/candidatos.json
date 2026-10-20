@@ -1,0 +1,4203 @@
+[
+ {
+  "id": "3_4_Sit-Up",
+  "nome": "3/4 Sit-Up",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Ab_Crunch_Machine",
+  "nome": "Ab Crunch Machine",
+  "padrao": "core",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Alternate_Hammer_Curl",
+  "nome": "Alternate Hammer Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Alternate_Incline_Dumbbell_Curl",
+  "nome": "Alternate Incline Dumbbell Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Alternating_Cable_Shoulder_Press",
+  "nome": "Alternating Cable Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Alternating_Floor_Press",
+  "nome": "Alternating Floor Press",
+  "padrao": "hpush",
+  "equipamento": "kettlebells",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Alternating_Kettlebell_Press",
+  "nome": "Alternating Kettlebell Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Alternating_Kettlebell_Row",
+  "nome": "Alternating Kettlebell Row",
+  "padrao": "hpull",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Alternating_Renegade_Row",
+  "nome": "Alternating Renegade Row",
+  "padrao": "hpull",
+  "equipamento": "kettlebells",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Anti-Gravity_Press",
+  "nome": "Anti-Gravity Press",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Arnold_Dumbbell_Press",
+  "nome": "Arnold Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Band_Good_Morning",
+  "nome": "Band Good Morning",
+  "padrao": "hinge",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Band_Good_Morning_Pull_Through",
+  "nome": "Band Good Morning (Pull Through)",
+  "padrao": "hinge",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Band_Skull_Crusher",
+  "nome": "Band Skull Crusher",
+  "padrao": "triceps",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Ab_Rollout",
+  "nome": "Barbell Ab Rollout",
+  "padrao": "core",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Ab_Rollout_-_On_Knees",
+  "nome": "Barbell Ab Rollout - On Knees",
+  "padrao": "core",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Bench_Press_-_Medium_Grip",
+  "nome": "Barbell Bench Press - Medium Grip",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Curl",
+  "nome": "Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Curls_Lying_Against_An_Incline",
+  "nome": "Barbell Curls Lying Against An Incline",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Full_Squat",
+  "nome": "Barbell Full Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Glute_Bridge",
+  "nome": "Barbell Glute Bridge",
+  "padrao": "glute",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Guillotine_Bench_Press",
+  "nome": "Barbell Guillotine Bench Press",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Hack_Squat",
+  "nome": "Barbell Hack Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Hip_Thrust",
+  "nome": "Barbell Hip Thrust",
+  "padrao": "glute",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+  "nome": "Barbell Incline Bench Press - Medium Grip",
+  "padrao": "incline",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Lunge",
+  "nome": "Barbell Lunge",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Rear_Delt_Row",
+  "nome": "Barbell Rear Delt Row",
+  "padrao": "rear",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Rollout_from_Bench",
+  "nome": "Barbell Rollout from Bench",
+  "padrao": "core",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Seated_Calf_Raise",
+  "nome": "Barbell Seated Calf Raise",
+  "padrao": "calves",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Shoulder_Press",
+  "nome": "Barbell Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Side_Split_Squat",
+  "nome": "Barbell Side Split Squat",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Squat",
+  "nome": "Barbell Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Squat_To_A_Bench",
+  "nome": "Barbell Squat To A Bench",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Step_Ups",
+  "nome": "Barbell Step Ups",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Barbell_Walking_Lunge",
+  "nome": "Barbell Walking Lunge",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bench_Dips",
+  "nome": "Bench Dips",
+  "padrao": "triceps",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Bench_Press_-_With_Bands",
+  "nome": "Bench Press - With Bands",
+  "padrao": "hpush",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bent_Over_Barbell_Row",
+  "nome": "Bent Over Barbell Row",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench",
+  "nome": "Bent Over Dumbbell Rear Delt Raise With Head On Bench",
+  "padrao": "rear",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Bent_Over_Low-Pulley_Side_Lateral",
+  "nome": "Bent Over Low-Pulley Side Lateral",
+  "padrao": "lateral",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bent_Over_One-Arm_Long_Bar_Row",
+  "nome": "Bent Over One-Arm Long Bar Row",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bent_Over_Two-Arm_Long_Bar_Row",
+  "nome": "Bent Over Two-Arm Long Bar Row",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bent_Over_Two-Dumbbell_Row",
+  "nome": "Bent Over Two-Dumbbell Row",
+  "padrao": "hpull",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Bent_Over_Two-Dumbbell_Row_With_Palms_In",
+  "nome": "Bent Over Two-Dumbbell Row With Palms In",
+  "padrao": "hpull",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Bodyweight_Flyes",
+  "nome": "Bodyweight Flyes",
+  "padrao": "chest",
+  "equipamento": "e-z curl bar",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bodyweight_Squat",
+  "nome": "Bodyweight Squat",
+  "padrao": "squat",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Bosu_Ball_Cable_Crunch_With_Side_Bends",
+  "nome": "Bosu Ball Cable Crunch With Side Bends",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Box_Squat",
+  "nome": "Box Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Box_Squat_with_Bands",
+  "nome": "Box Squat with Bands",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Box_Squat_with_Chains",
+  "nome": "Box Squat with Chains",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Bradford_Rocky_Presses",
+  "nome": "Bradford/Rocky Presses",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Butt_Lift_Bridge",
+  "nome": "Butt Lift (Bridge)",
+  "padrao": "glute",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Butterfly",
+  "nome": "Butterfly",
+  "padrao": "chest",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Cable_Chest_Press",
+  "nome": "Cable Chest Press",
+  "padrao": "hpush",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Crossover",
+  "nome": "Cable Crossover",
+  "padrao": "chest",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Crunch",
+  "nome": "Cable Crunch",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Deadlifts",
+  "nome": "Cable Deadlifts",
+  "padrao": "quad",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Hammer_Curls_-_Rope_Attachment",
+  "nome": "Cable Hammer Curls - Rope Attachment",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Hip_Adduction",
+  "nome": "Cable Hip Adduction",
+  "padrao": "quad",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Incline_Triceps_Extension",
+  "nome": "Cable Incline Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Lying_Triceps_Extension",
+  "nome": "Cable Lying Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_One_Arm_Tricep_Extension",
+  "nome": "Cable One Arm Tricep Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Preacher_Curl",
+  "nome": "Cable Preacher Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Rear_Delt_Fly",
+  "nome": "Cable Rear Delt Fly",
+  "padrao": "rear",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Reverse_Crunch",
+  "nome": "Cable Reverse Crunch",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Rope_Overhead_Triceps_Extension",
+  "nome": "Cable Rope Overhead Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Rope_Rear-Delt_Rows",
+  "nome": "Cable Rope Rear-Delt Rows",
+  "padrao": "rear",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Russian_Twists",
+  "nome": "Cable Russian Twists",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Seated_Crunch",
+  "nome": "Cable Seated Crunch",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Seated_Lateral_Raise",
+  "nome": "Cable Seated Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Cable_Shoulder_Press",
+  "nome": "Cable Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Calf_Press",
+  "nome": "Calf Press",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Calf_Press_On_The_Leg_Press_Machine",
+  "nome": "Calf Press On The Leg Press Machine",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Calf_Raise_On_A_Dumbbell",
+  "nome": "Calf Raise On A Dumbbell",
+  "padrao": "calves",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Calf_Raises_-_With_Bands",
+  "nome": "Calf Raises - With Bands",
+  "padrao": "calves",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Chair_Squat",
+  "nome": "Chair Squat",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Chin-Up",
+  "nome": "Chin-Up",
+  "padrao": "vpull",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Clock_Push-Up",
+  "nome": "Clock Push-Up",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Close-Grip_Barbell_Bench_Press",
+  "nome": "Close-Grip Barbell Bench Press",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Close-Grip_Dumbbell_Press",
+  "nome": "Close-Grip Dumbbell Press",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Close-Grip_EZ-Bar_Curl_with_Band",
+  "nome": "Close-Grip EZ-Bar Curl with Band",
+  "padrao": "biceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Close-Grip_EZ-Bar_Press",
+  "nome": "Close-Grip EZ-Bar Press",
+  "padrao": "triceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Close-Grip_EZ_Bar_Curl",
+  "nome": "Close-Grip EZ Bar Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Close-Grip_Front_Lat_Pulldown",
+  "nome": "Close-Grip Front Lat Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Close-Grip_Push-Up_off_of_a_Dumbbell",
+  "nome": "Close-Grip Push-Up off of a Dumbbell",
+  "padrao": "triceps",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Close-Grip_Standing_Barbell_Curl",
+  "nome": "Close-Grip Standing Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Concentration_Curls",
+  "nome": "Concentration Curls",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Cross-Body_Crunch",
+  "nome": "Cross-Body Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Cross_Body_Hammer_Curl",
+  "nome": "Cross Body Hammer Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Crunch_-_Hands_Overhead",
+  "nome": "Crunch - Hands Overhead",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Crunch_-_Legs_On_Exercise_Ball",
+  "nome": "Crunch - Legs On Exercise Ball",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Crunches",
+  "nome": "Crunches",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Cuban_Press",
+  "nome": "Cuban Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dead_Bug",
+  "nome": "Dead Bug",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Barbell_Bench_Press",
+  "nome": "Decline Barbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Decline_Close-Grip_Bench_To_Skull_Crusher",
+  "nome": "Decline Close-Grip Bench To Skull Crusher",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Decline_Crunch",
+  "nome": "Decline Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Dumbbell_Bench_Press",
+  "nome": "Decline Dumbbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Dumbbell_Flyes",
+  "nome": "Decline Dumbbell Flyes",
+  "padrao": "chest",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Dumbbell_Triceps_Extension",
+  "nome": "Decline Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_EZ_Bar_Triceps_Extension",
+  "nome": "Decline EZ Bar Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Decline_Oblique_Crunch",
+  "nome": "Decline Oblique Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Reverse_Crunch",
+  "nome": "Decline Reverse Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Decline_Smith_Press",
+  "nome": "Decline Smith Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Dip_Machine",
+  "nome": "Dip Machine",
+  "padrao": "triceps",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Dips_-_Triceps_Version",
+  "nome": "Dips - Triceps Version",
+  "padrao": "triceps",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Double_Kettlebell_Push_Press",
+  "nome": "Double Kettlebell Push Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Drag_Curl",
+  "nome": "Drag Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Dumbbell_Alternate_Bicep_Curl",
+  "nome": "Dumbbell Alternate Bicep Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Bench_Press",
+  "nome": "Dumbbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Bench_Press_with_Neutral_Grip",
+  "nome": "Dumbbell Bench Press with Neutral Grip",
+  "padrao": "hpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Bicep_Curl",
+  "nome": "Dumbbell Bicep Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Flyes",
+  "nome": "Dumbbell Flyes",
+  "padrao": "chest",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Incline_Row",
+  "nome": "Dumbbell Incline Row",
+  "padrao": "hpull",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Lunges",
+  "nome": "Dumbbell Lunges",
+  "padrao": "quad",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Lying_One-Arm_Rear_Lateral_Raise",
+  "nome": "Dumbbell Lying One-Arm Rear Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Lying_Rear_Lateral_Raise",
+  "nome": "Dumbbell Lying Rear Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_One-Arm_Shoulder_Press",
+  "nome": "Dumbbell One-Arm Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_One-Arm_Triceps_Extension",
+  "nome": "Dumbbell One-Arm Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Prone_Incline_Curl",
+  "nome": "Dumbbell Prone Incline Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Rear_Lunge",
+  "nome": "Dumbbell Rear Lunge",
+  "padrao": "quad",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Seated_One-Leg_Calf_Raise",
+  "nome": "Dumbbell Seated One-Leg Calf Raise",
+  "padrao": "calves",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Shoulder_Press",
+  "nome": "Dumbbell Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Squat",
+  "nome": "Dumbbell Squat",
+  "padrao": "squat",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Squat_To_A_Bench",
+  "nome": "Dumbbell Squat To A Bench",
+  "padrao": "squat",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Step_Ups",
+  "nome": "Dumbbell Step Ups",
+  "padrao": "quad",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Dumbbell_Tricep_Extension_-Pronated_Grip",
+  "nome": "Dumbbell Tricep Extension -Pronated Grip",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "EZ-Bar_Curl",
+  "nome": "EZ-Bar Curl",
+  "padrao": "biceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "EZ-Bar_Skullcrusher",
+  "nome": "EZ-Bar Skullcrusher",
+  "padrao": "triceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Elevated_Back_Lunge",
+  "nome": "Elevated Back Lunge",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Elevated_Cable_Rows",
+  "nome": "Elevated Cable Rows",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Extended_Range_One-Arm_Kettlebell_Floor_Press",
+  "nome": "Extended Range One-Arm Kettlebell Floor Press",
+  "padrao": "hpush",
+  "equipamento": "kettlebells",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Face_Pull",
+  "nome": "Face Pull",
+  "padrao": "rear",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Flat_Bench_Cable_Flyes",
+  "nome": "Flat Bench Cable Flyes",
+  "padrao": "chest",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Flat_Bench_Lying_Leg_Raise",
+  "nome": "Flat Bench Lying Leg Raise",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Flexor_Incline_Dumbbell_Curls",
+  "nome": "Flexor Incline Dumbbell Curls",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Frog_Sit-Ups",
+  "nome": "Frog Sit-Ups",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Front_Barbell_Squat",
+  "nome": "Front Barbell Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Front_Barbell_Squat_To_A_Bench",
+  "nome": "Front Barbell Squat To A Bench",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Front_Squats_With_Two_Kettlebells",
+  "nome": "Front Squats With Two Kettlebells",
+  "padrao": "squat",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Full_Range-Of-Motion_Lat_Pulldown",
+  "nome": "Full Range-Of-Motion Lat Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Glute_Ham_Raise",
+  "nome": "Glute Ham Raise",
+  "padrao": "ham",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Glute_Kickback",
+  "nome": "Glute Kickback",
+  "padrao": "glute",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Goblet_Squat",
+  "nome": "Goblet Squat",
+  "padrao": "squat",
+  "equipamento": "kettlebells",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Good_Morning",
+  "nome": "Good Morning",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Good_Morning_off_Pins",
+  "nome": "Good Morning off Pins",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Gorilla_Chin_Crunch",
+  "nome": "Gorilla Chin/Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Hack_Squat",
+  "nome": "Hack Squat",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Hammer_Curls",
+  "nome": "Hammer Curls",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Hammer_Grip_Incline_DB_Bench_Press",
+  "nome": "Hammer Grip Incline DB Bench Press",
+  "padrao": "incline",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Hanging_Bar_Good_Morning",
+  "nome": "Hanging Bar Good Morning",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Hanging_Leg_Raise",
+  "nome": "Hanging Leg Raise",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "High_Cable_Curls",
+  "nome": "High Cable Curls",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Hip_Extension_with_Bands",
+  "nome": "Hip Extension with Bands",
+  "padrao": "glute",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Hip_Flexion_with_Band",
+  "nome": "Hip Flexion with Band",
+  "padrao": "quad",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Incline_Barbell_Triceps_Extension",
+  "nome": "Incline Barbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Incline_Cable_Chest_Press",
+  "nome": "Incline Cable Chest Press",
+  "padrao": "incline",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Incline_Cable_Flye",
+  "nome": "Incline Cable Flye",
+  "padrao": "chest",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Incline_Dumbbell_Bench_With_Palms_Facing_In",
+  "nome": "Incline Dumbbell Bench With Palms Facing In",
+  "padrao": "incline",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Dumbbell_Curl",
+  "nome": "Incline Dumbbell Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Dumbbell_Flyes",
+  "nome": "Incline Dumbbell Flyes",
+  "padrao": "chest",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Dumbbell_Flyes_-_With_A_Twist",
+  "nome": "Incline Dumbbell Flyes - With A Twist",
+  "padrao": "chest",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Dumbbell_Press",
+  "nome": "Incline Dumbbell Press",
+  "padrao": "incline",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Hammer_Curls",
+  "nome": "Incline Hammer Curls",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Inner_Biceps_Curl",
+  "nome": "Incline Inner Biceps Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Push-Up",
+  "nome": "Incline Push-Up",
+  "padrao": "incline",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Push-Up_Close-Grip",
+  "nome": "Incline Push-Up Close-Grip",
+  "padrao": "triceps",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Push-Up_Medium",
+  "nome": "Incline Push-Up Medium",
+  "padrao": "incline",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Push-Up_Reverse_Grip",
+  "nome": "Incline Push-Up Reverse Grip",
+  "padrao": "incline",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Incline_Push-Up_Wide",
+  "nome": "Incline Push-Up Wide",
+  "padrao": "incline",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Jackknife_Sit-Up",
+  "nome": "Jackknife Sit-Up",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Janda_Sit-Up",
+  "nome": "Janda Sit-Up",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Jefferson_Squats",
+  "nome": "Jefferson Squats",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Kettlebell_Arnold_Press",
+  "nome": "Kettlebell Arnold Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kettlebell_One-Legged_Deadlift",
+  "nome": "Kettlebell One-Legged Deadlift",
+  "padrao": "hinge",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kettlebell_Overhead_Triceps_Extension",
+  "nome": "Kettlebell Overhead Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "kettlebells",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kettlebell_Pistol_Squat",
+  "nome": "Kettlebell Pistol Squat",
+  "padrao": "squat",
+  "equipamento": "kettlebells",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kettlebell_Seated_Press",
+  "nome": "Kettlebell Seated Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kettlebell_Seesaw_Press",
+  "nome": "Kettlebell Seesaw Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists",
+  "nome": "Kneeling Cable Crunch With Alternating Oblique Twists",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Kneeling_Cable_Triceps_Extension",
+  "nome": "Kneeling Cable Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Kneeling_High_Pulley_Row",
+  "nome": "Kneeling High Pulley Row",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Kneeling_Single-Arm_High_Pulley_Row",
+  "nome": "Kneeling Single-Arm High Pulley Row",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lateral_Raise_-_With_Bands",
+  "nome": "Lateral Raise - With Bands",
+  "padrao": "lateral",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Leg-Over_Floor_Press",
+  "nome": "Leg-Over Floor Press",
+  "padrao": "hpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Leg_Extensions",
+  "nome": "Leg Extensions",
+  "padrao": "quad",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leg_Press",
+  "nome": "Leg Press",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Chest_Press",
+  "nome": "Leverage Chest Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Deadlift",
+  "nome": "Leverage Deadlift",
+  "padrao": "quad",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Decline_Chest_Press",
+  "nome": "Leverage Decline Chest Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_High_Row",
+  "nome": "Leverage High Row",
+  "padrao": "hpull",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Incline_Chest_Press",
+  "nome": "Leverage Incline Chest Press",
+  "padrao": "incline",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Iso_Row",
+  "nome": "Leverage Iso Row",
+  "padrao": "hpull",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Leverage_Shoulder_Press",
+  "nome": "Leverage Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Low_Cable_Crossover",
+  "nome": "Low Cable Crossover",
+  "padrao": "chest",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Low_Cable_Triceps_Extension",
+  "nome": "Low Cable Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lunge_Sprint",
+  "nome": "Lunge Sprint",
+  "padrao": "quad",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Lying_Cable_Curl",
+  "nome": "Lying Cable Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Cambered_Barbell_Row",
+  "nome": "Lying Cambered Barbell Row",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Close-Grip_Bar_Curl_On_High_Pulley",
+  "nome": "Lying Close-Grip Bar Curl On High Pulley",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head",
+  "nome": "Lying Close-Grip Barbell Triceps Extension Behind The Head",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Close-Grip_Barbell_Triceps_Press_To_Chin",
+  "nome": "Lying Close-Grip Barbell Triceps Press To Chin",
+  "padrao": "triceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Dumbbell_Tricep_Extension",
+  "nome": "Lying Dumbbell Tricep Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Lying_High_Bench_Barbell_Curl",
+  "nome": "Lying High Bench Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Lying_Leg_Curls",
+  "nome": "Lying Leg Curls",
+  "padrao": "ham",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Lying_Machine_Squat",
+  "nome": "Lying Machine Squat",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Lying_One-Arm_Lateral_Raise",
+  "nome": "Lying One-Arm Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Lying_Rear_Delt_Raise",
+  "nome": "Lying Rear Delt Raise",
+  "padrao": "rear",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Lying_Supine_Dumbbell_Curl",
+  "nome": "Lying Supine Dumbbell Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Lying_T-Bar_Row",
+  "nome": "Lying T-Bar Row",
+  "padrao": "hpull",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Machine_Bench_Press",
+  "nome": "Machine Bench Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Machine_Bicep_Curl",
+  "nome": "Machine Bicep Curl",
+  "padrao": "biceps",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Machine_Preacher_Curls",
+  "nome": "Machine Preacher Curls",
+  "padrao": "biceps",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Machine_Shoulder_Military_Press",
+  "nome": "Machine Shoulder (Military) Press",
+  "padrao": "vpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Machine_Triceps_Extension",
+  "nome": "Machine Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Narrow_Stance_Hack_Squats",
+  "nome": "Narrow Stance Hack Squats",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Narrow_Stance_Leg_Press",
+  "nome": "Narrow Stance Leg Press",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Narrow_Stance_Squats",
+  "nome": "Narrow Stance Squats",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Natural_Glute_Ham_Raise",
+  "nome": "Natural Glute Ham Raise",
+  "padrao": "ham",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Neck_Press",
+  "nome": "Neck Press",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Oblique_Crunches",
+  "nome": "Oblique Crunches",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Oblique_Crunches_-_On_The_Floor",
+  "nome": "Oblique Crunches - On The Floor",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Dumbbell_Row",
+  "nome": "One-Arm Dumbbell Row",
+  "padrao": "hpull",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Flat_Bench_Dumbbell_Flye",
+  "nome": "One-Arm Flat Bench Dumbbell Flye",
+  "padrao": "chest",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Incline_Lateral_Raise",
+  "nome": "One-Arm Incline Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Kettlebell_Floor_Press",
+  "nome": "One-Arm Kettlebell Floor Press",
+  "padrao": "hpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Kettlebell_Military_Press_To_The_Side",
+  "nome": "One-Arm Kettlebell Military Press To The Side",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Kettlebell_Para_Press",
+  "nome": "One-Arm Kettlebell Para Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Kettlebell_Push_Press",
+  "nome": "One-Arm Kettlebell Push Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Kettlebell_Row",
+  "nome": "One-Arm Kettlebell Row",
+  "padrao": "hpull",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Long_Bar_Row",
+  "nome": "One-Arm Long Bar Row",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "One-Arm_Overhead_Kettlebell_Squats",
+  "nome": "One-Arm Overhead Kettlebell Squats",
+  "padrao": "squat",
+  "equipamento": "kettlebells",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Arm_Side_Deadlift",
+  "nome": "One-Arm Side Deadlift",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "One-Arm_Side_Laterals",
+  "nome": "One-Arm Side Laterals",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One-Legged_Cable_Kickback",
+  "nome": "One-Legged Cable Kickback",
+  "padrao": "glute",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "One_Arm_Dumbbell_Bench_Press",
+  "nome": "One Arm Dumbbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One_Arm_Dumbbell_Preacher_Curl",
+  "nome": "One Arm Dumbbell Preacher Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One_Arm_Lat_Pulldown",
+  "nome": "One Arm Lat Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "One_Arm_Pronated_Dumbbell_Triceps_Extension",
+  "nome": "One Arm Pronated Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One_Arm_Supinated_Dumbbell_Triceps_Extension",
+  "nome": "One Arm Supinated Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "One_Leg_Barbell_Squat",
+  "nome": "One Leg Barbell Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Overhead_Cable_Curl",
+  "nome": "Overhead Cable Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Pallof_Press",
+  "nome": "Pallof Press",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Pallof_Press_With_Rotation",
+  "nome": "Pallof Press With Rotation",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Plank",
+  "nome": "Plank",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Plie_Dumbbell_Squat",
+  "nome": "Plie Dumbbell Squat",
+  "padrao": "squat",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Plyo_Kettlebell_Pushups",
+  "nome": "Plyo Kettlebell Pushups",
+  "padrao": "hpush",
+  "equipamento": "kettlebells",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Preacher_Curl",
+  "nome": "Preacher Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Preacher_Hammer_Dumbbell_Curl",
+  "nome": "Preacher Hammer Dumbbell Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Press_Sit-Up",
+  "nome": "Press Sit-Up",
+  "padrao": "core",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Pull_Through",
+  "nome": "Pull Through",
+  "padrao": "glute",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Pullups",
+  "nome": "Pullups",
+  "padrao": "vpull",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Push-Up_Wide",
+  "nome": "Push-Up Wide",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Push-Ups_With_Feet_Elevated",
+  "nome": "Push-Ups With Feet Elevated",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Pushups",
+  "nome": "Pushups",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Pushups_Close_and_Wide_Hand_Positions",
+  "nome": "Pushups (Close and Wide Hand Positions)",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Reverse_Band_Box_Squat",
+  "nome": "Reverse Band Box Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Band_Power_Squat",
+  "nome": "Reverse Band Power Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Band_Sumo_Deadlift",
+  "nome": "Reverse Band Sumo Deadlift",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Barbell_Curl",
+  "nome": "Reverse Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Barbell_Preacher_Curls",
+  "nome": "Reverse Barbell Preacher Curls",
+  "padrao": "biceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Cable_Curl",
+  "nome": "Reverse Cable Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Crunch",
+  "nome": "Reverse Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Reverse_Flyes",
+  "nome": "Reverse Flyes",
+  "padrao": "rear",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Reverse_Flyes_With_External_Rotation",
+  "nome": "Reverse Flyes With External Rotation",
+  "padrao": "rear",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Reverse_Grip_Bent-Over_Rows",
+  "nome": "Reverse Grip Bent-Over Rows",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Reverse_Grip_Triceps_Pushdown",
+  "nome": "Reverse Grip Triceps Pushdown",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Rocking_Standing_Calf_Raise",
+  "nome": "Rocking Standing Calf Raise",
+  "padrao": "calves",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Romanian_Deadlift",
+  "nome": "Romanian Deadlift",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Rope_Crunch",
+  "nome": "Rope Crunch",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Rope_Straight-Arm_Pulldown",
+  "nome": "Rope Straight-Arm Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Russian_Twist",
+  "nome": "Russian Twist",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Barbell_Military_Press",
+  "nome": "Seated Barbell Military Press",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Seated_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
+  "nome": "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Bent-Over_Rear_Delt_Raise",
+  "nome": "Seated Bent-Over Rear Delt Raise",
+  "padrao": "rear",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension",
+  "nome": "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Cable_Rows",
+  "nome": "Seated Cable Rows",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Seated_Cable_Shoulder_Press",
+  "nome": "Seated Cable Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Seated_Calf_Raise",
+  "nome": "Seated Calf Raise",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Seated_Close-Grip_Concentration_Barbell_Curl",
+  "nome": "Seated Close-Grip Concentration Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Seated_Dumbbell_Curl",
+  "nome": "Seated Dumbbell Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Dumbbell_Inner_Biceps_Curl",
+  "nome": "Seated Dumbbell Inner Biceps Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Dumbbell_Press",
+  "nome": "Seated Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Seated_Leg_Curl",
+  "nome": "Seated Leg Curl",
+  "padrao": "ham",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Seated_One-arm_Cable_Pulley_Rows",
+  "nome": "Seated One-arm Cable Pulley Rows",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Seated_Side_Lateral_Raise",
+  "nome": "Seated Side Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "See-Saw_Press_Alternating_Side_Press",
+  "nome": "See-Saw Press (Alternating Side Press)",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Shotgun_Row",
+  "nome": "Shotgun Row",
+  "padrao": "hpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Shoulder_Press_-_With_Bands",
+  "nome": "Shoulder Press - With Bands",
+  "padrao": "vpush",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Side_Lateral_Raise",
+  "nome": "Side Lateral Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Side_Laterals_to_Front_Raise",
+  "nome": "Side Laterals to Front Raise",
+  "padrao": "lateral",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Single-Arm_Cable_Crossover",
+  "nome": "Single-Arm Cable Crossover",
+  "padrao": "chest",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Single-Arm_Push-Up",
+  "nome": "Single-Arm Push-Up",
+  "padrao": "hpush",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Single-Leg_Leg_Extension",
+  "nome": "Single-Leg Leg Extension",
+  "padrao": "quad",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Single_Leg_Glute_Bridge",
+  "nome": "Single Leg Glute Bridge",
+  "padrao": "glute",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Sit-Up",
+  "nome": "Sit-Up",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Bench_Press",
+  "nome": "Smith Machine Bench Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Bent_Over_Row",
+  "nome": "Smith Machine Bent Over Row",
+  "padrao": "hpull",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Calf_Raise",
+  "nome": "Smith Machine Calf Raise",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Close-Grip_Bench_Press",
+  "nome": "Smith Machine Close-Grip Bench Press",
+  "padrao": "triceps",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Decline_Press",
+  "nome": "Smith Machine Decline Press",
+  "padrao": "hpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Incline_Bench_Press",
+  "nome": "Smith Machine Incline Bench Press",
+  "padrao": "incline",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Leg_Press",
+  "nome": "Smith Machine Leg Press",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Overhead_Shoulder_Press",
+  "nome": "Smith Machine Overhead Shoulder Press",
+  "padrao": "vpush",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Pistol_Squat",
+  "nome": "Smith Machine Pistol Squat",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "intermediate",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Reverse_Calf_Raises",
+  "nome": "Smith Machine Reverse Calf Raises",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Squat",
+  "nome": "Smith Machine Squat",
+  "padrao": "squat",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Machine_Stiff-Legged_Deadlift",
+  "nome": "Smith Machine Stiff-Legged Deadlift",
+  "padrao": "hinge",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Smith_Single-Leg_Split_Squat",
+  "nome": "Smith Single-Leg Split Squat",
+  "padrao": "quad",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Speed_Box_Squat",
+  "nome": "Speed Box Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Speed_Squats",
+  "nome": "Speed Squats",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Spider_Curl",
+  "nome": "Spider Curl",
+  "padrao": "biceps",
+  "equipamento": "e-z curl bar",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Split_Squat_with_Dumbbells",
+  "nome": "Split Squat with Dumbbells",
+  "padrao": "quad",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Squat_with_Bands",
+  "nome": "Squat with Bands",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Squat_with_Chains",
+  "nome": "Squat with Chains",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Squat_with_Plate_Movers",
+  "nome": "Squat with Plate Movers",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Squats_-_With_Bands",
+  "nome": "Squats - With Bands",
+  "padrao": "squat",
+  "equipamento": "bands",
+  "nivel": "beginner",
+  "locais": [
+   "casa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Alternating_Dumbbell_Press",
+  "nome": "Standing Alternating Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Barbell_Calf_Raise",
+  "nome": "Standing Barbell Calf Raise",
+  "padrao": "calves",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Barbell_Press_Behind_Neck",
+  "nome": "Standing Barbell Press Behind Neck",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
+  "nome": "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension",
+  "nome": "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Biceps_Cable_Curl",
+  "nome": "Standing Biceps Cable Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Bradford_Press",
+  "nome": "Standing Bradford Press",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Cable_Chest_Press",
+  "nome": "Standing Cable Chest Press",
+  "padrao": "hpush",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Calf_Raises",
+  "nome": "Standing Calf Raises",
+  "padrao": "calves",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Standing_Concentration_Curl",
+  "nome": "Standing Concentration Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Dumbbell_Calf_Raise",
+  "nome": "Standing Dumbbell Calf Raise",
+  "padrao": "calves",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Dumbbell_Press",
+  "nome": "Standing Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Dumbbell_Reverse_Curl",
+  "nome": "Standing Dumbbell Reverse Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Dumbbell_Triceps_Extension",
+  "nome": "Standing Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Inner-Biceps_Curl",
+  "nome": "Standing Inner-Biceps Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Leg_Curl",
+  "nome": "Standing Leg Curl",
+  "padrao": "ham",
+  "equipamento": "machine",
+  "nivel": "beginner",
+  "locais": [
+   "completa"
+  ]
+ },
+ {
+  "id": "Standing_Low-Pulley_One-Arm_Triceps_Extension",
+  "nome": "Standing Low-Pulley One-Arm Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Military_Press",
+  "nome": "Standing Military Press",
+  "padrao": "vpush",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_One-Arm_Cable_Curl",
+  "nome": "Standing One-Arm Cable Curl",
+  "padrao": "biceps",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_One-Arm_Dumbbell_Curl_Over_Incline_Bench",
+  "nome": "Standing One-Arm Dumbbell Curl Over Incline Bench",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_One-Arm_Dumbbell_Triceps_Extension",
+  "nome": "Standing One-Arm Dumbbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Overhead_Barbell_Triceps_Extension",
+  "nome": "Standing Overhead Barbell Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Palm-In_One-Arm_Dumbbell_Press",
+  "nome": "Standing Palm-In One-Arm Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Palms-In_Dumbbell_Press",
+  "nome": "Standing Palms-In Dumbbell Press",
+  "padrao": "vpush",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Standing_Rope_Crunch",
+  "nome": "Standing Rope Crunch",
+  "padrao": "core",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Standing_Towel_Triceps_Extension",
+  "nome": "Standing Towel Triceps Extension",
+  "padrao": "triceps",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Stiff-Legged_Barbell_Deadlift",
+  "nome": "Stiff-Legged Barbell Deadlift",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Stiff-Legged_Dumbbell_Deadlift",
+  "nome": "Stiff-Legged Dumbbell Deadlift",
+  "padrao": "hinge",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Straight-Arm_Pulldown",
+  "nome": "Straight-Arm Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Straight_Bar_Bench_Mid_Rows",
+  "nome": "Straight Bar Bench Mid Rows",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Sumo_Deadlift",
+  "nome": "Sumo Deadlift",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Sumo_Deadlift_with_Bands",
+  "nome": "Sumo Deadlift with Bands",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Sumo_Deadlift_with_Chains",
+  "nome": "Sumo Deadlift with Chains",
+  "padrao": "hinge",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "T-Bar_Row_with_Handle",
+  "nome": "T-Bar Row with Handle",
+  "padrao": "hpull",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Tricep_Dumbbell_Kickback",
+  "nome": "Tricep Dumbbell Kickback",
+  "padrao": "triceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Triceps_Overhead_Extension_with_Rope",
+  "nome": "Triceps Overhead Extension with Rope",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Triceps_Pushdown",
+  "nome": "Triceps Pushdown",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Triceps_Pushdown_-_Rope_Attachment",
+  "nome": "Triceps Pushdown - Rope Attachment",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Triceps_Pushdown_-_V-Bar_Attachment",
+  "nome": "Triceps Pushdown - V-Bar Attachment",
+  "padrao": "triceps",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Tuck_Crunch",
+  "nome": "Tuck Crunch",
+  "padrao": "core",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Two-Arm_Dumbbell_Preacher_Curl",
+  "nome": "Two-Arm Dumbbell Preacher Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Two-Arm_Kettlebell_Military_Press",
+  "nome": "Two-Arm Kettlebell Military Press",
+  "padrao": "vpush",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Two-Arm_Kettlebell_Row",
+  "nome": "Two-Arm Kettlebell Row",
+  "padrao": "hpull",
+  "equipamento": "kettlebells",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "casa"
+  ]
+ },
+ {
+  "id": "Underhand_Cable_Pulldowns",
+  "nome": "Underhand Cable Pulldowns",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "V-Bar_Pulldown",
+  "nome": "V-Bar Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "V-Bar_Pullup",
+  "nome": "V-Bar Pullup",
+  "padrao": "vpull",
+  "equipamento": "body only",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Weighted_Sissy_Squat",
+  "nome": "Weighted Sissy Squat",
+  "padrao": "quad",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Barbell_Bench_Press",
+  "nome": "Wide-Grip Barbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Decline_Barbell_Bench_Press",
+  "nome": "Wide-Grip Decline Barbell Bench Press",
+  "padrao": "hpush",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Lat_Pulldown",
+  "nome": "Wide-Grip Lat Pulldown",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Pulldown_Behind_The_Neck",
+  "nome": "Wide-Grip Pulldown Behind The Neck",
+  "padrao": "vpull",
+  "equipamento": "cable",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Rear_Pull-Up",
+  "nome": "Wide-Grip Rear Pull-Up",
+  "padrao": "vpull",
+  "equipamento": "body only",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Wide-Grip_Standing_Barbell_Curl",
+  "nome": "Wide-Grip Standing Barbell Curl",
+  "padrao": "biceps",
+  "equipamento": "barbell",
+  "nivel": "beginner",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Wide_Stance_Barbell_Squat",
+  "nome": "Wide Stance Barbell Squat",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Zercher_Squats",
+  "nome": "Zercher Squats",
+  "padrao": "squat",
+  "equipamento": "barbell",
+  "nivel": "expert",
+  "locais": [
+   "completa",
+   "basica"
+  ]
+ },
+ {
+  "id": "Zottman_Curl",
+  "nome": "Zottman Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ },
+ {
+  "id": "Zottman_Preacher_Curl",
+  "nome": "Zottman Preacher Curl",
+  "padrao": "biceps",
+  "equipamento": "dumbbell",
+  "nivel": "intermediate",
+  "locais": [
+   "completa",
+   "basica",
+   "casa"
+  ]
+ }
+]

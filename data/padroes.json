@@ -1,0 +1,168 @@
+{
+  "musculos": [
+    "pernas",
+    "posterior",
+    "glúteos",
+    "peito",
+    "costas",
+    "ombros",
+    "braços",
+    "panturrilha",
+    "abdômen"
+  ],
+  "padroes": {
+    "squat": {
+      "nome": "Agachamento",
+      "tipo": "C",
+      "musculo": "pernas",
+      "auxiliares": {
+        "glúteos": 0.5
+      },
+      "membroInferior": true,
+      "dica": "Pés na largura dos ombros, desça com o tronco firme até onde mantiver a coluna neutra; joelhos seguem a direção dos pés."
+    },
+    "hinge": {
+      "nome": "Dobradiça de quadril",
+      "tipo": "C",
+      "musculo": "posterior",
+      "auxiliares": {
+        "glúteos": 0.5
+      },
+      "membroInferior": true,
+      "dica": "Empurre o quadril para trás com joelhos levemente flexionados, peso perto das pernas, coluna neutra. Desça até sentir o posterior alongar."
+    },
+    "hpush": {
+      "nome": "Empurrar horizontal",
+      "tipo": "C",
+      "musculo": "peito",
+      "auxiliares": {
+        "braços": 0.5,
+        "ombros": 0.25
+      },
+      "membroInferior": false,
+      "dica": "Escápulas para trás e para baixo, pés firmes, desça controlado até perto do peito e empurre."
+    },
+    "incline": {
+      "nome": "Supino inclinado",
+      "tipo": "A",
+      "musculo": "peito",
+      "auxiliares": {
+        "ombros": 0.25,
+        "braços": 0.25
+      },
+      "membroInferior": false,
+      "dica": ""
+    },
+    "vpush": {
+      "nome": "Empurrar vertical",
+      "tipo": "C",
+      "musculo": "ombros",
+      "auxiliares": {
+        "braços": 0.5
+      },
+      "membroInferior": false,
+      "dica": "Abdômen firme, sem arquear a lombar. Empurre até quase estender os cotovelos."
+    },
+    "hpull": {
+      "nome": "Puxar horizontal",
+      "tipo": "C",
+      "musculo": "costas",
+      "auxiliares": {
+        "braços": 0.5,
+        "ombros": 0.25
+      },
+      "membroInferior": false,
+      "dica": "Puxe com os cotovelos em direção ao quadril, junte as escápulas no final e volte controlado."
+    },
+    "vpull": {
+      "nome": "Puxar vertical",
+      "tipo": "C",
+      "musculo": "costas",
+      "auxiliares": {
+        "braços": 0.5
+      },
+      "membroInferior": false,
+      "dica": "Peito para cima, puxe a barra até perto do queixo levando os cotovelos para baixo."
+    },
+    "quad": {
+      "nome": "Quadríceps",
+      "tipo": "A",
+      "musculo": "pernas",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "ham": {
+      "nome": "Posterior de coxa",
+      "tipo": "A",
+      "musculo": "posterior",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "glute": {
+      "nome": "Glúteos",
+      "tipo": "A",
+      "musculo": "glúteos",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "lateral": {
+      "nome": "Deltoide lateral",
+      "tipo": "A",
+      "musculo": "ombros",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente flexionados, sem balançar o tronco."
+    },
+    "rear": {
+      "nome": "Deltoide posterior",
+      "tipo": "A",
+      "musculo": "ombros",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "chest": {
+      "nome": "Peito (isolado)",
+      "tipo": "A",
+      "musculo": "peito",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "biceps": {
+      "nome": "Bíceps",
+      "tipo": "A",
+      "musculo": "braços",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "triceps": {
+      "nome": "Tríceps",
+      "tipo": "A",
+      "musculo": "braços",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "calves": {
+      "nome": "Panturrilha",
+      "tipo": "A",
+      "musculo": "panturrilha",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    },
+    "core": {
+      "nome": "Abdômen",
+      "tipo": "A",
+      "musculo": "abdômen",
+      "auxiliares": {},
+      "membroInferior": false,
+      "dica": ""
+    }
+  }
+}
