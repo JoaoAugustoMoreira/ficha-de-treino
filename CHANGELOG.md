@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.11.2 — 2026-10-20 · leitura da série pela última série feita
+- **Aviso durante o treino olhava só a 1ª série.** Um aluno fez 160 kg × 10 a RPE 6, subiu para 200 kg × 8 a RPE 9, e a ficha mandava "Mantenha 160 kg". Agora o aviso usa a **última série com RPE** e compara com o alvo da próxima série; vale para todos os exercícios. As séries seguintes ainda vazias passam a sugerir (em cinza) a carga e as reps recomendadas, então o ✓ já preenche certo.
+
 ## 0.11.1 — 2026-10-20 · atualização sem bagunçar o treino do dia
 - **Rascunho e trocas presos ao exercício, não à posição.** Antes, o que a pessoa digitava (carga, reps, RPE) e as trocas (⇄) eram guardados pela posição do exercício no treino ("3º exercício do dia 1"). Se uma atualização do app mudasse o plano, uma carga podia aparecer em outro exercício. Agora o id do exercício é dia + padrão de movimento (`d1_hpush`), o rascunho guarda o nome de cada exercício e só devolve o valor ao mesmo exercício, e a troca guarda o nome escolhido. Valor de um exercício que saiu do plano fica guardado no rascunho, mas não vai parar em outro.
 - Teste novo: o id não depende da posição e não muda quando entra outro exercício no dia.

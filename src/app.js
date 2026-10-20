@@ -67,17 +67,25 @@ function suggest(ex){
   const minR=Math.min(...work.map(s=>s.reps)); const tr=Math.min(ex.hi,minR+1);
   return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> ${L?`<strong>${fmt(L)} kg</strong> · `:""}meta ${tr}${U}`};
 }
+/* leitura durante o treino: usa a ÚLTIMA série com RPE digitado (não só a 1ª), porque a pessoa pode ter mudado a carga no meio
+   (ex.: 160 kg × 10 a RPE 6, depois 200 kg × 8 a RPE 9: a próxima série parte dos 200 kg, não volta para 160) */
 function readiness(id){
   const d=state.plan&&state.plan.days.find(x=>x.key===state.current); const ex=d&&d.ex.find(e=>e.id===id); const box=document.getElementById("rd-"+id); if(!ex||!box) return;
-  const g=f=>{ const el=document.getElementById(`${id}-${f}-0`); return el?num(el.value||el.placeholder):NaN; };
-  const rpe=num(($(`#${id}-p-0`)||{}).value), kg=g("kg"), reps=g("r");
-  if(!(rpe>=5&&rpe<=10)||!(kg>=0)||!(reps>0)){ box.hidden=true; return; }
-  const t=ex.rpe[0], inc=incOf(ex,chosen(ex)); let act,why,cls="";
-  const target=kg>0?e1rm(kg,reps,rpe)/(1+(reps+10-t)/30):0; let nk=kg>0?roundTo(target,inc):0; const pr=kg>0?Math.round((nk/kg-1)*1000)/10:0;
-  if(rpe>=t+1){ cls="bad"; why=`Série 1 com RPE ${fmt(rpe)}; o alvo era ${fmt(t)}.`; act=rpe-t>=2&&nk<kg?`Considere reduzir ${fmt(Math.abs(pr))}% → ${fmt(nk)} kg nas próximas séries.`:`Mantenha ${fmt(kg)} kg e faça 1 rep a menos nas próximas séries.`; }
-  else if(rpe<=t-1){ cls="good"; why=`Série 1 com RPE ${fmt(rpe)}; o alvo era ${fmt(t)}.`; act=t-rpe>=2&&nk>kg&&nk<=target*1.05?`Considere aumentar +${fmt(pr)}% → ${fmt(nk)} kg nas próximas séries.`:`Mantenha ${fmt(kg)} kg e faça +${t-rpe>=2?2:"1–2"} reps nas próximas séries.`; }
-  else { act="Mantenha a carga e as reps. Siga o plano."; why=`Série 1 no alvo (RPE ${fmt(rpe)}).`; }
-  box.className="rd "+cls; box.innerHTML=`<b>${act}</b>`; box.title=why; box.hidden=false;
+  const card=box.closest(".card"), n=Number(card&&card.dataset.sets)||ex.sets;
+  const val=(f,i)=>{ const el=document.getElementById(`${id}-${f}-${i}`); return el?num(el.value||el.placeholder):NaN; };
+  let i=-1; for(let j=n-1;j>=0;j--){ const r=num(($(`#${id}-p-${j}`)||{}).value); if(r>=5&&r<=10){ i=j; break; } }
+  if(i<0){ box.hidden=true; return; }
+  const rpe=num($(`#${id}-p-${i}`).value), kg=val("kg",i), reps=val("r",i);
+  if(!(kg>=0)||!(reps>0)||i===n-1){ box.hidden=true; return; }
+  const t=ex.rpe[Math.min(i+1,ex.rpe.length-1)], inc=incOf(ex,chosen(ex)); let act,why,cls="", nk=kg, nr=reps;
+  const target=kg>0?e1rm(kg,reps,rpe)/(1+(reps+10-t)/30):0; const calc=kg>0?roundTo(target,inc):0; const pr=kg>0?Math.round((calc/kg-1)*1000)/10:0;
+  const S=`Série ${i+1}: ${kg?fmt(kg)+" kg × ":""}${reps} a RPE ${fmt(rpe)}; o alvo da próxima é ${fmt(t)}.`;
+  if(rpe>=t+1){ cls="bad"; why=S; if(rpe-t>=2&&calc<kg){ nk=calc; act=`Reduza ${fmt(Math.abs(pr))}% → ${fmt(calc)} kg na próxima série.`; } else { nr=Math.max(1,reps-1); act=`Mantenha ${fmt(kg)} kg e faça 1 rep a menos na próxima série.`; } }
+  else if(rpe<=t-1){ cls="good"; why=S; if(t-rpe>=2&&calc>kg&&calc<=target*1.05){ nk=calc; act=`Aumente +${fmt(pr)}% → ${fmt(calc)} kg na próxima série.`; } else { nr=Math.min(ex.hi,reps+(t-rpe>=2?2:1)); act=`Mantenha ${fmt(kg)} kg e faça +${t-rpe>=2?2:"1–2"} reps na próxima série.`; } }
+  else { act=`Mantenha ${kg?fmt(kg)+" kg e ":""}as reps na próxima série.`; why=S; }
+  box.className="rd "+cls; box.innerHTML=`<b>${act}</b><br><small>${esc(S)}</small>`; box.title=why; box.hidden=false;
+  /* as séries seguintes ainda vazias passam a sugerir (em cinza) a carga e as reps da próxima */
+  for(let j=i+1;j<n;j++){ const k=document.getElementById(`${id}-kg-${j}`), r=document.getElementById(`${id}-r-${j}`); if(kg>0&&k&&!k.value) k.placeholder=fmt(nk); if(r&&!r.value) r.placeholder=String(nr); }
 }
 
 /* ---------- rascunho à prova de perda (mesclagem campo a campo, só grava quem digitou) ---------- */
@@ -105,7 +113,7 @@ async function clearDayDraft(prefix){ const rest={}; Object.entries((draft.data&
   if(draft.data){ wl(draft.data); try{ await store.saveDraft(draft.data,false); }catch(e){} } else { try{ localStorage.removeItem(DK); }catch(e){} try{ if(store.mode==="db") await store.col().doc("rascunho").delete(); }catch(e){} draft.remote=false; draft.dirty=false; } }
 function recoverBak(){ const b=draft.bak; if(!b||b.date!==todayISO()){ setStatus("Nada digitado hoje para recuperar."); return; } let n=0;
   Object.entries(b.values||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el&&!el.value&&sameEx(k,b.names)){ el.value=v; n++; } }); if(n){ scheduleDraft(); syncDone(); } setStatus(n?`${n} campos recuperados.`:"Nada a recuperar nesta aba."); }
-document.addEventListener("input",e=>{ if(e.target.closest&&e.target.closest("#day")&&e.target.type!=="checkbox"&&e.target.id){ scheduleDraft(); const m=/^(.+)-(kg|r|p)-0$/.exec(e.target.id); if(m) readiness(m[1]); updateProgress(); } });
+document.addEventListener("input",e=>{ if(e.target.closest&&e.target.closest("#day")&&e.target.type!=="checkbox"&&e.target.id){ scheduleDraft(); const m=/^(.+)-(kg|r|p)-\d+$/.exec(e.target.id); if(m) readiness(m[1]); updateProgress(); } });
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden") flushDraft(); });
 window.addEventListener("pagehide",flushDraft);
 const isTrainDay=()=>state.current&&(state.current.startsWith("d")||state.current==="cardio");
