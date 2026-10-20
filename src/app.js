@@ -394,8 +394,9 @@ function renderHist(){
   const lifts=thisW.filter(s=>s.ex).length, cmin=thisW.reduce((t,s)=>t+(s.cardio?s.cardio.min||0:0),0);
   const cur=state.checkins.find(c=>c.week===wk)||{}; const rec=recSignals(state.checkins,wear); const v=k=>cur[k]!=null?fmt(cur[k]):"";
   const W=wear==="whoop", G=wear==="garmin";
-  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Histórico</h2></div>
+  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Progresso</h2></div>
     <div class="kpis"><div class="kpi"><b>${lifts}/${state.plan.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${cmin}</b><span>min de cardio</span></div><div class="kpi"><b>${ss.filter(s=>s.ex).length}</b><span>treinos no total</span></div></div>
+    ${perfSection()}
     ${sampleFn?`<article class="card"><div class="exname">Análise semanal</div>${needsWeekly()?'<div class="banner">A análise desta semana ainda não foi feita.</div>':""}<p class="exnote">Faça uma vez por semana (domingo ou segunda). Lê seus registros das últimas 4 semanas e diz o que está indo bem, o que ajustar e se precisa de semana leve. Leva até 1–2 min.</p>
       <div class="askrow"><button class="ckbtn" id="askBtn" type="button">Analisar meu treino</button><button class="ghost" id="askStop" type="button" hidden>Parar</button></div><div class="askout" id="askOut" aria-live="polite"></div></article>`:""}
     ${(state.anHist||[]).length?`<article class="card an"><div class="exname">Análises semanais</div>${state.anHist.slice(0,6).map((a,i)=>`<details class="gd"${i?"":" open"}><summary>Semana de ${dstr(a.semana)}${a.deload&&a.deload.recomendar?" · semana leve recomendada":""}</summary><div class="gb"><p>${esc(a.resumo||"")}</p>${(a.acoes||[]).length?`<ul>${a.acoes.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div></details>`).join("")}</article>`:""}
@@ -406,7 +407,8 @@ function renderHist(){
       ${G?`<label>Prontidão (0–100)<input inputmode="numeric" id="ck-prt" placeholder="60" value="${v("prt")}"></label>`:""}
       ${wear!=="nenhum"?`<label>FC repouso (bpm)<input inputmode="numeric" id="ck-fcr" placeholder="58" value="${v("fcr")}"></label><label>${G?"VFC noturna (ms)":"VFC (ms)"}<input inputmode="numeric" id="ck-vfc" placeholder="50" value="${v("vfc")}"></label>`:""}</div>
       <div class="ckrow" style="margin-top:8px"><button class="ckbtn" id="ck-save" type="button" style="flex:1">${cur.week?"Atualizar":"Salvar"}</button></div>${rec.html?`<div class="col" style="gap:6px;margin-top:8px">${rec.html}</div>`:""}</article>
-    ${charts||'<p class="note">Nenhum treino salvo ainda. Salve um treino e ele aparece aqui com o gráfico de evolução.</p>'}</div>`;
+    ${charts?`<details class="gd evo"><summary>Evolução por exercício (${names.length})</summary><div class="gb col">${charts}</div></details>`:'<p class="note">Nenhum treino salvo ainda. Salve um treino e ele aparece aqui com o gráfico de evolução.</p>'}</div>`;
+  bindTips($("#day"));
   if($("#askBtn")) $("#askBtn").onclick=runAnalysis;
   $("#ck-save").onclick=async()=>{ const g=id=>{ const el=$("#ck-"+id); return el?num(el.value):NaN; }; const c={type:"checkin",week:wk,ts:Date.now()};
     const sono=g("sono"); if(!(sono>=3&&sono<=12)){ setStatus("Informe o sono entre 3 e 12 h."); return; } c.sono=sono;

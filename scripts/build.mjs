@@ -13,7 +13,7 @@ const DATA = {
   habilidades: JSON.parse(r("data/habilidades.json")),
 };
 const version = JSON.parse(r("package.json")).version;
-const js = `const APP_VERSION=${JSON.stringify(version)};\nconst DATA=${JSON.stringify(DATA)};\n${r("src/engine.js")}\n${r("src/app.js")}`;
+const js = `const APP_VERSION=${JSON.stringify(version)};\nconst DATA=${JSON.stringify(DATA)};\n${r("src/engine.js")}\n${r("src/app.js")}\n${r("src/charts.js")}`;
 const page = r("src/shell.html").replace("/*@CSS*/", () => r("src/styles.css")).replace("/*@JS*/", () => js);
 mkdirSync(new URL("../dist/", import.meta.url), { recursive: true });
 writeFileSync(new URL("../dist/ficha-de-treino.html", import.meta.url), page);

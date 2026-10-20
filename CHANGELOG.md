@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0 — 2026-10-20
+- Aba Progresso ganha a seção **Desempenho**:
+  - **Carga muscular**: mapa do corpo (frente e costas, desenho próprio) com a intensidade de cada músculo nos últimos 7 dias em relação à meta de séries.
+  - **Treinos por semana** (12 semanas) com a linha da meta do plano.
+  - **Dias de treino**: calendário de 12 semanas × dias da semana.
+  - **Volume semanal**: kg × repetições por semana.
+  - **Equilíbrio muscular**: radar de séries por grupo (média de 4 semanas) × meta, com versão em tabela.
+- **Treinos recentes**: cartão por sessão com mini-mapa muscular e a lista de exercícios.
+- Toque (ou passe o mouse) em qualquer barra, dia ou músculo para ver o valor.
+
 ## 0.6.0 — 2026-10-19
 - Novo nome: **Kora** (core + cor). Ícone "K" em oliva, slogan "Treino com ciência e coração."
 - Tipografia Fraunces (títulos) + Inter (texto e números).
