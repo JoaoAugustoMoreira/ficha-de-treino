@@ -1,6 +1,6 @@
 # Kora
 
-*Treino com ciência, do centro para fora.*
+*Treino com ciência e coração.*
 
 Kora (core + cor, "coração" em latim) monta e acompanha seu treino de musculação com base em evidências científicas.
 
