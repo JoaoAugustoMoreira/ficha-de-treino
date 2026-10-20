@@ -120,3 +120,11 @@ test("'evitar' também reconhece o nome popular (voador = peck deck)", () => {
   for (const d of pl.days) for (const e of d.ex) assert.notEqual(e.opts[0], "Peck deck");
   assert.ok(!M.pickOpts(M.LIB.chest, { local: "completa", evitar: "voador" }).includes("Peck deck"));
 });
+
+test("grupo adutores: existe, tem opções em todo local e aparece como prioridade", () => {
+  assert.ok(M.MUSCLES.includes("adutores"));
+  for (const l of LOC) assert.ok(M.LIB.adductor.o[l].length >= 3, l);
+  const sem = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4] })).vol.v.adutores;
+  const com = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 3, 4], prioridades: ["adutores"] })).vol.v.adutores;
+  assert.ok(com > sem, `${com} > ${sem}`);
+});

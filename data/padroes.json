@@ -3,6 +3,7 @@
     "pernas",
     "posterior",
     "glúteos",
+    "adutores",
     "peito",
     "costas",
     "ombros",
@@ -16,7 +17,8 @@
       "tipo": "C",
       "musculo": "pernas",
       "auxiliares": {
-        "glúteos": 0.5
+        "glúteos": 0.5,
+        "adutores": 0.25
       },
       "membroInferior": true,
       "dica": "Pés na largura dos ombros, desça com o tronco firme até onde mantiver a coluna neutra; joelhos seguem a direção dos pés."
@@ -26,7 +28,8 @@
       "tipo": "C",
       "musculo": "posterior",
       "auxiliares": {
-        "glúteos": 0.5
+        "glúteos": 0.5,
+        "adutores": 0.25
       },
       "membroInferior": true,
       "dica": "Empurre o quadril para trás com joelhos levemente flexionados, peso perto das pernas, coluna neutra. Desça até sentir o posterior alongar."
@@ -163,6 +166,14 @@
       "auxiliares": {},
       "membroInferior": false,
       "dica": ""
+    },
+    "adductor": {
+      "nome": "Adutores",
+      "tipo": "A",
+      "musculo": "adutores",
+      "auxiliares": {},
+      "membroInferior": true,
+      "dica": "Músculos da parte interna da coxa. Movimento controlado, sem dar tranco no final."
     }
   }
 }

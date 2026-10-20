@@ -2584,12 +2584,12 @@
     "fonte": "curado"
   },
   {
-    "id": "glute/cadeira-adutora",
+    "id": "adductor/cadeira-adutora",
     "nome": "Cadeira adutora",
-    "padrao": "glute",
+    "padrao": "adductor",
     "locais": {
-      "completa": 60,
-      "basica": 60
+      "completa": 0,
+      "basica": 0
     },
     "seguroPara": {},
     "fonte": "curado",
@@ -2740,6 +2740,62 @@
       "lombar máquina"
     ],
     "dica": "Movimento curto e controlado; não force a extensão além da posição neutra."
+  },
+  {
+    "id": "adductor/copenhagen",
+    "nome": "Prancha de Copenhagen",
+    "padrao": "adductor",
+    "locais": {
+      "completa": 2,
+      "basica": 2,
+      "casa": 0
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "copenhagen",
+      "prancha lateral de adutor"
+    ],
+    "dica": "De lado, com a perna de cima apoiada no banco e o quadril elevado. Comece com o joelho apoiado (mais fácil) e evolua para o pé."
+  },
+  {
+    "id": "adductor/aducao-com-elastico",
+    "nome": "Adução com elástico",
+    "padrao": "adductor",
+    "locais": {
+      "basica": 3,
+      "casa": 1
+    },
+    "seguroPara": {},
+    "fonte": "curado"
+  },
+  {
+    "id": "adductor/aducao-deitado-de-lado",
+    "nome": "Adução deitado de lado",
+    "padrao": "adductor",
+    "locais": {
+      "casa": 2,
+      "completa": 3,
+      "basica": 4
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "dica": "Deitado de lado, eleve a perna de baixo; a de cima fica cruzada à frente."
+  },
+  {
+    "id": "adductor/agachamento-sumo-com-halter",
+    "nome": "Agachamento sumô com halter (ênfase adutores)",
+    "padrao": "adductor",
+    "locais": {
+      "completa": 4,
+      "basica": 5,
+      "casa": 3
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "agachamento sumô"
+    ]
   },
   {
     "id": "biceps/rosca-martelo-alternada",
@@ -3112,9 +3168,9 @@
     "equipamento": "cabo"
   },
   {
-    "id": "glute/aducao-no-cabo",
+    "id": "adductor/aducao-no-cabo",
     "nome": "Adução no cabo",
-    "padrao": "glute",
+    "padrao": "adductor",
     "locais": {
       "completa": 126,
       "basica": 126

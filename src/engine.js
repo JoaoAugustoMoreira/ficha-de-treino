@@ -71,7 +71,7 @@ function buildPlan(pf){
   esp.forEach(x=>{ const S=SPORTS[x.mod]||SPORTS.Outro, k=INT[x.int]||0.6, n=(x.dias||[]).length; legW+=S.leg*k*n; upW+=S.up*k*n; if(S.aer&&k>=0.6) aerN+=n; });
   const cutReg=(set)=>days.forEach(d=>d.ex.forEach(e=>{ if(e.k!=="C"&&set.has(e.p)&&e.sets>2){ e.sets--; e.rpe=e.rpe.slice(0,e.sets); } }));
   const espNotes=[];
-  if(legW>=1.8){ cutReg(new Set(["quad","ham","glute","calves"])); espNotes.push("Suas atividades já cansam bastante as pernas: os acessórios de perna têm 1 série a menos."); }
+  if(legW>=1.8){ cutReg(new Set(["quad","ham","glute","adductor","calves"])); espNotes.push("Suas atividades já cansam bastante as pernas: os acessórios de perna têm 1 série a menos."); }
   if(upW>=1.8){ cutReg(new Set(["biceps","triceps"])); espNotes.push("Suas atividades já exigem muito do tronco e da pegada: bíceps e tríceps têm 1 série a menos."); }
   days.forEach(d=>{ const t=d.dow.length?sportsOn(pf,d.dow[0]):[]; const r=regionOf(d); const ld=d.dow.length?sportLoad(pf,d.dow[0]):{leg:0}; const nd=d.dow.length?sportLoad(pf,(d.dow[0]+1)%7):{leg:0};
     d.sport=t.map(x=>`${x.mod} (${x.int})`); d.warn=r.L>0.5&&ld.leg>=0.6?"Perna no mesmo dia de uma atividade forte de pernas: faça a musculação antes e não vá até o limite.":r.L>0.5&&nd.leg>=0.6?"Amanhã tem atividade forte de pernas: pare 1–2 reps antes do RPE indicado.":""; });
@@ -97,7 +97,7 @@ function buildPlan(pf){
    leg/up = quanto a atividade cansa pernas / tronco (0–1); aer = conta como cardio.
    Regras de combinação (treino concorrente, Wilson 2012): perna + atividade forte de perna no mesmo dia ou na véspera = evitar;
    superior + atividade forte = ok; perna + atividade leve = ok. */
-const LOWER=new Set(["squat","hinge","quad","ham","glute","calves"]), UPPER=new Set(["hpush","incline","vpush","hpull","vpull","lateral","rear","chest","biceps","triceps"]);
+const LOWER=new Set(["squat","hinge","quad","ham","glute","adductor","calves"]), UPPER=new Set(["hpush","incline","vpush","hpull","vpull","lateral","rear","chest","biceps","triceps"]);
 function sportsOn(pf,dow){ return (pf.esportes||[]).filter(s=>(s.dias||[]).map(Number).includes(dow)); }
 function sportLoad(pf,dow){ let leg=0,up=0; sportsOn(pf,dow).forEach(s=>{ const S=SPORTS[s.mod]||SPORTS.Outro, k=INT[s.int]||0.6; leg=Math.max(leg,S.leg*k); up=Math.max(up,S.up*k); }); return {leg,up}; }
 function regionOf(day){ const n=day.ex.length||1; const L=day.ex.filter(e=>LOWER.has(e.p)).length/n, U=day.ex.filter(e=>UPPER.has(e.p)).length/n; return {L,U}; }

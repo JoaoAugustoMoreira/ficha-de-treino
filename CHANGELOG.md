@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2 — 2026-10-19
+- Novo grupo muscular **Adutores** (parte interna da coxa): cadeira adutora, adução no cabo, prancha de Copenhagen, adução com elástico, adução deitado de lado e agachamento sumô.
+- Entra no fim dos treinos de perna quando o tempo permite; pode ser marcado como prioridade e aparece no volume semanal.
+- Agachamento e dobradiça de quadril contam 1/4 de série para adutores.
+
 ## 0.2.1 — 2026-10-19
 - 11 máquinas novas com o nome usado nas academias: cadeira adutora, graviton (barra e mergulho), supino vertical (chest press), crucifixo na máquina, leg press vertical, glúteo na máquina, panturrilha sentado na máquina, remada baixa e cavalinho na máquina, extensão lombar.
 - Sinônimos (voador = peck deck, gêmeos = panturrilha, pulley = tríceps no cabo…): aparecem no menu Trocar e valem no campo "exercícios a evitar".
