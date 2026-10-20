@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.3 — 2026-10-20
+- Boneco com mais volume (largura de braços, pernas, panturrilha, trapézio e dorsais), mantendo o ombro sem arredondar demais e as fibras.
+
 ## 0.9.2 — 2026-10-20
 - Boneco menos "inflado" (ombro e braço menos arredondados) e com fibras musculares desenhadas em cada músculo, na direção anatômica (peitoral quase horizontal, deltoide e coxa verticais, oblíquo e trapézio na diagonal), espelhadas nos dois lados.
 

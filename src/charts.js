@@ -21,8 +21,8 @@ const kfmt=v=>v>=1000?fmt(Math.round(v/100)/10)+" t":fmt(Math.round(v))+" kg";
    Cada contorno pertence a um dos 10 grupos do app; os sem grupo (cabeça, mãos, joelhos, pés) ficam em tom neutro. */
 const BODY_VB={front:"0 0 724 1448",back:"724 0 724 1448"};
 /* físico de fisiculturista: cada músculo é engrossado a partir do próprio centro (largura, altura) */
-const BULK={deltoids:[1.1,1.05],chest:[1.06,1.05],biceps:[1.22,1.04],triceps:[1.2,1.04],forearm:[1.18,1.02],trapezius:[1.1,1.08],"upper-back":[1.06,1.03],
-  "lower-back":[1.04,1.02],abs:[1.03,1.01],obliques:[1.08,1.02],quadriceps:[1.16,1.03],adductors:[1.08,1.02],hamstring:[1.16,1.02],gluteal:[1.06,1.04],calves:[1.22,1.04],tibialis:[1.14,1.02],neck:[1.25,1.0],head:[.94,.94],hair:[.94,.94]};
+const BULK={deltoids:[1.2,1.06],chest:[1.1,1.07],biceps:[1.34,1.05],triceps:[1.32,1.05],forearm:[1.26,1.03],trapezius:[1.15,1.11],"upper-back":[1.1,1.04],
+  "lower-back":[1.06,1.02],abs:[1.05,1.02],obliques:[1.13,1.03],quadriceps:[1.27,1.04],adductors:[1.13,1.02],hamstring:[1.25,1.03],gluteal:[1.1,1.06],calves:[1.35,1.05],tibialis:[1.22,1.02],neck:[1.35,1.0],head:[.92,.92],hair:[.92,.92]};
 /* direção das fibras de cada músculo (graus; 90 = vertical), espelhada no outro lado do corpo */
 const FIBER={chest:-18,deltoids:78,biceps:80,triceps:80,forearm:74,abs:90,obliques:55,trapezius:28,"upper-back":58,"lower-back":90,gluteal:32,quadriceps:84,hamstring:88,adductors:66,calves:88,tibialis:84};
 let bodyUid=0;
