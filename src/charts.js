@@ -11,8 +11,8 @@ function setsByMuscle(sessions){ const v={}; MUSCLES.forEach(m=>v[m]=0);
   sessions.forEach(s=>Object.entries(s.ex||{}).forEach(([n,sets])=>{ const mm=musOf(n); if(!mm) return; const k=sets.length; v[mm.m]+=k; Object.entries(mm.sec).forEach(([m,w])=>{ if(m in v) v[m]+=k*w; }); }));
   return v; }
 const r1=x=>Math.round(x*10)/10;
-function isoDaysAgo(n){ const d=new Date(Date.now()-n*864e5); return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10); }
-function lastWeeks(n){ const out=[]; let w=weekStart(todayISO()); for(let i=0;i<n;i++){ out.unshift(w); const d=new Date(w+"T12:00:00"); d.setDate(d.getDate()-7); w=d.toISOString().slice(0,10); } return out; }
+function isoDaysAgo(n){ const d=new Date(); d.setDate(d.getDate()-n); return isoLocal(d); }
+function lastWeeks(n){ const out=[]; let w=weekStart(todayISO()); for(let i=0;i<n;i++){ out.unshift(w); const d=new Date(w+"T12:00:00"); d.setDate(d.getDate()-7); w=isoLocal(d); } return out; }
 const lifted=s=>s.ex&&Object.keys(s.ex).length>0;
 function tonnage(s){ return Object.values(s.ex||{}).reduce((t,sets)=>t+sets.reduce((u,x)=>u+(x.kg||0)*(x.reps||0),0),0); }
 const kfmt=v=>v>=1000?fmt(Math.round(v/100)/10)+" t":fmt(Math.round(v))+" kg";
@@ -54,7 +54,7 @@ function barChart(items,opt){ opt=opt||{}; const W=320,H=150,L=30,B=22,T=10; con
 function dayGrid(sessions,weeks){ const byDate={}; sessions.forEach(s=>{ const o=byDate[s.date]||(byDate[s.date]={lift:false,cardio:false,lbl:[]}); if(lifted(s)){ o.lift=true; o.lbl.push(s.label||"Musculação"); } if(s.cardio) { o.cardio=true; o.lbl.push("Cardio"); } });
   const C=14, G=4, L=30, cols=weeks.length; const W=L+cols*(C+G), H=7*(C+G)+16; const names=["seg","ter","qua","qui","sex","sáb","dom"]; const today=todayISO();
   let cells="";
-  weeks.forEach((w,ci)=>{ for(let r=0;r<7;r++){ const d=new Date(w+"T12:00:00"); d.setDate(d.getDate()+r); const iso=d.toISOString().slice(0,10); if(iso>today) continue; const o=byDate[iso];
+  weeks.forEach((w,ci)=>{ for(let r=0;r<7;r++){ const d=new Date(w+"T12:00:00"); d.setDate(d.getDate()+r); const iso=isoLocal(d); if(iso>today) continue; const o=byDate[iso];
     const fill=o?(o.lift?'fill="var(--accent)"':'fill="var(--accent)" fill-opacity=".4"'):'fill="var(--surface-2)"';
     cells+=`<rect class="hit" x="${L+ci*(C+G)}" y="${r*(C+G)}" width="${C}" height="${C}" rx="4" ${fill} data-tip="${esc(dstr(iso)+(o?" · "+o.lbl.join(" + "):" · sem treino"))}"/>`; } });
   const months=weeks.map((w,i)=>{ const d=new Date(w+"T12:00:00"); return (i===0||d.getDate()<=7)?`<text x="${L+i*(C+G)}" y="${H-2}" class="ax">${["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"][d.getMonth()]}</text>`:""; }).join("");

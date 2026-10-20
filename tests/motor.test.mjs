@@ -211,3 +211,21 @@ test("todo exercício tem dica de execução e toda evidência citada existe", a
   for (const p of Object.values(esp.perfis)) for (const id of [].concat(p.ev || [], (p.prevencao || []).map(x => x.ev))) assert.ok(ev.has(id), "evidência inexistente: " + id);
   assert.ok(ev.size >= 45);
 });
+
+test("perfis aleatórios: sem máquina em casa, sem exercício repetido no dia, sem dia vazio, dentro do tempo", () => {
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647; const pick = a => a[Math.floor(rnd() * a.length)];
+  const MACH = /máquina|cabo|smith|leg press|polia|articulad|hack|graviton|cadeira|mesa flexora|peck|belt|pêndulo/i;
+  for (let n = 0; n < 400; n++) {
+    const dias = [1, 2, 3, 4, 5, 6, 0].filter(() => rnd() < 0.6); while (dias.length < 2) dias.push([1, 3, 5][dias.length]);
+    const pf = perfil({ exp: pick(["nunca", "ate6", "6a12", "mais1"]), objetivo: pick(["hipertrofia", "forca", "saude", "emagrecimento", "misto"]), dias: [...new Set(dias)],
+      tempo: pick([30, 45, 60, 75, 90]), local: pick(["completa", "basica", "casa"]), dores: ["joelho", "ombro", "lombar"].filter(() => rnd() < 0.3),
+      divisao: pick(["auto", "auto", ...Object.keys(M.SPLITS)]), esportes: rnd() < 0.4 ? [{ mod: pick(Object.keys(M.SPORTS)), dias: [pick([0, 1, 2, 3, 4, 5, 6])], int: pick(["leve", "moderada", "forte"]) }] : [] });
+    const p = M.buildPlan(pf);
+    for (const d of p.days) {
+      assert.ok(d.ex.length > 0, "dia vazio");
+      assert.ok(d.min <= pf.tempo + 3, `passa do tempo: ${d.min} > ${pf.tempo}`);
+      const names = d.ex.map(e => e.opts[0]); assert.equal(new Set(names).size, names.length, "repetido: " + names.join(", "));
+      if (pf.local === "casa") for (const nm of names) assert.ok(!MACH.test(nm), "máquina em casa: " + nm);
+    }
+  }
+});

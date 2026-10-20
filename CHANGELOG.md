@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.1 — 2026-10-20 · caça a bugs
+Teste com 3.000 perfis aleatórios no motor + robô usando o app (4 perfis, claro e escuro, salvar, trocar, editar, recarregar).
+- **Treino em casa com máquina (1.599 casos no teste):** quem marcava dor (joelho/ombro/lombar) e treinava em casa recebia leg press, cadeira extensora, belt squat… Agora as opções seguras para a dor respeitam o local.
+- **Exercício repetido no mesmo dia (93 casos):** ex.: elevação pélvica 2× ou Copenhagen 2× (adutor + prevenção). Agora a escolha evita repetir no dia e a prevenção reaproveita o exercício do mesmo padrão.
+- **Dia quase vazio nas divisões ABC/ABCDE (46 casos):** "Braços e abdômen" saía só com 1 exercício. Novo passo completa o treino quando sobra tempo, dentro do teto de volume.
+- **Bíceps/tríceps sem exercício direto:** nas divisões PPL/ABC o braço ficava só com o trabalho indireto. Bíceps e tríceps agora têm metas separadas, e hipertrofia garante ao menos 2 séries diretas de cada na semana.
+- **Divisão escolhida que não cabe nos dias:** aviso quando a divisão deixa peito, costas, pernas ou ombros sem treino.
+- **Peso do corpo:** a ficha mandava "Suba 1 kg" em flexão/barra; agora sugere mais reps, carga extra ou variação mais difícil (elástico: elástico mais forte).
+- **Prancha:** era contada como 10–15 "reps"; agora 20–40 segundos, com coluna "seg".
+- **Semana no Início:** dias antes de você começar apareciam como "perdidos".
+- **Datas em qualquer fuso horário:** cálculo de semana e dia sem passar por UTC.
+- Novo teste automático com 400 perfis aleatórios para esses casos não voltarem.
+
 ## 0.10.0 — 2026-10-20
 - **Dicas de execução para os 366 exercícios** (antes: 9). Escritas por família de movimento (agachamento, leg press, búlgaro, split squat, terra, stiff, supino, flexão, remada, puxada, rosca, tríceps, panturrilha, core, saltos…) com complementos por variação: unilateral, smith, cabo, elástico, máquina, pausa, amplitude reduzida, kettlebell. Gerador em `scripts/gerar-dicas.mjs`.
 - **Base de evidências: 28 → 45 entradas**, todas conferidas no PubMed com DOI: velocidade da repetição, amplitude de movimento, musculação e mortalidade, passos por dia, depressão, ansiedade, pressão arterial, intervalado × contínuo, gordura corporal, déficit calórico, periodização, elástico × pesos, mulheres, densidade óssea, depois dos 50, creatina e treino com pouco tempo. "Cardio + musculação" atualizado (Schumann 2022: não atrapalha hipertrofia nem força máxima; pode reduzir a explosão).

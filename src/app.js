@@ -31,19 +31,24 @@ const store={mode:"local",db:null,uid:null,
 function historyFor(name){ return state.sessions.filter(s=>s.ex&&s.ex[name]).sort((a,b)=>b.ts-a.ts).map(s=>({date:s.date,leve:s.leve,sets:s.ex[name]})); }
 function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") return ex.low?5:2.5; return /cabo|máquina|cadeira|mesa|peck|leg press|flexora|extensora|abdução/i.test(name)?2.5:1; }
 function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.opts[0]; }
+/* exercícios por tempo (prancha): a faixa vira segundos; o resto do plano não muda */
+const isTimed=n=>/\(seg\)|prancha/i.test(n||"");
+function viewEx(ex,name){ return isTimed(name)?Object.assign({},ex,{lo:20,hi:40,secs:true}):ex; }
 function suggest(ex){
   const name=chosen(ex), inc=incOf(ex,name); const h=historyFor(name).filter(x=>!x.leve);
   if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ Potência</span> Rápido, longe da falha`}; }
-  if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${ex.hi} reps saírem fáceis, suba na próxima série`};
+  const U=ex.secs?" s":" reps";
+  if(!h.length) return {kg:ex.secs?0:"",reps:ex.secs?ex.lo:ex.hi,cls:"",html:ex.secs?`<span class="tag t-new">★ 1ª vez</span> Segure ${ex.lo} s com boa postura; se for fácil, vá até ${ex.hi} s`:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${ex.hi} reps saírem fáceis, suba na próxima série`};
   if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
   const last=h[0].sets, L=Math.max(...last.map(s=>s.kg||0)); const work=last.filter(s=>(s.kg||0)===L);
   const allTop=work.length>=Math.min(ex.sets,last.length)&&work.every(s=>s.reps>=ex.hi); const lr=work[work.length-1]?.rpe; const tgt=ex.rpe[ex.rpe.length-1];
+  if(allTop&&L===0) return {kg:0,reps:ex.secs?ex.hi+5:ex.hi,cls:"up",html:ex.secs?`<span class="tag t-up">⬆ Evolua</span> Tente <strong>${ex.hi+5} s</strong>, ou acrescente carga nas costas`:/elástico/i.test(chosen(ex))?`<span class="tag t-up">⬆ Evolua</span> Topo da faixa: use um elástico mais forte ou encurte o elástico`:`<span class="tag t-up">⬆ Evolua</span> Peso do corpo no topo: faça mais reps, acrescente carga (mochila) ou troque por uma variação mais difícil no ⇄`};
   if(allTop&&!(lr>tgt+0.5)){ const pct=ex.k==="C"?(ex.low?0.05:0.025):0.05; let nk=roundTo(L*(1+pct),inc); if(nk<=L) nk=L+inc;
     return {kg:nk,reps:ex.lo,cls:"up",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${ex.lo} reps`}; }
   const below=s=>s.sets.filter(x=>(x.kg||0)===Math.max(...s.sets.map(y=>y.kg||0))).some(x=>x.reps<ex.lo);
   if(h.length>=2&&below(h[0])&&below(h[1])){ const nk=Math.max(0,roundTo(L*0.9,inc)); return {kg:nk,reps:ex.hi,cls:"stall",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong>`}; }
   const minR=Math.min(...work.map(s=>s.reps)); const tr=Math.min(ex.hi,minR+1);
-  return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> <strong>${fmt(L)} kg</strong> · meta ${tr} reps`};
+  return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> ${L?`<strong>${fmt(L)} kg</strong> · `:""}meta ${tr}${U}`};
 }
 function readiness(id){
   const d=state.plan&&state.plan.days.find(x=>x.key===state.current); const ex=d&&d.ex.find(e=>e.id===id); const box=document.getElementById("rd-"+id); if(!ex||!box) return;
@@ -120,12 +125,12 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
       <button class="btn" type="button" data-go="${d.key}">${doneToday?"Ver o treino de hoje":"Começar treino"}</button></article>`
     : cardioToday?`<article class="card hero"><span class="kick">Hoje</span><div class="exname">Cardio</div><p class="note">${esc(pl.cardio.corrida?pl.cardio.corrida.texto:(pl.cardio.mods||[]).join(", ")||"Zona 2")}</p><button class="btn" type="button" data-go="cardio">Abrir cardio</button></article>`
     : `<article class="card hero dayoff"><span class="kick">Hoje</span><div class="exname">Dia de descanso</div><p class="note">Recuperar também é treino.${next?` Próximo: <b>${esc(next.d.n)}</b> ${next.k===1?"amanhã":"na "+DOWN[next.dw].toLowerCase()}.`:""}</p>${next?`<button class="ghost" type="button" data-go="${next.d.key}">Ver o próximo treino</button>`:""}</article>`;
-  const wk=weekStart(today); const strip=[1,2,3,4,5,6,0].map((dw,i)=>{ const dd=new Date(wk+"T12:00:00"); dd.setDate(dd.getDate()+i); const iso=dd.toISOString().slice(0,10);
+  const wk=weekStart(today); const strip=[1,2,3,4,5,6,0].map((dw,i)=>{ const dd=new Date(wk+"T12:00:00"); dd.setDate(dd.getDate()+i); const iso=isoLocal(dd);
     const pd=pl.days.find(x=>x.dow.includes(dw)), pc=pl.cardio.n&&pl.cardio.dias.includes(dw); const did=state.sessions.some(s=>s.date===iso);
-    const st=did?"ok":iso===today?"now":iso<today&&(pd||pc)?"miss":(pd||pc)?"plan":"off";
+    const st=did?"ok":iso===today?"now":iso<today&&(pd||pc)&&iso>=(pf.inicio||"")?"miss":iso<today?"off":(pd||pc)?"plan":"off";
     return `<div class="wday ${st}"><small>${DOWN[dw].slice(0,3)}</small><i>${did?"✓":dd.getDate()}</i><span>${pd?esc(pd.n.replace("Corpo inteiro","Corpo").split(" ").slice(0,2).join(" ")):pc?"Cardio":"—"}</span></div>`; }).join("");
   const thisW=lifts.filter(s=>weekStart(s.date)===wk); const vol=thisW.reduce((a,s)=>a+tonnage(s),0);
-  let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=dd.toISOString().slice(0,10); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
+  let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=isoLocal(dd); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
   const since=isoDaysAgo(6), v7=lifts.length?setsByMuscle(lifts.filter(s=>s.date>=since)):((pl.vol&&pl.vol.v)||{}); const frac={}; MUSCLES.forEach(m=>frac[m]=(v7[m]||0)/((pl.target||{})[m]||1));
   $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>
     ${hero}
@@ -273,7 +278,7 @@ function tourHtml(){ return `<article class="card tour" id="tour"><div class="ex
   <div class="askrow"><button class="ckbtn" id="tourOk" type="button">Entendi</button><button class="ghost" id="tourGuia" type="button">Ver o guia completo</button></div></article>`; }
 function renderDay(){
   const d=state.plan.days.find(x=>x.key===state.current); if(!d){ state.current=state.plan.days[0].key; return renderDay(); }
-  const cards=d.ex.map(ex=>{ const name=chosen(ex), sg=suggest(ex), n=nSets(ex), last=historyFor(name)[0];
+  const cards=d.ex.map(ex0=>{ const name=chosen(ex0), ex=viewEx(ex0,name), sg=suggest(ex), n=nSets(ex), last=historyFor(name)[0];
     const rows=[...Array(n).keys()].map(i=>`<span class="n">${i+1}</span>
       <input inputmode="decimal" id="${ex.id}-kg-${i}" aria-label="Série ${i+1} carga em kg" placeholder="${sg.kg!==""?fmt(sg.kg):"kg"}">
       <input inputmode="numeric" id="${ex.id}-r-${i}" aria-label="Série ${i+1} repetições" placeholder="${state.leve?Math.max(ex.lo,sg.reps-2):sg.reps}">
@@ -282,12 +287,12 @@ function renderDay(){
     const dica=(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how;
     return `<article class="card ex" data-ex="${ex.id}" data-sets="${n}">
       <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
-      <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
+      <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
       <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><label class="ib swapbtn" aria-label="Trocar exercício">⇄<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>(state.swapAll||{})[ex.id]||i<5||o===name).map(([o,i])=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}${!(state.swapAll||{})[ex.id]&&ex.opts.length>5?`<option value="all">Ver todas (${ex.opts.length})…</option>`:""}</select></label></div></div>
       <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}</div>
       <div class="donesum"></div><div class="body">
       <div class="sug ${sg.cls}">${sg.html}${last?`<span class="lastl"> · última ${last.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join(" ")}</span>`:""}</div>
-      <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><button type="button" class="h rpeh" aria-label="O que é RPE">RPE ⓘ</button><span></span>${rows}</div>
+      <div class="sets"><span></span><span class="h">kg</span><span class="h">${ex.secs?"seg":"reps"}</span><button type="button" class="h rpeh" aria-label="O que é RPE">RPE ⓘ</button><span></span>${rows}</div>
       <div class="rpescale" ${state.sessions.length||ex!==d.ex[0]?"hidden":""}><b>RPE = esforço de 1 a 10</b><span>10 falha</span><span>9 sobra 1</span><span>8 sobram 2</span><span>7 sobram 3</span><span>≤6 leve</span></div>
       <div class="rd" id="rd-${ex.id}" hidden></div>
       </div></article>`; }).join("");
@@ -388,7 +393,7 @@ async function saveDay(){
     const c={tipo:{z2:"Zona 2","4x4":"4×4",livre:"Outro"}[chipVal("ctipo")]||"Zona 2",mod:chipVal("cmod"),min:min>0?min:tot}; const fc=num($("#cardio-fc").value); if(fc>0)c.fc=fc; readEffort("cardio",c); if(tot){ c.zonas=z; c.trimp=Math.round(z.reduce((a,v,i)=>a+v*(i+1),0)); }
     const s={type:"session",date:iso,day:"cardio",cardio:c,ts:now.getTime()}; return persist(s,"cardio-"); }
   const d=state.plan.days.find(x=>x.key===state.current); const ex={}; let count=0;
-  d.ex.forEach(e=>{ const name=chosen(e), sg=suggest(e), sets=[];
+  d.ex.forEach(e=>{ const name=chosen(e), sg=suggest(viewEx(e,name)), sets=[];
     for(let i=0;i<nSets(e);i++){ const k=$(`#${e.id}-kg-${i}`).value.trim(), r=$(`#${e.id}-r-${i}`).value.trim(); if(!k&&!r&&!setDone(e.id,i)) continue;
       const kg=k?num(k):num(sg.kg), reps=Math.round(r?num(r):num(sg.reps)), rpe=num($(`#${e.id}-p-${i}`).value);
       if(isFinite(kg)&&reps>0){ const s={kg,reps}; if(rpe>=5&&rpe<=10) s.rpe=rpe; sets.push(s); } }
@@ -574,7 +579,7 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
 /* ---------- análise pelo Claude ---------- */
 let sampleFn=null, askCtl=null;
 function planSummary(){ return state.plan.days.map((d,i)=>`${String.fromCharCode(65+i)} ${d.n}${d.dow.length?" ("+DOWN[d.dow[0]]+")":""}: `+d.ex.map(e=>`${chosen(e)} ${e.sets}×${e.lo}–${e.hi} RPE ${e.rpe.join("/")}`).join("; ")).join("\n")+`\nCardio: ${state.plan.cardio.n}×/sem, zona 2 ${state.plan.cardio.z2min} min${state.plan.cardio.hiit?" + 4×4 1×/sem":""}.`; }
-function analysisPrompt(){ const p=state.pf, since=new Date(Date.now()-28*864e5).toISOString().slice(0,10);
+function analysisPrompt(){ const p=state.pf, since=isoLocal(new Date(Date.now()-28*864e5));
   const ss=state.sessions.filter(s=>s.date>=since).sort((a,b)=>a.ts-b.ts).map(s=>{ const o={data:s.date,treino:s.label||s.day}; if(s.leve)o.leve=true; if(s.ex)o.ex=s.ex; if(s.cardio)o.cardio=s.cardio; if(s.watch)o.relogio=s.watch; return o; });
   return `Você é um preparador físico analisando o treino de ${p.nome||"um aluno"}. Responda em português do Brasil, direto, específico, com números. Não invente dados; com poucos registros, diga isso.
 PERFIL: ${p.idade||"?"} anos, ${p.peso||"?"} kg, ${p.altura||"?"} cm. Experiência: ${{nunca:"nunca treinou",ate6:"menos de 6 meses",["6a12"]:"6–12 meses",mais1:"mais de 1 ano"}[p.exp]}. Objetivo: ${GOALS[p.objetivo].nome}${p.secundario?" + "+GOALS[p.secundario].nome:""}. Dias: ${p.dias.map(d=>DOWN[d]).join(", ")}; ${p.tempo} min/treino; local: ${p.local}. Outras atividades: ${sportSummary(p)||p.esporte||"nenhuma"}. Quer conseguir: ${(p.habilidades||[]).map(h=>DATA.habilidades[h]&&DATA.habilidades[h].nome).filter(Boolean).join(", ")||"nada específico"}. Dores: ${(p.dores||[]).join(", ")||"nenhuma"} ${p.doresTxt||""}. Prioridades: ${(p.prioridades||[]).join(", ")||"nenhuma"}. Trabalho: ${p.trabalho||"?"}; sono informado ${p.sono||"?"} h; estresse ${p.estresse}/5. Relógio: ${wearName(p.wear)}. Começou em ${p.inicio}; hoje ${todayISO()} (semana ${weeksIn(p)+1}).
@@ -595,7 +600,7 @@ function renderAsk(r){ const out=$("#askOut"); if(!out) return;
   out.innerHTML=`${r.resumo?`<p style="margin:0">${esc(r.resumo)}</p>`:""}${(r.tabela||[]).length?`<div style="overflow-x:auto"><table><thead><tr><th>Exercício</th><th>Trabalho</th><th></th><th>Próxima</th></tr></thead><tbody>${r.tabela.map(t=>`<tr><td>${esc(t.exercicio)}</td><td class="tr">${esc(t.trabalho)}</td><td>${esc(t.tendencia||"")}</td><td>${esc(t.proxima||"")}</td></tr>`).join("")}</tbody></table></div>`:""}
     ${(r.alertas||[]).map(a=>`<div class="al">${esc(a)}</div>`).join("")}${r.deload?`<p style="margin:0"><b>Semana leve:</b> ${r.deload.recomendar?"sim":"não"} · ${esc(r.deload.motivo||"")}</p>`:""}
     ${(r.acoes||[]).length?`<ul>${r.acoes.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`:""}<p class="note">Análise guardada no histórico desta semana.</p>`; }
-function needsWeekly(){ const wk=weekStart(todayISO()); const recent=state.sessions.some(s=>s.date>=new Date(Date.now()-8*864e5).toISOString().slice(0,10));
+function needsWeekly(){ const wk=weekStart(todayISO()); const recent=state.sessions.some(s=>s.date>=isoLocal(new Date(Date.now()-8*864e5)));
   const done=(state.anHist||[]).some(a=>a.semana===wk); const dow=new Date().getDay(); return recent&&!done&&(dow===0||dow===1||!(state.anHist||[]).length); }
 
 /* ---------- início ---------- */
