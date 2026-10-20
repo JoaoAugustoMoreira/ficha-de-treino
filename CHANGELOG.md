@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.0 — 2026-10-20
+- Mapa muscular com contornos anatômicos detalhados (cabeça, mãos e pés; peitoral, deltoides, abdômen, oblíquos, serrátil, bíceps, tríceps, antebraço, trapézio, dorsais, lombar, glúteos, quadríceps, adutores, posteriores, tibial e panturrilha), no lugar do desenho geométrico. Contornos adaptados de react-native-body-highlighter (MIT).
+
 ## 0.8.2 — 2026-10-20
 - Boneco com mais definição: sombreamento de volume, joelhos, banda iliotibial, tensor da fáscia lata, sartório, fibular, braço e antebraço mais cheios e mais linhas de separação muscular.
 

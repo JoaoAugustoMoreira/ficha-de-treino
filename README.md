@@ -93,3 +93,8 @@ Ferramenta **educacional**. Não substitui avaliação médica nem o acompanhame
 
 ## Licença
 MIT. Veja [LICENSE](LICENSE).
+
+## Licenças de terceiros
+
+- Contornos anatômicos do mapa muscular (`src/corpo.js`): adaptados de [react-native-body-highlighter](https://github.com/HichamELBSI/react-native-body-highlighter), licença MIT — texto em `vendor/react-native-body-highlighter.LICENSE`.
+- Exercícios importados: [free-exercise-db](https://github.com/yuhonas/free-exercise-db), domínio público.
