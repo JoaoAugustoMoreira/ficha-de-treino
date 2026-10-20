@@ -1,4 +1,4 @@
-/* Ficha de Treino — interface: telas, registro, rascunho, histórico e análise. Usa o motor (engine.js). */
+/* Kora — interface: telas, registro, rascunho, histórico e análise. Usa o motor (engine.js). */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 let toastT=null;
 function setStatus(t){ const s=$("#status"); if(!s) return; s.textContent=t; s.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>s.classList.remove("on"),2600); }
@@ -456,7 +456,7 @@ function renderGuia(){ if(state.pf&&!state.prefs.guiaVisto){ state.prefs.guiaVis
   ${sec("9. Cardio",`<p><b>Zona 2</b>: ritmo em que dá para conversar em frases curtas (60–70% da FC máxima). Melhora a saúde do coração e a recuperação. <b>4×4</b>: 4 min forte (só palavras soltas) + 3 min leve, 4 vezes. Melhora rápido o condicionamento (VO₂máx). A OMS recomenda <b>150–300 min por semana</b> de atividade moderada para saúde. Se for fazer cardio no mesmo dia das pernas, prefira bike e faça depois da musculação.</p>`)}
   ${sec("10. Relógio: o que anotar",wearTxt+`<p>Os números do relógio são complemento: um dia ruim isolado não quer dizer nada; a ficha olha a média da semana e compara com as suas 4 semanas anteriores.</p>`)}
   ${sec("11. Análise semanal",`<p>Uma vez por semana (domingo ou segunda), abra o <b>Histórico</b> e toque em <b>Analisar meu treino</b>. O Claude lê seus registros e diz o que está evoluindo, o que travou, o que fazer no próximo treino e se é hora de semana leve. A análise fica guardada e você vê as das semanas anteriores.</p>
-    <p><b>Quer receber automático?</b> Peça ao seu Claude, numa conversa: <i>"Crie uma tarefa agendada todo domingo às 20h que leia os dados da minha Ficha de Treino [cole o link da ficha] e me mande a análise semanal."</i> Isso depende do seu plano do Claude; se não der, use o botão.</p>`)}
+    <p><b>Quer receber automático?</b> Peça ao seu Claude, numa conversa: <i>"Crie uma tarefa agendada todo domingo às 20h que leia os dados da minha Kora [cole o link da ficha] e me mande a análise semanal."</i> Isso depende do seu plano do Claude; se não der, use o botão.</p>`)}
   ${sec("12. Alimentação e sono",`<p><b>Proteína:</b> ${prot}, dividida em 3–4 refeições. É o que mais ajuda o treino a virar músculo. <b>Sono:</b> 7 h ou mais por noite; abaixo de 6,5 h a recuperação e o desempenho caem.</p>`)}
   ${sec("Base científica",`<p>Cada regra da ficha aponta para a sua fonte. Força da evidência: alta, moderada, baixa ou opinião de especialistas.</p><ul class="refs">${DATA.evidencias.map(e=>`<li><b>${esc(e.tema)}:</b> ${esc(e.regra)} <small>(${esc(e.tipo)}; evidência ${esc(e.forca)}. ${esc(e.fontes.join("; "))})</small></li>`).join("")}</ul>
     <p class="note">Versão ${APP_VERSION}. Ficha educacional: não substitui avaliação médica nem acompanhamento de um profissional de educação física.</p>`)}

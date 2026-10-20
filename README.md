@@ -1,4 +1,8 @@
-# Ficha de Treino
+# Kora
+
+*Treino com ciência, do centro para fora.*
+
+Kora (core + cor, "coração" em latim) monta e acompanha seu treino de musculação com base em evidências científicas.
 
 Ficha de musculação que **monta o treino a partir da sua rotina**: objetivo, dias livres, tempo por sessão, local, dores, prioridades e as outras atividades da semana (jiu-jitsu, corrida, futebol...). Também registra cargas e RPE, sugere a carga de cada treino, mostra gráficos de evolução e lê dados de Whoop, Garmin ou Apple Watch.
 

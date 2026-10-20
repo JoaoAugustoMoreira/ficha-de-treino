@@ -1,4 +1,4 @@
-/* Ficha de Treino — motor: gera o plano a partir do perfil. Sem acesso ao DOM: testado em tests/. */
+/* Kora — motor: gera o plano a partir do perfil. Sem acesso ao DOM: testado em tests/. */
 const esc=t=>String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt=n=>{ if(n===""||n==null||!isFinite(n)) return ""; return String(Math.round(Number(n)*100)/100).replace(".",","); };
 const num=v=>{ const t=String(v??"").trim().replace(",","."); return t===""?NaN:Number(t); };

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 — 2026-10-19
+- Novo nome: **Kora** (core + cor). Ícone "K" em oliva, slogan "Treino com ciência, do centro para fora."
+- Tipografia Fraunces (títulos) + Inter (texto e números).
+
 ## 0.5.1 — 2026-10-19
 - Cada divisão explica para quem é, vantagem, desvantagem e quantas vezes cada músculo treina com os SEUS dias.
 - Tela "Seu plano" mostra por que a divisão foi escolhida, a regra do automático e permite comparar e trocar ("Usar esta").
