@@ -1,901 +1,922 @@
 {
-  "modelos": {
-    "FA": {
-      "n": "Corpo inteiro A",
-      "s": [
-        {
-          "p": "squat",
-          "o": 0
-        },
-        {
-          "p": "hpush",
-          "o": 0
-        },
-        {
-          "p": "vpull",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        }
-      ]
+ "modelos": {
+  "FA": {
+   "n": "Corpo inteiro A",
+   "s": [
+    {
+     "p": "squat",
+     "o": 0
     },
-    "FB": {
-      "n": "Corpo inteiro B",
-      "s": [
-        {
-          "p": "hinge",
-          "o": 0
-        },
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 0
-        },
-        {
-          "p": "quad",
-          "o": 0
-        },
-        {
-          "p": "chest",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
+    {
+     "p": "hpush",
+     "o": 0
     },
-    "FC": {
-      "n": "Corpo inteiro C",
-      "s": [
-        {
-          "p": "squat",
-          "o": 1
-        },
-        {
-          "p": "incline",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 1
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        }
-      ]
+    {
+     "p": "vpull",
+     "o": 0
     },
-    "UA": {
-      "n": "Superior A",
-      "s": [
-        {
-          "p": "hpush",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 0
-        },
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "vpull",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "chest",
-          "o": 0
-        }
-      ]
+    {
+     "p": "ham",
+     "o": 0
     },
-    "LA": {
-      "n": "Inferior A",
-      "s": [
-        {
-          "p": "squat",
-          "o": 0
-        },
-        {
-          "p": "hinge",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 0
-        },
-        {
-          "p": "quad",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
+    {
+     "p": "lateral",
+     "o": 0
     },
-    "UB": {
-      "n": "Superior B",
-      "s": [
-        {
-          "p": "incline",
-          "o": 0
-        },
-        {
-          "p": "vpull",
-          "o": 1
-        },
-        {
-          "p": "hpull",
-          "o": 1
-        },
-        {
-          "p": "vpush",
-          "o": 1
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 1
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        },
-        {
-          "p": "lateral",
-          "o": 1
-        },
-        {
-          "p": "chest",
-          "o": 1
-        }
-      ]
+    {
+     "p": "biceps",
+     "o": 0
     },
-    "LB": {
-      "n": "Inferior B",
-      "s": [
-        {
-          "p": "hinge",
-          "o": 1
-        },
-        {
-          "p": "squat",
-          "o": 1
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 1
-        },
-        {
-          "p": "calves",
-          "o": 1
-        },
-        {
-          "p": "core",
-          "o": 1
-        },
-        {
-          "p": "quad",
-          "o": 1
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
+    {
+     "p": "core",
+     "o": 0
     },
-    "FX": {
-      "n": "Corpo inteiro",
-      "s": [
-        {
-          "p": "squat",
-          "o": 2
-        },
-        {
-          "p": "hpush",
-          "o": 1
-        },
-        {
-          "p": "vpull",
-          "o": 2
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        }
-      ]
-    },
-    "PA": {
-      "n": "Empurrar A",
-      "s": [
-        {
-          "p": "hpush",
-          "o": 0
-        },
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "incline",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "chest",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        }
-      ]
-    },
-    "PB": {
-      "n": "Empurrar B",
-      "s": [
-        {
-          "p": "incline",
-          "o": 1
-        },
-        {
-          "p": "vpush",
-          "o": 1
-        },
-        {
-          "p": "chest",
-          "o": 1
-        },
-        {
-          "p": "lateral",
-          "o": 1
-        },
-        {
-          "p": "triceps",
-          "o": 1
-        },
-        {
-          "p": "hpush",
-          "o": 2
-        }
-      ]
-    },
-    "PuA": {
-      "n": "Puxar A",
-      "s": [
-        {
-          "p": "vpull",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 2
-        },
-        {
-          "p": "core",
-          "o": 0
-        }
-      ]
-    },
-    "PuB": {
-      "n": "Puxar B",
-      "s": [
-        {
-          "p": "hpull",
-          "o": 1
-        },
-        {
-          "p": "vpull",
-          "o": 1
-        },
-        {
-          "p": "rear",
-          "o": 1
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        },
-        {
-          "p": "vpull",
-          "o": 2
-        }
-      ]
-    },
-    "LgA": {
-      "n": "Pernas A",
-      "s": [
-        {
-          "p": "squat",
-          "o": 0
-        },
-        {
-          "p": "hinge",
-          "o": 0
-        },
-        {
-          "p": "quad",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
-    },
-    "LgB": {
-      "n": "Pernas B",
-      "s": [
-        {
-          "p": "hinge",
-          "o": 1
-        },
-        {
-          "p": "squat",
-          "o": 1
-        },
-        {
-          "p": "glute",
-          "o": 1
-        },
-        {
-          "p": "quad",
-          "o": 1
-        },
-        {
-          "p": "ham",
-          "o": 1
-        },
-        {
-          "p": "calves",
-          "o": 1
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
-    },
-    "PT": {
-      "n": "Peito e tríceps",
-      "s": [
-        {
-          "p": "hpush",
-          "o": 0
-        },
-        {
-          "p": "incline",
-          "o": 0
-        },
-        {
-          "p": "chest",
-          "o": 0
-        },
-        {
-          "p": "hpush",
-          "o": 1
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 1
-        },
-        {
-          "p": "core",
-          "o": 0
-        }
-      ]
-    },
-    "CB": {
-      "n": "Costas e bíceps",
-      "s": [
-        {
-          "p": "vpull",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 1
-        },
-        {
-          "p": "vpull",
-          "o": 1
-        },
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        },
-        {
-          "p": "rear",
-          "o": 0
-        }
-      ]
-    },
-    "PO": {
-      "n": "Pernas e ombros",
-      "s": [
-        {
-          "p": "squat",
-          "o": 0
-        },
-        {
-          "p": "hinge",
-          "o": 0
-        },
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "quad",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
-    },
-    "PE": {
-      "n": "Peito",
-      "s": [
-        {
-          "p": "hpush",
-          "o": 0
-        },
-        {
-          "p": "incline",
-          "o": 0
-        },
-        {
-          "p": "chest",
-          "o": 0
-        },
-        {
-          "p": "hpush",
-          "o": 1
-        },
-        {
-          "p": "chest",
-          "o": 1
-        },
-        {
-          "p": "core",
-          "o": 0
-        }
-      ]
-    },
-    "CO": {
-      "n": "Costas",
-      "s": [
-        {
-          "p": "vpull",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 1
-        },
-        {
-          "p": "vpull",
-          "o": 1
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "hpull",
-          "o": 2
-        }
-      ]
-    },
-    "PN": {
-      "n": "Pernas",
-      "s": [
-        {
-          "p": "squat",
-          "o": 0
-        },
-        {
-          "p": "hinge",
-          "o": 0
-        },
-        {
-          "p": "quad",
-          "o": 0
-        },
-        {
-          "p": "ham",
-          "o": 0
-        },
-        {
-          "p": "glute",
-          "o": 0
-        },
-        {
-          "p": "calves",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "adductor",
-          "o": 0
-        }
-      ]
-    },
-    "OM": {
-      "n": "Ombros",
-      "s": [
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 1
-        },
-        {
-          "p": "vpush",
-          "o": 1
-        },
-        {
-          "p": "calves",
-          "o": 0
-        }
-      ]
-    },
-    "BR": {
-      "n": "Braços e abdômen",
-      "s": [
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        },
-        {
-          "p": "triceps",
-          "o": 1
-        },
-        {
-          "p": "biceps",
-          "o": 2
-        },
-        {
-          "p": "core",
-          "o": 0
-        },
-        {
-          "p": "core",
-          "o": 1
-        }
-      ]
-    },
-    "OMB": {
-      "n": "Ombros e braços",
-      "s": [
-        {
-          "p": "vpush",
-          "o": 0
-        },
-        {
-          "p": "lateral",
-          "o": 0
-        },
-        {
-          "p": "rear",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 0
-        },
-        {
-          "p": "triceps",
-          "o": 0
-        },
-        {
-          "p": "biceps",
-          "o": 1
-        },
-        {
-          "p": "triceps",
-          "o": 1
-        }
-      ]
+    {
+     "p": "calves",
+     "o": 0
     }
+   ]
   },
-  "divisoes": {
-    "full": {
-      "nome": "Corpo inteiro (full body)",
-      "t": [
-        "FA",
-        "FB",
-        "FC"
-      ],
-      "dias": [
-        2,
-        3,
-        4
-      ],
-      "nivel": "Melhor para iniciante",
-      "por": "Cada treino trabalha o corpo todo, então cada músculo treina 2–3× por semana com poucas séries por sessão. É a divisão mais indicada para quem está começando: você repete os movimentos mais vezes e aprende a técnica mais rápido."
+  "FB": {
+   "n": "Corpo inteiro B",
+   "s": [
+    {
+     "p": "hinge",
+     "o": 0
     },
-    "ul": {
-      "nome": "Superior / Inferior",
-      "t": [
-        "UA",
-        "LA",
-        "UB",
-        "LB"
-      ],
-      "dias": [
-        4,
-        2
-      ],
-      "nivel": "Iniciante a avançado",
-      "por": "Alterna treinos de tronco e de pernas. Com 4 dias, cada músculo treina 2× por semana com mais séries por sessão que o corpo inteiro. Equilíbrio muito bom entre frequência e volume."
+    {
+     "p": "vpush",
+     "o": 0
     },
-    "ulf": {
-      "nome": "Superior / Inferior + corpo inteiro",
-      "t": [
-        "UA",
-        "LA",
-        "UB",
-        "LB",
-        "FX"
-      ],
-      "dias": [
-        5
-      ],
-      "nivel": "Intermediário",
-      "por": "4 dias de superior/inferior e um 5º de corpo inteiro, usado para reforçar as prioridades."
+    {
+     "p": "hpull",
+     "o": 0
     },
-    "ppl": {
-      "nome": "Empurrar / Puxar / Pernas",
-      "t": [
-        "PA",
-        "PuA",
-        "LgA",
-        "PB",
-        "PuB",
-        "LgB"
-      ],
-      "dias": [
-        6,
-        3
-      ],
-      "nivel": "Intermediário a avançado",
-      "por": "Empurrar (peito, ombro, tríceps), Puxar (costas, bíceps) e Pernas. Com 6 dias cada músculo treina 2× por semana; com 3 dias, só 1×."
+    {
+     "p": "quad",
+     "o": 0
     },
-    "abc": {
-      "nome": "ABC: Peito+tríceps / Costas+bíceps / Pernas+ombros",
-      "t": [
-        "PT",
-        "CB",
-        "PO"
-      ],
-      "dias": [
-        3,
-        6
-      ],
-      "nivel": "Intermediário",
-      "por": "A divisão clássica de academia. Com 3 dias cada músculo treina 1× por semana com muitas séries numa sessão só; com 6 dias (ABCABC) vira 2×."
+    {
+     "p": "chest",
+     "o": 0
     },
-    "abcd": {
-      "nome": "ABCD: Peito / Costas / Pernas / Ombros+braços",
-      "t": [
-        "PE",
-        "CO",
-        "PN",
-        "OMB"
-      ],
-      "dias": [
-        4
-      ],
-      "nivel": "Intermediário a avançado",
-      "por": "Um grupo grande por dia. Cada músculo treina 1× por semana, com bastante volume por sessão."
+    {
+     "p": "triceps",
+     "o": 0
     },
-    "abcde": {
-      "nome": "ABCDE: Peito / Costas / Pernas / Ombros / Braços",
-      "t": [
-        "PE",
-        "CO",
-        "PN",
-        "OM",
-        "BR"
-      ],
-      "dias": [
-        5
-      ],
-      "nivel": "Avançado",
-      "por": "Um grupo por dia, 1× por semana cada. Exige muitas séries por sessão para render; é a menos indicada para iniciante."
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "adductor",
+     "o": 0
     }
+   ]
   },
-  "exerciciosPorTempo": {
-    "30": 4,
-    "45": 5,
-    "60": 6,
-    "75": 7,
-    "90": 8
+  "FC": {
+   "n": "Corpo inteiro C",
+   "s": [
+    {
+     "p": "squat",
+     "o": 1
+    },
+    {
+     "p": "incline",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 1
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    }
+   ]
+  },
+  "UA": {
+   "n": "Superior A",
+   "s": [
+    {
+     "p": "hpush",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 0
+    },
+    {
+     "p": "vpush",
+     "o": 0
+    },
+    {
+     "p": "vpull",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 0
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "chest",
+     "o": 0
+    }
+   ]
+  },
+  "LA": {
+   "n": "Inferior A",
+   "s": [
+    {
+     "p": "squat",
+     "o": 0
+    },
+    {
+     "p": "hinge",
+     "o": 0
+    },
+    {
+     "p": "ham",
+     "o": 0
+    },
+    {
+     "p": "quad",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "UB": {
+   "n": "Superior B",
+   "s": [
+    {
+     "p": "incline",
+     "o": 0
+    },
+    {
+     "p": "vpull",
+     "o": 1
+    },
+    {
+     "p": "hpull",
+     "o": 1
+    },
+    {
+     "p": "vpush",
+     "o": 1
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 1
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    },
+    {
+     "p": "lateral",
+     "o": 1
+    },
+    {
+     "p": "chest",
+     "o": 1
+    }
+   ]
+  },
+  "LB": {
+   "n": "Inferior B",
+   "s": [
+    {
+     "p": "hinge",
+     "o": 1
+    },
+    {
+     "p": "squat",
+     "o": 1
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "ham",
+     "o": 1
+    },
+    {
+     "p": "calves",
+     "o": 1
+    },
+    {
+     "p": "core",
+     "o": 1
+    },
+    {
+     "p": "quad",
+     "o": 1
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "FX": {
+   "n": "Corpo inteiro",
+   "s": [
+    {
+     "p": "squat",
+     "o": 2
+    },
+    {
+     "p": "hpush",
+     "o": 1
+    },
+    {
+     "p": "vpull",
+     "o": 2
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    }
+   ]
+  },
+  "PA": {
+   "n": "Empurrar A",
+   "s": [
+    {
+     "p": "hpush",
+     "o": 0
+    },
+    {
+     "p": "vpush",
+     "o": 0
+    },
+    {
+     "p": "incline",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 0
+    },
+    {
+     "p": "chest",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    }
+   ]
+  },
+  "PB": {
+   "n": "Empurrar B",
+   "s": [
+    {
+     "p": "incline",
+     "o": 1
+    },
+    {
+     "p": "vpush",
+     "o": 1
+    },
+    {
+     "p": "chest",
+     "o": 1
+    },
+    {
+     "p": "lateral",
+     "o": 1
+    },
+    {
+     "p": "triceps",
+     "o": 1
+    },
+    {
+     "p": "hpush",
+     "o": 2
+    }
+   ]
+  },
+  "PuA": {
+   "n": "Puxar A",
+   "s": [
+    {
+     "p": "vpull",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 0
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 2
+    },
+    {
+     "p": "core",
+     "o": 0
+    }
+   ]
+  },
+  "PuB": {
+   "n": "Puxar B",
+   "s": [
+    {
+     "p": "hpull",
+     "o": 1
+    },
+    {
+     "p": "vpull",
+     "o": 1
+    },
+    {
+     "p": "rear",
+     "o": 1
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    },
+    {
+     "p": "vpull",
+     "o": 2
+    }
+   ]
+  },
+  "LgA": {
+   "n": "Pernas A",
+   "s": [
+    {
+     "p": "squat",
+     "o": 0
+    },
+    {
+     "p": "hinge",
+     "o": 0
+    },
+    {
+     "p": "quad",
+     "o": 0
+    },
+    {
+     "p": "ham",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "LgB": {
+   "n": "Pernas B",
+   "s": [
+    {
+     "p": "hinge",
+     "o": 1
+    },
+    {
+     "p": "squat",
+     "o": 1
+    },
+    {
+     "p": "glute",
+     "o": 1
+    },
+    {
+     "p": "quad",
+     "o": 1
+    },
+    {
+     "p": "ham",
+     "o": 1
+    },
+    {
+     "p": "calves",
+     "o": 1
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "PT": {
+   "n": "Peito e tríceps",
+   "s": [
+    {
+     "p": "hpush",
+     "o": 0
+    },
+    {
+     "p": "incline",
+     "o": 0
+    },
+    {
+     "p": "chest",
+     "o": 0
+    },
+    {
+     "p": "hpush",
+     "o": 1
+    },
+    {
+     "p": "triceps",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 1
+    },
+    {
+     "p": "core",
+     "o": 0
+    }
+   ]
+  },
+  "CB": {
+   "n": "Costas e bíceps",
+   "s": [
+    {
+     "p": "vpull",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 1
+    },
+    {
+     "p": "vpull",
+     "o": 1
+    },
+    {
+     "p": "biceps",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    },
+    {
+     "p": "rear",
+     "o": 0
+    }
+   ]
+  },
+  "PO": {
+   "n": "Pernas e ombros",
+   "s": [
+    {
+     "p": "squat",
+     "o": 0
+    },
+    {
+     "p": "hinge",
+     "o": 0
+    },
+    {
+     "p": "vpush",
+     "o": 0
+    },
+    {
+     "p": "quad",
+     "o": 0
+    },
+    {
+     "p": "ham",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "PE": {
+   "n": "Peito",
+   "s": [
+    {
+     "p": "hpush",
+     "o": 0
+    },
+    {
+     "p": "incline",
+     "o": 0
+    },
+    {
+     "p": "chest",
+     "o": 0
+    },
+    {
+     "p": "hpush",
+     "o": 1
+    },
+    {
+     "p": "chest",
+     "o": 1
+    },
+    {
+     "p": "core",
+     "o": 0
+    }
+   ]
+  },
+  "CO": {
+   "n": "Costas",
+   "s": [
+    {
+     "p": "vpull",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 1
+    },
+    {
+     "p": "vpull",
+     "o": 1
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "hpull",
+     "o": 2
+    }
+   ]
+  },
+  "PN": {
+   "n": "Pernas",
+   "s": [
+    {
+     "p": "squat",
+     "o": 0
+    },
+    {
+     "p": "hinge",
+     "o": 0
+    },
+    {
+     "p": "quad",
+     "o": 0
+    },
+    {
+     "p": "ham",
+     "o": 0
+    },
+    {
+     "p": "glute",
+     "o": 0
+    },
+    {
+     "p": "calves",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "adductor",
+     "o": 0
+    }
+   ]
+  },
+  "OM": {
+   "n": "Ombros",
+   "s": [
+    {
+     "p": "vpush",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 1
+    },
+    {
+     "p": "vpush",
+     "o": 1
+    },
+    {
+     "p": "calves",
+     "o": 0
+    }
+   ]
+  },
+  "BR": {
+   "n": "Braços e abdômen",
+   "s": [
+    {
+     "p": "biceps",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    },
+    {
+     "p": "triceps",
+     "o": 1
+    },
+    {
+     "p": "biceps",
+     "o": 2
+    },
+    {
+     "p": "core",
+     "o": 0
+    },
+    {
+     "p": "core",
+     "o": 1
+    }
+   ]
+  },
+  "OMB": {
+   "n": "Ombros e braços",
+   "s": [
+    {
+     "p": "vpush",
+     "o": 0
+    },
+    {
+     "p": "lateral",
+     "o": 0
+    },
+    {
+     "p": "rear",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 0
+    },
+    {
+     "p": "triceps",
+     "o": 0
+    },
+    {
+     "p": "biceps",
+     "o": 1
+    },
+    {
+     "p": "triceps",
+     "o": 1
+    }
+   ]
   }
+ },
+ "divisoes": {
+  "full": {
+   "nome": "Corpo inteiro (full body)",
+   "t": [
+    "FA",
+    "FB",
+    "FC"
+   ],
+   "dias": [
+    2,
+    3,
+    4
+   ],
+   "nivel": "Melhor para iniciante",
+   "por": "Cada treino trabalha o corpo todo, então cada músculo treina 2–3× por semana com poucas séries por sessão. É a divisão mais indicada para quem está começando: você repete os movimentos mais vezes e aprende a técnica mais rápido.",
+   "quando": "2–3 dias · iniciante ou pouca agenda",
+   "pro": "Cada músculo 2–3× por semana; se faltar um dia, nenhum músculo fica sem treino.",
+   "contra": "Treinos mais longos se você quiser muito volume."
+  },
+  "ul": {
+   "nome": "Superior / Inferior",
+   "t": [
+    "UA",
+    "LA",
+    "UB",
+    "LB"
+   ],
+   "dias": [
+    4,
+    2
+   ],
+   "nivel": "Iniciante a avançado",
+   "por": "Alterna treinos de tronco e de pernas. Com 4 dias, cada músculo treina 2× por semana com mais séries por sessão que o corpo inteiro. Equilíbrio muito bom entre frequência e volume.",
+   "quando": "4 dias · todos os níveis",
+   "pro": "Cada músculo 2× por semana, com mais séries por treino.",
+   "contra": "Precisa de 4 dias fixos na semana."
+  },
+  "ulf": {
+   "nome": "Superior / Inferior + corpo inteiro",
+   "t": [
+    "UA",
+    "LA",
+    "UB",
+    "LB",
+    "FX"
+   ],
+   "dias": [
+    5
+   ],
+   "nivel": "Intermediário",
+   "por": "4 dias de superior/inferior e um 5º de corpo inteiro, usado para reforçar as prioridades.",
+   "quando": "5 dias · intermediário",
+   "pro": "Um 5º dia de corpo inteiro para reforçar suas prioridades.",
+   "contra": "Mais um dia de academia para um ganho extra pequeno."
+  },
+  "ppl": {
+   "nome": "Empurrar / Puxar / Pernas",
+   "t": [
+    "PA",
+    "PuA",
+    "LgA",
+    "PB",
+    "PuB",
+    "LgB"
+   ],
+   "dias": [
+    6,
+    3
+   ],
+   "nivel": "Intermediário a avançado",
+   "por": "Empurrar (peito, ombro, tríceps), Puxar (costas, bíceps) e Pernas. Com 6 dias cada músculo treina 2× por semana; com 3 dias, só 1×.",
+   "quando": "6 dias · intermediário a avançado",
+   "pro": "Treinos focados e curtos; com 6 dias, cada músculo 2× por semana.",
+   "contra": "Com 3 dias, cada músculo treina só 1× por semana."
+  },
+  "abc": {
+   "nome": "ABC: Peito+tríceps / Costas+bíceps / Pernas+ombros",
+   "t": [
+    "PT",
+    "CB",
+    "PO"
+   ],
+   "dias": [
+    3,
+    6
+   ],
+   "nivel": "Intermediário",
+   "por": "A divisão clássica de academia. Com 3 dias cada músculo treina 1× por semana com muitas séries numa sessão só; com 6 dias (ABCABC) vira 2×.",
+   "quando": "3 ou 6 dias · intermediário",
+   "pro": "A divisão clássica, muito volume por grupo na sessão.",
+   "contra": "Com 3 dias, cada músculo treina só 1× por semana."
+  },
+  "abcd": {
+   "nome": "ABCD: Peito / Costas / Pernas / Ombros+braços",
+   "t": [
+    "PE",
+    "CO",
+    "PN",
+    "OMB"
+   ],
+   "dias": [
+    4
+   ],
+   "nivel": "Intermediário a avançado",
+   "por": "Um grupo grande por dia. Cada músculo treina 1× por semana, com bastante volume por sessão.",
+   "quando": "4 dias · intermediário a avançado",
+   "pro": "Um grupo grande por dia, sessões focadas.",
+   "contra": "1× por semana por músculo: exige muitas séries por sessão."
+  },
+  "abcde": {
+   "nome": "ABCDE: Peito / Costas / Pernas / Ombros / Braços",
+   "t": [
+    "PE",
+    "CO",
+    "PN",
+    "OM",
+    "BR"
+   ],
+   "dias": [
+    5
+   ],
+   "nivel": "Avançado",
+   "por": "Um grupo por dia, 1× por semana cada. Exige muitas séries por sessão para render; é a menos indicada para iniciante.",
+   "quando": "5 dias · avançado",
+   "pro": "Máximo foco em cada grupo.",
+   "contra": "1× por semana por músculo; a menos indicada para iniciante."
+  }
+ },
+ "exerciciosPorTempo": {
+  "30": 4,
+  "45": 5,
+  "60": 6,
+  "75": 7,
+  "90": 8
+ }
 }

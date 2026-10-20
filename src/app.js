@@ -109,9 +109,17 @@ function render(){ $("#day").onclick=null; $("#day").onchange=null; $("#saveBar"
 function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
     <article class="card"><ul class="plano">${pl.days.map(d=>`<li><b>${d.dow.length?DOWN[d.dow[0]]:"—"}</b><span>${esc(d.n)}</span><small>${d.ex.length} exercícios · ~${d.min} min</small></li>`).join("")}${c.n?`<li><b>Cardio</b><span>${c.n}× por semana</span><small>${esc((c.mods||[]).join(", "))}</small></li>`:""}</ul></article>
-    <article class="card"><div class="exname">Por que assim</div><ul class="why3">${pl.why.slice(0,3).map(w=>`<li>${esc(w.t)}</li>`).join("")}</ul><p class="note">Tudo baseado em estudos. Detalhes no Perfil.</p></article>
+    <article class="card"><div class="exname">Por que ${esc(sp.nome.split(" (")[0].toLowerCase())}</div><p class="note" style="color:var(--fg)">${esc(sp.por)}</p>
+      <p class="pc"><span class="pro">+</span> ${esc(sp.pro||"")}</p><p class="pc"><span class="con">−</span> ${esc(sp.contra||"")}</p>
+      <p class="note">${state.pf.divisao&&state.pf.divisao!=="auto"?"Você escolheu esta divisão.":esc(AUTO_RULE)}</p>
+      <details class="gd"><summary>Comparar com outras divisões</summary><div class="gb col">
+        <p class="note">${SPLIT_NOTE} Frequência calculada para os seus ${pl.lift} dias.</p>
+        ${splitInfo(state.pf).map(o=>splitCard(o,o.k===pl.sk,o.k===pl.sk?'<p class="note"><b>Em uso</b></p>':`<button class="ghost usesplit" data-k="${o.k}" type="button">Usar esta</button>`)).join("")}
+        ${state.pf.divisao&&state.pf.divisao!=="auto"?'<button class="ghost usesplit" data-k="auto" type="button">Voltar ao automático</button>':""}</div></details></article>
+    <article class="card"><div class="exname">Por que assim</div><ul class="why3">${pl.why.filter(w=>w.ev!=="frequencia"&&!/divis|corpo inteiro|full body|superior\/inferior/i.test(w.t)).slice(0,3).map(w=>`<li>${esc(w.t)}</li>`).join("")}</ul><p class="note">Tudo baseado em estudos. Detalhes no Perfil.</p></article>
     <article class="card"><div class="exname">Como usar</div><ol class="why3"><li>Abra o treino do dia e faça cada série.</li><li>Anote kg, repetições e o <b>RPE</b> (esforço de 1 a 10) e toque ✓. O descanso começa sozinho.</li><li>Salve no fim. Na próxima vez a ficha diz se é hora de subir a carga.</li></ol></article>
     <button class="btn" id="goTreino" type="button">Ver meu primeiro treino</button></div>`;
+  $$(".usesplit").forEach(b=>b.onclick=async()=>{ state.pf=Object.assign({},state.pf,{divisao:b.dataset.k}); state.plan=buildPlan(state.pf); try{ await store.put("perfil",state.pf); setStatus("Divisão alterada."); }catch(e){ setStatus("Não consegui salvar."); } renderPlano(); window.scrollTo({top:0}); });
   $("#goTreino").onclick=()=>{ state.current=defaultTab(); render(); window.scrollTo({top:0}); }; }
 
 /* ---------- questionário ---------- */
@@ -135,8 +143,9 @@ function renderOnb(){
   <article class="card q"><h3>4. Disponibilidade</h3><p class="ql">Dias em que pode fazer musculação</p>${chipset("dias",[1,2,3,4,5,6,0].map(d=>[d,DOWN[d]]),p.dias||[1,3,5],true)}
     <label class="ql">Horário<input id="q-horario" value="${esc(p.horario||"")}" placeholder="ex.: 7h ou depois das 18h"></label>
     <p class="ql">Tempo por treino</p>${chipset("tempo",[[30,"30 min"],[45,"45 min"],[60,"1 h"],[75,"1h15"],[90,"1h30"]],p.tempo||60)}</article>
-  <article class="card q"><h3>4b. Divisão do treino</h3><p class="exnote">Na dúvida, deixe <b>Automático</b>.</p>
-    ${chipset("divisao",[["auto","Automático (recomendado)"]].concat(Object.entries(SPLITS).map(([k,v])=>[k,v.nome])),p.divisao||"auto")}
+  <article class="card q"><h3>4b. Divisão do treino</h3><p class="exnote">${AUTO_RULE}</p>
+    <div class="qchips splitlist" data-name="divisao" data-multi="0"><button type="button" class="qc" data-v="auto" aria-pressed="${(p.divisao||"auto")==="auto"}"><b>Automático (recomendado)</b></button>${Object.entries(SPLITS).map(([k,v])=>`<button type="button" class="qc" data-v="${k}" aria-pressed="${p.divisao===k}"><b>${esc(v.nome)}</b><small>${esc(v.quando||"")}</small><small class="pc"><span class="pro">+</span> ${esc(v.pro||"")}</small><small class="pc"><span class="con">−</span> ${esc(v.contra||"")}</small></button>`).join("")}</div>
+    <p class="note">${SPLIT_NOTE}</p>
     <div class="rd" id="splitHint"></div></article>
   <article class="card q"><h3>5. Onde treina</h3>${chipset("local",[["completa","Academia completa"],["basica","Academia básica / de prédio"],["casa","Casa com halteres"]],p.local||"completa")}</article>
   <article class="card q"><h3>6. Outras atividades da semana</h3><p class="exnote">Pratica esporte ou luta? Informe os dias e a ficha evita treinar perna na véspera.</p>
@@ -172,6 +181,14 @@ function splitHint(){ const box=$("#splitHint"); if(!box) return;
   const fq=big.map(m=>`${m} ${fr[m]}×`).join(" · "), low=big.filter(m=>fr[m]<2);
   box.className="rd "+(low.length?"bad":"good");
   box.innerHTML=`<b>${esc(sp.nome)} · ${pl.lift} dias${chipVal("divisao")==="auto"?" (escolha automática)":""}</b><br>${esc(pl.days.map(d=>(d.dow.length?DOWN[d.dow[0]]+" ":"")+d.n+(d.sport&&d.sport.length?" + "+d.sport.map(x=>x.split(" (")[0]).join(", "):"")).join(" → "))}<br><small>Frequência por semana: ${fq}. ${low.length?`${low.join(", ")} treina${low.length>1?"m":""} só 1× por semana: funciona, mas 2× costuma render mais, principalmente para iniciante.`:"Todos os grupos grandes 2× ou mais por semana: ótimo."} Nível: ${esc(sp.nivel)}.</small>`; }
+/* ---------- comparação de divisões ---------- */
+function splitInfo(pf){ const big=["peito","costas","pernas","posterior","ombros"];
+  return Object.entries(SPLITS).map(([k,v])=>{ let f=null, sk=k; try{ const pl=buildPlan(Object.assign({},pf,{divisao:k})); sk=pl.sk; f=Math.round(10*big.reduce((t,m)=>t+pl.vol.f[m],0)/big.length)/10; }catch(e){}
+    return {k,v,f,auto:false}; }); }
+function splitCard(o,on,btn){ const v=o.v; return `<div class="splitc${on?" on":""}"><div class="splith"><b>${esc(v.nome)}</b>${o.f!=null?`<span class="freq">${fmt(o.f)}× / semana por músculo</span>`:""}</div>
+  <p class="quando">${esc(v.quando||v.nivel)}</p><p class="pc"><span class="pro">+</span> ${esc(v.pro||"")}</p><p class="pc"><span class="con">−</span> ${esc(v.contra||"")}</p>${btn||""}</div>`; }
+const SPLIT_NOTE="Com o mesmo número de séries na semana, as divisões dão resultados parecidos nos estudos. A melhor é a que cabe na sua agenda e você consegue cumprir. Treinar cada músculo 2× por semana costuma facilitar.";
+const AUTO_RULE="Automático: 2–3 dias → corpo inteiro · 4 dias → superior/inferior · 5–6 dias → superior/inferior (iniciante) ou divisões com mais dias (6+ meses de treino).";
 /* assistente: perguntas agrupadas em 7 telas curtas */
 const WIZ=["Objetivo","Agenda","Local e metas","Sobre você"];
 const WIZORD=[2,1,3,4,6,5,7,8,0,9,10,11], WIZSTEP=[0,0,1,1,1,2,2,2,3,3,3,3];
@@ -485,6 +502,7 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
   const ex=pl.days.map((d,i)=>`<li><b>${String.fromCharCode(65+i)} · ${esc(d.n)}</b>${d.dow.length?" ("+DOWN[d.dow[0]]+")":""}${d.sport&&d.sport.length?" · com "+esc(d.sport.join(", ")):""}: ${d.ex.map(e=>esc(chosen(e))).join(", ")}</li>`).join("");
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>${esc(p.nome||"Seu perfil")}</h2></div>
     ${p.saudeQ==="sim"?'<div class="banner">Você marcou um sinal de alerta de saúde: passe por um médico antes de começar e leve este plano para ele ver.</div>':""}
+    <button class="ghost" id="toPlano" type="button">Resumo do plano e divisões</button>
     <article class="card"><div class="exname">Seu plano</div>
       <p class="exnote"><b>Objetivo:</b> ${esc(pl.goal)}${pl.goal2?" + "+esc(pl.goal2):""} · <b>Divisão:</b> ${esc(pl.split)} (${pl.lift} dias) · <b>Tempo:</b> ${p.tempo} min · <b>Cardio:</b> ${pl.cardio.n}×/sem</p>
 <ul class="plist">${ex}</ul>${pl.notes.map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}</article>
@@ -502,6 +520,7 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
     <details><summary>Backup dos dados</summary><p class="note">Copie o texto abaixo e guarde (ex.: nas Notas). Para restaurar, cole e toque em Importar.</p>
       <textarea id="bk" rows="5" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px">${esc(JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs}))}</textarea>
       <div class="askrow" style="margin-top:8px"><button class="ghost" id="bkImp" type="button">Importar</button></div></details></div>`;
+  $("#toPlano").onclick=()=>{ state.current="plano"; render(); window.scrollTo({top:0}); };
   $("#resetAsk").onclick=()=>{ $("#resetConfirm").hidden=false; $("#resetAsk").hidden=true; };
   $("#resetNo").onclick=()=>{ $("#resetConfirm").hidden=true; $("#resetAsk").hidden=false; };
   $("#resetYes").onclick=resetAll;

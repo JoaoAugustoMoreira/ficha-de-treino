@@ -513,3 +513,19 @@ h1{font-size:23px!important}
 .card.ex .exname{font-size:20px}
 .tab b,.dchip b,.btn,.ckbtn,.ghost,.rx,.sets input,.rest-t,#progTxt{font-family:var(--body)!important;font-variant-numeric:tabular-nums}
 .tab b{font-weight:600;letter-spacing:0}
+
+/* divisões */
+.splitlist{flex-direction:column;align-items:stretch}
+.splitlist .qc{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;border-radius:16px;padding:12px 14px;white-space:normal}
+.splitlist .qc small{font-size:12.5px;font-weight:400;opacity:.85;line-height:1.35}
+.splitlist .qc[aria-pressed=true]::before{display:none}
+.pc{margin:2px 0 0;font-size:13.5px}
+.pro,.con{display:inline-block;width:14px;font-weight:700}
+.pro{color:var(--ok)}.con{color:var(--warn)}
+.qc[aria-pressed=true] .pro,.qc[aria-pressed=true] .con{color:inherit}
+.splitc{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.splitc.on{border-color:var(--accent)}
+.splith{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.freq{font-size:12px;color:var(--muted);white-space:nowrap}
+.quando{margin:0;font-size:12.5px;color:var(--muted)}
+.splitc .ghost{margin-top:8px;align-self:flex-start;padding:8px 14px}

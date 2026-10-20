@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.1 — 2026-10-19
+- Cada divisão explica para quem é, vantagem, desvantagem e quantas vezes cada músculo treina com os SEUS dias.
+- Tela "Seu plano" mostra por que a divisão foi escolhida, a regra do automático e permite comparar e trocar ("Usar esta").
+- Teste garante que o automático varia com dias e experiência (3 dias → corpo inteiro; 4 → superior/inferior; 6 com experiência → PPL).
+
 ## 0.5.0 — 2026-10-19
 - Questionário em 4 passos (Objetivo, Agenda, Local e metas, Sobre você); ajustes finos ficam em "Mais ajustes".
 - Nova tela "Seu plano está pronto": dias, tempo, cardio, por que assim e como usar.

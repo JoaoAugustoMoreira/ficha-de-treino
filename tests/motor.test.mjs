@@ -191,3 +191,11 @@ test("perfis diferentes geram planos diferentes", () => {
   const perfis = [perfil(), perfil({ exp: "mais1" }), perfil({ local: "casa" }), perfil({ objetivo: "forca" }), perfil({ habilidades: ["costas"] }), perfil({ tempo: 30 })];
   assert.equal(new Set(perfis.map(assinatura)).size, perfis.length);
 });
+
+test("divisão automática varia com dias e experiência (não é sempre corpo inteiro)", () => {
+  const D={3:[1,3,5],4:[1,2,4,5],6:[1,2,3,4,5,6]};
+  assert.equal(M.buildPlan(perfil({dias:D[3]})).sk, "full");
+  assert.equal(M.buildPlan(perfil({dias:D[4]})).sk, "ul");
+  assert.equal(M.buildPlan(perfil({exp:"mais1",dias:D[6]})).sk, "ppl");
+  assert.equal(M.buildPlan(perfil({exp:"mais1",dias:D[3],divisao:"abc"})).sk, "abc");
+});
