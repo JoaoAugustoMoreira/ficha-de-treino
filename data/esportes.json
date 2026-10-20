@@ -75,5 +75,62 @@
       "up": 0.5,
       "aer": true
     }
+  },
+  "enfase": {
+    "Jiu-jitsu / luta": [
+      "costas",
+      "posterior",
+      "abdômen"
+    ],
+    "Corrida": [
+      "panturrilha",
+      "posterior",
+      "glúteos"
+    ],
+    "Futebol": [
+      "posterior",
+      "adutores",
+      "glúteos"
+    ],
+    "Ciclismo / spinning": [
+      "glúteos",
+      "posterior"
+    ],
+    "Natação": [
+      "costas",
+      "ombros"
+    ],
+    "Crossfit / funcional": [
+      "costas",
+      "abdômen"
+    ],
+    "Tênis / beach tennis / padel": [
+      "ombros",
+      "abdômen",
+      "pernas"
+    ],
+    "Vôlei / basquete / handebol": [
+      "pernas",
+      "panturrilha",
+      "glúteos"
+    ],
+    "Caminhada / trilha": [
+      "panturrilha",
+      "glúteos"
+    ],
+    "Remo / canoagem": [
+      "costas",
+      "posterior"
+    ],
+    "Escalada": [
+      "costas",
+      "braços"
+    ],
+    "Dança": [
+      "pernas",
+      "abdômen"
+    ],
+    "Yoga / pilates / mobilidade": [],
+    "Outro": []
   }
 }

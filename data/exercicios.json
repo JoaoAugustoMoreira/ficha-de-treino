@@ -4761,5 +4761,102 @@
     "idExterno": "Zottman_Curl",
     "nivel": "intermediario",
     "equipamento": "halteres"
+  },
+  {
+    "id": "power/salto-vertical",
+    "nome": "Salto vertical",
+    "padrao": "power",
+    "locais": {
+      "completa": 0,
+      "basica": 0,
+      "casa": 0
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "salto parado"
+    ]
+  },
+  {
+    "id": "power/salto-na-caixa",
+    "nome": "Salto na caixa",
+    "padrao": "power",
+    "locais": {
+      "completa": 1,
+      "basica": 1
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "box jump"
+    ]
+  },
+  {
+    "id": "power/arremesso-de-medicine-ball-no-chao",
+    "nome": "Arremesso de medicine ball no chão",
+    "padrao": "power",
+    "locais": {
+      "completa": 2
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "med ball slam"
+    ]
+  },
+  {
+    "id": "power/kettlebell-swing",
+    "nome": "Kettlebell swing",
+    "padrao": "power",
+    "locais": {
+      "completa": 3,
+      "casa": 3
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "swing"
+    ]
+  },
+  {
+    "id": "power/salto-horizontal",
+    "nome": "Salto horizontal",
+    "padrao": "power",
+    "locais": {
+      "completa": 4,
+      "basica": 2,
+      "casa": 1
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "salto em distância"
+    ]
+  },
+  {
+    "id": "power/swing-com-halter",
+    "nome": "Swing com halter",
+    "padrao": "power",
+    "locais": {
+      "basica": 3,
+      "casa": 2
+    },
+    "seguroPara": {},
+    "fonte": "curado"
+  },
+  {
+    "id": "power/agachamento-com-salto",
+    "nome": "Agachamento com salto",
+    "padrao": "power",
+    "locais": {
+      "completa": 5,
+      "basica": 4,
+      "casa": 4
+    },
+    "seguroPara": {},
+    "fonte": "curado",
+    "sinonimos": [
+      "agachamento explosivo"
+    ]
   }
 ]

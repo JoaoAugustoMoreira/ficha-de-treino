@@ -6,7 +6,7 @@ export function carregarMotor() {
   const DATA = {
     padroes: JSON.parse(r("data/padroes.json")), exercicios: JSON.parse(r("data/exercicios.json")),
     divisoes: JSON.parse(r("data/divisoes.json")), objetivos: JSON.parse(r("data/objetivos.json")),
-    esportes: JSON.parse(r("data/esportes.json")), evidencias: JSON.parse(r("data/evidencias.json")),
+    esportes: JSON.parse(r("data/esportes.json")), evidencias: JSON.parse(r("data/evidencias.json")), habilidades: JSON.parse(r("data/habilidades.json")),
   };
   const module = { exports: {} };
   vm.runInNewContext(r("src/engine.js"), { DATA, module, console, Date, Math, JSON, Object, Array, Set, Number, String });

@@ -1,0 +1,76 @@
+{
+  "barra": {
+    "nome": "Fazer barra fixa",
+    "prioridades": [
+      "costas"
+    ],
+    "bloco": {
+      "padrao": "vpull",
+      "preferir": {
+        "0": [
+          "Barra fixa no graviton",
+          "Barra fixa negativa",
+          "Barra fixa com elástico"
+        ],
+        "1": [
+          "Barra fixa negativa",
+          "Barra fixa (assistida se preciso)"
+        ],
+        "2": [
+          "Barra fixa (assistida se preciso)"
+        ]
+      },
+      "vezes": 2
+    },
+    "porque": "Barra fixa no início dos treinos de costas, com a progressão do seu nível: assistida ou negativa, depois completa.",
+    "ev": "progressao"
+  },
+  "potencia": {
+    "nome": "Saltar mais / ser explosivo",
+    "bloco": {
+      "padrao": "power",
+      "vezes": 2
+    },
+    "porque": "Saltos e movimentos rápidos no início de 2 treinos, com poucas repetições e longe da falha.",
+    "ev": "potencia"
+  },
+  "corrida": {
+    "nome": "Correr 5 km",
+    "cardioMin": 3,
+    "corrida": true,
+    "prioridades": [
+      "panturrilha",
+      "posterior"
+    ],
+    "porque": "Corrida 3× por semana alternando caminhada e corrida, com panturrilha e posterior reforçados.",
+    "ev": "atividade"
+  },
+  "costas": {
+    "nome": "Proteger as costas / postura",
+    "prioridades": [
+      "abdômen",
+      "posterior",
+      "costas"
+    ],
+    "core": [
+      "Dead bug",
+      "Pallof press no cabo",
+      "Pallof press com elástico",
+      "Bird dog"
+    ],
+    "porque": "Core de estabilidade (sem flexionar a coluna), posterior e costas com mais séries.",
+    "ev": "volume"
+  },
+  "mobilidade": {
+    "nome": "Ganhar mobilidade",
+    "mobilidade": true,
+    "porque": "5 min de mobilidade no começo de cada treino, focada nas articulações do dia.",
+    "ev": "aquecimento"
+  },
+  "esporte": {
+    "nome": "Render mais no meu esporte",
+    "doEsporte": true,
+    "porque": "Mais séries nos músculos que o seu esporte mais exige.",
+    "ev": "concorrente"
+  }
+}

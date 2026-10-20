@@ -30,9 +30,9 @@ test("número de dias de musculação respeita o perfil (iniciante no automátic
   }
 });
 
-test("tempo por treino limita a quantidade de exercícios", () => {
-  for (const [t, max] of Object.entries({ 30: 4, 45: 5, 60: 6, 75: 7, 90: 8 }))
-    for (const d of M.buildPlan(perfil({ tempo: Number(t), exp: "mais1", dias: [1, 2, 3, 4] })).days) assert.ok(d.ex.length <= max);
+test("duração estimada de cada treino cabe no tempo escolhido", () => {
+  for (const tempo of [30, 45, 60, 75, 90]) for (const exp of ["nunca", "mais1"])
+    for (const d of M.buildPlan(perfil({ tempo, exp, dias: [1, 2, 3, 4] })).days) assert.ok(d.min <= tempo + 1, `${tempo} min: ${d.n} = ${d.min}`);
 });
 
 test("iniciante nunca recebe RPE acima de 8", () => {
@@ -132,4 +132,45 @@ test("grupo adutores: existe, tem opções em todo local e aparece como priorida
 test("'evitar' separa por vírgula, barra, 'e' e 'ou'", () => {
   const o = M.pickOpts(M.LIB.squat, { local: "completa", evitar: "Agachamento livre e leg press" });
   assert.ok(!o.includes("Agachamento livre") && !o.some(x => /leg press/i.test(x)));
+});
+
+test("cada exercício e o plano explicam o porquê", () => {
+  const pl = M.buildPlan(perfil({ habilidades: ["barra"], prioridades: ["peito"] }));
+  assert.ok(pl.why.length >= 3);
+  for (const d of pl.days) for (const e of d.ex) assert.ok(e.why.length, e.opts[0]);
+  for (const w of pl.why) if (w.ev) assert.ok(M.DATA.evidencias.some(x => x.id === w.ev), "evidência inexistente: " + w.ev);
+});
+
+test("iniciante recebe exercícios principais mais estáveis que o avançado", () => {
+  const media = exp => { const c = M.buildPlan(perfil({ exp, dias: [1, 2, 3, 4] })).days.flatMap(d => d.ex).filter(e => e.k === "C").map(e => M.complexity(e.opts[0])); return c.reduce((a, b) => a + b, 0) / c.length; };
+  assert.ok(media("nunca") < media("mais1"), `${media("nunca")} < ${media("mais1")}`);
+});
+
+test("sono curto e estresse alto reduzem o volume da semana", () => {
+  const tot = pf => Object.values(M.buildPlan(pf).vol.v).reduce((a, b) => a + b, 0);
+  assert.ok(tot(perfil({ exp: "mais1", dias: [1, 2, 3, 4], sono: 5, estresse: 5 })) < tot(perfil({ exp: "mais1", dias: [1, 2, 3, 4], sono: 8, estresse: 2 })));
+});
+
+test("habilidades mudam o plano: barra fixa, potência, mobilidade e corrida", () => {
+  const ex = pl => pl.days.flatMap(d => d.ex);
+  const barra = M.buildPlan(perfil({ habilidades: ["barra"] }));
+  assert.ok(ex(barra).filter(e => e.skill === "barra").length >= 1);
+  assert.ok(barra.days.some(d => d.ex[0].skill === "barra"), "barra no início do treino");
+  const pot = M.buildPlan(perfil({ exp: "6a12", dias: [1, 2, 4, 5], habilidades: ["potencia"] }));
+  assert.equal(ex(pot).filter(e => e.p === "power").length, 2);
+  assert.ok(M.buildPlan(perfil({ habilidades: ["mobilidade"] })).days.every(d => d.mob && d.mob.length));
+  const run = M.buildPlan(perfil({ habilidades: ["corrida"] }));
+  assert.ok(run.cardio.corrida && run.cardio.n >= 3);
+});
+
+test("mesmo movimento em treinos diferentes da semana usa variações diferentes", () => {
+  const pl = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 4, 5] }));
+  const sq = pl.days.flatMap(d => d.ex).filter(e => e.p === "squat").map(e => e.opts[0]);
+  assert.ok(sq.length >= 2 && new Set(sq).size === sq.length, sq.join(" / "));
+});
+
+test("perfis diferentes geram planos diferentes", () => {
+  const assinatura = pf => JSON.stringify(M.buildPlan(pf).days.map(d => d.ex.map(e => e.opts[0] + e.sets)));
+  const perfis = [perfil(), perfil({ exp: "mais1" }), perfil({ local: "casa" }), perfil({ objetivo: "forca" }), perfil({ habilidades: ["costas"] }), perfil({ tempo: 30 })];
+  assert.equal(new Set(perfis.map(assinatura)).size, perfis.length);
 });

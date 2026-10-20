@@ -10,6 +10,7 @@ const DATA = {
   objetivos: JSON.parse(r("data/objetivos.json")),
   esportes: JSON.parse(r("data/esportes.json")),
   evidencias: JSON.parse(r("data/evidencias.json")),
+  habilidades: JSON.parse(r("data/habilidades.json")),
 };
 const version = JSON.parse(r("package.json")).version;
 const js = `const APP_VERSION=${JSON.stringify(version)};\nconst DATA=${JSON.stringify(DATA)};\n${r("src/engine.js")}\n${r("src/app.js")}`;

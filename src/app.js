@@ -32,6 +32,7 @@ function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") retur
 function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.opts[0]; }
 function suggest(ex){
   const name=chosen(ex), inc=incOf(ex,name); const h=historyFor(name).filter(x=>!x.leve);
+  if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ POTÊNCIA</span> <strong>Velocidade, não cansaço.</strong> Use o peso do corpo ou carga leve; anote 0 kg se for sem peso.`}; }
   if(!h.length) return {kg:"",reps:ex.hi,cls:"",html:`<span class="tag t-new">★ PRIMEIRA VEZ</span> <strong>Descubra sua carga.</strong> Escolha uma carga em que você faria ${ex.hi} reps sobrando 3 (RPE 7). Anote o que fizer: a ficha calcula a próxima.`};
   if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= MANTER</span> <strong>Fase de técnica: mantenha ${fmt(L)} kg.</strong> Foque em fazer todas as reps bem feitas.`}; }
   const last=h[0].sets, L=Math.max(...last.map(s=>s.kg||0)); const work=last.filter(s=>(s.kg||0)===L);
@@ -87,17 +88,17 @@ const isTrainDay=()=>state.current&&(state.current.startsWith("d")||state.curren
 function tabs(){
   const t=new Date().getDay(); const sh=n=>n.replace("Corpo inteiro","Corpo").replace("Superior","Sup").replace("Inferior","Inf").replace("Empurrar","Emp").replace("Puxar","Pux").replace("Pernas","Pern");
   const list=state.plan?state.plan.days.map((d,i)=>[d.key,d.dow.length?DOWN[d.dow[0]]:"T"+(i+1),sh(d.n),d.dow.includes(t)]):[];
-  list.push(["cardio","Cardio",state.plan&&state.plan.cardio.n?state.plan.cardio.n+"×/sem":"opcional",false],["hist","Hist.","e gráficos",false],["guia","Guia","como usar",false],["perfil","Perfil","objetivo",false]);
+  list.push(["cardio","Cardio",state.plan&&state.plan.cardio.n?state.plan.cardio.n+"×/sem":"opcional",false],["hist","Hist.","e gráficos",false],["guia","Guia","como usar",false],["faq","Dúvidas","perguntas",false],["perfil","Perfil","objetivo",false]);
   $("#tabs").classList.toggle("scroll",list.length>7); $("#tabs").style.gridTemplateColumns=list.length>7?"":`repeat(${list.length},1fr)`;
   $("#tabs").innerHTML=list.map(([k,a,b,today])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${k===state.current}" data-k="${k}" type="button"><b>${a}</b><small>${esc(b)}</small>${today?'<i class="dot" aria-label="hoje"></i>':''}</button>`).join("");
   $$("#tabs .tab").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); });
 }
-function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionário"],["guia","Guia","como funciona"]];
-  $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(2,1fr)";
-  $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${(state.current==="guia"?"guia":"onb")===k}" data-k="${k}" type="button"><b>${a}</b><small>${b}</small></button>`).join("");
+function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionário"],["guia","Guia","como funciona"],["faq","Dúvidas","perguntas"]];
+  $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(3,1fr)";
+  $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${(["guia","faq"].includes(state.current)?state.current:"onb")===k}" data-k="${k}" type="button"><b>${a}</b><small>${b}</small></button>`).join("");
   $$("#tabs .tab").forEach(b=>b.onclick=()=>{ if($("#q-go")) state.onbDraft=readForm(); state.current=b.dataset.k; render(); window.scrollTo({top:0}); }); }
-function render(){ $("#day").onclick=null; $("#day").onchange=null; $("#saveBar").hidden=!(state.plan&&isTrainDay()&&!state.editing); if(!state.pf||state.editing){ onbTabs(); if(state.current==="guia") renderGuia(); else renderOnb(); return; } tabs();
-  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="guia") renderGuia(); else if(state.current==="cardio") renderCardio(); else renderDay(); }
+function render(){ $("#day").onclick=null; $("#day").onchange=null; $("#saveBar").hidden=!(state.plan&&isTrainDay()&&!state.editing); if(!state.pf||state.editing){ onbTabs(); if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else renderOnb(); return; } tabs();
+  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay(); }
 
 /* ---------- questionário ---------- */
 const Q_OBJ=[["hipertrofia","Hipertrofia (ganhar músculo)"],["forca","Força"],["saude","Saúde e condicionamento cardiovascular"],["emagrecimento","Emagrecimento"],["misto","Um pouco de tudo"]];
@@ -134,13 +135,14 @@ function renderOnb(){
     <button type="button" class="ghost" id="espAdd">＋ Adicionar atividade</button></article>
   <article class="card q"><h3>7. Dores e limitações</h3>${chipset("dores",[["joelho","Joelho"],["ombro","Ombro"],["lombar","Lombar"]],p.dores||[],true)}
     <label class="ql">Outra ou detalhes<input id="q-doresTxt" value="${esc(p.doresTxt||"")}"></label></article>
-  <article class="card q"><h3>8. Prioridades</h3><p class="ql">Músculos que quer priorizar (ganham 1 série a mais)</p>${chipset("prioridades",MUSCLES.map(m=>[m,m[0].toUpperCase()+m.slice(1)]),p.prioridades||[],true)}
+  <article class="card q"><h3>8. O que você quer conseguir?</h3><p class="exnote">Opcional. Cada escolha muda o plano: entra um bloco específico, a ordem dos exercícios ou o cardio.</p>${chipset("habilidades",Object.entries(DATA.habilidades).map(([k,v])=>[k,v.nome]),p.habilidades||[],true)}</article>
+  <article class="card q"><h3>9. Prioridades</h3><p class="ql">Músculos que quer priorizar (ganham mais séries)</p>${chipset("prioridades",MUSCLES.map(m=>[m,m[0].toUpperCase()+m.slice(1)]),p.prioridades||[],true)}
     <label class="ql">Exercícios que não gosta ou não pode fazer (separe por vírgula)<input id="q-evitar" value="${esc(p.evitar||"")}" placeholder="ex.: agachamento livre, barra fixa"></label></article>
-  <article class="card q"><h3>9. Rotina</h3><div class="ckgrid">
+  <article class="card q"><h3>10. Rotina</h3><div class="ckgrid">
     <label>Trabalho (horário)<input id="q-trabalho" value="${esc(p.trabalho||"")}" placeholder="ex.: 9h–18h"></label>
     <label>Sono médio (h)<input id="q-sono" inputmode="decimal" value="${esc(fmt(p.sono)||"")}" placeholder="7"></label></div>
     <p class="ql">Nível de estresse</p>${chipset("estresse",[[1,"1 baixo"],[2,"2"],[3,"3"],[4,"4"],[5,"5 alto"]],p.estresse||3)}</article>
-  <article class="card q"><h3>10. Cardio e relógio</h3><p class="ql">Quer cardio no plano?</p>${chipset("cardio",[["sim","Sim"],["nao","Não"]],p.cardio||"sim")}
+  <article class="card q"><h3>11. Cardio e relógio</h3><p class="ql">Quer cardio no plano?</p>${chipset("cardio",[["sim","Sim"],["nao","Não"]],p.cardio||"sim")}
     <p class="ql">Modalidades que prefere</p>${chipset("cardioMods",[["Bike","Bike"],["Corrida","Corrida"],["Esteira (caminhada inclinada)","Esteira"],["Escada","Escada"],["Elíptico","Elíptico"],["Natação","Natação"]],p.cardioMods||["Bike"],true)}
     <p class="ql">Relógio ou pulseira</p>${chipset("wear",[["whoop","Whoop"],["garmin","Garmin"],["apple","Apple Watch"],["outro","Outro relógio"],["nenhum","Nenhum"]],p.wear||"nenhum")}</article>
   <div class="askrow">${state.pf?'<button class="ghost" id="q-cancel" type="button">Cancelar</button>':''}<button class="ckbtn" id="q-go" type="button">${state.pf?"Atualizar meu plano":"Gerar meu plano"}</button></div></div>`;
@@ -153,7 +155,7 @@ function renderOnb(){
   $("#q-go").onclick=saveProfile; if($("#goGuia")) $("#goGuia").onclick=()=>{ state.onbDraft=readForm(); state.current="guia"; render(); window.scrollTo({top:0}); };
 }
 function splitHint(){ const box=$("#splitHint"); if(!box) return;
-  const tmp={esportes:readSports(),exp:chipVal("exp"),dias:chipVal("dias",true).map(Number),divisao:chipVal("divisao"),objetivo:chipVal("objetivo")||"misto",tempo:Number(chipVal("tempo"))||60,local:chipVal("local")||"completa",prioridades:chipVal("prioridades",true),dores:chipVal("dores",true),inicio:todayISO()};
+  const tmp={habilidades:chipVal("habilidades",true),sono:num(($("#q-sono")||{}).value),estresse:Number(chipVal("estresse"))||3,esportes:readSports(),exp:chipVal("exp"),dias:chipVal("dias",true).map(Number),divisao:chipVal("divisao"),objetivo:chipVal("objetivo")||"misto",tempo:Number(chipVal("tempo"))||60,local:chipVal("local")||"completa",prioridades:chipVal("prioridades",true),dores:chipVal("dores",true),inicio:todayISO()};
   if(tmp.dias.length<2){ box.textContent="Escolha pelo menos 2 dias para ver a divisão."; return; }
   const pl=buildPlan(tmp), sp=SPLITS[pl.sk], fr=pl.vol.f, big=["peito","costas","pernas","posterior","ombros"];
   const fq=big.map(m=>`${m} ${fr[m]}×`).join(" · "), low=big.filter(m=>fr[m]<2);
@@ -164,7 +166,7 @@ function readForm(){
   const v=id=>$("#q-"+id).value.trim();
   return Object.assign({},state.pf||{},{type:"perfil",nome:v("nome"),idade:v("idade"),peso:num(v("peso"))||null,altura:v("altura"),saudeQ:chipVal("saudeQ"),exp:chipVal("exp"),parado:v("parado"),
     objetivo:chipVal("objetivo")||"misto",secundario:chipVal("secundario"),dias:chipVal("dias",true).map(Number),horario:v("horario"),tempo:Number(chipVal("tempo"))||60,local:chipVal("local")||"completa",
-    esportes:readSports(),dores:chipVal("dores",true),doresTxt:v("doresTxt"),prioridades:chipVal("prioridades",true),evitar:v("evitar"),trabalho:v("trabalho"),sono:num(v("sono"))||null,
+    esportes:readSports(),dores:chipVal("dores",true),doresTxt:v("doresTxt"),prioridades:chipVal("prioridades",true),habilidades:chipVal("habilidades",true),evitar:v("evitar"),trabalho:v("trabalho"),sono:num(v("sono"))||null,
     estresse:Number(chipVal("estresse"))||3,divisao:chipVal("divisao")||"auto",cardio:chipVal("cardio")||"sim",cardioMods:chipVal("cardioMods",true),wear:chipVal("wear")||"nenhum",ts:Date.now()}); }
 async function saveProfile(){
   const pf=readForm(); state.onbDraft=null;
@@ -180,7 +182,7 @@ function defaultTab(){ const t=new Date().getDay(); const d=state.plan&&state.pl
 /* ---------- treino do dia ---------- */
 function nSets(ex){ return state.leve?Math.max(1,Math.ceil(ex.sets/2)):ex.sets; }
 function lastTxt(name){ const h=historyFor(name)[0]; return h?`${dstr(h.date)} · ${h.sets.map(s=>`${fmt(s.kg)}×${s.reps}${s.rpe?" @"+fmt(s.rpe):""}`).join("  ")}`:""; }
-function plainRx(ex,n){ const r=ex.rpe[ex.rpe.length-1], sobra=Math.max(0,Math.round(10-r)); const rest=ex.rest>=60?(ex.rest%60?fmt(ex.rest/60)+" min":ex.rest/60+" min"):ex.rest+" s";
+function plainRx(ex,n){ if(ex.k==="P") return `Faça <b>${n} séries</b> de <b>${ex.lo} a ${ex.hi} repetições</b>, o mais rápido possível. Pare antes de cansar. Descanse <b>1,5 min</b>.`; const r=ex.rpe[ex.rpe.length-1], sobra=Math.max(0,Math.round(10-r)); const rest=ex.rest>=60?(ex.rest%60?fmt(ex.rest/60)+" min":ex.rest/60+" min"):ex.rest+" s";
   return `Faça <b>${n} séries</b> de <b>${ex.lo} a ${ex.hi} repetições</b>. Pare cada série quando sentir que sobrariam <b>${sobra===1?"1 repetição":sobra+" repetições"}</b>. Descanse <b>${rest}</b>.`; }
 /* cartão de exemplo explicando cada parte da ficha (aparece até a pessoa fechar) */
 function tourHtml(){ return `<article class="card tour" id="tour"><div class="exname">Como ler esta tela</div>
@@ -204,7 +206,7 @@ function renderDay(){
       <input type="hidden" id="${ex.id}-d-${i}"><button type="button" class="okb" data-i="${i}" aria-pressed="false" aria-label="Série ${i+1} feita">✓</button>`).join("");
     const h=historyFor(name).slice(0,3);
     return `<article class="card ex ${ex.k==="C"?"big":"small"}" data-ex="${ex.id}" data-sets="${n}">
-      <div class="ctop"><div class="ctitle"><div class="kind ${ex.k==="C"?"c":""}">${ex.k==="C"?"Principal":"Acessório"} · ${esc(ex.m)}</div><div class="exname">${esc(name)}</div>
+      <div class="ctop"><div class="ctitle"><div class="kind ${ex.k==="C"||ex.k==="P"?"c":""}">${ex.k==="C"?"Principal":ex.k==="P"?"Potência":"Acessório"} · ${esc(ex.k==="P"?"explosão":ex.m)}</div><div class="exname">${esc(name)}</div>
       <div class="plain">${plainRx(ex,n)}</div>
       <div class="rx">${n}×${ex.lo}–${ex.hi} · RPE ${ex.rpe.map(fmt).join("/")} · descanso ${Math.round(ex.rest/60*10)/10>=1?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
       <label class="swapbtn">⇄ Trocar<select class="swapsel" id="swap-${ex.id}" aria-label="Trocar exercício">${ex.opts.map((o,i)=>`<option value="${i}" ${o===name?"selected":""}>${esc(o)}${EXBYNAME[o]&&EXBYNAME[o].sinonimos?" ("+esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))+")":""}</option>`).join("")}</select></label></div>
@@ -213,11 +215,13 @@ function renderDay(){
       <div class="sug ${sg.cls}">${sg.html}</div>
       <div class="sets"><span></span><span class="h">kg</span><span class="h">reps</span><span class="h">RPE <button type="button" class="qm" aria-label="O que é RPE">?</button></span><span></span>${rows}</div>
       <div class="rd" id="rd-${ex.id}" hidden></div>
+      ${(ex.why||[]).length?`<details class="how"><summary>Por que este exercício</summary>${ex.why.map(w=>`<p>${esc(w.t)}</p>`).join("")}</details>`:""}
       ${(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how?`<details class="how"><summary>Como fazer</summary><p>${esc((EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how)}</p></details>`:""}
       ${h.length>1?`<div class="hist">${h.map(x=>`<span>${dstr(x.date)} · ${x.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join("  ")}${x.leve?" (leve)":""}</span>`).join("")}</div>`:""}
       </div></article>`; }).join("");
   const c=state.plan.cardio, wear=state.pf.wear;
-  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>${esc(d.n)}</h2><span class="note">${d.dow.length?DOWN[d.dow[0]]:""}</span></div>
+  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>${esc(d.n)}</h2><span class="note">${d.dow.length?DOWN[d.dow[0]]+" · ":""}~${d.min||""} min</span></div>
+    ${d.mob?`<details class="how mobb"><summary>Mobilidade antes de começar (5 min)</summary><p>${d.mob.map(esc).join("<br>")}</p></details>`:""}
     ${d.sport&&d.sport.length?`<p class="note">Hoje também: <b>${esc(d.sport.join(", "))}</b>.</p>`:""}${d.warn?`<div class="banner">${esc(d.warn)}</div>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
     ${!state.prefs.tourVisto?tourHtml():`<button class="link" id="tourShow" type="button">❔ Como ler esta tela</button>`}
@@ -284,10 +288,10 @@ function closeRest(){ clearInterval(rest.timer); $("#rest").hidden=true; try{ re
 /* ---------- cardio ---------- */
 function renderCardio(){
   const c=state.plan.cardio, wear=state.pf.wear, zl=wearName(wear);
-  const plan=c.n?`<p class="exnote"><b>${c.n}× por semana</b>${c.dias.length?` (${c.dias.map(d=>DOWN[d]).join(", ")}${c.n>c.dias.length?" + depois da musculação":""})`:" depois da musculação ou em dias livres"}.
+  const plan=(c.corrida?`<div class="banner dl"><b>Correr 5 km:</b> ${esc(c.corrida.texto)}. Faça 3× por semana, em ritmo de conversa. Repita a semana se ficou difícil.</div>`:"")+(c.n?`<p class="exnote"><b>${c.n}× por semana</b>${c.dias.length?` (${c.dias.map(d=>DOWN[d]).join(", ")}${c.n>c.dias.length?" + depois da musculação":""})`:" depois da musculação ou em dias livres"}.
     <br>• <b>Zona 2:</b> ${c.z2min} min num ritmo em que dá para falar frases curtas (60–70% da FC máxima; zona 2 no ${zl}).
     ${c.hiit?"<br>• <b>1× por semana troque por 4×4:</b> 4 min forte (zona 4, fala só palavras soltas) + 3 min leve, 4 vezes. Faça longe do treino de pernas.":"<br>• A partir da 5ª semana, um dos cardios pode virar 4×4 (4 min forte + 3 min leve, 4×)."}</p>`
-    :`<p class="exnote">Você escolheu sem cardio no plano. Para saúde, a OMS recomenda 150 min por semana de atividade moderada: caminhar já conta.</p>`;
+    :`<p class="exnote">Você escolheu sem cardio no plano. Para saúde, a OMS recomenda 150 min por semana de atividade moderada: caminhar já conta.</p>`);
   const mods=c.mods.length?c.mods:["Bike"];
   const hist=state.sessions.filter(s=>s.cardio).sort((a,b)=>b.ts-a.ts).slice(0,8);
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Cardio</h2></div><article class="card">${plan}</article>
@@ -433,6 +437,30 @@ async function resetAll(){ const b=$("#resetYes"); b.disabled=true; setStatus("A
     state={pf:null,plan:null,sessions:[],checkins:[],prefs:{swap:{}},analysis:null,anHist:[],current:"onb",leve:false,editing:false};
     Object.assign(draft,{data:null,dirty:false,remote:false,bakR:false,bak:null}); setStatus("Tudo apagado. Vamos começar."); render(); window.scrollTo({top:0}); }
   catch(e){ b.disabled=false; setStatus("Não consegui apagar tudo. Tente de novo."); } }
+/* ---------- dúvidas frequentes ---------- */
+const FAQ=[
+ ["Como a ficha monta o meu treino?","Ela calcula quantas séries cada músculo precisa por semana (pelo seu objetivo, nível e prioridades), ajusta pela sua recuperação (sono, estresse, idade) e pelos esportes que você faz, distribui essas séries nos seus dias livres dentro do tempo que você tem e escolhe cada exercício pelo seu local, nível e dores. Em Perfil → Como o plano foi montado você vê cada decisão e a evidência por trás."],
+ ["Por que veio este exercício e não outro?","Toque em \"Por que este exercício\" no cartão. Iniciantes recebem primeiro as versões mais estáveis (máquinas, halteres); quem treina há mais tempo recebe as livres. Se não gostar ou o aparelho estiver ocupado, use ⇄ Trocar."],
+ ["O que é RPE?","Uma nota de esforço de 1 a 10. O jeito mais fácil: 10 menos as repetições que ainda sairiam. Sobraram 2? RPE 8. Sobrou 1? RPE 9. Não saía mais nenhuma? RPE 10."],
+ ["Preciso anotar o RPE em todas as séries?","Não. O mínimo é na 1ª série de cada exercício: com ela a ficha diz na hora se você deve subir, manter ou reduzir a carga nas próximas."],
+ ["Quando a carga sobe?","Quando você faz o número máximo de repetições da faixa em todas as séries (ex.: 12, 12 e 12 numa faixa de 8–12). No treino seguinte a ficha sugere a nova carga e você recomeça em 8."],
+ ["E se eu não conseguir fazer o mínimo de repetições?","Uma vez é normal (dia ruim). Se acontecer 2 treinos seguidos, a ficha sugere reduzir 10% e subir de novo."],
+ ["Os números em cinza são obrigatórios?","Não, são a sugestão. Se fez igual, toque em ✓ que ele preenche. Se fez diferente, digite o que fez antes de tocar em ✓."],
+ ["Perdi o que digitei. E agora?","A ficha guarda tudo enquanto você digita, mesmo se o celular bloquear. Se algo sumir, abra Opções do dia → Recuperar o que digitei hoje."],
+ ["Posso treinar num dia diferente do planejado?","Pode. Abra a aba do treino que vai fazer, mesmo que seja outro dia da semana. O que conta é a ordem dos treinos, não o dia exato."],
+ ["Faltei uma semana. Começo de onde?","Do treino seguinte ao último que fez. Se ficou mais de 2 semanas parado, use o Treino leve (Opções do dia) no primeiro treino de volta."],
+ ["Estou muito cansado ou dormi mal. Treino?","Treine, mas marque Treino leve em Opções do dia: metade das séries, sem forçar. Ele não conta para a progressão."],
+ ["Mudou minha rotina. Como refaço o plano?","Perfil → Editar objetivo e rotina. O plano é refeito na hora e o histórico de cargas continua."],
+ ["Por que meu treino tem poucos exercícios?","Tempo curto ou metas já cumpridas. A ficha prefere poucos exercícios bem feitos a muitos com pressa. Para mais exercícios, aumente o tempo por treino no Perfil."],
+ ["Preciso de relógio?","Não. Sem relógio, anote só o sono da semana. Com Whoop, Garmin ou Apple Watch, a ficha também usa recuperação, FC e VFC."],
+ ["O que é a análise semanal?","Uma vez por semana, no Histórico, toque em Analisar meu treino: o Claude lê seus registros e diz o que evoluiu, o que travou e o que fazer no próximo treino."],
+ ["Meus dados ficam salvos onde?","Na sua conta Claude, se a ficha foi publicada com as permissões; senão, só neste navegador. Em Perfil → Backup dos dados você copia tudo."],
+ ["A ficha substitui um profissional?","Não. É uma ferramenta educacional baseada em estudos. Se tem alguma condição de saúde ou dor, passe por um médico e, se puder, por um profissional de educação física."]];
+function renderFaq(){
+  $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Dúvidas</h2>${!state.pf||state.editing?'<button class="link" id="backOnb" type="button">← Voltar ao questionário</button>':""}</div>
+    ${FAQ.map(([q,a],i)=>`<details class="gd"${i?"":" open"}><summary>${esc(q)}</summary><div class="gb"><p>${esc(a)}</p></div></details>`).join("")}
+    <p class="note">Não achou sua dúvida? Veja a aba Guia.</p></div>`;
+  if($("#backOnb")) $("#backOnb").onclick=()=>{ state.current="onb"; render(); window.scrollTo({top:0}); }; }
 /* ---------- perfil ---------- */
 let prioSet=new Set();
 function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
@@ -446,10 +474,11 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
       <p class="exnote"><b>Como progride:</b> quando você faz o topo da faixa de reps em todas as séries, a carga sobe (+2,5% a 5%). Se não, mantenha a carga e busque +1 rep.</p>
       <ul class="plist">${ex}</ul>${pl.notes.map(n=>`<div class="banner dl">${esc(n)}</div>`).join("")}</article>
     <article class="card"><div class="exname">Volume semanal por músculo</div>
-      <p class="exnote">Séries de trabalho por semana (exercícios que ajudam contam meia série). Meta para o seu objetivo e experiência: <b>${pl.target[0]}–${pl.target[1]}</b> séries.</p>
-      <table class="gt"><tbody>${(prioSet=new Set(p.prioridades||[]),"")}${MUSCLES.map(m=>{ const v=Math.round(pl.vol.v[m]*10)/10, f=pl.vol.f[m]; const st=v<pl.target[0]?["Pouco","bad"]:v>pl.target[1]?[prioSet.has(m)?"Acima (prioridade)":"Acima","good"]:["Na meta","good"];
-        return `<tr><td>${m[0].toUpperCase()+m.slice(1)}</td><td class="tr">${fmt(v)} séries · ${f}×/sem</td><td class="${st[1]}">${st[0]}</td></tr>`; }).join("")}</tbody></table>
-      <p class="note">"Pouco": marque o músculo como prioridade ou aumente o tempo por treino (panturrilha, adutores e abdômen com pouco volume é normal se não forem prioridade). "Acima": braços e ombros recebem séries indiretas dos exercícios de peito, costas e desenvolvimento; não é problema.</p></article>
+      <p class="exnote">Séries de trabalho por semana (exercícios que ajudam contam meia série). A meta de cada músculo foi calculada para você (objetivo, nível, prioridades, recuperação e esportes).</p>
+      <table class="gt"><tbody>${(prioSet=new Set(p.prioridades||[]),"")}${MUSCLES.map(m=>{ const v=Math.round(pl.vol.v[m]*10)/10, f=pl.vol.f[m]; const t=pl.target[m]; const st=v<t*0.75?["Abaixo","bad"]:v>t*1.3?["Acima","good"]:["Na meta","good"];
+        return `<tr><td>${m[0].toUpperCase()+m.slice(1)}${(pl.tWhy[m]||[]).length?`<br><small class="note">${esc(pl.tWhy[m].join("; "))}</small>`:""}</td><td class="tr">${fmt(v)} / ${t} · ${f}×</td><td class="${st[1]}">${st[0]}</td></tr>`; }).join("")}</tbody></table>
+      <p class="note">Coluna do meio: séries do plano / meta da semana · treinos por semana. "Abaixo" quase sempre é falta de tempo: aumente o tempo por treino ou marque o músculo como prioridade.</p></article>
+    <article class="card"><div class="exname">Como o plano foi montado</div><ol class="plist">${pl.why.map(w=>{ const ev=DATA.evidencias.find(x=>x.id===w.ev); return `<li>${esc(w.t)}${ev?` <small class="note">· ${esc(ev.tema)} (evidência ${esc(ev.forca)})</small>`:""}</li>`; }).join("")}</ol></article>
     <div class="askrow"><button class="ckbtn" id="editPf" type="button">Editar objetivo e rotina</button></div>
     <details id="resetBox"><summary>Recomeçar do zero</summary><div class="gb">
       <p>Apaga o perfil, o plano, os treinos, os gráficos e as análises desta ficha, e volta para o questionário. Não dá para desfazer. Se quiser guardar os treinos, copie antes o Backup dos dados.</p>
@@ -473,8 +502,8 @@ function planSummary(){ return state.plan.days.map((d,i)=>`${String.fromCharCode
 function analysisPrompt(){ const p=state.pf, since=new Date(Date.now()-28*864e5).toISOString().slice(0,10);
   const ss=state.sessions.filter(s=>s.date>=since).sort((a,b)=>a.ts-b.ts).map(s=>{ const o={data:s.date,treino:s.label||s.day}; if(s.leve)o.leve=true; if(s.ex)o.ex=s.ex; if(s.cardio)o.cardio=s.cardio; if(s.watch)o.relogio=s.watch; return o; });
   return `Você é um preparador físico analisando o treino de ${p.nome||"um aluno"}. Responda em português do Brasil, direto, específico, com números. Não invente dados; com poucos registros, diga isso.
-PERFIL: ${p.idade||"?"} anos, ${p.peso||"?"} kg, ${p.altura||"?"} cm. Experiência: ${{nunca:"nunca treinou",ate6:"menos de 6 meses",["6a12"]:"6–12 meses",mais1:"mais de 1 ano"}[p.exp]}. Objetivo: ${GOALS[p.objetivo].nome}${p.secundario?" + "+GOALS[p.secundario].nome:""}. Dias: ${p.dias.map(d=>DOWN[d]).join(", ")}; ${p.tempo} min/treino; local: ${p.local}. Outras atividades: ${sportSummary(p)||p.esporte||"nenhuma"}. Dores: ${(p.dores||[]).join(", ")||"nenhuma"} ${p.doresTxt||""}. Prioridades: ${(p.prioridades||[]).join(", ")||"nenhuma"}. Trabalho: ${p.trabalho||"?"}; sono informado ${p.sono||"?"} h; estresse ${p.estresse}/5. Relógio: ${wearName(p.wear)}. Começou em ${p.inicio}; hoje ${todayISO()} (semana ${weeksIn(p)+1}).
-PLANO:\n${planSummary()}
+PERFIL: ${p.idade||"?"} anos, ${p.peso||"?"} kg, ${p.altura||"?"} cm. Experiência: ${{nunca:"nunca treinou",ate6:"menos de 6 meses",["6a12"]:"6–12 meses",mais1:"mais de 1 ano"}[p.exp]}. Objetivo: ${GOALS[p.objetivo].nome}${p.secundario?" + "+GOALS[p.secundario].nome:""}. Dias: ${p.dias.map(d=>DOWN[d]).join(", ")}; ${p.tempo} min/treino; local: ${p.local}. Outras atividades: ${sportSummary(p)||p.esporte||"nenhuma"}. Quer conseguir: ${(p.habilidades||[]).map(h=>DATA.habilidades[h]&&DATA.habilidades[h].nome).filter(Boolean).join(", ")||"nada específico"}. Dores: ${(p.dores||[]).join(", ")||"nenhuma"} ${p.doresTxt||""}. Prioridades: ${(p.prioridades||[]).join(", ")||"nenhuma"}. Trabalho: ${p.trabalho||"?"}; sono informado ${p.sono||"?"} h; estresse ${p.estresse}/5. Relógio: ${wearName(p.wear)}. Começou em ${p.inicio}; hoje ${todayISO()} (semana ${weeksIn(p)+1}).
+PLANO:\n${planSummary()}\nCOMO O PLANO FOI MONTADO: ${state.plan.why.map(w=>w.t).join(" | ")}\nMETAS DE SÉRIES/SEMANA: ${JSON.stringify(state.plan.target)}
 REGRAS: dupla progressão (sobe a carga quando faz o topo da faixa em todas as séries; +2,5% tronco, +5% pernas e acessórios). RPE = 10 − reps que sobravam; iniciantes subestimam ~1–2 reps. ${beginner(p)?"Iniciante: RPE máximo 8; nas 2 primeiras semanas a prioridade é técnica, não carga.":""} Força estimada: e1RM = kg × (1 + (reps + 10 − RPE)/30). Estagnação = 3 sessões sem subir carga nem reps. Carga variando entre séries de trabalho = aquecimento misturado: oriente usar a mesma carga. Semana leve se: 8+ semanas sem uma, ou 2+ sinais (cargas caindo em 3+ exercícios; RPE subindo com a mesma carga; sono < 6,5 h; ${p.wear==="whoop"?"Recovery médio < 34%; ":""}${p.wear==="garmin"?"Prontidão de treino média < 25; ":""}FC repouso ≥5 bpm acima da média; VFC ≥10% abaixo da média). Cardio: zona 2 bem feita = ≥70% do tempo em Z2; 4×4 = ~16 min em Z4–Z5. Combinação com esportes: perna no mesmo dia ou na véspera de atividade forte de pernas atrapalha; superior + atividade forte é ok; perna + atividade leve é ok. Atividades moderadas/fortes contam como cardio. Aderência: compare treinos feitos com ${state.plan.lift}/semana.
 REGISTROS (4 semanas): ${JSON.stringify(ss)}
 RECUPERAÇÃO SEMANAL (sono h, rec = Recovery % do Whoop, prt = Prontidão de treino do Garmin 0–100, fcr bpm, vfc ms): ${JSON.stringify(state.checkins.map(c=>({semana:c.week,sono:c.sono,rec:c.rec,prt:c.prt,fcr:c.fcr,vfc:c.vfc})))}

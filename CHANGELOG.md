@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 — 2026-10-19
+**Novo planejador: o plano é calculado, não copiado de um molde.**
+1. Recuperação: sono, estresse e idade ajustam o volume inicial.
+2. Metas de séries por músculo na semana, por objetivo, nível, prioridades, habilidades e esportes.
+3. Distribuição das séries nos dias e dentro do tempo do treino (duração estimada por exercício: séries × (execução + descanso)).
+4. Escolha do exercício: local, dores, "evitar", nível técnico (iniciante começa em máquinas e halteres) e variação entre os treinos da semana.
+5. Cada decisão tem o motivo e a evidência: "Por que este exercício" em cada cartão e "Como o plano foi montado" no Perfil.
+- Pergunta nova: **O que você quer conseguir?** Fazer barra fixa, saltar mais, correr 5 km, proteger as costas, ganhar mobilidade e render mais no esporte. Cada uma muda o plano (bloco de progressão de barra, potência no início do treino, plano de corrida semana a semana, core de estabilidade, mobilidade de 5 min, ênfase por esporte).
+- Novo padrão **Potência** (saltos, swing, arremesso) e 5 evidências novas (potência, aquecimento, sono/estresse, séries por treino, máquinas × pesos livres).
+- Aba **Dúvidas** com as 17 perguntas mais comuns, também disponível antes do questionário.
+- 28 testes (eram 22), incluindo "perfis diferentes geram planos diferentes" e "cada exercício explica o porquê".
+
 ## 0.2.3 — 2026-10-19
 - Perfil → **Recomeçar do zero**: apaga perfil, treinos e análises e volta ao questionário, com confirmação na própria tela.
 - Correção: em "exercícios a evitar", nomes separados por "e", "ou" ou "/" não eram reconhecidos (ex.: "agachamento livre e elevação pélvica").
