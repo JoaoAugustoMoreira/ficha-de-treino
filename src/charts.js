@@ -17,31 +17,40 @@ const lifted=s=>s.ex&&Object.keys(s.ex).length>0;
 function tonnage(s){ return Object.values(s.ex||{}).reduce((t,sets)=>t+sets.reduce((u,x)=>u+(x.kg||0)*(x.reps||0),0),0); }
 const kfmt=v=>v>=1000?fmt(Math.round(v/100)/10)+" t":fmt(Math.round(v))+" kg";
 
-/* ---------- mapa muscular: frente e costas, desenho geométrico próprio ---------- */
-const BODY={
+/* ---------- mapa muscular: frente e costas, desenho anatômico próprio ----------
+   Só o lado esquerdo é desenhado; o direito é o espelho. Cada forma pertence a um dos 10 grupos do app. */
+const SIL=[[60,4],[66,5],[70,10],[70,18],[67,25],[65,30],[66,34],[74,37],[83,39],[89,44],[91,52],[91,62],[93,72],[95,86],[98,100],[101,116],[102,124],[103,134],[100,141],[97,137],[96,128],[94,122],[91,108],[88,94],[86,86],[84,72],[82,80],[80,92],[79,102],[81,112],[82,126],[81,144],[79,162],[77,178],[78,192],[78,208],[76,224],[75,234],[78,244],[72,248],[64,247],[64,238],[65,222],[64,206],[64,190],[64,176],[63,156],[62,138],[60,128]];
+function silhouette(){ const right=SIL, left=SIL.slice(1,-1).map(([x,y])=>[120-x,y]).reverse(); const pts=right.concat(left); const n=pts.length; let d=`M${pts[0][0]} ${pts[0][1]}`;
+  for(let i=0;i<n;i++){ const p0=pts[(i-1+n)%n], p1=pts[i], p2=pts[(i+1)%n], p3=pts[(i+2)%n];
+    const c1=[p1[0]+(p2[0]-p0[0])/6, p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6, p2[1]-(p3[1]-p1[1])/6];
+    d+=` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`; }
+  return d+" Z"; }
+/* formas do lado direito da figura (x > 60); o outro lado é espelhado */
+const ANAT={
   front:[
-    ["ombros",'<ellipse cx="37" cy="52" rx="9" ry="8"/><ellipse cx="83" cy="52" rx="9" ry="8"/>'],
-    ["peito",'<path d="M44 47 Q52 44 59 47 L59 67 Q51 70 44 64 Z"/><path d="M76 47 Q68 44 61 47 L61 67 Q69 70 76 64 Z"/>'],
-    ["braços",'<ellipse cx="31" cy="74" rx="6" ry="13"/><ellipse cx="89" cy="74" rx="6" ry="13"/><ellipse cx="27" cy="102" rx="5" ry="13"/><ellipse cx="93" cy="102" rx="5" ry="13"/>'],
-    ["abdômen",'<rect x="48" y="71" width="24" height="40" rx="7"/>'],
-    ["pernas",'<path d="M45 122 Q41 150 46 176 Q51 182 56 176 Q59 150 57 128 Z"/><path d="M75 122 Q79 150 74 176 Q69 182 64 176 Q61 150 63 128 Z"/>'],
-    ["adutores",'<path d="M57 126 Q60 124 60 130 L59 156 Q57 150 56 140 Z"/><path d="M63 126 Q60 124 60 130 L61 156 Q63 150 64 140 Z"/>'],
-    ["panturrilha",'<ellipse cx="50" cy="208" rx="5.5" ry="19"/><ellipse cx="70" cy="208" rx="5.5" ry="19"/>']],
+    ["costas",'<path d="M61 31 C64 33 68 35 74 37 C70 38 66 38 62 36 Z"/>'],
+    ["ombros",'<path d="M74 38 C82 38 88 42 90 50 C91 56 90 61 88 64 C85 57 81 51 75 47 C73 44 73 41 74 38 Z"/>'],
+    ["peito",'<path d="M61 41 C67 39 74 41 76 47 C79 53 80 60 77 65 C72 68 65 68 61 65 Z"/>'],
+    ["braços",'<path d="M88 64 C91 70 92 78 90 86 C88 88 86 87 85 84 C83 77 83 70 84 65 Z"/><path d="M93 89 C96 99 98 110 99 121 L96 122 C93 111 90 100 88 92 Z"/>'],
+    ["abdômen",'<rect x="61.2" y="69" width="7.6" height="8.5" rx="2.4"/><rect x="61.2" y="79" width="7.6" height="8.5" rx="2.4"/><rect x="61.2" y="89" width="7.6" height="8.5" rx="2.4"/><path d="M61.2 99 H68.8 C68.8 106 66 112 61.2 117 Z"/><path d="M71 69 C75 71 79 76 79 84 C79 94 80 102 81 110 C76 106 72 101 70 98 Z"/>'],
+    ["pernas",'<path d="M68 120 C74 136 74 154 71 170 C69 174 66 173 65 170 C64 154 64 138 65 124 Z"/><path d="M76 116 C81 132 81 152 77 172 C75 175 72 173 72 169 C74 152 74 134 71 120 Z"/><path d="M65 156 C67 163 68 170 65 176 C63 175 62 170 62 162 Z"/>'],
+    ["adutores",'<path d="M62 128 C64 134 65 142 64 152 C62 148 61 140 60.5 131 Z"/>'],
+    ["panturrilha",'<path d="M74 186 C76 200 76 214 73 226 L70 226 C70 212 70 198 71 186 Z"/><path d="M66 190 C65 200 65 212 67 222 L69 222 C69 210 69 198 68 190 Z"/>']],
   back:[
-    ["ombros",'<ellipse cx="37" cy="52" rx="9" ry="8"/><ellipse cx="83" cy="52" rx="9" ry="8"/>'],
-    ["costas",'<path d="M48 40 L60 36 L72 40 L70 50 L60 54 L50 50 Z"/><path d="M45 54 L59 58 L59 98 Q50 92 47 80 Z"/><path d="M75 54 L61 58 L61 98 Q70 92 73 80 Z"/>'],
-    ["braços",'<ellipse cx="31" cy="74" rx="6" ry="13"/><ellipse cx="89" cy="74" rx="6" ry="13"/><ellipse cx="27" cy="102" rx="5" ry="13"/><ellipse cx="93" cy="102" rx="5" ry="13"/>'],
-    ["glúteos",'<ellipse cx="51" cy="122" rx="10" ry="11"/><ellipse cx="69" cy="122" rx="10" ry="11"/>'],
-    ["posterior",'<path d="M43 134 Q42 158 47 178 Q52 182 56 176 Q58 156 58 136 Z"/><path d="M77 134 Q78 158 73 178 Q68 182 64 176 Q62 156 62 136 Z"/>'],
-    ["panturrilha",'<ellipse cx="50" cy="204" rx="7" ry="17"/><ellipse cx="70" cy="204" rx="7" ry="17"/>']]};
-const BODY_BASE='<ellipse cx="31" cy="76" rx="7.5" ry="16"/><ellipse cx="89" cy="76" rx="7.5" ry="16"/><ellipse cx="27" cy="103" rx="6" ry="15"/><ellipse cx="93" cy="103" rx="6" ry="15"/><path d="M44 118 Q40 150 45 180 L56 182 Q60 150 60 126 Z"/><path d="M76 118 Q80 150 75 180 L64 182 Q60 150 60 126 Z"/><path d="M44 186 Q43 210 46 228 L55 228 Q57 206 56 186 Z"/><path d="M76 186 Q77 210 74 228 L65 228 Q63 206 64 186 Z"/><circle cx="60" cy="18" r="11"/><rect x="55" y="28" width="10" height="9" rx="3"/><rect x="43" y="40" width="34" height="74" rx="12"/><rect x="45" y="108" width="30" height="20" rx="8"/><ellipse cx="25" cy="122" rx="4.5" ry="6"/><ellipse cx="95" cy="122" rx="4.5" ry="6"/><ellipse cx="50" cy="186" rx="5" ry="5"/><ellipse cx="70" cy="186" rx="5" ry="5"/><ellipse cx="50" cy="232" rx="6" ry="4"/><ellipse cx="70" cy="232" rx="6" ry="4"/>';
-/* frac[m] de 0 a 1 (1 = meta da semana atingida); tip[m] = texto do toque */
+    ["costas",'<path d="M60 28 C64 31 70 35 77 38 C72 42 66 48 61 62 Z"/><path d="M77 47 C80 57 79 72 74 88 C70 94 65 96 61.5 96 L61.5 66 C66 58 70 52 77 47 Z"/><path d="M61.5 92 H66 L66 109 L61.5 111 Z"/>'],
+    ["ombros",'<path d="M74 38 C82 38 88 42 90 50 C91 56 90 61 88 64 C85 57 81 51 75 47 C73 44 73 41 74 38 Z"/>'],
+    ["braços",'<path d="M89 60 C92 68 92 78 90 86 C87 88 85 85 84 80 C83 72 84 65 86 61 Z"/><path d="M93 89 C96 99 98 110 99 121 L96 122 C93 111 90 100 88 92 Z"/>'],
+    ["glúteos",'<path d="M78 105 C80 111 79 117 76 120 C73 114 70 110 68 108 Z"/><path d="M76 111 C79 121 76 131 68 134 C63 134 61 130 61 122 C61 114 65 110 70 110 Z"/>'],
+    ["posterior",'<path d="M76 137 C78 151 77 165 74 177 L70 177 C71 163 71 149 70 137 Z"/><path d="M69 137 C70 151 69 165 68 177 L64 177 C63 163 62 149 62 139 Z"/>'],
+    ["panturrilha",'<path d="M75 184 C78 194 77 206 73 214 C71 210 70 200 70 188 Z"/><path d="M69 186 C69 198 68 210 65 216 C62 208 62 194 65 186 Z"/><path d="M73 214 C73 222 72 228 71 232 L66 232 C65 226 65 220 65 216 Z"/>']]};
+const SIL_D=silhouette();
 function bodyFigure(side,frac,tip,cls){
-  return `<svg class="body ${cls||""}" viewBox="0 0 120 240" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}">
-    <g fill="var(--surface-2)">${BODY_BASE}</g>
-    ${BODY[side].map(([m,shape])=>{ const f=Math.max(0,Math.min(1,frac[m]||0)); const fill=f>0?`fill="var(--accent)" fill-opacity="${(0.18+0.82*f).toFixed(2)}"`:`fill="var(--surface-2)"`;
-      return `<g class="mus" ${fill} stroke="var(--surface)" stroke-width="1.5" data-tip="${esc(tip?tip[m]||"":"")}">${shape}</g>`; }).join("")}
-  </svg>`; }
+  const shapes=ANAT[side].map(([m,sh])=>{ const f=Math.max(0,Math.min(1,frac[m]||0)); const fill=f>0?`fill="var(--accent)" fill-opacity="${(0.16+0.84*f).toFixed(2)}"`:`fill="var(--body-mus)"`;
+    return `<g class="mus" ${fill} data-tip="${esc(tip?tip[m]||"":"")}">${sh}<g transform="translate(120 0) scale(-1 1)">${sh}</g></g>`; }).join("");
+  return `<svg class="body ${cls||""}" viewBox="0 0 120 252" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}">
+    <path d="${SIL_D}" fill="var(--body-base)" stroke="var(--body-line)" stroke-width="1"/>
+    ${side==="back"?'<path d="M60 30 V112" stroke="var(--body-line)" stroke-width=".8"/>':'<path d="M54 22 C57 24 63 24 66 22" fill="none" stroke="var(--body-line)" stroke-width=".8"/>'}
+    <g stroke="var(--surface)" stroke-width="1" stroke-linejoin="round">${shapes}</g></svg>`; }
 function bodyPair(frac,tip,cls){ return `<div class="bodypair ${cls||""}">${bodyFigure("front",frac,tip,cls)}${bodyFigure("back",frac,tip,cls)}</div>`; }
 
 /* ---------- barras verticais com linha de meta opcional ---------- */

@@ -88,7 +88,7 @@ const isTrainDay=()=>state.current&&(state.current.startsWith("d")||state.curren
 /* ---------- abas ---------- */
 function tabs(){
   const t=new Date().getDay(), td=state.plan&&state.plan.days.find(d=>d.dow.includes(t));
-  const list=[["treino","Treino",td?"hoje: "+td.n.replace("Corpo inteiro","Corpo"):"seus dias"],["hist","Progresso","gráficos"],["faq","Ajuda","dúvidas"],["perfil","Perfil","plano"]];
+  const list=[["inicio","Início","resumo"],["treino","Treino",td?"hoje: "+td.n.replace("Corpo inteiro","Corpo"):"seus dias"],["hist","Progresso","gráficos"],["perfil","Perfil","plano"]];
   $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(4,1fr)";
   const sel=k=>k==="treino"?isTrainDay():k===state.current;
   $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${sel(k)}" data-k="${k}" type="button"><b>${a}</b><small>${esc(b)}</small></button>`).join("");
@@ -103,9 +103,43 @@ function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionár
   $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${(["guia","faq"].includes(state.current)?state.current:"onb")===k}" data-k="${k}" type="button"><b>${a}</b><small>${b}</small></button>`).join("");
   $$("#tabs .tab").forEach(b=>b.onclick=()=>{ if($("#q-go")) state.onbDraft=readForm(); state.current=b.dataset.k; render(); window.scrollTo({top:0}); }); }
 function render(){ $("#day").onclick=null; $("#day").onchange=null; $("#saveBar").hidden=!(state.plan&&isTrainDay()&&!state.editing); if(!state.pf||state.editing){ onbTabs(); if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else renderOnb(); return; } tabs();
-  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="plano") renderPlano(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay();
+  if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="plano") renderPlano(); else if(state.current==="inicio") renderHome(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay();
   if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
 }
+/* ---------- início: resumo do dia e atalhos ---------- */
+function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new Date().getDay();
+  const d=pl.days.find(x=>x.dow.includes(t)), cardioToday=pl.cardio.n&&pl.cardio.dias.includes(t);
+  const lifts=state.sessions.filter(s=>s.ex&&Object.keys(s.ex).length);
+  const doneToday=state.sessions.some(s=>s.date===today&&(d?s.day===d.key:cardioToday&&s.day==="cardio"));
+  const h=new Date().getHours(), hi=h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
+  const dataTxt=new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
+  let next=null; for(let k=1;k<=7&&!next;k++){ const dw=(t+k)%7; const nd=pl.days.find(x=>x.dow.includes(dw)); if(nd) next={d:nd,k,dw}; }
+  const hero=d?`<article class="card hero${doneToday?" done":""}"><span class="kick">${doneToday?"✓ Feito hoje":"Treino de hoje"}</span><div class="exname">${esc(d.n)}</div>
+      <p class="note">${d.ex.length} exercícios · ~${d.min} min${d.sport&&d.sport.length?" · + "+esc(d.sport.map(x=>x.split(" (")[0]).join(", ")):""}</p>
+      <p class="heroex">${d.ex.slice(0,4).map(e=>esc(chosen(e))).join(" · ")}${d.ex.length>4?" …":""}</p>
+      <button class="btn" type="button" data-go="${d.key}">${doneToday?"Ver o treino de hoje":"Começar treino"}</button></article>`
+    : cardioToday?`<article class="card hero"><span class="kick">Hoje</span><div class="exname">Cardio</div><p class="note">${esc(pl.cardio.corrida?pl.cardio.corrida.texto:(pl.cardio.mods||[]).join(", ")||"Zona 2")}</p><button class="btn" type="button" data-go="cardio">Abrir cardio</button></article>`
+    : `<article class="card hero dayoff"><span class="kick">Hoje</span><div class="exname">Dia de descanso</div><p class="note">Recuperar também é treino.${next?` Próximo: <b>${esc(next.d.n)}</b> ${next.k===1?"amanhã":"na "+DOWN[next.dw].toLowerCase()}.`:""}</p>${next?`<button class="ghost" type="button" data-go="${next.d.key}">Ver o próximo treino</button>`:""}</article>`;
+  const wk=weekStart(today); const strip=[1,2,3,4,5,6,0].map((dw,i)=>{ const dd=new Date(wk+"T12:00:00"); dd.setDate(dd.getDate()+i); const iso=dd.toISOString().slice(0,10);
+    const pd=pl.days.find(x=>x.dow.includes(dw)), pc=pl.cardio.n&&pl.cardio.dias.includes(dw); const did=state.sessions.some(s=>s.date===iso);
+    const st=did?"ok":iso===today?"now":iso<today&&(pd||pc)?"miss":(pd||pc)?"plan":"off";
+    return `<div class="wday ${st}"><small>${DOWN[dw].slice(0,3)}</small><i>${did?"✓":dd.getDate()}</i><span>${pd?esc(pd.n.replace("Corpo inteiro","Corpo").split(" ").slice(0,2).join(" ")):pc?"Cardio":"—"}</span></div>`; }).join("");
+  const thisW=lifts.filter(s=>weekStart(s.date)===wk); const vol=thisW.reduce((a,s)=>a+tonnage(s),0);
+  let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=dd.toISOString().slice(0,10); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
+  const since=isoDaysAgo(6), v7=lifts.length?setsByMuscle(lifts.filter(s=>s.date>=since)):((pl.vol&&pl.vol.v)||{}); const frac={}; MUSCLES.forEach(m=>frac[m]=(v7[m]||0)/((pl.target||{})[m]||1));
+  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>
+    ${hero}
+    <div class="wstrip">${strip}</div>
+    <div class="kpis"><div class="kpi"><b>${thisW.length}/${pl.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${vol?kfmt(vol):"0"}</b><span>volume na semana</span></div><div class="kpi"><b>${streak}</b><span>semana${streak===1?"":"s"} seguida${streak===1?"":"s"} na meta</span></div></div>
+    ${sampleFn&&needsWeekly()?`<button class="card tile wide" type="button" data-go="hist"><span class="ti">✦</span><span><b>Análise da semana</b><small>Toque para o Claude analisar seus treinos</small></span><span class="ar">›</span></button>`:""}
+    <button class="card tile body-tile" type="button" data-go="hist"><div class="bt-fig">${bodyPair(frac,null,"mini")}</div><div class="bt-txt"><b>Carga muscular</b><small>${lifts.length?"Últimos 7 dias":"Prévia do seu plano"}. Toque para ver os gráficos de desempenho.</small></div><span class="ar">›</span></button>
+    <div class="tiles">
+      <button class="card tile" type="button" data-go="hist"><span class="ti">▥</span><b>Desempenho</b><small>Gráficos e evolução</small></button>
+      <button class="card tile" type="button" data-go="plano"><span class="ti">☰</span><b>Meu plano</b><small>Dias e divisão</small></button>
+      ${pl.cardio.n?`<button class="card tile" type="button" data-go="cardio"><span class="ti">♥</span><b>Cardio</b><small>${pl.cardio.n}× por semana</small></button>`:""}
+      <button class="card tile" type="button" data-go="faq"><span class="ti">?</span><b>Ajuda</b><small>RPE e dúvidas</small></button>
+    </div></div>`;
+  $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=false; render(); window.scrollTo({top:0}); }); }
 function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
     <article class="card"><ul class="plano">${pl.days.map(d=>`<li><b>${d.dow.length?DOWN[d.dow[0]]:"—"}</b><span>${esc(d.n)}</span><small>${d.ex.length} exercícios · ~${d.min} min</small></li>`).join("")}${c.n?`<li><b>Cardio</b><span>${c.n}× por semana</span><small>${esc((c.mods||[]).join(", "))}</small></li>`:""}</ul></article>
@@ -216,7 +250,7 @@ async function saveProfile(){
   if(!pf.inicio) pf.inicio=todayISO();
   const old=state.pf; state.pf=pf; state.plan=buildPlan(pf); state.editing=false;
   try{ await store.put("perfil",pf); setStatus(old?"Plano atualizado.":"Plano criado. Bom treino!"); }catch(e){ setStatus("Não consegui salvar o perfil. Tente de novo."); }
-  state.current=old?defaultTab():"plano"; render(); window.scrollTo({top:0});
+  state.current=old?"inicio":"plano"; render(); window.scrollTo({top:0});
 }
 function defaultTab(){ const t=new Date().getDay(); const d=state.plan&&state.plan.days.find(x=>x.dow.includes(t)); return d?d.key:(state.plan&&state.plan.cardio.dias.includes(t)?"cardio":(state.plan?state.plan.days[0].key:"perfil")); }
 
@@ -570,7 +604,7 @@ document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==
   if(state.pf) state.plan=buildPlan(state.pf);
   const dd=o.draft&&o.draft.type==="draft"&&o.draft.date===todayISO()?o.draft:null; draft.remote=!!dd; draft.bakR=!!(o.bak&&o.bak.date===todayISO()); draft.bak=draft.bakR?o.bak:null;
   draft.data=mergeD(dd,draft.data); draft.ready=true;
-  state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")?draft.data.day:defaultTab();
+  state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")&&Object.values(draft.data.values||{}).some(v=>v!=="")?draft.data.day:"inicio";
   render(); 
   try{ if(window.claude&&claude.use) claude.use("sample").then(f=>{ sampleFn=f||null; if(sampleFn&&state.pf&&!state.editing&&state.current!=="perfil"&&state.current!=="guia"&&state.current!=="cardio") render(); }).catch(()=>{}); }catch(e){}
 })();

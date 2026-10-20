@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0 — 2026-10-20
+- Nova tela **Início** (aba padrão): saudação, treino de hoje com botão "Começar treino" (ou dia de descanso com o próximo treino), semana em bolinhas (feito, hoje, perdido, planejado), treinos e volume da semana, sequência de semanas na meta, mapa muscular e atalhos para Desempenho, Meu plano, Cardio e Ajuda.
+- Abas: Início, Treino, Progresso e Perfil (Ajuda pelo atalho do Início).
+- Mapa muscular redesenhado com mais detalhe anatômico: silhueta contínua, trapézio, deltoides, peitoral, bíceps/tríceps, antebraço, abdômen em gomos, oblíquos, dorsais, lombar, glúteo médio e máximo, quadríceps (3 cabeças), adutores, posteriores (2), gastrocnêmio (2 cabeças), sóleo e tibial.
+
 ## 0.7.1 — 2026-10-20
 - Desempenho aparece desde o 1º acesso: sem treinos salvos, o mapa muscular e o equilíbrio mostram o que o plano prevê; os gráficos de semana mostram a meta e se preenchem com os treinos.
 
