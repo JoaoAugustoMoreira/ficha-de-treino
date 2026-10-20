@@ -312,17 +312,17 @@ function withExtras(plan){ const pf=state.pf, X=(state.prefs&&state.prefs.extra)
   plan.days.forEach(d=>(X[d.key]||[]).forEach(x=>{ const p=LIB[x.p]?x.p:"core";
     const e=makeEx(p,x.sets||3,pf,GOALS[pf.objetivo]||GOALS.misto,[{t:"Você adicionou este exercício à sua ficha.",ev:null}]);
     e.id=d.key+"_u"+x.uid; e.custom=x.uid; e.opts=[x.nome].concat(pickOpts(LIB[p],pf).filter(o=>o!==x.nome));
-    d.ex.push(e); d.min=Math.round((d.min||0)+exMinutes(e)); }));
+    const at=x.after?d.ex.findIndex(y=>y.id===x.after):-1; if(at>=0) d.ex.splice(at+1,0,e); else d.ex.push(e); d.min=Math.round((d.min||0)+exMinutes(e)); }));
   plan.vol=weeklyVolume(plan.days); return plan; }
 const normTxt=t=>String(t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 async function saveExtras(msg){ state.plan=withExtras(buildPlan(state.pf)); renderDay(); setStatus(msg); try{ await store.put("prefs",state.prefs); }catch(e){ setStatus("Mudou só nesta tela: não consegui salvar."); } }
-function openAdd(d,btn){ const sh=$("#sheet"), loc=state.pf.local||"completa", can=AVAIL[loc]||AVAIL.completa; let sets=3;
-  $("#sheetT").textContent="Adicionar exercício";
+function openAdd(d,btn,after){ const sh=$("#sheet"), loc=state.pf.local||"completa", can=AVAIL[loc]||AVAIL.completa; let sets=3;
+  const ref=after&&d.ex.find(e=>e.id===after); $("#sheetT").textContent=ref?`Adicionar depois de ${chosen(ref)}`:"Adicionar exercício";
   $("#sheetL").innerHTML=`<input id="addQ" class="addq" type="search" placeholder="Buscar: supino, voador, rosca…" aria-label="Buscar exercício" autocomplete="off">
     <div class="addsets"><span>Séries</span>${[2,3,4].map(n=>`<button type="button" class="qc" data-n="${n}" aria-pressed="${n===sets}">${n}</button>`).join("")}</div>
     <div id="addR" class="sheetl"></div>`;
   const close=()=>{ sh.hidden=true; document.body.style.overflow=""; try{ btn.focus({preventScroll:true}); }catch(e){} };
-  const add=async(nome,p)=>{ close(); const X=state.prefs.extra=state.prefs.extra||{}; (X[d.key]=X[d.key]||[]).push({uid:Date.now().toString(36),nome,p,sets});
+  const add=async(nome,p)=>{ close(); const X=state.prefs.extra=state.prefs.extra||{}; (X[d.key]=X[d.key]||[]).push(Object.assign({uid:Date.now().toString(36),nome,p,sets},after?{after}:{}));
     await saveExtras(`${nome} adicionado ao ${d.n}.`);
     const nd=state.plan.days.find(x=>x.key===d.key), tp=Number(state.pf.tempo)||60; if(nd&&nd.min>tp+2) setStatus(`${nome} adicionado. O treino agora tem ~${nd.min} min (você marcou ${tp}).`); };
   const show=()=>{ const q=normTxt($("#addQ").value.trim());
@@ -352,7 +352,7 @@ function renderDay(){
     return `<article class="card ex" data-ex="${ex.id}" data-sets="${n}">
       <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
       <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
-      <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><button type="button" class="ib swapbtn" data-swap="${ex.id}" aria-haspopup="dialog" aria-label="Trocar exercício">⇄</button></div></div>
+      <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><button type="button" class="ib swapbtn" data-swap="${ex.id}" aria-haspopup="dialog" aria-label="Trocar exercício">⇄</button><button type="button" class="ib addafter" data-after="${ex.id}" aria-haspopup="dialog" aria-label="Adicionar exercício depois deste">＋</button></div></div>
       <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}${ex.custom?`<button type="button" class="link rmex" data-rm="${ex.id}">Remover da ficha</button>`:""}</div>
       <div class="donesum"></div><div class="body">
       <div class="sug ${sg.cls}">${sg.html}${last?`<span class="lastl"> · última ${last.sets.map(s=>`${fmt(s.kg)}×${s.reps}`).join(" ")}</span>`:""}</div>
@@ -378,6 +378,7 @@ function renderDay(){
       <label>Minutos<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></details></div>`;
   restoreDraft(); syncDone(); d.ex.forEach(e=>readiness(e.id));
   $("#addEx").onclick=()=>{ flushDraft(); openAdd(d,$("#addEx")); };
+  $$(".addafter").forEach(b=>b.onclick=()=>{ flushDraft(); openAdd(d,b,b.dataset.after); });
   $$(".rmex").forEach(b=>b.onclick=()=>{ const ex=d.ex.find(e=>e.id===b.dataset.rm); if(ex&&confirm(`Remover ${chosen(ex)} da ficha? O histórico dele continua salvo.`)) { flushDraft(); removeExtra(d,ex); } });
   $$(".okb").forEach(b=>b.onclick=()=>okSet(b));
   $$(".rpeh").forEach(b=>b.onclick=()=>{ const r=b.closest(".card").querySelector(".rpescale"); r.hidden=!r.hidden; });

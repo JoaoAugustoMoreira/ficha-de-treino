@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.12.1 — 2026-10-20 · adicionar durante o treino
+- Cada exercício ganhou um botão **＋** que adiciona outro **logo depois dele**, a qualquer momento do treino (o botão do fim continua para adicionar no final). A posição fica salva.
+
 ## 0.12.0 — 2026-10-20 · adicionar exercício
 - **＋ Adicionar exercício** no fim de cada treino: busca nos 366 exercícios da base (pelo nome ou pelo nome popular, ex.: "voador"), mostrando primeiro os que existem no local da pessoa; escolhe 2, 3 ou 4 séries. Não achou? Digita o nome e escolhe o músculo.
 - O exercício adicionado ganha reps, RPE e descanso do objetivo, sugestão de carga, histórico e progressão como os outros, conta no volume da semana e pode ser trocado (⇄) ou removido (ⓘ → Remover da ficha; o histórico continua salvo).
