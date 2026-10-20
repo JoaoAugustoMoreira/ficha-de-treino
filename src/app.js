@@ -489,7 +489,8 @@ const FAQ=[
  ["Preciso de relógio?","Não. Sem relógio, anote só o sono da semana. Com Whoop, Garmin ou Apple Watch, a ficha também usa recuperação, FC e VFC."],
  ["O que é a análise semanal?","Uma vez por semana, no Histórico, toque em Analisar meu treino: o Claude lê seus registros e diz o que evoluiu, o que travou e o que fazer no próximo treino."],
  ["Meus dados ficam salvos onde?","Na sua conta Claude, se a ficha foi publicada com as permissões; senão, só neste navegador. Em Perfil → Backup dos dados você copia tudo."],
- ["A ficha substitui um profissional?","Não. É uma ferramenta educacional baseada em estudos. Se tem alguma condição de saúde ou dor, passe por um médico e, se puder, por um profissional de educação física."]];
+ ["A ficha substitui um profissional?","Não. É uma ferramenta educacional baseada em estudos. Se tem alguma condição de saúde ou dor, passe por um médico e, se puder, por um profissional de educação física."],["De onde vem o nome Kora?","Kora junta duas palavras. Core, em inglês, é o centro do corpo, de onde sai a força. Cor, em latim, quer dizer coração: é a mesma raiz de \"coragem\" e \"cordial\". Força e saúde num nome só."]];
+function koraNote(){ const n=$("#koraNote"); if(n) n.hidden=!n.hidden; }
 function renderFaq(){
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Dúvidas</h2>${!state.pf||state.editing?'<button class="link" id="backOnb" type="button">← Voltar ao questionário</button>':""}</div>
     ${FAQ.map(([q,a],i)=>`<details class="gd"${i?"":" open"}><summary>${esc(q)}</summary><div class="gb"><p>${esc(a)}</p></div></details>`).join("")}
@@ -561,7 +562,7 @@ function needsWeekly(){ const wk=weekStart(todayISO()); const recent=state.sessi
 $("#saveBtn").onclick=saveDay; $("#restX").onclick=closeRest; $("#restAdd").onclick=()=>{ rest.end=Math.max(rest.end,Date.now())+30000; rest.fired=false; $("#rest").classList.remove("over"); tickRest(); };
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"&&!$("#rest").hidden) tickRest(); });
 (async()=>{
-  draft.data=draftLocal(); 
+  draft.data=draftLocal(); if($("#koraH")) $("#koraH").onclick=koraNote; 
   await store.init(); const o=await store.load();
   state.sessions=o.sessions||[]; state.checkins=o.checkins||[]; state.prefs=Object.assign({swap:{}},o.prefs||{}); state.pf=o.pf||null; state.analysis=o.analysis||null; state.anHist=(o.anHist||[]).sort((a,b)=>a.semana<b.semana?1:-1);
   if(state.pf) state.plan=buildPlan(state.pf);
