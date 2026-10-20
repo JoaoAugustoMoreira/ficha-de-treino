@@ -19,38 +19,45 @@ const kfmt=v=>v>=1000?fmt(Math.round(v/100)/10)+" t":fmt(Math.round(v))+" kg";
 
 /* ---------- mapa muscular: frente e costas, desenho anatômico próprio ----------
    Só o lado esquerdo é desenhado; o direito é o espelho. Cada forma pertence a um dos 10 grupos do app. */
-const SIL=[[60,4],[66,5],[70,10],[70,18],[67,25],[65,30],[66,34],[74,37],[83,39],[89,44],[91,52],[91,62],[93,72],[95,86],[98,100],[101,116],[102,124],[103,134],[100,141],[97,137],[96,128],[94,122],[91,108],[88,94],[86,86],[84,72],[82,80],[80,92],[79,102],[81,112],[82,126],[81,144],[79,162],[77,178],[78,192],[78,208],[76,224],[75,234],[78,244],[72,248],[64,247],[64,238],[65,222],[64,206],[64,190],[64,176],[63,156],[62,138],[60,128]];
-function silhouette(){ const right=SIL, left=SIL.slice(1,-1).map(([x,y])=>[120-x,y]).reverse(); const pts=right.concat(left); const n=pts.length; let d=`M${pts[0][0]} ${pts[0][1]}`;
+const SIL=[[70,4],[76,5],[80,10],[80,18],[77,24],[76,28],[80,31],[88,34],[96,37],[104,40],[109,46],[111,55],[110,64],[111,74],[111,84],[108,94],[109,104],[111,114],[109,126],[105,136],[104,142],[106,150],[103,155],[99,151],[99,142],[98,130],[97,116],[96,104],[96,94],[95,82],[93,70],[91,78],[89,90],[86,100],[85,108],[87,116],[92,128],[95,142],[94,156],[91,168],[88,178],[91,190],[92,202],[88,216],[84,230],[85,240],[86,246],[78,248],[74,246],[75,236],[74,224],[73,210],[72,198],[74,186],[74,178],[74,164],[72,146],[70,134]];
+function silhouette(){ const right=SIL, left=SIL.slice(1,-1).map(([x,y])=>[140-x,y]).reverse(); const pts=right.concat(left); const n=pts.length; let d=`M${pts[0][0]} ${pts[0][1]}`;
   for(let i=0;i<n;i++){ const p0=pts[(i-1+n)%n], p1=pts[i], p2=pts[(i+1)%n], p3=pts[(i+2)%n];
     const c1=[p1[0]+(p2[0]-p0[0])/6, p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6, p2[1]-(p3[1]-p1[1])/6];
     d+=` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`; }
   return d+" Z"; }
-/* formas do lado direito da figura (x > 60); o outro lado é espelhado */
+/* formas do lado direito da figura (x > 70); o outro lado é espelhado. Proporções de fisiculturista: ombros largos, cintura fina, "V". */
+const FOREARM='<path d="M99 96 C107 100 111 110 110 122 C108 130 105 135 103 140 C102 128 101 114 98.5 102 Z"/><path d="M98 102 C100 114 101 126 101 140 L99 140 C98 126 97 114 96.5 102 Z"/>';
+const ARM_FRONT='<path d="M95 63 C102 65 106 74 105 86 C103 93 99 95 96 92 C94.5 84 94.3 74 95 63 Z"/><path d="M106 66 C110 72 111 82 108.5 93 C106.5 90 105.8 80 106 70 Z"/>'+FOREARM;
+const ARM_BACK='<path d="M94 60 C99 66 101 78 100 90 C97 94 95 91 94 86 C93 78 93 70 94 61 Z"/><path d="M101 61 C108 66 111 78 108.5 92 C105 96 102 93 101 88 C102 78 102 70 101 63 Z"/>'+FOREARM;
 const ANAT={
   front:[
-    ["costas",'<path d="M61 31 C64 33 68 35 74 37 C70 38 66 38 62 36 Z"/>'],
-    ["ombros",'<path d="M74 38 C82 38 88 42 90 50 C91 56 90 61 88 64 C85 57 81 51 75 47 C73 44 73 41 74 38 Z"/>'],
-    ["peito",'<path d="M61 41 C67 39 74 41 76 47 C79 53 80 60 77 65 C72 68 65 68 61 65 Z"/>'],
-    ["braços",'<path d="M88 64 C91 70 92 78 90 86 C88 88 86 87 85 84 C83 77 83 70 84 65 Z"/><path d="M93 89 C96 99 98 110 99 121 L96 122 C93 111 90 100 88 92 Z"/>'],
-    ["abdômen",'<rect x="61.2" y="69" width="7.6" height="8.5" rx="2.4"/><rect x="61.2" y="79" width="7.6" height="8.5" rx="2.4"/><rect x="61.2" y="89" width="7.6" height="8.5" rx="2.4"/><path d="M61.2 99 H68.8 C68.8 106 66 112 61.2 117 Z"/><path d="M71 69 C75 71 79 76 79 84 C79 94 80 102 81 110 C76 106 72 101 70 98 Z"/>'],
-    ["pernas",'<path d="M68 120 C74 136 74 154 71 170 C69 174 66 173 65 170 C64 154 64 138 65 124 Z"/><path d="M76 116 C81 132 81 152 77 172 C75 175 72 173 72 169 C74 152 74 134 71 120 Z"/><path d="M65 156 C67 163 68 170 65 176 C63 175 62 170 62 162 Z"/>'],
-    ["adutores",'<path d="M62 128 C64 134 65 142 64 152 C62 148 61 140 60.5 131 Z"/>'],
-    ["panturrilha",'<path d="M74 186 C76 200 76 214 73 226 L70 226 C70 212 70 198 71 186 Z"/><path d="M66 190 C65 200 65 212 67 222 L69 222 C69 210 69 198 68 190 Z"/>']],
+    ["costas",'<path d="M76 27 C82 30 88 33 94 36 C87 37.5 81 36.5 76 34 Z"/>'],
+    ["ombros",'<path d="M92 36 C102 37 110 42 111.5 51 C112 59 109.5 64 106 69 C104 60 101.5 51 97 44 Z"/><path d="M89 38 C96 38.5 99.5 42 100.5 48 C99 55 96.5 60 93.5 64 C91 56 89 48 87.5 42 Z"/>'],
+    ["peito",'<path d="M71 40 C78 38 86 39 90 42 C88 46 84 48.5 78 49 C75 49 72.5 48 71 47 Z"/><path d="M71 49 C76 51 84 50 90.5 45 C94 50 95 57 93 63.5 C86.5 68.5 77 69.5 71 66.5 Z"/>'],
+    ["braços",ARM_FRONT],
+    ["abdômen",'<rect x="71.4" y="70" width="7.2" height="8" rx="2.6"/><rect x="71.4" y="80" width="7.6" height="8" rx="2.6"/><rect x="71.4" y="90" width="7.4" height="8" rx="2.6"/><rect x="71.4" y="100" width="6.8" height="8" rx="2.6"/><path d="M71.4 110 H77.8 C77 118 74.2 124 71.4 128 Z"/><path d="M81 70 C86 74 89 82 88.5 94 C87.5 101 87 106 87.5 112 C84 110 82 107 81 104 Z"/><path d="M90.5 66 L95 68 L92 71.5 Z"/><path d="M89.5 73 L94 75 L91 78.5 Z"/><path d="M88.8 80 L93 82 L90.3 85.2 Z"/>'],
+    ["pernas",'<path d="M86 118 C94 128 96.5 146 93 166 C91 175 88 179 85 176 C85.5 160 85 142 82 126 Z"/><path d="M78 124 C85 136 86.5 154 84 172 C82 177 79 177 77.5 173 C76 158 75.5 140 76 126 Z"/><path d="M76 156 C81 162 82 172 78 181 C74.5 179 73.5 172 74 164 Z"/>'],
+    ["adutores",'<path d="M71.5 132 C75 137 75.6 146 74.8 156 C72.8 152 71.8 144 71 136 Z"/>'],
+    ["panturrilha",'<path d="M83 184 C87 196 87 212 84 228 L80.5 228 C80 212 80 198 80 186 Z"/><path d="M88 184 C92.5 194 92 206 88 216 C86.5 206 86 196 86 186 Z"/><path d="M75 186 C72 196 72 208 74.5 218 L78 218 C78.5 206 78.5 196 78 188 Z"/>']],
   back:[
-    ["costas",'<path d="M60 28 C64 31 70 35 77 38 C72 42 66 48 61 62 Z"/><path d="M77 47 C80 57 79 72 74 88 C70 94 65 96 61.5 96 L61.5 66 C66 58 70 52 77 47 Z"/><path d="M61.5 92 H66 L66 109 L61.5 111 Z"/>'],
-    ["ombros",'<path d="M74 38 C82 38 88 42 90 50 C91 56 90 61 88 64 C85 57 81 51 75 47 C73 44 73 41 74 38 Z"/>'],
-    ["braços",'<path d="M89 60 C92 68 92 78 90 86 C87 88 85 85 84 80 C83 72 84 65 86 61 Z"/><path d="M93 89 C96 99 98 110 99 121 L96 122 C93 111 90 100 88 92 Z"/>'],
-    ["glúteos",'<path d="M78 105 C80 111 79 117 76 120 C73 114 70 110 68 108 Z"/><path d="M76 111 C79 121 76 131 68 134 C63 134 61 130 61 122 C61 114 65 110 70 110 Z"/>'],
-    ["posterior",'<path d="M76 137 C78 151 77 165 74 177 L70 177 C71 163 71 149 70 137 Z"/><path d="M69 137 C70 151 69 165 68 177 L64 177 C63 163 62 149 62 139 Z"/>'],
-    ["panturrilha",'<path d="M75 184 C78 194 77 206 73 214 C71 210 70 200 70 188 Z"/><path d="M69 186 C69 198 68 210 65 216 C62 208 62 194 65 186 Z"/><path d="M73 214 C73 222 72 228 71 232 L66 232 C65 226 65 220 65 216 Z"/>']]};
+    ["costas",'<path d="M70 22 C76 26 84 32 94 37 C86 40 78 42 71.5 46 Z"/><path d="M71.5 47 C77 45 82 45 86 47 C80 56 75 66 71.5 76 Z"/><path d="M78.5 48.5 C84 46.5 89 48 92 52 C90 58 86 62 81.5 63 C79.5 58 78.5 53 78.5 48.5 Z"/><path d="M86.5 62.5 C89 60.5 92 60.5 93 64 L88.5 68 Z"/><path d="M88.5 67 C93.5 71 92.5 83 88.5 94 C84.5 102 78.5 108 73.5 110 L73 79 C77.5 73 82.5 69 88.5 67 Z"/><path d="M71.5 79 C74.5 83 75.5 96 75.5 112 L71.5 114 Z"/>'],
+    ["ombros",'<path d="M94 37 C103 38 110 43 111.5 52 C111 60 108.5 65 105.5 68 C102 59 99 51 93 44 Z"/>'],
+    ["braços",ARM_BACK],
+    ["glúteos",'<path d="M86 112 C90 116 90.5 122 88.5 126 C84.5 122 80.5 118.5 77 116.5 Z"/><path d="M89 121 C92 131 88 141 79.5 143 C73.5 143 71.2 139 71.2 130 C71.2 122 75 118.5 80 118.5 Z"/>'],
+    ["posterior",'<path d="M88 145 C94 156 93 170 87 182 L82.5 182 C84 168 84 156 82 145 Z"/><path d="M81 145 C82.5 158 81.5 170 79.5 182 L75 182 C73.5 168 72.5 156 72.5 147 Z"/>'],
+    ["panturrilha",'<path d="M87 184 C93 192 92 206 86 216 C83.5 208 82.5 198 82.5 186 Z"/><path d="M81.5 186 C82 200 81 212 76.5 220 C71.5 210 71.5 196 74.5 186 Z"/><path d="M86 216.5 C86 224 84 230 82 234 L77 234 C76 228 76 222 76 219.5 Z"/>']]};
+/* linhas de definição (só desenho, sem toque): fibras do peitoral, cabeças do deltoide, separações do quadríceps e da panturrilha */
+const DEF={front:'<path d="M74 55 C80 57 86 55 90 50"/><path d="M75 61 C81 63 87 61 91 57"/><path d="M99 46 C101 52 102 58 102 63"/><path d="M80 136 C81.5 148 81.5 160 80.5 168"/><path d="M89 132 C91 144 91 156 89 166"/><path d="M98 70 C100 76 100 82 99 88"/><path d="M104 108 C105 114 105 120 104 126"/>',
+  back:'<path d="M80 98 C83 94 86 88 87 82"/><path d="M78 104 C82 100 85 96 87 90"/><path d="M78 126 C82 130 85 134 86 138"/><path d="M85 194 C86 200 86 206 85 210"/><path d="M78 196 C77.5 202 77.5 208 78 212"/><path d="M104 70 C105.5 78 105.5 84 104 90"/><path d="M85 152 C86 160 86 168 85 176"/>'};
 const SIL_D=silhouette();
 function bodyFigure(side,frac,tip,cls){
   const shapes=ANAT[side].map(([m,sh])=>{ const f=Math.max(0,Math.min(1,frac[m]||0)); const fill=f>0?`fill="var(--accent)" fill-opacity="${(0.16+0.84*f).toFixed(2)}"`:`fill="var(--body-mus)"`;
-    return `<g class="mus" ${fill} data-tip="${esc(tip?tip[m]||"":"")}">${sh}<g transform="translate(120 0) scale(-1 1)">${sh}</g></g>`; }).join("");
-  return `<svg class="body ${cls||""}" viewBox="0 0 120 252" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}">
+    return `<g class="mus" ${fill} data-tip="${esc(tip?tip[m]||"":"")}">${sh}<g transform="translate(140 0) scale(-1 1)">${sh}</g></g>`; }).join("");
+  return `<svg class="body ${cls||""}" viewBox="0 0 140 252" role="img" aria-label="Músculos trabalhados, ${side==="front"?"frente":"costas"}">
     <path d="${SIL_D}" fill="var(--body-base)" stroke="var(--body-line)" stroke-width="1"/>
-    ${side==="back"?'<path d="M60 30 V112" stroke="var(--body-line)" stroke-width=".8"/>':'<path d="M54 22 C57 24 63 24 66 22" fill="none" stroke="var(--body-line)" stroke-width=".8"/>'}
-    <g stroke="var(--surface)" stroke-width="1" stroke-linejoin="round">${shapes}</g></svg>`; }
+    ${side==="back"?'<path d="M70 28 V116" stroke="var(--body-line)" stroke-width=".8"/>':'<path d="M64 22 C67 24 73 24 76 22" fill="none" stroke="var(--body-line)" stroke-width=".8"/>'}
+    <g stroke="var(--surface)" stroke-width="1.1" stroke-linejoin="round">${shapes}</g>
+    <g class="def" fill="none" stroke="var(--surface)" stroke-opacity=".55" stroke-width=".7" stroke-linecap="round" pointer-events="none">${DEF[side]}<g transform="translate(140 0) scale(-1 1)">${DEF[side]}</g></g></svg>`; }
 function bodyPair(frac,tip,cls){ return `<div class="bodypair ${cls||""}">${bodyFigure("front",frac,tip,cls)}${bodyFigure("back",frac,tip,cls)}</div>`; }
 
 /* ---------- barras verticais com linha de meta opcional ---------- */
@@ -130,6 +137,8 @@ function recentSessions(ss){ const list=ss.slice().sort((a,b)=>b.ts-a.ts).slice(
       <ul class="sesslist">${Object.entries(s.ex).map(([n,sets])=>{ const kgs=[...new Set(sets.map(x=>x.kg||0))]; return `<li><span>${esc(n)}</span><b>${sets.length} × ${kgs.length===1&&kgs[0]>0?fmt(kgs[0])+" kg × ":""}${sets.map(x=>x.reps).join("/")}</b></li>`; }).join("")}</ul></div></article>`; }).join(""); }
 
 /* toque/hover: um único balão para todas as marcas */
+function hideTip(){ const t=document.getElementById("ktip"); if(t) t.hidden=true; document.querySelectorAll(".on-tip").forEach(e=>e.classList.remove("on-tip")); }
+window.addEventListener("scroll",hideTip,{passive:true});
 function bindTips(root){ let tipEl=document.getElementById("ktip"); if(!tipEl){ tipEl=document.createElement("div"); tipEl.id="ktip"; tipEl.setAttribute("role","status"); tipEl.hidden=true; document.body.appendChild(tipEl); }
   const show=(el,ev)=>{ const t=el.getAttribute("data-tip"); if(!t) return; tipEl.textContent=t; tipEl.hidden=false; const r=el.getBoundingClientRect(); const x=Math.min(window.innerWidth-12,Math.max(12,(ev&&ev.clientX)||r.left+r.width/2)); tipEl.style.left=x+"px"; tipEl.style.top=(r.top+window.scrollY-8)+"px";
     root.querySelectorAll(".on-tip").forEach(e=>e.classList.remove("on-tip")); el.classList.add("on-tip"); };

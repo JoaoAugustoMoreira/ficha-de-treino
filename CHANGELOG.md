@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1 — 2026-10-20
+- Boneco com físico de fisiculturista: ombros largos, cintura fina, deltoide em 2 cabeças, peitoral superior e inferior, serrátil, abdômen em 8 gomos, bíceps/braquial, tríceps em 2 cabeças, antebraço, trapézio superior e médio, infraespinal, redondo maior, dorsais, lombar, glúteo médio e máximo, quadríceps em 3 cabeças, posteriores em 2, panturrilha em 3 partes, e linhas de definição.
+- Corrigido: o balão de informação do músculo sumia só ao tocar fora; agora some ao trocar de aba ou rolar a tela.
+
 ## 0.8.0 — 2026-10-20
 - Nova tela **Início** (aba padrão): saudação, treino de hoje com botão "Começar treino" (ou dia de descanso com o próximo treino), semana em bolinhas (feito, hoje, perdido, planejado), treinos e volume da semana, sequência de semanas na meta, mapa muscular e atalhos para Desempenho, Meu plano, Cardio e Ajuda.
 - Abas: Início, Treino, Progresso e Perfil (Ajuda pelo atalho do Início).
