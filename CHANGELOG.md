@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.2 — 2026-10-20
+- Boneco menos "inflado" (ombro e braço menos arredondados) e com fibras musculares desenhadas em cada músculo, na direção anatômica (peitoral quase horizontal, deltoide e coxa verticais, oblíquo e trapézio na diagonal), espelhadas nos dois lados.
+
 ## 0.9.1 — 2026-10-20
 - Boneco mais forte e volumoso: cada músculo é engrossado a partir do próprio centro (deltoides, braços, antebraço, trapézio, dorsais, peitoral, quadríceps, posteriores e panturrilha), pescoço mais grosso e cabeça um pouco menor.
 
