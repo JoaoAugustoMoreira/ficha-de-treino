@@ -199,3 +199,15 @@ test("divisão automática varia com dias e experiência (não é sempre corpo i
   assert.equal(M.buildPlan(perfil({exp:"mais1",dias:D[6]})).sk, "ppl");
   assert.equal(M.buildPlan(perfil({exp:"mais1",dias:D[3],divisao:"abc"})).sk, "abc");
 });
+
+test("todo exercício tem dica de execução e toda evidência citada existe", async () => {
+  const fs = await import("node:fs");
+  const ex = JSON.parse(fs.readFileSync(new URL("../data/exercicios.json", import.meta.url)));
+  const ev = new Set(JSON.parse(fs.readFileSync(new URL("../data/evidencias.json", import.meta.url))).map(e => e.id));
+  for (const e of ex) assert.ok(e.dica && e.dica.length > 30, "sem dica: " + e.nome);
+  const hab = JSON.parse(fs.readFileSync(new URL("../data/habilidades.json", import.meta.url)));
+  for (const h of Object.values(hab)) if (h.ev) assert.ok(ev.has(h.ev), "evidência inexistente: " + h.ev);
+  const esp = JSON.parse(fs.readFileSync(new URL("../data/esportes.json", import.meta.url)));
+  for (const p of Object.values(esp.perfis)) for (const id of [].concat(p.ev || [], (p.prevencao || []).map(x => x.ev))) assert.ok(ev.has(id), "evidência inexistente: " + id);
+  assert.ok(ev.size >= 45);
+});

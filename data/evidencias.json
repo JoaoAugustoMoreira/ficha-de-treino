@@ -117,7 +117,7 @@
   {
     "id": "concorrente",
     "tema": "Musculação + outro esporte",
-    "regra": "Treino aeróbio somado à musculação pode reduzir um pouco o ganho de força e potência das pernas; corrida interfere mais que bike. Separar treino forte de pernas e esporte de pernas em dias diferentes é a aplicação prática.",
+    "regra": "Somar cardio à musculação não atrapalha a hipertrofia nem a força máxima, mas pode reduzir o ganho de explosão, principalmente na mesma sessão. Separar esporte forte de pernas e treino de pernas em dias diferentes é a aplicação prática.",
     "usadoEm": [
       "organização dos dias",
       "corte de séries"
@@ -125,7 +125,8 @@
     "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Wilson et al., 2012 — Journal of Strength and Conditioning Research"
+      "Wilson et al., 2012 — Journal of Strength and Conditioning Research",
+      "Schumann et al., 2022 — Sports Medicine — doi:10.1007/s40279-021-01587-7"
     ]
   },
   {
@@ -389,6 +390,238 @@
     "forca": "moderada",
     "fontes": [
       "Steffens et al., 2016 — JAMA Internal Medicine — doi:10.1001/jamainternmed.2015.7431"
+    ]
+  },
+  {
+    "id": "cadencia",
+    "tema": "Velocidade da repetição",
+    "regra": "Repetições de 0,5 a 8 segundos dão hipertrofia parecida; muito lento (mais de 10 s por repetição) rende menos. Controle a descida, sem precisar contar segundos.",
+    "usadoEm": [
+      "dicas de execução"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Schoenfeld, Ogborn & Krieger, 2015 — Sports Medicine — doi:10.1007/s40279-015-0304-0"
+    ]
+  },
+  {
+    "id": "amplitude",
+    "tema": "Amplitude de movimento",
+    "regra": "Amplitude completa dá mais força e mais hipertrofia nas pernas que amplitude parcial. Use a maior amplitude que você controla sem dor.",
+    "usadoEm": [
+      "dicas de execução",
+      "exercícios com amplitude reduzida para dor"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Pallarés et al., 2021 — Scandinavian Journal of Medicine & Science in Sports — doi:10.1111/sms.14006"
+    ]
+  },
+  {
+    "id": "musculacao-saude",
+    "tema": "Musculação e saúde",
+    "regra": "Fazer musculação está associado a 10–17% menos risco de morte, doença cardiovascular, câncer e diabetes; o maior benefício aparece com 30–60 min por semana.",
+    "usadoEm": [
+      "objetivo saúde",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise de coortes",
+    "forca": "moderada",
+    "fontes": [
+      "Momma et al., 2022 — British Journal of Sports Medicine — doi:10.1136/bjsports-2021-105061"
+    ]
+  },
+  {
+    "id": "passos",
+    "tema": "Passos por dia",
+    "regra": "Mais passos por dia, menor risco de morte, até cerca de 6–8 mil passos (60 anos ou mais) e 8–10 mil (menos de 60). Os 10 mil não são obrigatórios.",
+    "usadoEm": [
+      "objetivo saúde",
+      "cardio"
+    ],
+    "tipo": "meta-análise de coortes",
+    "forca": "moderada",
+    "fontes": [
+      "Paluch et al., 2022 — The Lancet Public Health — doi:10.1016/S2468-2667(21)00302-9"
+    ]
+  },
+  {
+    "id": "depressao",
+    "tema": "Musculação e humor",
+    "regra": "Musculação reduziu os sintomas de depressão com efeito moderado, independentemente do volume ou do ganho de força.",
+    "usadoEm": [
+      "objetivo saúde",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise de ensaios clínicos",
+    "forca": "moderada",
+    "fontes": [
+      "Gordon et al., 2018 — JAMA Psychiatry — doi:10.1001/jamapsychiatry.2018.0572"
+    ]
+  },
+  {
+    "id": "ansiedade",
+    "tema": "Musculação e ansiedade",
+    "regra": "Musculação reduziu os sintomas de ansiedade (efeito pequeno a moderado), mais em pessoas saudáveis.",
+    "usadoEm": [
+      "objetivo saúde",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise de ensaios clínicos",
+    "forca": "moderada",
+    "fontes": [
+      "Gordon et al., 2017 — Sports Medicine — doi:10.1007/s40279-017-0769-0"
+    ]
+  },
+  {
+    "id": "pressao",
+    "tema": "Pressão arterial",
+    "regra": "Todo tipo de exercício baixa a pressão de repouso; musculação dinâmica cerca de 4,5/3 mmHg e o treino isométrico (prancha, agachamento na parede) foi o mais eficaz, cerca de 8/4 mmHg.",
+    "usadoEm": [
+      "objetivo saúde",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise em rede (270 ensaios)",
+    "forca": "moderada a alta",
+    "fontes": [
+      "Edwards et al., 2023 — British Journal of Sports Medicine — doi:10.1136/bjsports-2022-106503"
+    ]
+  },
+  {
+    "id": "hiit-vo2",
+    "tema": "Intervalado × contínuo",
+    "regra": "Cardio contínuo e intervalado melhoram muito o VO₂máx; o intervalado rende um pouco mais.",
+    "usadoEm": [
+      "cardio",
+      "4×4"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Milanović, Sporiš & Weston, 2015 — Sports Medicine — doi:10.1007/s40279-015-0365-0"
+    ]
+  },
+  {
+    "id": "gordura",
+    "tema": "Musculação e gordura",
+    "regra": "Musculação sozinha, sem dieta, reduz cerca de 1,5 ponto do percentual de gordura, inclusive a gordura visceral.",
+    "usadoEm": [
+      "objetivo emagrecimento"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Wewege et al., 2022 — Sports Medicine — doi:10.1007/s40279-021-01562-2"
+    ]
+  },
+  {
+    "id": "deficit",
+    "tema": "Dieta e ganho de músculo",
+    "regra": "Comer menos do que gasta atrapalha o ganho de massa magra (com déficit de ~500 kcal/dia o ganho para), mas não o de força. Para emagrecer mantendo músculo, déficit moderado.",
+    "usadoEm": [
+      "objetivo emagrecimento",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Murphy & Koehler, 2022 — Scandinavian Journal of Medicine & Science in Sports — doi:10.1111/sms.14075"
+    ]
+  },
+  {
+    "id": "periodizacao",
+    "tema": "Periodização",
+    "regra": "Com o mesmo volume, variar carga e repetições ao longo das semanas aumenta um pouco mais a força máxima, sem mudar a hipertrofia; para treinados, variar dentro da semana (ondulatória) rende mais força.",
+    "usadoEm": [
+      "ciclos de treino",
+      "semana leve"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Moesgaard et al., 2022 — Sports Medicine — doi:10.1007/s40279-021-01636-1"
+    ]
+  },
+  {
+    "id": "elastico",
+    "tema": "Elástico × pesos",
+    "regra": "Treino com elástico dá ganho de força parecido ao de máquinas e halteres: treinar em casa funciona.",
+    "usadoEm": [
+      "treino em casa"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Lopes et al., 2019 — SAGE Open Medicine — doi:10.1177/2050312119831116"
+    ]
+  },
+  {
+    "id": "mulheres",
+    "tema": "Mulheres e musculação",
+    "regra": "Com o mesmo treino, mulheres e homens ganham hipertrofia e força de pernas parecidas (em proporção); mulheres ganham proporcionalmente mais força de tronco. O mesmo plano serve para os dois.",
+    "usadoEm": [
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Roberts, Nuckols & Krieger, 2020 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0000000000003521"
+    ]
+  },
+  {
+    "id": "ossos",
+    "tema": "Musculação e ossos",
+    "regra": "Treino de força com carga alta e supervisionado aumentou a densidade óssea e a função de mulheres na pós-menopausa com osteopenia, sem eventos adversos relevantes.",
+    "usadoEm": [
+      "objetivo saúde",
+      "Dúvidas"
+    ],
+    "tipo": "ensaio clínico randomizado",
+    "forca": "moderada",
+    "fontes": [
+      "Watson et al., 2018 — Journal of Bone and Mineral Research — doi:10.1002/jbmr.3284"
+    ]
+  },
+  {
+    "id": "idosos",
+    "tema": "Musculação depois dos 50",
+    "regra": "Depois dos 50 anos a musculação aumenta a massa magra (cerca de 1 kg em média); mais volume, mais ganho, e quanto mais cedo começar, melhor.",
+    "usadoEm": [
+      "idade no questionário",
+      "Dúvidas"
+    ],
+    "tipo": "meta-análise",
+    "forca": "moderada",
+    "fontes": [
+      "Peterson, Sen & Gordon, 2011 — Medicine & Science in Sports & Exercise — doi:10.1249/MSS.0b013e3181eb6265"
+    ]
+  },
+  {
+    "id": "creatina",
+    "tema": "Creatina",
+    "regra": "A creatina (3–5 g por dia) é o suplemento com mais evidência para força e massa magra, e é segura para pessoas saudáveis. Não é obrigatória.",
+    "usadoEm": [
+      "Dúvidas"
+    ],
+    "tipo": "posicionamento (ISSN)",
+    "forca": "alta",
+    "fontes": [
+      "Kreider et al., 2017 — Journal of the International Society of Sports Nutrition — doi:10.1186/s12970-017-0173-z"
+    ]
+  },
+  {
+    "id": "tempo-eficiente",
+    "tema": "Pouco tempo para treinar",
+    "regra": "Com pouco tempo: priorize exercícios compostos, use bisets de músculos opostos (ex.: supino + remada) e treinos curtos e frequentes; dá para ter bons ganhos com menos de 1 hora por semana.",
+    "usadoEm": [
+      "planos de 30–45 min"
+    ],
+    "tipo": "revisão narrativa",
+    "forca": "moderada",
+    "fontes": [
+      "Iversen et al., 2021 — Sports Medicine — doi:10.1007/s40279-021-01490-1"
     ]
   }
 ]

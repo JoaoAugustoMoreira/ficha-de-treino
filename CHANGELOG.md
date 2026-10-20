@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 — 2026-10-20
+- **Dicas de execução para os 366 exercícios** (antes: 9). Escritas por família de movimento (agachamento, leg press, búlgaro, split squat, terra, stiff, supino, flexão, remada, puxada, rosca, tríceps, panturrilha, core, saltos…) com complementos por variação: unilateral, smith, cabo, elástico, máquina, pausa, amplitude reduzida, kettlebell. Gerador em `scripts/gerar-dicas.mjs`.
+- **Base de evidências: 28 → 45 entradas**, todas conferidas no PubMed com DOI: velocidade da repetição, amplitude de movimento, musculação e mortalidade, passos por dia, depressão, ansiedade, pressão arterial, intervalado × contínuo, gordura corporal, déficit calórico, periodização, elástico × pesos, mulheres, densidade óssea, depois dos 50, creatina e treino com pouco tempo. "Cardio + musculação" atualizado (Schumann 2022: não atrapalha hipertrofia nem força máxima; pode reduzir a explosão).
+- **Dúvidas**: novas perguntas sobre creatina, treino para mulheres, emagrecimento e treino curto.
+- Teste novo: todo exercício tem dica e toda evidência citada pelo app existe.
+
 ## 0.9.5 — 2026-10-20 · revisão crítica da base
 - **Falha muscular:** corrigido. Para hipertrofia, terminar mais perto da falha (0–2 reps sobrando) rende um pouco mais (Robinson 2024); para força, quase não importa. Hipertrofia passa a RPE 7,5–8,5 nos compostos e 8,5–9 nos acessórios (iniciante segue no máximo 8).
 - **Frequência e volume:** atualizados com Pelland et al. (Sports Medicine, 2026): frequência quase não muda a hipertrofia mas aumenta a força; o volume tem retorno decrescente, mais acentuado na força; contagem fracionada confirmada.

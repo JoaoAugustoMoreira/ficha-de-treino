@@ -11,7 +11,8 @@
     "fonte": "curado",
     "idExterno": "Barbell_Squat",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão."
   },
   {
     "id": "squat/leg-press-45",
@@ -28,7 +29,8 @@
     ],
     "idExterno": "Leg_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto."
   },
   {
     "id": "squat/agachamento-no-hack",
@@ -44,7 +46,8 @@
     ],
     "idExterno": "Hack_Squat",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Costas firmes no apoio (ou tronco ereto no belt), pés na plataforma na largura dos ombros; desça controlado e suba empurrando o chão, joelhos na direção dos pés."
   },
   {
     "id": "squat/agachamento-goblet",
@@ -60,7 +63,8 @@
     "fonte": "curado",
     "idExterno": "Goblet_Squat",
     "nivel": "iniciante",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Segure o peso junto ao peito, cotovelos para dentro. Desça entre as pernas com o tronco ereto e suba empurrando o chão."
   },
   {
     "id": "squat/agachamento-no-smith",
@@ -74,7 +78,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Squat",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "squat/agachamento-frontal",
@@ -87,7 +92,8 @@
     "fonte": "curado",
     "idExterno": "Front_Barbell_Squat",
     "nivel": "avancado",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Barra (ou peso) apoiada na frente dos ombros, cotovelos altos e tronco bem ereto. Desça entre as pernas e suba sem deixar o peito cair."
   },
   {
     "id": "squat/pendulo-pendulum-squat",
@@ -97,7 +103,8 @@
       "completa": 6
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas firmes no apoio (ou tronco ereto no belt), pés na plataforma na largura dos ombros; desça controlado e suba empurrando o chão, joelhos na direção dos pés."
   },
   {
     "id": "squat/belt-squat",
@@ -109,7 +116,8 @@
     "seguroPara": {
       "joelho": 2
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas firmes no apoio (ou tronco ereto no belt), pés na plataforma na largura dos ombros; desça controlado e suba empurrando o chão, joelhos na direção dos pés."
   },
   {
     "id": "squat/agachamento-bulgaro-com-halteres",
@@ -121,7 +129,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pé de trás apoiado no banco, pé da frente longe o bastante para o joelho não passar muito da ponta do pé. Desça na vertical até a coxa da frente ficar paralela ao chão."
   },
   {
     "id": "squat/leg-press-horizontal",
@@ -132,7 +141,8 @@
       "basica": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto."
   },
   {
     "id": "squat/afundo-com-halteres",
@@ -146,7 +156,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Lunges",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "squat/agachamento-goblet-com-halter",
@@ -156,7 +167,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Segure o peso junto ao peito, cotovelos para dentro. Desça entre as pernas com o tronco ereto e suba empurrando o chão."
   },
   {
     "id": "squat/agachamento-com-halteres",
@@ -169,7 +181,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Squat",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão."
   },
   {
     "id": "squat/agachamento-com-pausa-halteres",
@@ -179,7 +192,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão. Segure 1–2 s na posição mais difícil, sem relaxar."
   },
   {
     "id": "squat/step-up-com-halteres",
@@ -192,7 +206,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Step_Ups",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pé inteiro sobre o banco ou degrau; suba empurrando com a perna de cima, sem impulso da de baixo, e desça devagar."
   },
   {
     "id": "squat/agachamento-com-elastico",
@@ -205,7 +220,8 @@
     "fonte": "curado",
     "idExterno": "Squats_-_With_Bands",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "squat/leg-press-45-amplitude-confortavel",
@@ -215,7 +231,8 @@
     "seguroPara": {
       "joelho": 0
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto. Use só a amplitude sem dor e aumente aos poucos."
   },
   {
     "id": "squat/agachamento-no-box",
@@ -228,7 +245,8 @@
     "fonte": "curado",
     "idExterno": "Box_Squat",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Desça controlado até encostar levemente no banco ou caixa, sem sentar e relaxar, e suba empurrando o chão."
   },
   {
     "id": "hinge/levantamento-romeno",
@@ -245,7 +263,8 @@
     ],
     "idExterno": "Romanian_Deadlift",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril."
   },
   {
     "id": "hinge/levantamento-terra-com-hex-bar",
@@ -255,7 +274,8 @@
       "completa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pés sob a barra, coluna neutra e peito aberto; empurre o chão com as pernas e estenda o quadril ao mesmo tempo, mantendo o peso rente ao corpo. Desça pelo mesmo caminho."
   },
   {
     "id": "hinge/stiff-com-halteres",
@@ -273,7 +293,8 @@
     ],
     "idExterno": "Stiff-Legged_Dumbbell_Deadlift",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril."
   },
   {
     "id": "hinge/levantamento-terra-convencional",
@@ -283,7 +304,8 @@
       "completa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pés sob a barra, coluna neutra e peito aberto; empurre o chão com as pernas e estenda o quadril ao mesmo tempo, mantendo o peso rente ao corpo. Desça pelo mesmo caminho."
   },
   {
     "id": "hinge/levantamento-terra-sumo",
@@ -296,7 +318,8 @@
     "fonte": "curado",
     "idExterno": "Sumo_Deadlift",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pés bem afastados e pegada entre as pernas; coluna neutra e peito aberto, empurre o chão e estenda o quadril ao mesmo tempo, com o peso rente ao corpo."
   },
   {
     "id": "hinge/good-morning",
@@ -310,7 +333,8 @@
     "fonte": "curado",
     "idExterno": "Good_Morning",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Peso nas costas (ou elástico), joelhos levemente dobrados; incline o tronco à frente empurrando o quadril para trás, coluna neutra, até sentir o posterior. Volte com o quadril."
   },
   {
     "id": "hinge/stiff-unilateral-com-halter",
@@ -322,7 +346,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "hinge/pull-through-no-cabo",
@@ -338,7 +363,8 @@
     "fonte": "curado",
     "idExterno": "Pull_Through",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "De costas para o cabo ou elástico, peso entre as pernas; empurre o quadril para trás e projete-o à frente apertando o glúteo, braços só seguram. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "hinge/hiperextensao-45-com-carga",
@@ -348,7 +374,8 @@
       "completa": 8
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Quadril apoiado na borda do aparelho; desça o tronco e suba até alinhar com as pernas, usando glúteo e posterior. Não passe da linha do corpo."
   },
   {
     "id": "hinge/levantamento-romeno-com-barra",
@@ -358,7 +385,8 @@
       "basica": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril."
   },
   {
     "id": "hinge/hiperextensao-45",
@@ -368,7 +396,8 @@
       "basica": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Quadril apoiado na borda do aparelho; desça o tronco e suba até alinhar com as pernas, usando glúteo e posterior. Não passe da linha do corpo."
   },
   {
     "id": "hinge/good-morning-com-halter",
@@ -378,7 +407,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Peso nas costas (ou elástico), joelhos levemente dobrados; incline o tronco à frente empurrando o quadril para trás, coluna neutra, até sentir o posterior. Volte com o quadril."
   },
   {
     "id": "hinge/levantamento-terra-com-halteres",
@@ -388,7 +418,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pés sob a barra, coluna neutra e peito aberto; empurre o chão com as pernas e estenda o quadril ao mesmo tempo, mantendo o peso rente ao corpo. Desça pelo mesmo caminho."
   },
   {
     "id": "hinge/ponte-de-gluteo-com-halter",
@@ -398,7 +429,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "hinge/pull-through-com-elastico",
@@ -408,7 +440,8 @@
       "casa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "De costas para o cabo ou elástico, peso entre as pernas; empurre o quadril para trás e projete-o à frente apertando o glúteo, braços só seguram. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "hinge/elevacao-pelvica-com-barra",
@@ -424,7 +457,8 @@
     ],
     "idExterno": "Barbell_Hip_Thrust",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "hinge/extensao-de-quadril-na-maquina",
@@ -434,7 +468,8 @@
     "seguroPara": {
       "lombar": 1
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hinge/stiff-com-halteres-carga-leve",
@@ -444,7 +479,8 @@
     "seguroPara": {
       "lombar": 3
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril. Use só a amplitude sem dor e aumente aos poucos."
   },
   {
     "id": "hpush/supino-reto-com-barra",
@@ -458,7 +494,8 @@
     "fonte": "curado",
     "idExterno": "Barbell_Bench_Press_-_Medium_Grip",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "hpush/supino-reto-com-halteres",
@@ -472,7 +509,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "hpush/supino-maquina",
@@ -488,7 +526,8 @@
     "fonte": "curado",
     "idExterno": "Machine_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpush/supino-no-smith",
@@ -502,7 +541,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "hpush/supino-articulado",
@@ -520,7 +560,8 @@
     ],
     "idExterno": "Leverage_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpush/flexao-de-braco",
@@ -537,7 +578,8 @@
     "fonte": "curado",
     "idExterno": "Pushups",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "hpush/mergulho-em-paralelas",
@@ -551,7 +593,8 @@
     "fonte": "curado",
     "idExterno": "Dips_-_Triceps_Version",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Ombros para baixo, longe das orelhas. Desça até os cotovelos formarem cerca de 90° e empurre; incline o tronco à frente para mais peito, mais reto para mais tríceps."
   },
   {
     "id": "hpush/supino-reto-pegada-fechada",
@@ -561,7 +604,8 @@
       "completa": 7
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos na largura dos ombros e cotovelos rentes ao corpo; desça até perto do peito e empurre, focando no tríceps."
   },
   {
     "id": "hpush/supino-com-halteres-no-chao",
@@ -571,7 +615,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "hpush/flexao-inclinada",
@@ -581,7 +626,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "hpush/flexao-com-pausa",
@@ -591,7 +637,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre. Segure 1–2 s na posição mais difícil, sem relaxar."
   },
   {
     "id": "hpush/flexao-com-elastico",
@@ -601,7 +648,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "hpush/flexao-fechada",
@@ -611,7 +659,8 @@
       "casa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos mais próximas que a largura dos ombros e cotovelos rentes ao corpo; corpo reto, desça até o peito quase tocar o chão e empurre. Foca no tríceps."
   },
   {
     "id": "hpush/supino-com-halteres-pegada-neutra",
@@ -624,7 +673,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Bench_Press_with_Neutral_Grip",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "incline/supino-inclinado-com-halteres",
@@ -639,7 +689,8 @@
     "fonte": "curado",
     "idExterno": "Incline_Dumbbell_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "incline/supino-inclinado-maquina",
@@ -652,7 +703,8 @@
     "seguroPara": {
       "ombro": 0
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "incline/supino-inclinado-com-barra",
@@ -665,7 +717,8 @@
     "fonte": "curado",
     "idExterno": "Barbell_Incline_Bench_Press_-_Medium_Grip",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "incline/supino-inclinado-no-smith",
@@ -679,7 +732,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Incline_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "incline/crucifixo-inclinado-com-halteres",
@@ -694,7 +748,8 @@
     "fonte": "curado",
     "idExterno": "Incline_Dumbbell_Flyes",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos."
   },
   {
     "id": "incline/crossover-baixo-alto",
@@ -709,7 +764,8 @@
     "fonte": "curado",
     "idExterno": "Low_Cable_Crossover",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "incline/flexao-declinada",
@@ -722,7 +778,8 @@
     "seguroPara": {
       "ombro": 2
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "incline/flexao-com-pes-elevados",
@@ -735,7 +792,8 @@
     "fonte": "curado",
     "idExterno": "Push-Ups_With_Feet_Elevated",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "vpush/desenvolvimento-com-halteres-sentado",
@@ -752,7 +810,8 @@
     ],
     "idExterno": "Dumbbell_Shoulder_Press",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "vpush/desenvolvimento-maquina",
@@ -766,7 +825,8 @@
     "fonte": "curado",
     "idExterno": "Machine_Shoulder_Military_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "vpush/desenvolvimento-em-pe-com-barra",
@@ -779,7 +839,8 @@
     "fonte": "curado",
     "idExterno": "Standing_Military_Press",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "vpush/desenvolvimento-no-smith",
@@ -793,7 +854,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Overhead_Shoulder_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "vpush/desenvolvimento-arnold",
@@ -808,7 +870,8 @@
     "fonte": "curado",
     "idExterno": "Arnold_Dumbbell_Press",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Comece com os halteres na frente do rosto e palmas para você; ao subir, gire as palmas para a frente. Desça invertendo o giro."
   },
   {
     "id": "vpush/landmine-press",
@@ -820,7 +883,8 @@
     "seguroPara": {
       "ombro": 0
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Segure a ponta da barra na altura do ombro e empurre para cima e à frente, abdômen firme, sem inclinar o tronco para trás."
   },
   {
     "id": "vpush/desenvolvimento-unilateral-com-halter",
@@ -835,7 +899,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_One-Arm_Shoulder_Press",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "vpush/desenvolvimento-com-halteres",
@@ -845,7 +910,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "vpush/flexao-pike",
@@ -855,7 +921,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Quadril alto, formando um V invertido; dobre os cotovelos levando a cabeça em direção ao chão entre as mãos e empurre de volta. Trabalha os ombros."
   },
   {
     "id": "vpush/desenvolvimento-com-elastico",
@@ -868,7 +935,8 @@
     "fonte": "curado",
     "idExterno": "Shoulder_Press_-_With_Bands",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "vpush/desenvolvimento-maquina-amplitude-parcial",
@@ -878,7 +946,8 @@
     "seguroPara": {
       "ombro": 1
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Use só a amplitude sem dor e aumente aos poucos. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "vpush/elevacao-lateral-com-halteres",
@@ -894,7 +963,8 @@
     ],
     "idExterno": "Side_Lateral_Raise",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar."
   },
   {
     "id": "hpull/remada-apoiada-no-banco",
@@ -907,7 +977,8 @@
     "seguroPara": {
       "lombar": 0
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-no-cabo-sentado",
@@ -927,7 +998,8 @@
     ],
     "idExterno": "Seated_Cable_Rows",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "hpull/remada-curvada-com-barra",
@@ -941,7 +1013,8 @@
     "fonte": "curado",
     "idExterno": "Bent_Over_Barbell_Row",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-maquina",
@@ -954,7 +1027,8 @@
     "seguroPara": {
       "lombar": 1
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpull/remada-unilateral-com-halter",
@@ -969,7 +1043,8 @@
     "fonte": "curado",
     "idExterno": "One-Arm_Dumbbell_Row",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "hpull/remada-cavalinho-t-bar",
@@ -982,7 +1057,8 @@
     "fonte": "curado",
     "idExterno": "Bent_Over_Two-Arm_Long_Bar_Row",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-pendlay",
@@ -992,7 +1068,8 @@
       "completa": 6
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-no-smith",
@@ -1005,7 +1082,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Bent_Over_Row",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "hpull/remada-articulada",
@@ -1023,7 +1101,8 @@
     ],
     "idExterno": "Leverage_Iso_Row",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpull/remada-curvada-com-halteres",
@@ -1037,7 +1116,8 @@
     "fonte": "curado",
     "idExterno": "Bent_Over_Two-Dumbbell_Row",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-apoiada-com-halteres",
@@ -1050,7 +1130,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Incline_Row",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "hpull/remada-com-elastico",
@@ -1060,7 +1141,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "hpull/remada-invertida-na-mesa",
@@ -1070,7 +1152,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Deitado sob a barra ou mesa, corpo reto; puxe o peito em direção à barra juntando as escápulas e desça devagar. Quanto mais horizontal o corpo, mais difícil."
   },
   {
     "id": "vpull/puxada-alta",
@@ -1088,7 +1171,8 @@
     ],
     "idExterno": "Wide-Grip_Lat_Pulldown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços."
   },
   {
     "id": "vpull/barra-fixa-assistida-se-preciso",
@@ -1102,7 +1186,8 @@
     "fonte": "curado",
     "idExterno": "Pullups",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Pendure-se com os ombros ativos (puxados para baixo); suba levando o peito em direção à barra, cotovelos para baixo, e desça até estender os braços."
   },
   {
     "id": "vpull/puxada-neutra",
@@ -1116,7 +1201,8 @@
     "fonte": "curado",
     "idExterno": "V-Bar_Pulldown",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços."
   },
   {
     "id": "vpull/puxada-unilateral-no-cabo",
@@ -1129,7 +1215,8 @@
     "fonte": "curado",
     "idExterno": "One_Arm_Lat_Pulldown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "vpull/barra-fixa-supinada",
@@ -1142,7 +1229,8 @@
     "fonte": "curado",
     "idExterno": "Chin-Up",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Pendure-se com os ombros ativos (puxados para baixo); suba levando o peito em direção à barra, cotovelos para baixo, e desça até estender os braços."
   },
   {
     "id": "vpull/puxada-supinada",
@@ -1156,7 +1244,8 @@
     "fonte": "curado",
     "idExterno": "Underhand_Cable_Pulldowns",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços."
   },
   {
     "id": "vpull/pulldown-bracos-estendidos",
@@ -1170,7 +1259,8 @@
     "fonte": "curado",
     "idExterno": "Straight-Arm_Pulldown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Braços quase retos, incline levemente o tronco; puxe a barra ou corda em arco até as coxas usando a dorsal, sem dobrar os cotovelos."
   },
   {
     "id": "vpull/puxada-articulada",
@@ -1183,7 +1273,8 @@
     "fonte": "curado",
     "sinonimos": [
       "pulldown articulado"
-    ]
+    ],
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "vpull/barra-fixa-com-elastico",
@@ -1193,7 +1284,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pendure-se com os ombros ativos (puxados para baixo); suba levando o peito em direção à barra, cotovelos para baixo, e desça até estender os braços. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "vpull/pullover-com-halter",
@@ -1203,7 +1295,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Deitado, halter acima do peito com os cotovelos levemente dobrados; leve o peso para trás da cabeça até sentir alongar e volte em arco."
   },
   {
     "id": "vpull/puxada-com-elastico",
@@ -1213,7 +1306,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "vpull/barra-fixa-negativa",
@@ -1223,7 +1317,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Suba com ajuda (pule ou use um banco) e desça o mais devagar possível, 3–5 s, até estender os braços. É o caminho para a primeira barra."
   },
   {
     "id": "quad/cadeira-extensora",
@@ -1240,7 +1335,8 @@
     ],
     "idExterno": "Leg_Extensions",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ajuste o encosto para o joelho ficar alinhado ao eixo da máquina. Estenda as pernas sem dar tranco, segure 1 s em cima e desça devagar."
   },
   {
     "id": "quad/afundo-com-halteres",
@@ -1252,7 +1348,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "quad/leg-press-unilateral",
@@ -1265,7 +1362,8 @@
     "seguroPara": {
       "joelho": 2
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "quad/agachamento-bulgaro-com-halteres",
@@ -1277,7 +1375,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pé de trás apoiado no banco, pé da frente longe o bastante para o joelho não passar muito da ponta do pé. Desça na vertical até a coxa da frente ficar paralela ao chão."
   },
   {
     "id": "quad/passada-caminhando",
@@ -1289,7 +1388,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "quad/step-up-com-halteres",
@@ -1300,7 +1400,8 @@
       "basica": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pé inteiro sobre o banco ou degrau; suba empurrando com a perna de cima, sem impulso da de baixo, e desça devagar."
   },
   {
     "id": "quad/agachamento-sissy",
@@ -1314,7 +1415,8 @@
     "fonte": "curado",
     "idExterno": "Weighted_Sissy_Squat",
     "nivel": "avancado",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Segure-se em um apoio, incline o corpo para trás e leve os joelhos à frente, descendo devagar. Exercício intenso para o quadríceps: comece só com o peso do corpo."
   },
   {
     "id": "quad/hack-unilateral",
@@ -1324,7 +1426,8 @@
       "completa": 7
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas firmes no apoio (ou tronco ereto no belt), pés na plataforma na largura dos ombros; desça controlado e suba empurrando o chão, joelhos na direção dos pés. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "quad/step-up",
@@ -1334,7 +1437,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pé inteiro sobre o banco ou degrau; suba empurrando com a perna de cima, sem impulso da de baixo, e desça devagar."
   },
   {
     "id": "quad/afundo-reverso",
@@ -1349,7 +1453,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Rear_Lunge",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "quad/cadeira-extensora-amplitude-parcial",
@@ -1359,7 +1464,8 @@
     "seguroPara": {
       "joelho": 0
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ajuste o encosto para o joelho ficar alinhado ao eixo da máquina. Estenda as pernas sem dar tranco, segure 1 s em cima e desça devagar. Use só a amplitude sem dor e aumente aos poucos."
   },
   {
     "id": "quad/step-up-baixo",
@@ -1369,7 +1475,8 @@
     "seguroPara": {
       "joelho": 1
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pé inteiro sobre o banco ou degrau; suba empurrando com a perna de cima, sem impulso da de baixo, e desça devagar."
   },
   {
     "id": "ham/mesa-flexora",
@@ -1386,7 +1493,8 @@
     ],
     "idExterno": "Lying_Leg_Curls",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ajuste a máquina para o joelho ficar alinhado ao eixo. Dobre os joelhos trazendo o rolo até o glúteo, sem tirar o quadril do banco, e volte devagar."
   },
   {
     "id": "ham/cadeira-flexora",
@@ -1403,7 +1511,8 @@
     ],
     "idExterno": "Seated_Leg_Curl",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ajuste a máquina para o joelho ficar alinhado ao eixo. Dobre os joelhos trazendo o rolo até o glúteo, sem tirar o quadril do banco, e volte devagar."
   },
   {
     "id": "ham/flexora-unilateral",
@@ -1414,7 +1523,8 @@
       "basica": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ajuste a máquina para o joelho ficar alinhado ao eixo. Dobre os joelhos trazendo o rolo até o glúteo, sem tirar o quadril do banco, e volte devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "ham/flexora-em-pe",
@@ -1427,7 +1537,8 @@
     "fonte": "curado",
     "idExterno": "Standing_Leg_Curl",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ajuste a máquina para o joelho ficar alinhado ao eixo. Dobre os joelhos trazendo o rolo até o glúteo, sem tirar o quadril do banco, e volte devagar."
   },
   {
     "id": "ham/nordic-com-assistencia",
@@ -1442,7 +1553,8 @@
     "fonte": "curado",
     "idExterno": "Natural_Glute_Ham_Raise",
     "nivel": "intermediario",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Ajoelhado, com os calcanhares presos, desça o tronco à frente o mais devagar possível, freando com o posterior. Apoie as mãos no chão e empurre para voltar."
   },
   {
     "id": "ham/glute-ham-raise",
@@ -1455,7 +1567,8 @@
     "fonte": "curado",
     "idExterno": "Glute_Ham_Raise",
     "nivel": "intermediario",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Joelhos apoiados e pés presos; desça o tronco controlando com o posterior e suba puxando com os calcanhares."
   },
   {
     "id": "ham/stiff-com-halteres",
@@ -1469,7 +1582,8 @@
     "fonte": "curado",
     "sinonimos": [
       "stiff"
-    ]
+    ],
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril."
   },
   {
     "id": "ham/stiff-unilateral-com-halter",
@@ -1479,7 +1593,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "ham/ponte-com-pes-elevados",
@@ -1489,7 +1604,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Deitado, calcanhares sobre o banco; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros."
   },
   {
     "id": "ham/flexora-com-elastico",
@@ -1499,7 +1615,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ajuste a máquina para o joelho ficar alinhado ao eixo. Dobre os joelhos trazendo o rolo até o glúteo, sem tirar o quadril do banco, e volte devagar. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "ham/flexora-deslizando-toalha",
@@ -1509,7 +1626,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Deitado de costas, quadril elevado e pés sobre uma toalha num piso liso; puxe os calcanhares em direção ao glúteo sem baixar o quadril."
   },
   {
     "id": "glute/elevacao-pelvica-com-barra",
@@ -1523,7 +1641,8 @@
     "fonte": "curado",
     "sinonimos": [
       "hip thrust"
-    ]
+    ],
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "glute/elevacao-pelvica-na-maquina",
@@ -1533,7 +1652,8 @@
       "completa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "glute/abducao-na-maquina",
@@ -1548,7 +1668,8 @@
     "sinonimos": [
       "abdutora",
       "cadeira abdutora"
-    ]
+    ],
+    "dica": "Afaste as pernas para os lados de forma controlada, segure 1 s e volte devagar, sem deixar o peso bater. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "glute/gluteo-no-cabo-coice",
@@ -1562,7 +1683,8 @@
     "fonte": "curado",
     "idExterno": "One-Legged_Cable_Kickback",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "glute/elevacao-pelvica-no-smith",
@@ -1573,7 +1695,8 @@
       "basica": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "glute/extensao-de-quadril-na-maquina",
@@ -1583,7 +1706,8 @@
       "completa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "glute/ponte-unilateral",
@@ -1598,7 +1722,8 @@
     "fonte": "curado",
     "idExterno": "Single_Leg_Glute_Bridge",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "glute/abducao-no-cabo",
@@ -1608,7 +1733,8 @@
       "completa": 7
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Afaste as pernas para os lados de forma controlada, segure 1 s e volte devagar, sem deixar o peso bater. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "glute/elevacao-pelvica-com-halter",
@@ -1618,7 +1744,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "glute/abducao-com-elastico",
@@ -1628,7 +1755,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Afaste as pernas para os lados de forma controlada, segure 1 s e volte devagar, sem deixar o peso bater. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "glute/coice-com-elastico",
@@ -1638,7 +1766,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "glute/elevacao-pelvica-unilateral",
@@ -1648,7 +1777,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "lateral/elevacao-lateral-com-halteres",
@@ -1663,7 +1793,8 @@
     "fonte": "curado",
     "sinonimos": [
       "elevação lateral"
-    ]
+    ],
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar."
   },
   {
     "id": "lateral/elevacao-lateral-no-cabo",
@@ -1674,7 +1805,8 @@
       "basica": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "lateral/maquina-de-elevacao-lateral",
@@ -1685,7 +1817,8 @@
       "basica": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "lateral/elevacao-lateral-inclinada",
@@ -1699,7 +1832,8 @@
     "fonte": "curado",
     "idExterno": "One-Arm_Incline_Lateral_Raise",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar."
   },
   {
     "id": "lateral/elevacao-lateral-unilateral-no-cabo",
@@ -1709,7 +1843,8 @@
       "completa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "lateral/remada-alta-com-pegada-aberta",
@@ -1719,7 +1854,8 @@
       "completa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Pegada aberta; puxe o peso rente ao corpo até a altura do peito, cotovelos guiando o movimento e sem passar da linha dos ombros."
   },
   {
     "id": "lateral/elevacao-lateral-unilateral",
@@ -1733,7 +1869,8 @@
     "fonte": "curado",
     "idExterno": "One-Arm_Side_Laterals",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "lateral/elevacao-lateral-com-elastico",
@@ -1746,7 +1883,8 @@
     "fonte": "curado",
     "idExterno": "Lateral_Raise_-_With_Bands",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "rear/face-pull",
@@ -1760,7 +1898,8 @@
     "fonte": "curado",
     "idExterno": "Face_Pull",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Puxe em direção ao rosto com os cotovelos altos, abrindo as mãos para os lados no final (rotação externa). Ombros longe das orelhas."
   },
   {
     "id": "rear/crucifixo-inverso",
@@ -1770,7 +1909,8 @@
       "completa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "rear/peck-deck-inverso",
@@ -1785,7 +1925,8 @@
     "sinonimos": [
       "crucifixo inverso máquina",
       "voador inverso"
-    ]
+    ],
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "rear/crucifixo-inverso-no-cabo",
@@ -1799,7 +1940,8 @@
     "fonte": "curado",
     "idExterno": "Cable_Rear_Delt_Fly",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "rear/remada-alta-para-o-rosto-com-halteres",
@@ -1809,7 +1951,8 @@
       "completa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Puxe em direção ao rosto com os cotovelos altos, abrindo as mãos para os lados no final (rotação externa). Ombros longe das orelhas."
   },
   {
     "id": "rear/crucifixo-inverso-com-halteres",
@@ -1823,7 +1966,8 @@
     "fonte": "curado",
     "idExterno": "Reverse_Flyes",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "rear/face-pull-com-elastico",
@@ -1833,7 +1977,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Puxe em direção ao rosto com os cotovelos altos, abrindo as mãos para os lados no final (rotação externa). Ombros longe das orelhas. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "rear/y-raise-com-halteres",
@@ -1843,7 +1988,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Peito apoiado num banco inclinado; eleve os braços em forma de Y com os polegares para cima, até a linha do corpo. Carga leve."
   },
   {
     "id": "rear/crucifixo-inverso-deitado-no-banco",
@@ -1856,7 +2002,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Lying_Rear_Lateral_Raise",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "chest/crucifixo-no-cabo",
@@ -1867,7 +2014,8 @@
       "basica": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "chest/peck-deck",
@@ -1884,7 +2032,8 @@
     ],
     "idExterno": "Butterfly",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos."
   },
   {
     "id": "chest/crucifixo-com-halteres",
@@ -1899,7 +2048,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Flyes",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos."
   },
   {
     "id": "chest/crossover-alto-baixo",
@@ -1916,7 +2066,8 @@
     ],
     "idExterno": "Cable_Crossover",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "chest/crossover-baixo-alto",
@@ -1926,7 +2077,8 @@
       "completa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "chest/mergulho-em-paralelas",
@@ -1936,7 +2088,8 @@
       "completa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ombros para baixo, longe das orelhas. Desça até os cotovelos formarem cerca de 90° e empurre; incline o tronco à frente para mais peito, mais reto para mais tríceps."
   },
   {
     "id": "chest/flexao-de-braco",
@@ -1946,7 +2099,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "chest/flexao-com-pausa",
@@ -1956,7 +2110,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre. Segure 1–2 s na posição mais difícil, sem relaxar."
   },
   {
     "id": "chest/crucifixo-com-elastico",
@@ -1966,7 +2121,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "biceps/rosca-direta",
@@ -1977,7 +2133,8 @@
       "basica": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "biceps/rosca-alternada-com-halteres",
@@ -1992,7 +2149,8 @@
     "fonte": "curado",
     "idExterno": "Dumbbell_Alternate_Bicep_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "biceps/rosca-no-cabo",
@@ -2003,7 +2161,8 @@
       "basica": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "biceps/rosca-martelo",
@@ -2018,7 +2177,8 @@
     "fonte": "curado",
     "idExterno": "Hammer_Curls",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pegada neutra (palmas uma de frente para a outra), cotovelos colados ao corpo; suba sem balançar o tronco e desça devagar."
   },
   {
     "id": "biceps/rosca-scott",
@@ -2032,7 +2192,8 @@
     "fonte": "curado",
     "idExterno": "Preacher_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio."
   },
   {
     "id": "biceps/rosca-inclinada-com-halteres",
@@ -2046,7 +2207,8 @@
     "fonte": "curado",
     "idExterno": "Incline_Dumbbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Deitado no banco inclinado com os braços pendurados atrás do tronco; suba sem levar os cotovelos à frente e desça até estender. Alonga bem o bíceps."
   },
   {
     "id": "biceps/rosca-concentrada",
@@ -2061,7 +2223,8 @@
     "fonte": "curado",
     "idExterno": "Concentration_Curls",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Sentado, cotovelo apoiado na parte interna da coxa; suba o halter girando a palma para cima e desça até estender o braço."
   },
   {
     "id": "biceps/rosca-na-maquina",
@@ -2074,7 +2237,8 @@
     "fonte": "curado",
     "idExterno": "Machine_Bicep_Curl",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "biceps/rosca-martelo-no-cabo-corda",
@@ -2087,7 +2251,8 @@
     "fonte": "curado",
     "idExterno": "Cable_Hammer_Curls_-_Rope_Attachment",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Pegada neutra (palmas uma de frente para a outra), cotovelos colados ao corpo; suba sem balançar o tronco e desça devagar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "biceps/rosca-com-elastico",
@@ -2097,7 +2262,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "triceps/triceps-no-cabo",
@@ -2117,7 +2283,8 @@
     ],
     "idExterno": "Triceps_Pushdown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-frances-com-halter",
@@ -2132,7 +2299,8 @@
     "fonte": "curado",
     "idExterno": "Standing_Dumbbell_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta."
   },
   {
     "id": "triceps/triceps-testa",
@@ -2142,7 +2310,8 @@
       "completa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Deitado, braços apontando para o teto; dobre só os cotovelos levando o peso em direção à testa e estenda de volta, sem abrir os cotovelos."
   },
   {
     "id": "triceps/triceps-corda",
@@ -2161,7 +2330,8 @@
     ],
     "idExterno": "Triceps_Pushdown_-_Rope_Attachment",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-frances-no-cabo",
@@ -2173,7 +2343,8 @@
     "seguroPara": {
       "ombro": 2
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/mergulho-em-paralelas",
@@ -2183,7 +2354,8 @@
       "completa": 5
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ombros para baixo, longe das orelhas. Desça até os cotovelos formarem cerca de 90° e empurre; incline o tronco à frente para mais peito, mais reto para mais tríceps."
   },
   {
     "id": "triceps/triceps-coice-no-cabo",
@@ -2193,7 +2365,8 @@
       "completa": 6
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Tronco inclinado à frente, braço colado ao corpo com o cotovelo alto; estenda o cotovelo levando o peso para trás e volte devagar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/supino-fechado",
@@ -2206,7 +2379,8 @@
     "fonte": "curado",
     "idExterno": "Close-Grip_Barbell_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Mãos na largura dos ombros e cotovelos rentes ao corpo; desça até perto do peito e empurre, focando no tríceps."
   },
   {
     "id": "triceps/triceps-na-maquina",
@@ -2219,7 +2393,8 @@
     "fonte": "curado",
     "idExterno": "Machine_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "triceps/triceps-testa-com-halteres",
@@ -2232,7 +2407,8 @@
     "fonte": "curado",
     "idExterno": "Lying_Dumbbell_Tricep_Extension",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Deitado, braços apontando para o teto; dobre só os cotovelos levando o peso em direção à testa e estenda de volta, sem abrir os cotovelos."
   },
   {
     "id": "triceps/mergulho-no-banco",
@@ -2246,7 +2422,8 @@
     "fonte": "curado",
     "idExterno": "Bench_Dips",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Mãos no banco atrás do corpo, dedos para a frente; desça dobrando os cotovelos para trás até cerca de 90° e empurre. Pernas dobradas é mais fácil, estendidas mais difícil."
   },
   {
     "id": "triceps/flexao-fechada",
@@ -2258,7 +2435,8 @@
     "seguroPara": {
       "ombro": 3
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Mãos mais próximas que a largura dos ombros e cotovelos rentes ao corpo; corpo reto, desça até o peito quase tocar o chão e empurre. Foca no tríceps."
   },
   {
     "id": "triceps/triceps-coice-com-halter",
@@ -2271,7 +2449,8 @@
     "fonte": "curado",
     "idExterno": "Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Tronco inclinado à frente, braço colado ao corpo com o cotovelo alto; estenda o cotovelo levando o peso para trás e volte devagar."
   },
   {
     "id": "triceps/triceps-com-elastico",
@@ -2281,7 +2460,8 @@
       "casa": 4
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "calves/panturrilha-em-pe",
@@ -2297,7 +2477,8 @@
     ],
     "idExterno": "Standing_Calf_Raises",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar."
   },
   {
     "id": "calves/panturrilha-sentado",
@@ -2314,7 +2495,8 @@
     ],
     "idExterno": "Seated_Calf_Raise",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Joelhos dobrados sob o apoio; desça os calcanhares até alongar bem e suba na ponta dos pés, segurando 1 s em cima. Sem quicar."
   },
   {
     "id": "calves/panturrilha-no-leg-press",
@@ -2328,7 +2510,8 @@
     "fonte": "curado",
     "idExterno": "Calf_Press_On_The_Leg_Press_Machine",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar."
   },
   {
     "id": "calves/panturrilha-no-smith",
@@ -2338,7 +2521,8 @@
       "completa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "calves/panturrilha-unilateral-com-halter",
@@ -2349,7 +2533,8 @@
       "basica": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "calves/panturrilha-em-pe-no-smith",
@@ -2362,7 +2547,8 @@
     "fonte": "curado",
     "idExterno": "Smith_Machine_Calf_Raise",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "calves/panturrilha-em-pe-unilateral",
@@ -2372,7 +2558,8 @@
       "casa": 0
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "calves/panturrilha-no-degrau",
@@ -2382,7 +2569,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar."
   },
   {
     "id": "calves/panturrilha-sentado-com-halter",
@@ -2392,7 +2580,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Joelhos dobrados sob o apoio; desça os calcanhares até alongar bem e suba na ponta dos pés, segurando 1 s em cima. Sem quicar."
   },
   {
     "id": "calves/panturrilha-com-halteres",
@@ -2405,7 +2594,8 @@
     "fonte": "curado",
     "idExterno": "Standing_Dumbbell_Calf_Raise",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar."
   },
   {
     "id": "core/abdominal-no-cabo",
@@ -2421,7 +2611,8 @@
     "fonte": "curado",
     "idExterno": "Cable_Crunch",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/dead-bug",
@@ -2438,7 +2629,8 @@
     "fonte": "curado",
     "idExterno": "Dead_Bug",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Deitado de costas, braços e joelhos para cima; estenda braço e perna opostos devagar mantendo a lombar colada no chão. Alterne os lados."
   },
   {
     "id": "core/elevacao-de-joelhos",
@@ -2449,7 +2641,8 @@
       "basica": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Suba as pernas (ou joelhos) enrolando a pelve em direção ao peito, sem balançar o corpo, e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "core/abdominal-na-maquina",
@@ -2462,7 +2655,8 @@
     "fonte": "curado",
     "idExterno": "Ab_Crunch_Machine",
     "nivel": "intermediario",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "core/elevacao-de-pernas-na-barra",
@@ -2475,7 +2669,8 @@
     "fonte": "curado",
     "idExterno": "Hanging_Leg_Raise",
     "nivel": "avancado",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Suba as pernas (ou joelhos) enrolando a pelve em direção ao peito, sem balançar o corpo, e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "core/pallof-press-no-cabo",
@@ -2489,7 +2684,8 @@
     "fonte": "curado",
     "idExterno": "Pallof_Press",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "De lado para o cabo ou elástico, pegada no peito; estique os braços à frente e segure 2 s sem deixar o tronco girar. Quadril parado; faça os dois lados. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/roda-abdominal",
@@ -2501,7 +2697,8 @@
       "casa": 3
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Abdômen firme e quadril encaixado; role à frente só até onde mantém a lombar sem arquear e volte puxando com o abdômen."
   },
   {
     "id": "core/abdominal-reverso",
@@ -2516,7 +2713,8 @@
     "fonte": "curado",
     "idExterno": "Reverse_Crunch",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Deitado, joelhos dobrados; tire o quadril do chão enrolando a pelve em direção ao peito e desça devagar, sem impulso das pernas."
   },
   {
     "id": "core/prancha-com-carga-seg",
@@ -2526,7 +2724,8 @@
       "completa": 8
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Antebraços sob os ombros, corpo reto da cabeça aos calcanhares; contraia abdômen e glúteo e não deixe o quadril cair nem subir. Respire normalmente."
   },
   {
     "id": "core/pallof-press-com-elastico",
@@ -2536,7 +2735,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "De lado para o cabo ou elástico, pegada no peito; estique os braços à frente e segure 2 s sem deixar o tronco girar. Quadril parado; faça os dois lados. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "core/abdominal-crunch",
@@ -2549,7 +2749,8 @@
     "fonte": "curado",
     "idExterno": "Crunches",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "core/bird-dog",
@@ -2561,7 +2762,8 @@
     "seguroPara": {
       "lombar": 2
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Em quatro apoios, estenda braço e perna opostos até a linha do corpo, sem girar o quadril; segure 1–2 s e alterne."
   },
   {
     "id": "core/pallof-press",
@@ -2571,7 +2773,8 @@
     "seguroPara": {
       "lombar": 1
     },
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "De lado para o cabo ou elástico, pegada no peito; estique os braços à frente e segure 2 s sem deixar o tronco girar. Quadril parado; faça os dois lados."
   },
   {
     "id": "adductor/cadeira-adutora",
@@ -2632,7 +2835,8 @@
     "sinonimos": [
       "chest press",
       "supino sentado máquina"
-    ]
+    ],
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "chest/crucifixo-na-maquina",
@@ -2646,7 +2850,8 @@
     "fonte": "curado",
     "sinonimos": [
       "fly máquina"
-    ]
+    ],
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "squat/leg-press-vertical",
@@ -2659,7 +2864,8 @@
     "fonte": "curado",
     "sinonimos": [
       "leg vertical"
-    ]
+    ],
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto."
   },
   {
     "id": "glute/gluteo-na-maquina-coice",
@@ -2673,7 +2879,8 @@
     "sinonimos": [
       "glúteo coice máquina",
       "kickback máquina"
-    ]
+    ],
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "calves/panturrilha-sentado-na-maquina",
@@ -2688,7 +2895,8 @@
     "sinonimos": [
       "gêmeos sentado",
       "sóleo"
-    ]
+    ],
+    "dica": "Joelhos dobrados sob o apoio; desça os calcanhares até alongar bem e suba na ponta dos pés, segurando 1 s em cima. Sem quicar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpull/remada-baixa-na-maquina",
@@ -2702,7 +2910,8 @@
     "fonte": "curado",
     "sinonimos": [
       "remada sentada máquina"
-    ]
+    ],
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpull/remada-cavalinho-na-maquina",
@@ -2715,7 +2924,8 @@
     "fonte": "curado",
     "sinonimos": [
       "T-bar máquina"
-    ]
+    ],
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hinge/extensao-lombar-na-maquina",
@@ -2757,7 +2967,8 @@
       "casa": 1
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "Feche as pernas puxando com a parte interna da coxa, de forma controlada, e volte devagar sem tranco. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "adductor/aducao-deitado-de-lado",
@@ -2770,7 +2981,7 @@
     },
     "seguroPara": {},
     "fonte": "curado",
-    "dica": "Deitado de lado, eleve a perna de baixo; a de cima fica cruzada à frente."
+    "dica": "Feche as pernas puxando com a parte interna da coxa, de forma controlada, e volte devagar sem tranco."
   },
   {
     "id": "adductor/agachamento-sumo-com-halter",
@@ -2785,7 +2996,8 @@
     "fonte": "curado",
     "sinonimos": [
       "agachamento sumô"
-    ]
+    ],
+    "dica": "Pés bem afastados e pontas viradas para fora; desça com o tronco ereto, joelhos na direção dos pés, e suba apertando o glúteo."
   },
   {
     "id": "biceps/rosca-martelo-alternada",
@@ -2800,7 +3012,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternate_Hammer_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pegada neutra (palmas uma de frente para a outra), cotovelos colados ao corpo; suba sem balançar o tronco e desça devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "biceps/rosca-alternada-no-banco-inclinado",
@@ -2815,7 +3028,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternate_Incline_Dumbbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Deitado no banco inclinado com os braços pendurados atrás do tronco; suba sem levar os cotovelos à frente e desça até estender. Alonga bem o bíceps. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "hpush/supino-alternado-no-chao-com-halteres",
@@ -2829,7 +3043,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternating_Floor_Press",
     "nivel": "iniciante",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "vpush/desenvolvimento-alternado-com-kettlebell",
@@ -2843,7 +3058,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternating_Kettlebell_Press",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "hpull/remada-alternada-com-kettlebell",
@@ -2857,7 +3073,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternating_Kettlebell_Row",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "hpull/remada-renegada",
@@ -2871,7 +3088,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Alternating_Renegade_Row",
     "nivel": "avancado",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Posição de prancha com as mãos nos halteres; puxe um halter de cada vez até o quadril sem girar o tronco. Pés mais afastados dão mais equilíbrio."
   },
   {
     "id": "hinge/good-morning-com-elastico",
@@ -2885,7 +3103,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Band_Good_Morning",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Peso nas costas (ou elástico), joelhos levemente dobrados; incline o tronco à frente empurrando o quadril para trás, coluna neutra, até sentir o posterior. Volte com o quadril. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "core/rollout-com-barra-em-pe",
@@ -2899,7 +3118,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Ab_Rollout",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Abdômen firme e quadril encaixado; role à frente só até onde mantém a lombar sem arquear e volte puxando com o abdômen."
   },
   {
     "id": "core/rollout-com-barra-de-joelhos",
@@ -2913,7 +3133,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Ab_Rollout_-_On_Knees",
     "nivel": "avancado",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Abdômen firme e quadril encaixado; role à frente só até onde mantém a lombar sem arquear e volte puxando com o abdômen."
   },
   {
     "id": "biceps/rosca-direta-com-barra",
@@ -2927,7 +3148,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "squat/agachamento-livre-profundo",
@@ -2941,7 +3163,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Full_Squat",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão."
   },
   {
     "id": "glute/ponte-de-gluteo-com-barra",
@@ -2955,7 +3178,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Glute_Bridge",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "quad/afundo-com-barra",
@@ -2969,7 +3193,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Lunge",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "rear/remada-alta-para-deltoide-posterior-com-barra",
@@ -2983,7 +3208,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Rear_Delt_Row",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Puxe em direção ao rosto com os cotovelos altos, abrindo as mãos para os lados no final (rotação externa). Ombros longe das orelhas."
   },
   {
     "id": "calves/panturrilha-sentado-com-barra",
@@ -2997,7 +3223,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Seated_Calf_Raise",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Joelhos dobrados sob o apoio; desça os calcanhares até alongar bem e suba na ponta dos pés, segurando 1 s em cima. Sem quicar."
   },
   {
     "id": "vpush/desenvolvimento-sentado-com-barra",
@@ -3011,7 +3238,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Shoulder_Press",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "squat/agachamento-ate-o-banco",
@@ -3025,7 +3253,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Squat_To_A_Bench",
     "nivel": "avancado",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Desça controlado até encostar levemente no banco ou caixa, sem sentar e relaxar, e suba empurrando o chão."
   },
   {
     "id": "quad/step-up-com-barra",
@@ -3039,7 +3268,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Step_Ups",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pé inteiro sobre o banco ou degrau; suba empurrando com a perna de cima, sem impulso da de baixo, e desça devagar."
   },
   {
     "id": "quad/passada-com-barra",
@@ -3053,7 +3283,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Barbell_Walking_Lunge",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "rear/crucifixo-inverso-com-a-testa-apoiada",
@@ -3068,7 +3299,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "rear/crucifixo-inverso-no-cabo-unilateral",
@@ -3082,7 +3314,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Bent_Over_Low-Pulley_Side_Lateral",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "hpull/remada-unilateral-na-barra-landmine",
@@ -3096,7 +3329,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Bent_Over_One-Arm_Long_Bar_Row",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "hpull/remada-curvada-com-halteres-pegada-neutra",
@@ -3111,7 +3345,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Bent_Over_Two-Dumbbell_Row_With_Palms_In",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "squat/agachamento-com-o-peso-do-corpo",
@@ -3126,7 +3361,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Bodyweight_Squat",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão."
   },
   {
     "id": "glute/ponte-de-gluteo",
@@ -3141,7 +3377,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Butt_Lift_Bridge",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
   {
     "id": "hpush/supino-no-cabo",
@@ -3155,7 +3392,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "adductor/aducao-no-cabo",
@@ -3169,7 +3407,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Hip_Adduction",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Feche as pernas puxando com a parte interna da coxa, de forma controlada, e volte devagar sem tranco. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-testa-no-cabo",
@@ -3183,7 +3422,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Lying_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Deitado, braços apontando para o teto; dobre só os cotovelos levando o peso em direção à testa e estenda de volta, sem abrir os cotovelos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-unilateral-no-cabo",
@@ -3197,7 +3437,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_One_Arm_Tricep_Extension",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "biceps/rosca-scott-no-cabo",
@@ -3211,7 +3452,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Preacher_Curl",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/abdominal-reverso-no-cabo",
@@ -3225,7 +3467,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Reverse_Crunch",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Deitado, joelhos dobrados; tire o quadril do chão enrolando a pelve em direção ao peito e desça devagar, sem impulso das pernas. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-frances-no-cabo-com-corda",
@@ -3239,7 +3482,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Rope_Overhead_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "rear/remada-para-o-rosto-na-corda",
@@ -3253,7 +3497,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Rope_Rear-Delt_Rows",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Puxe em direção ao rosto com os cotovelos altos, abrindo as mãos para os lados no final (rotação externa). Ombros longe das orelhas. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/rotacao-russa-no-cabo",
@@ -3267,7 +3512,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Russian_Twists",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Em pé, de lado para o cabo, braços estendidos à frente; gire o tronco para o lado oposto ao cabo com o abdômen firme e volte devagar. Faça os dois lados. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "lateral/elevacao-lateral-sentado-no-cabo",
@@ -3281,7 +3527,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Seated_Lateral_Raise",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "vpush/desenvolvimento-no-cabo",
@@ -3295,7 +3542,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cable_Shoulder_Press",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "calves/panturrilha-na-maquina-calf-press",
@@ -3308,7 +3556,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Calf_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "calves/panturrilha-com-elastico",
@@ -3322,7 +3571,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Calf_Raises_-_With_Bands",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "triceps/supino-fechado-com-halteres",
@@ -3337,7 +3587,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Close-Grip_Dumbbell_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Mãos na largura dos ombros e cotovelos rentes ao corpo; desça até perto do peito e empurre, focando no tríceps."
   },
   {
     "id": "biceps/rosca-com-barra-w-pegada-fechada",
@@ -3351,7 +3602,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Close-Grip_EZ_Bar_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "vpull/puxada-alta-pegada-fechada",
@@ -3365,7 +3617,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Close-Grip_Front_Lat_Pulldown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Peito para cima e leve inclinação para trás; puxe a barra até a parte de cima do peito levando os cotovelos para baixo e para trás. Volte até estender os braços."
   },
   {
     "id": "biceps/rosca-direta-pegada-fechada",
@@ -3379,7 +3632,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Close-Grip_Standing_Barbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "core/abdominal-cruzado",
@@ -3394,7 +3648,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cross-Body_Crunch",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco levando o ombro em direção ao joelho oposto, sem puxar o pescoço com as mãos; desça devagar."
   },
   {
     "id": "biceps/rosca-martelo-cruzada",
@@ -3409,7 +3664,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Cross_Body_Hammer_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pegada neutra (palmas uma de frente para a outra), cotovelos colados ao corpo; suba sem balançar o tronco e desça devagar."
   },
   {
     "id": "hpush/supino-declinado-com-barra",
@@ -3423,7 +3679,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Barbell_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "core/abdominal-declinado",
@@ -3438,7 +3695,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Crunch",
     "nivel": "intermediario",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "hpush/supino-declinado-com-halteres",
@@ -3453,7 +3711,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Dumbbell_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "chest/crucifixo-declinado-com-halteres",
@@ -3468,7 +3727,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Dumbbell_Flyes",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos."
   },
   {
     "id": "core/abdominal-obliquo-declinado",
@@ -3483,7 +3743,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Oblique_Crunch",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco levando o ombro em direção ao joelho oposto, sem puxar o pescoço com as mãos; desça devagar."
   },
   {
     "id": "core/abdominal-reverso-declinado",
@@ -3498,7 +3759,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Reverse_Crunch",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Deitado, joelhos dobrados; tire o quadril do chão enrolando a pelve em direção ao peito e desça devagar, sem impulso das pernas."
   },
   {
     "id": "hpush/supino-declinado-no-smith",
@@ -3511,7 +3773,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Decline_Smith_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "triceps/triceps-na-maquina-de-mergulho",
@@ -3524,7 +3787,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dip_Machine",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "biceps/rosca-arrastada-drag-curl",
@@ -3538,7 +3802,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Drag_Curl",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Suba a barra rente ao corpo levando os cotovelos para trás, como se arrastasse a barra no tronco; desça pelo mesmo caminho."
   },
   {
     "id": "biceps/rosca-simultanea-com-halteres",
@@ -3553,7 +3818,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Bicep_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "rear/crucifixo-inverso-unilateral-deitado",
@@ -3568,7 +3834,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Lying_One-Arm_Rear_Lateral_Raise",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "triceps/triceps-frances-unilateral-com-halter",
@@ -3583,7 +3850,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_One-Arm_Triceps_Extension",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "biceps/rosca-deitado-de-brucos-no-banco-inclinado",
@@ -3598,7 +3866,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Prone_Incline_Curl",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Deitado no banco inclinado com os braços pendurados atrás do tronco; suba sem levar os cotovelos à frente e desça até estender. Alonga bem o bíceps."
   },
   {
     "id": "calves/panturrilha-sentado-unilateral-com-halter",
@@ -3613,7 +3882,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Seated_One-Leg_Calf_Raise",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Joelhos dobrados sob o apoio; desça os calcanhares até alongar bem e suba na ponta dos pés, segurando 1 s em cima. Sem quicar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "squat/agachamento-com-halteres-ate-o-banco",
@@ -3628,7 +3898,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Squat_To_A_Bench",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Desça controlado até encostar levemente no banco ou caixa, sem sentar e relaxar, e suba empurrando o chão."
   },
   {
     "id": "biceps/rosca-com-barra-w",
@@ -3642,7 +3913,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "EZ-Bar_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra W"
+    "equipamento": "barra W",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "triceps/triceps-testa-com-barra-w",
@@ -3656,7 +3928,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "EZ-Bar_Skullcrusher",
     "nivel": "iniciante",
-    "equipamento": "barra W"
+    "equipamento": "barra W",
+    "dica": "Deitado, braços apontando para o teto; dobre só os cotovelos levando o peso em direção à testa e estenda de volta, sem abrir os cotovelos."
   },
   {
     "id": "quad/afundo-reverso-com-pe-a-frente-elevado",
@@ -3670,7 +3943,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Elevated_Back_Lunge",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Dê um passo amplo e desça até o joelho de trás quase tocar o chão, tronco ereto. Empurre com o pé da frente para voltar."
   },
   {
     "id": "chest/crucifixo-no-cabo-deitado",
@@ -3684,7 +3958,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Flat_Bench_Cable_Flyes",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/elevacao-de-pernas-no-banco",
@@ -3699,7 +3974,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Flat_Bench_Lying_Leg_Raise",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Suba as pernas (ou joelhos) enrolando a pelve em direção ao peito, sem balançar o corpo, e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "squat/agachamento-frontal-com-kettlebells",
@@ -3713,7 +3989,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Front_Squats_With_Two_Kettlebells",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Barra (ou peso) apoiada na frente dos ombros, cotovelos altos e tronco bem ereto. Desça entre as pernas e suba sem deixar o peito cair. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "glute/coice-de-gluteo-quatro-apoios",
@@ -3728,7 +4005,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Glute_Kickback",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar."
   },
   {
     "id": "incline/supino-inclinado-pegada-neutra",
@@ -3743,7 +4021,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Hammer_Grip_Incline_DB_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "biceps/rosca-no-cabo-alto-biceps-no-crossover",
@@ -3757,7 +4036,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "High_Cable_Curls",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "glute/extensao-de-quadril-com-elastico",
@@ -3771,7 +4051,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Hip_Extension_with_Bands",
     "nivel": "iniciante",
-    "equipamento": "elástico"
+    "equipamento": "elástico",
+    "dica": "Tronco firme e quadril parado; leve a perna para trás estendendo o quadril e apertando o glúteo, sem arquear a lombar. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "incline/supino-inclinado-no-cabo",
@@ -3785,7 +4066,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Incline_Cable_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "chest/crucifixo-inclinado-no-cabo",
@@ -3799,7 +4081,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Incline_Cable_Flye",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "biceps/rosca-martelo-no-banco-inclinado",
@@ -3814,7 +4097,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Incline_Hammer_Curls",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pegada neutra (palmas uma de frente para a outra), cotovelos colados ao corpo; suba sem balançar o tronco e desça devagar."
   },
   {
     "id": "incline/flexao-inclinada-maos-no-banco",
@@ -3829,7 +4113,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Incline_Push-Up",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "core/abdominal-canivete",
@@ -3844,7 +4129,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Jackknife_Sit-Up",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Suba as pernas (ou joelhos) enrolando a pelve em direção ao peito, sem balançar o corpo, e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "hinge/stiff-unilateral-com-kettlebell",
@@ -3858,7 +4144,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Kettlebell_One-Legged_Deadlift",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "triceps/triceps-frances-com-kettlebell",
@@ -3872,7 +4159,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Kettlebell_Overhead_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "vpush/desenvolvimento-sentado-com-kettlebell",
@@ -3886,7 +4174,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Kettlebell_Seated_Press",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "hpush/supino-declinado-articulado",
@@ -3899,7 +4188,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Leverage_Decline_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "hpull/remada-alta-articulada",
@@ -3912,7 +4202,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Leverage_High_Row",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "incline/supino-inclinado-articulado",
@@ -3925,7 +4216,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Leverage_Incline_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "vpush/desenvolvimento-articulado",
@@ -3938,7 +4230,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Leverage_Shoulder_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "biceps/rosca-deitado-no-cabo",
@@ -3952,7 +4245,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Lying_Cable_Curl",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "lateral/elevacao-lateral-deitado-de-lado",
@@ -3967,7 +4261,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Lying_One-Arm_Lateral_Raise",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar."
   },
   {
     "id": "hpull/remada-cavalinho-apoiada",
@@ -3980,7 +4275,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Lying_T-Bar_Row",
     "nivel": "intermediario",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "biceps/rosca-scott-na-maquina",
@@ -3993,7 +4289,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Machine_Preacher_Curls",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio. Ajuste o banco para a articulação que trabalha ficar alinhada ao eixo da máquina."
   },
   {
     "id": "squat/hack-com-pes-juntos",
@@ -4006,7 +4303,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Narrow_Stance_Hack_Squats",
     "nivel": "intermediario",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Costas firmes no apoio (ou tronco ereto no belt), pés na plataforma na largura dos ombros; desça controlado e suba empurrando o chão, joelhos na direção dos pés."
   },
   {
     "id": "squat/leg-press-com-pes-juntos",
@@ -4019,7 +4317,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Narrow_Stance_Leg_Press",
     "nivel": "intermediario",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Costas e quadril apoiados no encosto; desça até onde o quadril não sair do banco e empurre com o pé inteiro, sem travar os joelhos no alto."
   },
   {
     "id": "core/abdominal-obliquo",
@@ -4034,7 +4333,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Oblique_Crunches",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco levando o ombro em direção ao joelho oposto, sem puxar o pescoço com as mãos; desça devagar."
   },
   {
     "id": "hpull/remada-unilateral-com-kettlebell",
@@ -4048,7 +4348,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "One-Arm_Kettlebell_Row",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "hpush/supino-unilateral-com-halter",
@@ -4063,7 +4364,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "One_Arm_Dumbbell_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "biceps/rosca-scott-unilateral-com-halter",
@@ -4078,7 +4380,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "One_Arm_Dumbbell_Preacher_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "core/pallof-press-com-rotacao",
@@ -4092,7 +4395,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Pallof_Press_With_Rotation",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "De lado para o cabo ou elástico, pegada no peito; estique os braços à frente e segure 2 s sem deixar o tronco girar. Quadril parado; faça os dois lados."
   },
   {
     "id": "core/prancha-seg",
@@ -4107,7 +4411,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Plank",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Antebraços sob os ombros, corpo reto da cabeça aos calcanhares; contraia abdômen e glúteo e não deixe o quadril cair nem subir. Respire normalmente."
   },
   {
     "id": "squat/agachamento-sumo-com-halter",
@@ -4122,7 +4427,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Plie_Dumbbell_Squat",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pés bem afastados e pontas viradas para fora; desça com o tronco ereto, joelhos na direção dos pés, e suba apertando o glúteo."
   },
   {
     "id": "biceps/rosca-scott-martelo-com-halter",
@@ -4137,7 +4443,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Preacher_Hammer_Dumbbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio."
   },
   {
     "id": "hpush/flexao-de-braco-aberta",
@@ -4152,7 +4459,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Push-Up_Wide",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
   {
     "id": "biceps/rosca-inversa-com-barra",
@@ -4166,7 +4474,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Barbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pegada por cima (palmas para baixo), cotovelos junto ao corpo; suba até a altura do peito e desça devagar. Trabalha antebraço e braquial."
   },
   {
     "id": "biceps/rosca-scott-inversa",
@@ -4180,7 +4489,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Barbell_Preacher_Curls",
     "nivel": "intermediario",
-    "equipamento": "barra W"
+    "equipamento": "barra W",
+    "dica": "Pegada por cima (palmas para baixo), cotovelos junto ao corpo; suba até a altura do peito e desça devagar. Trabalha antebraço e braquial."
   },
   {
     "id": "biceps/rosca-inversa-no-cabo",
@@ -4194,7 +4504,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Cable_Curl",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Pegada por cima (palmas para baixo), cotovelos junto ao corpo; suba até a altura do peito e desça devagar. Trabalha antebraço e braquial. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "rear/crucifixo-inverso-com-rotacao-externa",
@@ -4209,7 +4520,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Flyes_With_External_Rotation",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "hpull/remada-curvada-supinada",
@@ -4223,7 +4535,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Grip_Bent-Over_Rows",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura."
   },
   {
     "id": "triceps/triceps-no-cabo-pegada-invertida",
@@ -4237,7 +4550,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Reverse_Grip_Triceps_Pushdown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/abdominal-na-corda-cabo",
@@ -4251,7 +4565,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Rope_Crunch",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "vpull/pulldown-bracos-estendidos-na-corda",
@@ -4265,7 +4580,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Rope_Straight-Arm_Pulldown",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Braços quase retos, incline levemente o tronco; puxe a barra ou corda em arco até as coxas usando a dorsal, sem dobrar os cotovelos. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/rotacao-russa",
@@ -4280,7 +4596,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Russian_Twist",
     "nivel": "intermediario",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Sentado com o tronco inclinado para trás e coluna reta, gire o tronco de um lado para o outro levando o peso, sem só mexer os braços."
   },
   {
     "id": "rear/crucifixo-inverso-sentado",
@@ -4295,7 +4612,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Seated_Bent-Over_Rear_Delt_Raise",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abra os braços para os lados e para trás com os cotovelos levemente dobrados, juntando as escápulas no fim, sem subir os ombros. Volte devagar."
   },
   {
     "id": "biceps/rosca-sentado-com-halteres",
@@ -4310,7 +4628,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Seated_Dumbbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "hpull/remada-unilateral-no-cabo-sentado",
@@ -4324,7 +4643,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Seated_One-arm_Cable_Pulley_Rows",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "lateral/elevacao-lateral-sentado",
@@ -4339,7 +4659,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Seated_Side_Lateral_Raise",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba os braços para os lados até a altura dos ombros, cotovelos levemente dobrados e mãos na linha dos cotovelos, sem balançar o tronco. Desça devagar."
   },
   {
     "id": "chest/crossover-unilateral",
@@ -4353,7 +4674,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Single-Arm_Cable_Crossover",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos levemente dobrados e fixos; abra os braços até sentir o peito alongar e feche como num abraço, sem bater as mãos. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "quad/cadeira-extensora-unilateral",
@@ -4366,7 +4688,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Single-Leg_Leg_Extension",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Ajuste o encosto para o joelho ficar alinhado ao eixo da máquina. Estenda as pernas sem dar tranco, segure 1 s em cima e desça devagar. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "core/abdominal-completo-sit-up",
@@ -4381,7 +4704,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Sit-Up",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Enrole o tronco aproximando as costelas do quadril, sem puxar o pescoço; solte o ar ao subir e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "triceps/supino-fechado-no-smith",
@@ -4394,7 +4718,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Smith_Machine_Close-Grip_Bench_Press",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Mãos na largura dos ombros e cotovelos rentes ao corpo; desça até perto do peito e empurre, focando no tríceps. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "calves/tibial-no-smith-elevacao-da-ponta-do-pe",
@@ -4407,7 +4732,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Smith_Machine_Reverse_Calf_Raises",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Calcanhares apoiados e peso sobre o peito dos pés; suba as pontas dos pés o máximo possível e desça devagar. Trabalha a frente da canela. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "hinge/stiff-no-smith",
@@ -4420,7 +4746,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Smith_Machine_Stiff-Legged_Deadlift",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "quad/agachamento-bulgaro-no-smith",
@@ -4433,7 +4760,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Smith_Single-Leg_Split_Squat",
     "nivel": "iniciante",
-    "equipamento": "máquina"
+    "equipamento": "máquina",
+    "dica": "Pé de trás apoiado no banco, pé da frente longe o bastante para o joelho não passar muito da ponta do pé. Desça na vertical até a coxa da frente ficar paralela ao chão. No smith a barra corre num trilho: ajuste a posição dos pés para o movimento ficar natural."
   },
   {
     "id": "biceps/rosca-spider",
@@ -4447,7 +4775,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Spider_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra W"
+    "equipamento": "barra W",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio."
   },
   {
     "id": "quad/agachamento-afundo-com-halteres-split-squat",
@@ -4462,7 +4791,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Split_Squat_with_Dumbbells",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Um pé à frente e outro atrás, os dois no chão e afastados; desça na vertical até o joelho de trás quase tocar o chão, tronco ereto, e suba com a perna da frente."
   },
   {
     "id": "vpush/desenvolvimento-alternado-em-pe",
@@ -4477,7 +4807,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Alternating_Dumbbell_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro."
   },
   {
     "id": "calves/panturrilha-em-pe-com-barra",
@@ -4491,7 +4822,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Barbell_Calf_Raise",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Ponta dos pés na borda do apoio; desça os calcanhares até alongar bem, pausa de 1 s, e suba o mais alto possível. Joelhos estendidos e sem quicar."
   },
   {
     "id": "biceps/rosca-no-cabo-em-pe",
@@ -4505,7 +4837,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Biceps_Cable_Curl",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "hpush/supino-em-pe-no-cabo",
@@ -4519,7 +4852,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Cable_Chest_Press",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "vpush/desenvolvimento-com-halteres-em-pe",
@@ -4534,7 +4868,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Dumbbell_Press",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "biceps/rosca-inversa-com-halteres",
@@ -4549,7 +4884,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Dumbbell_Reverse_Curl",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Pegada por cima (palmas para baixo), cotovelos junto ao corpo; suba até a altura do peito e desça devagar. Trabalha antebraço e braquial."
   },
   {
     "id": "biceps/rosca-unilateral-no-cabo",
@@ -4563,7 +4899,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_One-Arm_Cable_Curl",
     "nivel": "intermediario",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços. Faça um lado de cada vez: comece pelo mais fraco e repita as mesmas repetições no outro. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "triceps/triceps-frances-com-barra",
@@ -4577,7 +4914,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Overhead_Barbell_Triceps_Extension",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Peso acima da cabeça, cotovelos apontando para cima e perto da cabeça; desça o peso atrás da cabeça e estenda os braços de volta."
   },
   {
     "id": "vpush/desenvolvimento-pegada-neutra-em-pe",
@@ -4592,7 +4930,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Standing_Palms-In_Dumbbell_Press",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo."
   },
   {
     "id": "hinge/stiff-com-barra",
@@ -4606,7 +4945,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Stiff-Legged_Barbell_Deadlift",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Joelhos levemente dobrados e fixos; empurre o quadril para trás levando o peso rente às pernas, coluna neutra. Desça até sentir o posterior alongar e volte com o quadril."
   },
   {
     "id": "triceps/triceps-no-cabo-com-barra-v",
@@ -4620,7 +4960,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Triceps_Pushdown_-_V-Bar_Attachment",
     "nivel": "iniciante",
-    "equipamento": "cabo"
+    "equipamento": "cabo",
+    "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "core/abdominal-grupado",
@@ -4635,7 +4976,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Tuck_Crunch",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Suba as pernas (ou joelhos) enrolando a pelve em direção ao peito, sem balançar o corpo, e desça devagar sem relaxar o abdômen."
   },
   {
     "id": "biceps/rosca-scott-com-halteres",
@@ -4650,7 +4992,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Two-Arm_Dumbbell_Preacher_Curl",
     "nivel": "iniciante",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Braços apoiados no banco; suba até quase vertical e desça até quase estender os cotovelos, sem tirar os braços do apoio."
   },
   {
     "id": "vpush/desenvolvimento-com-kettlebells",
@@ -4664,7 +5007,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Two-Arm_Kettlebell_Military_Press",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Abdômen firme e glúteo contraído, sem arquear a lombar. Empurre o peso acima da cabeça até quase estender os cotovelos e desça até a altura do queixo. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "hpull/remada-com-kettlebells",
@@ -4678,7 +5022,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Two-Arm_Kettlebell_Row",
     "nivel": "intermediario",
-    "equipamento": "kettlebell"
+    "equipamento": "kettlebell",
+    "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "vpull/barra-fixa-pegada-neutra",
@@ -4693,7 +5038,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "V-Bar_Pullup",
     "nivel": "iniciante",
-    "equipamento": "peso do corpo"
+    "equipamento": "peso do corpo",
+    "dica": "Pendure-se com os ombros ativos (puxados para baixo); suba levando o peito em direção à barra, cotovelos para baixo, e desça até estender os braços."
   },
   {
     "id": "hpush/supino-reto-pegada-aberta",
@@ -4707,7 +5053,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Wide-Grip_Barbell_Bench_Press",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
   {
     "id": "biceps/rosca-direta-pegada-aberta",
@@ -4721,7 +5068,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Wide-Grip_Standing_Barbell_Curl",
     "nivel": "iniciante",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Cotovelos colados ao corpo e tronco parado; suba o peso dobrando só os cotovelos e desça devagar até quase estender os braços."
   },
   {
     "id": "squat/agachamento-livre-com-base-aberta",
@@ -4735,7 +5083,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Wide_Stance_Barbell_Squat",
     "nivel": "intermediario",
-    "equipamento": "barra"
+    "equipamento": "barra",
+    "dica": "Pés na largura dos ombros, pontas um pouco para fora. Desça com o tronco firme até onde mantém a coluna neutra, joelhos na direção dos pés, e suba empurrando o chão."
   },
   {
     "id": "biceps/rosca-zottman",
@@ -4750,7 +5099,8 @@
     "fonte": "free-exercise-db",
     "idExterno": "Zottman_Curl",
     "nivel": "intermediario",
-    "equipamento": "halteres"
+    "equipamento": "halteres",
+    "dica": "Suba como numa rosca normal (palmas para cima), gire as palmas para baixo no topo e desça devagar assim. Trabalha bíceps e antebraço."
   },
   {
     "id": "power/salto-vertical",
@@ -4765,7 +5115,8 @@
     "fonte": "curado",
     "sinonimos": [
       "salto parado"
-    ]
+    ],
+    "dica": "Desça um pouco e salte o mais alto possível, com intenção máxima. Aterrisse macio, joelhos alinhados aos pés."
   },
   {
     "id": "power/salto-na-caixa",
@@ -4779,7 +5130,8 @@
     "fonte": "curado",
     "sinonimos": [
       "box jump"
-    ]
+    ],
+    "dica": "Agache rápido e salte para cima da caixa, aterrissando macio com os joelhos alinhados aos pés. Desça andando, não pulando."
   },
   {
     "id": "power/arremesso-de-medicine-ball-no-chao",
@@ -4792,7 +5144,8 @@
     "fonte": "curado",
     "sinonimos": [
       "med ball slam"
-    ]
+    ],
+    "dica": "Use o corpo todo (pernas, quadril e tronco) e solte a bola com toda a força. Pegue ou recolha a bola e reposicione-se antes da próxima."
   },
   {
     "id": "power/kettlebell-swing",
@@ -4806,7 +5159,8 @@
     "fonte": "curado",
     "sinonimos": [
       "swing"
-    ]
+    ],
+    "dica": "O movimento é do quadril, não dos braços: empurre o quadril para trás e projete-o à frente com força, deixando o peso subir até a altura do peito. Segure o kettlebell firme, com o punho reto."
   },
   {
     "id": "power/salto-horizontal",
@@ -4821,7 +5175,8 @@
     "fonte": "curado",
     "sinonimos": [
       "salto em distância"
-    ]
+    ],
+    "dica": "Balance os braços, salte o mais longe possível e aterrisse macio, com joelhos alinhados. Recomponha-se antes do próximo."
   },
   {
     "id": "power/swing-com-halter",
@@ -4832,7 +5187,8 @@
       "casa": 2
     },
     "seguroPara": {},
-    "fonte": "curado"
+    "fonte": "curado",
+    "dica": "O movimento é do quadril, não dos braços: empurre o quadril para trás e projete-o à frente com força, deixando o peso subir até a altura do peito."
   },
   {
     "id": "power/agachamento-com-salto",
@@ -4847,7 +5203,8 @@
     "fonte": "curado",
     "sinonimos": [
       "agachamento explosivo"
-    ]
+    ],
+    "dica": "Desça um pouco e salte o mais alto possível, com intenção máxima. Aterrisse macio, joelhos alinhados aos pés."
   },
   {
     "id": "rear/rotacao-externa-no-cabo",
@@ -4862,7 +5219,7 @@
     "sinonimos": [
       "manguito rotador"
     ],
-    "dica": "Cotovelo colado ao corpo, a 90°; gire o antebraço para fora devagar. Carga leve."
+    "dica": "Cotovelo junto ao corpo e dobrado a 90°; gire o antebraço para fora devagar, sem mexer o tronco. Carga leve: é para o manguito rotador. O cabo mantém tensão o tempo todo: não deixe o peso descansar na pilha entre as repetições."
   },
   {
     "id": "rear/rotacao-externa-com-elastico",
@@ -4878,7 +5235,7 @@
     "sinonimos": [
       "manguito rotador"
     ],
-    "dica": "Cotovelo colado ao corpo; gire o antebraço para fora contra o elástico."
+    "dica": "Cotovelo junto ao corpo e dobrado a 90°; gire o antebraço para fora devagar, sem mexer o tronco. Carga leve: é para o manguito rotador. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
   {
     "id": "rear/rotacao-externa-deitado-com-halter",
@@ -4894,6 +5251,6 @@
     "sinonimos": [
       "manguito rotador"
     ],
-    "dica": "Deitado de lado, cotovelo apoiado no quadril; gire o halter para cima. Carga bem leve."
+    "dica": "Cotovelo junto ao corpo e dobrado a 90°; gire o antebraço para fora devagar, sem mexer o tronco. Carga leve: é para o manguito rotador."
   }
 ]
