@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.11.0 — 2026-10-20 · auditor de plano
+Nova ferramenta para medir se o treino montado é bom, não só se o app não quebra.
+- **Auditor** (`auditoria/auditor.mjs`): dá nota de 0 a 100 a cada plano em 9 critérios (volume, frequência, repetições, RPE, descanso, equilíbrio, organização, coerência com o perfil, motivo e evidência). A régua fica em `auditoria/referencias.json`, separada do motor, com a fonte de cada faixa e a marcação "evidência" ou "convenção prática".
+- **`npm run auditar`**: audita 2.000 perfis aleatórios e escreve `auditoria/relatorio.md` (resumo, achados mais comuns, piores planos, evidências sem DOI).
+- **16 perfis-gabarito** (`auditoria/personas.mjs`): iniciante, 50+, avançado, força, casa, dor, jiu-jitsu, corrida, futebol, pouco tempo, ABC… com o que o plano precisa ter, escrito antes de olhar o resultado. Rodam no `npm test`.
+- **Catraca** (`auditoria/linha-de-base.json`): o CI falha se a nota média cair ou se aumentar a fração de planos com erro.
+- **Evidências:** DOIs conferidos no PubMed para frequência (Schoenfeld 2016 e 2019), volume (Schoenfeld 2017), faixa de repetições, descanso e progressão (ACSM 2009). "Faixa de repetições" corrigida de ensaio clínico para meta-análise.
+- Primeira auditoria: nota média 91; 32% dos planos com ao menos 1 erro. Depois das correções abaixo: **nota média 95; 1,7% com erro**; 16 de 16 gabaritos aprovados. Detalhes em `auditoria/relatorio.md`.
+
+**Correções que a auditoria encontrou**
+- **Dor (segurança):** em ~20% dos planos com dor, a variação semanal trocava a opção segura por outra (ex.: leg press com dor no joelho, desenvolvimento com dor no ombro). Agora a dor vem antes de tudo na escolha, e com duas dores o exercício precisa servir para as duas. Se a única opção segura já está no treino, o repetido sai em vez de entrar um inseguro.
+- **Opções seguras em casa:** não havia remada nem dobradiça de quadril seguras para lombar, nem agachamento seguro para joelho em casa. Entraram: remada apoiada com halteres, remada com elástico, remada invertida na mesa, ponte de glúteo com halter, pull-through com elástico (lombar); agachamento goblet com halter e agachamento até o banco (joelho); supino no chão, flexão inclinada, supino inclinado pegada neutra, tríceps com elástico e tríceps coice (ombro). Convenção prática, espelhando as opções seguras que já existiam na academia.
+- **Peito sem exercício principal:** "Superior B" e "Corpo inteiro C" só tinham supino inclinado (acessório); com 4×30 min o peito ficava com 3 séries/semana e as costas com 12. Os dois modelos ganharam um supino.
+- **Treino curto:** em 30 min, o composto que entra é o do músculo mais longe da meta (antes, o desenvolvimento sempre ficava de fora); compostos vão até 3 séries antes dos acessórios de músculos grandes, e só depois até 4; panturrilha, abdômen e adutores ficam para o fim; descanso de 2 min (em vez de 3) nos compostos.
+- **ABC sem glúteo:** "Pernas e ombros" ganhou um exercício de glúteo (3 → 7 séries/semana).
+- **Braço no dia de pernas:** as 2 séries diretas de bíceps/tríceps da hipertrofia não entram mais no dia de pernas.
+- **Iniciante com objetivo força:** 6–10 reps nos compostos em vez de 4–6 (ACSM: 8–12 RM no começo).
+- **Preferência "volume alto":** o teto de séries por músculo num treino sobe de 8 para 10 (a convenção vai de 6 a 10); antes, alto e padrão davam quase o mesmo plano. O passo que completa treino curto também respeita a preferência.
 ## 0.10.2 — 2026-10-20 · trocar exercício
 - **⇄ Trocar não funcionava no celular:** o botão era um menu nativo (`<select>`) invisível por cima do ícone, e no app do Claude o menu não abria. Agora o botão abre uma lista própria do Kora (variações com sinônimos, "Ver todas" e Cancelar), que funciona igual em qualquer aparelho.
 - A tela troca na hora e só depois salva; antes, ela esperava o salvamento terminar para mudar o exercício.

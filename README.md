@@ -75,10 +75,16 @@ scripts/
   classificar-free-exercise-db.mjs  classifica a base aberta nos padrões da ficha
   importar-free-exercise-db.mjs     junta os aprovados em data/exercicios.json
 tests/              testes do motor (node --test)
+auditoria/
+  auditor.mjs       dá nota a cada plano contra a régua de referencias.json
+  referencias.json  faixas da literatura (separadas do motor), com fonte
+  personas.mjs      perfis-gabarito: o que um bom plano precisa ter
+  relatorio.md      último resultado de `npm run auditar`
 ```
 
 ```bash
-npm test     # gera o app e roda os testes
+npm test         # gera o app e roda os testes (inclui gabaritos e catraca da auditoria)
+npm run auditar  # audita 2.000 perfis e escreve auditoria/relatorio.md
 ```
 
 **Adicionar um exercício:** inclua um item em `data/exercicios.json` com `padrao`, `locais` (a ordem define a posição no menu) e, se for seguro para dor, `seguroPara`. Rode `npm test` e faça o commit de `index.html` e `dist/` junto.

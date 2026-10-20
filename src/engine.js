@@ -34,9 +34,15 @@ const tecnica=pf=>beginner(pf)&&weeksIn(pf)<2;
 /* exercícios possíveis em cada local (academia completa tem tudo; básica tem o da básica e o de casa; casa só o de casa) */
 const AVAIL=(()=>{ const a={completa:new Set(DATA.exercicios.map(e=>e.nome)),basica:new Set(),casa:new Set()};
   DATA.exercicios.forEach(e=>{ const L=e.locais||{}; if(L.casa!=null){ a.casa.add(e.nome); a.basica.add(e.nome); } if(L.basica!=null) a.basica.add(e.nome); }); return a; })();
+/* quantas das dores da pessoa o exercício NÃO respeita (só conta a dor que tem opção segura disponível no local) */
+function unsafeFor(def,pf){ const can=AVAIL[pf.local||"completa"]||AVAIL.completa;
+  const lists=(pf.dores||[]).map(d=>def[d]&&def[d].filter(x=>can.has(x))).filter(l=>l&&l.length);
+  return n=>lists.filter(l=>!l.includes(n)).length; }
 function pickOpts(def,pf){
   const loc=pf.local||"completa"; let opts=(def.o[loc]||def.o.completa).slice(); const can=AVAIL[loc]||AVAIL.completa;
   (pf.dores||[]).forEach(d=>{ if(def[d]){ const safe=def[d].filter(x=>can.has(x)); opts=safe.concat(opts.filter(x=>!safe.includes(x))); } });
+  /* com mais de uma dor: primeiro o que é seguro para todas, depois para a maioria */
+  const uns=unsafeFor(def,pf); opts=opts.map((o,i)=>[o,i]).sort((a,b)=>uns(a[0])-uns(b[0])||a[1]-b[1]).map(x=>x[0]);
   const ban=(pf.evitar||"").toLowerCase().split(/[,;\n\/]| e | ou /).map(s=>s.trim()).filter(s=>s.length>=4);
   const nomes=o=>[o].concat((EXBYNAME[o]&&EXBYNAME[o].sinonimos)||[]).map(x=>x.toLowerCase());
   const ok=opts.filter(o=>!ban.some(b=>nomes(o).some(n=>n.includes(b))));
@@ -63,7 +69,13 @@ const exMinutes=e=>e.sets*(0.75+e.rest/60)+1;
 function makeEx(p,sets,pf,G,why){ const def=LIB[p], P=def.k==="C"?G.C:def.k==="P"?{lo:3,hi:5,rpe:[6],rest:90}:G.A;
   let rpe=[]; for(let i=0;i<sets;i++) rpe.push(P.rpe[Math.min(i,P.rpe.length-1)]);
   if(beginner(pf)) rpe=rpe.map(r=>Math.min(r,8)); if(tecnica(pf)&&def.k!=="P") rpe=rpe.map((r,i)=>i?7:6.5);
-  return {p,k:def.k,m:def.m,sets,lo:P.lo,hi:P.hi,rpe,rest:P.rest,low:!!def.low,how:def.how||"",why:why||[]}; }
+  /* treino de 30 min: descanso de 3 min nos principais deixa músculo sem treino; 2 min ainda está na faixa recomendada (2–3 min) */
+  const curto=def.k==="C"&&P.rest>120&&(Number(pf.tempo)||60)<=30; why=why||[];
+  if(curto) why=why.concat([{t:"Treino curto: 2 min de descanso nos exercícios principais (ainda dentro dos 2–3 min recomendados) para caber o corpo todo.",ev:"descanso"}]);
+  /* iniciante: nada abaixo de 6 reps nos principais (ACSM: 8–12 RM no começo); a carga alta vem depois de aprender o movimento */
+  const leve=beginner(pf)&&def.k==="C"&&P.lo<6;
+  if(leve) why=why.concat([{t:"Começando: 6–10 repetições nos exercícios principais enquanto aprende o movimento; as cargas altas (4–6 reps) vêm depois de 6 meses.",ev:"faixa-reps"}]);
+  return {p,k:def.k,m:def.m,sets,lo:leve?6:P.lo,hi:leve?10:P.hi,rpe,rest:curto?120:P.rest,low:!!def.low,how:def.how||"",why}; }
 
 function buildPlan(pf){
   const why=[], add=(t,ev)=>why.push({t,ev});
@@ -99,7 +111,7 @@ function buildPlan(pf){
   add(`${lift} dias de musculação → ${sp.nome}. ${sp.por}`,"frequencia");
   const freq={}; MUSCLES.forEach(m=>freq[m]=0); tms.forEach(t=>new Set(t.s.map(s=>LIB[s.p].m)).forEach(m=>freq[m]++));
   /* 4. distribuição: compostos primeiro (contam fração para os auxiliares), depois acessórios até completar a meta, dentro do tempo */
-  const cap=lv===0?6:8, maxSets=lv===0?3:4, minutes=(Number(pf.tempo)||60)-5;
+  const cap=(lv===0?6:8)+(volPos>0?2:0), maxSets=lv===0?3:4, minutes=(Number(pf.tempo)||60)-5;
   const days=tms.map((tm,di)=>({key:"d"+(di+1),n:tm.n,ex:[],tm}));
   const got={}; MUSCLES.forEach(m=>got[m]=0);
   /* "braços" é um grupo só, mas bíceps e tríceps são contados à parte: puxadas ajudam o bíceps, empurrões o tríceps; cada um tem metade da meta */
@@ -126,21 +138,26 @@ function buildPlan(pf){
     const put=e=>{ if(!fit(e)){ e.sets=2; e.rpe=e.rpe.slice(0,2); if(!fit(e)) return false; } d.ex.push(e); t+=exMinutes(e); credit(e.p,e.sets); sess[e.m]=(sess[e.m]||0)+e.sets; return true; };
     /* A. compostos com 2 séries garantidas (o resto é completado depois) */
     const planned=new Map();
-    for(const s of comp){ const m=s.def.m, need=perSession(m)-(sess[m]||0); if(need<2) continue;
+    /* a cada passo entra o composto do músculo mais longe da meta da semana (no empate, a ordem do modelo): em treino curto, nenhum músculo grande fica de fora */
+    const fila=comp.slice(), falta=s=>got[s.def.m]/Math.max(1,target[s.def.m]);
+    while(fila.length){ fila.sort((a,b)=>falta(a)-falta(b)||a.i-b.i); const s=fila.shift(); const m=s.def.m, need=perSession(m)-(sess[m]||0); if(need<2) continue;
       const sets=Math.min(maxSets,Math.max(2,Math.min(need,G.C.sets+(lv===2?1:0))));
       const e=makeEx(s.p,2,pf,G,[{t:`${m[0].toUpperCase()+m.slice(1)}: meta de ${target[m]} séries/semana em ${freq[m]} treino${freq[m]>1?"s":""} → ~${perSession(m)} hoje.`,ev:"volume-sessao"}]); e.o=s.o; e.i=s.i;
-      if(pernasPesado&&LIB[s.p].low&&!beginner(pf)){ e.lo=4; e.hi=6; e.rest=180; e.why.push({t:"Carga alta (4–6 reps) nas pernas: é o que mais melhora a economia na corrida e no ciclismo.",ev:"corrida-forca"}); }
+      if(pernasPesado&&LIB[s.p].low&&!beginner(pf)){ e.lo=4; e.hi=6; e.rest=(Number(pf.tempo)||60)<=30?120:180; e.why.push({t:"Carga alta (4–6 reps) nas pernas: é o que mais melhora a economia na corrida e no ciclismo.",ev:"corrida-forca"}); }
       if(put(e)) planned.set(e,sets); }
     const acc=slots.filter(s=>s.def.k!=="C");
     acc.sort((a,b)=>(leftOf(b)/target[b.def.m]-leftOf(a)/target[a.def.m])||a.i-b.i);
     /* B. acessórios das prioridades */
     for(const s of acc.filter(s=>prio.has(s.def.m))){ const e=accFor(s); if(e) put(e); }
-    /* C. completa as séries dos compostos */
-    for(const [e,sets] of planned){ while(e.sets<sets){ const extra=e.sets*0+1; const add1={...e,sets:e.sets+extra}; if(t-exMinutes(e)+exMinutes(add1)>minutes) break; t+=exMinutes(add1)-exMinutes(e); credit(e.p,1); sess[e.m]+=1; e.sets++; e.rpe=makeEx(e.p,e.sets,pf,G).rpe; } }
-    /* D. demais acessórios: maior falta primeiro */
-    for(const s of acc.filter(s=>!prio.has(s.def.m))){ const e=accFor(s); if(e) put(e); }
+    /* C. completa as séries dos compostos: primeiro até 3, para sobrar tempo aos acessórios dos músculos que ainda não treinaram */
+    const grow=lim=>{ for(const [e,sets] of planned){ while(e.sets<Math.min(sets,lim)){ const add1={...e,sets:e.sets+1}; if(t-exMinutes(e)+exMinutes(add1)>minutes) break; t+=exMinutes(add1)-exMinutes(e); credit(e.p,1); sess[e.m]+=1; e.sets++; e.rpe=makeEx(e.p,e.sets,pf,G).rpe; } } };
+    grow(3);
+    /* D. demais acessórios: maior falta primeiro; músculos pequenos (panturrilha, abdômen, adutores) só depois dos compostos completos */
+    for(const s of acc.filter(s=>!prio.has(s.def.m)&&!SMALL.has(s.def.m))){ const e=accFor(s); if(e) put(e); }
+    grow(Infinity);
+    for(const s of acc.filter(s=>!prio.has(s.def.m)&&SMALL.has(s.def.m))){ const e=accFor(s); if(e) put(e); }
     /* E. treino curto demais (comum nas divisões ABC/ABCDE): completa com os exercícios do modelo que ficaram de fora, até o teto da faixa de volume */
-    for(const s of acc.concat(comp)){ if(t>=minutes*0.75) break; if(d.ex.some(e=>e.i===s.i&&e.p===s.p)) continue; const m=s.def.m, room=range[1]*(prio.has(m)?1.15:1)*(d.ex.length<4?1.4:1)-got[m]; if(room<2) continue;
+    for(const s of acc.concat(comp)){ if(t>=minutes*0.75) break; if(d.ex.some(e=>e.i===s.i&&e.p===s.p)) continue; const m=s.def.m, room=range[1]*(1+volPos)*(prio.has(m)?1.15:1)*(d.ex.length<4?1.4:1)-got[m]; if(room<2) continue;
       const e=makeEx(s.p,Math.min(3,maxSets),pf,G,[{t:`${m[0].toUpperCase()+m.slice(1)}: sobrava tempo no treino, então entram mais ${Math.min(3,maxSets)} séries (ainda dentro da faixa de ${range[0]}–${range[1]} séries por semana).`,ev:"volume"}]); e.o=s.o; e.i=s.i; put(e); }
     /* ordem: habilidade, compostos, acessórios na ordem do modelo */
     const ord=e=>e.skill?-1:e.k==="C"?0:1; d.ex.sort((a,b)=>ord(a)-ord(b)||(a.i||0)-(b.i||0));
@@ -160,17 +177,19 @@ function buildPlan(pf){
     for(const d of days){ const tm=T[sp.t[days.indexOf(d)%sp.t.length]]; const s=tm.s.find(x=>LIB[x.p].m===m&&LIB[x.p].k!=="C"&&!d.ex.some(e=>e.p===x.p)); if(!s) continue;
       const e=makeEx(s.p,2,pf,G,[{t:`${m[0].toUpperCase()+m.slice(1)}: estava abaixo da metade da meta da semana; 2 séries para não ficar sem estímulo.`,ev:"volume"}]); e.o=s.o;
       if(d.min-5+exMinutes(e)<=minutes){ d.ex.push(e); d.min=Math.round(d.min+exMinutes(e)); credit(s.p,2); if(got[m]>=target[m]*0.5) break; } } });
-  /* hipertrofia: pelo menos 2 séries diretas de bíceps e de tríceps na semana (os compostos contam meia série; o trabalho direto completa) */
+  /* hipertrofia: pelo menos 2 séries diretas de bíceps e de tríceps na semana (os compostos contam meia série; o trabalho direto completa).
+     Só em dia de tronco ou corpo inteiro: no dia de pernas, o braço tiraria tempo de músculo grande. */
   if(["hipertrofia","misto"].includes(pf.objetivo)) ["biceps","triceps"].forEach(p=>{ if(days.some(d=>d.ex.some(e=>e.p===p))) return;
-    const order=days.map((d,i)=>({d,has:T[sp.t[i%sp.t.length]].s.some(x=>x.p===p)})).sort((a,b)=>(b.has-a.has)||(a.d.min-b.d.min));
+    const order=days.map((d,i)=>({d,has:T[sp.t[i%sp.t.length]].s.some(x=>x.p===p)})).filter(x=>regionOf(x.d).L<0.5).sort((a,b)=>(b.has-a.has)||(a.d.min-b.d.min));
     for(const {d} of order){ const e=makeEx(p,2,pf,G,[{t:`${p==="biceps"?"Bíceps":"Tríceps"}: 2 séries diretas na semana. Os compostos já trabalham o braço (contam meia série), e o trabalho direto completa para quem busca hipertrofia.`,ev:"volume"}]);
       for(let k=0;k<2&&d.min-5+exMinutes(e)>minutes;k++){ const big=d.ex.filter(x=>x.k==="A"&&!x.prevNome&&x.sets>=3).sort((a,b)=>b.sets-a.sets)[0]; if(!big) break; const before=exMinutes(big); big.sets--; big.rpe=big.rpe.slice(0,big.sets); d.min=Math.round(d.min-before+exMinutes(big)); credit(big.p,-1); }
       if(d.min-5+exMinutes(e)<=minutes){ d.ex.push(e); d.min=Math.round(d.min+exMinutes(e)); credit(p,2); break; } } });
   /* 5. escolha de cada exercício: local, dores e "evitar" (pickOpts), nível técnico e variação na semana */
   const W=[2.5,1,0][lv]; const habCore=skills.includes("costas")?HAB.costas.core:null;
-  days.forEach(d=>{ const dayUsed=new Set(); d.ex.forEach((e,i)=>{ e.id=d.key+"x"+i; const def=LIB[e.p]; let opts=pickOpts(def,pf);
+  days.forEach(d=>{ const dayUsed=new Set(); d.ex.forEach((e,i)=>{ e.id=d.key+"x"+i; const def=LIB[e.p]; let opts=pickOpts(def,pf); const uns=unsafeFor(def,pf);
     const rot=(e.o||0)%opts.length; opts=opts.slice(rot).concat(opts.slice(0,rot));
-    const score=(n,ix)=>(e.prevNome?(n===e.prevNome?-100:e.prevAlt.includes(n)?-90+e.prevAlt.indexOf(n):0):0)-(recom.has(n)?6:0)+ix+(Math.max(0,complexity(n)-1))*W+((used[e.p]||[]).includes(n)?4:0)+(dayUsed.has(n)?60:0)-(e.pref&&e.pref.includes(n)?20-e.pref.indexOf(n):0)-(habCore&&e.p==="core"&&habCore.includes(n)?10:0);
+    /* dor vem antes de tudo: variação, prevenção e nível nunca trocam um exercício seguro por um que não é */
+    const score=(n,ix)=>uns(n)*1000+(e.prevNome?(n===e.prevNome?-100:e.prevAlt.includes(n)?-90+e.prevAlt.indexOf(n):0):0)-(recom.has(n)?6:0)+ix+(Math.max(0,complexity(n)-1))*W+((used[e.p]||[]).includes(n)?4:0)+(dayUsed.has(n)?60:0)-(e.pref&&e.pref.includes(n)?20-e.pref.indexOf(n):0)-(habCore&&e.p==="core"&&habCore.includes(n)?10:0);
     let best=0; opts.forEach((n,ix)=>{ if(score(n,ix)<score(opts[best],best)) best=ix; });
     const pick=opts[best]; e.opts=[pick].concat(opts.filter(x=>x!==pick));
     if(recom.has(pick)&&!e.prevNome) e.why.push({t:`${pick}: recomendado para quem faz ${recom.get(pick).toLowerCase()}.`,ev:(PERF[recom.get(pick)].ev||[])[0]});
@@ -178,7 +197,10 @@ function buildPlan(pf){
     else if(habCore&&e.p==="core"&&habCore.includes(pick)) e.why.push({t:`${pick}: estabiliza a coluna sem flexioná-la (habilidade: proteger as costas).`,ev:"volume"});
     else if(best>0&&lv===0&&complexity(pick)<complexity(opts[0]===pick?opts[1]||pick:opts[0])) e.why.push({t:`${pick}: mais estável e fácil de aprender que ${opts.find(x=>x!==pick)}; quando dominar, troque no menu.`,ev:"selecao"});
     else if((used[e.p]||[]).length&&!used[e.p].includes(pick)) e.why.push({t:`${pick}: variação diferente do outro treino da semana.`,ev:"variacao"});
-    (used[e.p]=used[e.p]||[]).push(pick); dayUsed.add(pick); delete e.pref; delete e.o; delete e.i; delete e.prevAlt; }); });
+    if(dayUsed.has(pick)) e.dup=true;
+    (used[e.p]=used[e.p]||[]).push(pick); dayUsed.add(pick); delete e.pref; delete e.o; delete e.i; delete e.prevAlt; });
+    /* a única opção segura para a dor já está no treino: sai o exercício repetido (melhor que trocar por um inseguro) */
+    if(d.ex.some(e=>e.dup)){ d.ex.filter(e=>e.dup).forEach(e=>credit(e.p,-e.sets)); d.ex=d.ex.filter(e=>!e.dup); d.min=Math.round(d.ex.reduce((a,e)=>a+exMinutes(e),0)+5); } });
   /* dias da semana: organiza em volta dos esportes */
   const dows=(pf.dias||[1,3,5]).map(Number).sort((a,b)=>((a+6)%7)-((b+6)%7));
   const arr=arrangeDays(days,dows,pf); const ordered=arr.order.map(i=>days[i]);

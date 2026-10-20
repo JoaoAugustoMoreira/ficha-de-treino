@@ -1,0 +1,128 @@
+{
+  "_sobre": "Faixas de referência do auditor. Escritas a partir da literatura, SEPARADAS do motor (data/objetivos.json): se o motor mudar, o auditor continua medindo contra a mesma régua. 'ev' aponta para data/evidencias.json; 'tipo' diz se é evidência ou convenção prática.",
+  "musculosGrandes": [
+    "peito",
+    "costas",
+    "pernas",
+    "posterior",
+    "ombros",
+    "glúteos"
+  ],
+  "volume": {
+    "ev": "volume",
+    "tipo": "evidência",
+    "nota": "Séries semanais por músculo, contagem fracionada (auxiliar = meia série). Schoenfeld 2017 (doi:10.1080/02640414.2016.1210197): mais séries, mais hipertrofia; 10+ séries/semana no topo. Pelland 2026: retorno decrescente, mais acentuado na força.",
+    "faixas": {
+      "hipertrofia": {
+        "iniciante": [
+          6,
+          12
+        ],
+        "treinado": [
+          10,
+          20
+        ]
+      },
+      "misto": {
+        "iniciante": [
+          6,
+          12
+        ],
+        "treinado": [
+          8,
+          16
+        ]
+      },
+      "forca": {
+        "iniciante": [
+          4,
+          10
+        ],
+        "treinado": [
+          6,
+          12
+        ]
+      },
+      "emagrecimento": {
+        "iniciante": [
+          4,
+          10
+        ],
+        "treinado": [
+          6,
+          14
+        ]
+      },
+      "saude": {
+        "iniciante": [
+          4,
+          8
+        ],
+        "treinado": [
+          4,
+          10
+        ]
+      }
+    },
+    "erroAbaixo": 0.5,
+    "acimaDaFaixa": "alerta (retorno decrescente, sem dano comprovado)"
+  },
+  "frequencia": {
+    "ev": "frequencia",
+    "tipo": "evidência",
+    "nota": "Schoenfeld 2016 (doi:10.1007/s40279-016-0543-8): 2×/semana por músculo grande supera 1×. Com volume igual a diferença some (Schoenfeld 2019, doi:10.1080/02640414.2018.1555906), por isso é alerta, não erro.",
+    "minimo": 2,
+    "aPartirDeDias": 3
+  },
+  "repeticoes": {
+    "ev": "faixa-reps",
+    "tipo": "evidência",
+    "nota": "Schoenfeld 2017 (doi:10.1519/JSC.0000000000002200): força máxima responde melhor a cargas altas; hipertrofia parecida numa faixa ampla. ACSM 2009 (doi:10.1249/MSS.0b013e3181915670): iniciante 8–12 RM; força com ênfase em 1–6 RM.",
+    "forcaCompostoTopoMax": 6,
+    "faixaGeral": [
+      3,
+      30
+    ],
+    "inicianteCompostoMin": 6
+  },
+  "falha": {
+    "ev": "falha",
+    "tipo": "evidência",
+    "nota": "Robinson 2024: para hipertrofia, terminar perto da falha rende mais. Iniciante até RPE 8 é convenção de segurança do app.",
+    "hipertrofiaAcessorioRpeMin": 8,
+    "inicianteRpeMax": 8
+  },
+  "descanso": {
+    "ev": "descanso",
+    "tipo": "evidência",
+    "nota": "Schoenfeld 2016 (doi:10.1519/JSC.0000000000001272): 3 min > 1 min em força e hipertrofia em treinados. ACSM 2009: força 3–5 min nos exercícios principais.",
+    "compostoMin": {
+      "hipertrofia": 120,
+      "forca": 150,
+      "misto": 90,
+      "emagrecimento": 60,
+      "saude": 60
+    },
+    "acessorioMin": 45
+  },
+  "equilibrio": {
+    "ev": "volume",
+    "tipo": "convenção prática",
+    "nota": "Não há faixa comprovada por estudos para a razão entre músculos; os limites abaixo só pegam desequilíbrios grosseiros.",
+    "costasPorPeito": [
+      0.75,
+      1.6
+    ],
+    "posteriorPorPernas": [
+      0.5,
+      1.6
+    ]
+  },
+  "sessao": {
+    "ev": "volume-sessao",
+    "tipo": "convenção prática",
+    "nota": "Teto de séries diretas por músculo num treino (~6–10): convenção, sem teto comprovado.",
+    "seriesDiretasMax": 10,
+    "exerciciosMin": 3
+  }
+}

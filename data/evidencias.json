@@ -10,8 +10,8 @@
     "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Schoenfeld, Ogborn & Krieger, 2016 — Sports Medicine",
-      "Schoenfeld, Grgic & Krieger, 2019 — Journal of Sports Sciences",
+      "Schoenfeld, Ogborn & Krieger, 2016 — Sports Medicine — doi:10.1007/s40279-016-0543-8",
+      "Schoenfeld, Grgic & Krieger, 2019 — Journal of Sports Sciences — doi:10.1080/02640414.2018.1555906",
       "Pelland et al., 2026 — Sports Medicine — doi:10.1007/s40279-025-02344-w"
     ]
   },
@@ -26,7 +26,7 @@
     "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Schoenfeld, Ogborn & Krieger, 2017 — Journal of Sports Sciences",
+      "Schoenfeld, Ogborn & Krieger, 2017 — Journal of Sports Sciences — doi:10.1080/02640414.2016.1210197",
       "Pelland et al., 2026 — Sports Medicine — doi:10.1007/s40279-025-02344-w"
     ]
   },
@@ -52,10 +52,10 @@
     "usadoEm": [
       "parâmetros por objetivo"
     ],
-    "tipo": "ensaio clínico",
+    "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Schoenfeld et al., 2017 — Journal of Strength and Conditioning Research"
+      "Schoenfeld et al., 2017 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0000000000002200"
     ]
   },
   {
@@ -83,7 +83,7 @@
     "tipo": "ensaio clínico",
     "forca": "moderada",
     "fontes": [
-      "Schoenfeld et al., 2016 — Journal of Strength and Conditioning Research"
+      "Schoenfeld et al., 2016 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0000000000001272"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "tipo": "posicionamento + convenção prática",
     "forca": "opinião de especialistas",
     "fontes": [
-      "ACSM, 2009 — Progression models in resistance training for healthy adults",
+      "ACSM, 2009 — Progression models in resistance training for healthy adults — doi:10.1249/MSS.0b013e3181915670",
       "Plotkin et al., 2022 — PeerJ"
     ]
   },

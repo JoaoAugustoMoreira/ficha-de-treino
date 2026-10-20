@@ -1,12 +1,13 @@
 {
   "name": "ficha-de-treino",
-  "version": "0.10.2",
+  "version": "0.11.0",
   "private": true,
   "description": "Ficha de musculação que monta o treino pela rotina da pessoa, com base em evidências.",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node scripts/build.mjs && node --test tests/*.test.mjs"
+    "test": "node scripts/build.mjs && node --test tests/*.test.mjs",
+    "auditar": "node scripts/auditar.mjs"
   }
 }

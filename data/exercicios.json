@@ -166,7 +166,9 @@
     "locais": {
       "casa": 0
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "joelho": 4
+    },
     "fonte": "curado",
     "dica": "Segure o peso junto ao peito, cotovelos para dentro. Desça entre as pernas com o tronco ereto e suba empurrando o chão."
   },
@@ -428,7 +430,9 @@
     "locais": {
       "casa": 4
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "lombar": 4
+    },
     "fonte": "curado",
     "dica": "Costas (ou ombros) apoiadas, pés firmes no chão; empurre com os calcanhares e suba o quadril até alinhar com joelhos e ombros, apertando o glúteo 1 s em cima. Queixo recolhido."
   },
@@ -439,7 +443,9 @@
     "locais": {
       "casa": 5
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "lombar": 5
+    },
     "fonte": "curado",
     "dica": "De costas para o cabo ou elástico, peso entre as pernas; empurre o quadril para trás e projete-o à frente apertando o glúteo, braços só seguram. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
@@ -614,7 +620,9 @@
     "locais": {
       "casa": 0
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 4
+    },
     "fonte": "curado",
     "dica": "Escápulas juntas e para baixo, pés firmes e leve arco natural. Desça controlado até perto do peito, cotovelos a cerca de 45° do tronco, e empurre."
   },
@@ -625,7 +633,9 @@
     "locais": {
       "casa": 2
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 5
+    },
     "fonte": "curado",
     "dica": "Mãos um pouco além da largura dos ombros, corpo reto da cabeça aos pés e abdômen firme. Desça até o peito quase tocar o chão e empurre."
   },
@@ -1126,7 +1136,9 @@
     "locais": {
       "casa": 2
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "lombar": 4
+    },
     "fonte": "curado",
     "idExterno": "Dumbbell_Incline_Row",
     "nivel": "iniciante",
@@ -1140,7 +1152,9 @@
     "locais": {
       "casa": 3
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "lombar": 5
+    },
     "fonte": "curado",
     "dica": "Coluna neutra e peito aberto; puxe levando os cotovelos em direção ao quadril e junte as escápulas no fim. Volte alongando, sem perder a postura. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
@@ -1151,7 +1165,9 @@
     "locais": {
       "casa": 4
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "lombar": 6
+    },
     "fonte": "curado",
     "dica": "Deitado sob a barra ou mesa, corpo reto; puxe o peito em direção à barra juntando as escápulas e desça devagar. Quanto mais horizontal o corpo, mais difícil."
   },
@@ -2445,7 +2461,9 @@
     "locais": {
       "casa": 3
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 5
+    },
     "fonte": "curado",
     "idExterno": "Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension",
     "nivel": "iniciante",
@@ -2459,7 +2477,9 @@
     "locais": {
       "casa": 4
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 4
+    },
     "fonte": "curado",
     "dica": "Cotovelos colados ao corpo e ombros parados; estenda os cotovelos até os braços ficarem retos e volte até cerca de 90°, sem deixar os cotovelos subirem. Prenda bem o elástico; a resistência aumenta no fim do movimento, então controle a volta."
   },
@@ -3894,7 +3914,9 @@
       "basica": 158,
       "casa": 158
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "joelho": 5
+    },
     "fonte": "free-exercise-db",
     "idExterno": "Dumbbell_Squat_To_A_Bench",
     "nivel": "intermediario",
@@ -4017,7 +4039,9 @@
       "basica": 166,
       "casa": 166
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 4
+    },
     "fonte": "free-exercise-db",
     "idExterno": "Hammer_Grip_Incline_DB_Bench_Press",
     "nivel": "iniciante",
@@ -4109,7 +4133,9 @@
       "basica": 172,
       "casa": 172
     },
-    "seguroPara": {},
+    "seguroPara": {
+      "ombro": 5
+    },
     "fonte": "free-exercise-db",
     "idExterno": "Incline_Push-Up",
     "nivel": "iniciante",

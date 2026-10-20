@@ -5,6 +5,7 @@ Kora (core + cor, "coração" em latim) é um app de treino de musculação para
 ## Como rodar
 - `npm test` — roda todos os testes (`node --test tests/*.test.mjs`). Rode antes de qualquer commit.
 - `npm run build` — gera `index.html` (página completa, GitHub Pages/navegador) e `dist/ficha-de-treino.html` (versão publicada como artifact no claude.ai). **Sempre rebuild e commit os dois arquivos**: o CI falha se estiverem desatualizados.
+- `npm run auditar` — audita 2.000 perfis contra `auditoria/referencias.json` e escreve `auditoria/relatorio.md`. Rode depois de mudar o motor ou os dados.
 - Abrir `index.html` no navegador funciona sem servidor (dados ficam no localStorage).
 
 ## Estrutura
@@ -20,11 +21,17 @@ Kora (core + cor, "coração" em latim) é um app de treino de musculação para
 ## Regras do motor (não quebrar)
 1. Recuperação (sono/estresse) só avisa; **nunca corta volume** (decisão do dono).
 2. Metas de séries por músculo por objetivo × nível; contagem fracionada (auxiliar = meia série).
-3. Distribuição por treino em passes A–E dentro do tempo: compostos → prioridades → completa compostos → demais acessórios → completa treino curto. `exMinutes = sets*(0.75+rest/60)+1`, mais 5 min de aquecimento.
+3. Distribuição por treino em passes dentro do tempo: compostos com 2 séries (entra primeiro o do músculo mais longe da meta) → prioridades → compostos até 3 séries → acessórios de músculos grandes → compostos completos → acessórios de músculos pequenos → completa treino curto (respeitando a preferência de volume). Treino de 30 min: descanso de 2 min nos compostos. `exMinutes = sets*(0.75+rest/60)+1`, mais 5 min de aquecimento.
 4. Bíceps e tríceps têm metas separadas; hipertrofia garante 2 séries diretas de cada na semana.
-5. Escolha do exercício: local (casa/básica/completa) e dores respeitados; sem repetir exercício no mesmo dia; iniciante prefere variações estáveis.
+5. Escolha do exercício: **dor vem antes de tudo** (nenhuma variação, prevenção ou nível troca um exercício seguro por um inseguro; com mais de uma dor, conta todas); local respeitado; sem repetir exercício no mesmo dia (se a única opção segura já está no treino, o exercício repetido sai); iniciante prefere variações estáveis e não faz menos de 6 reps nos compostos.
+8. Braço direto da regra de hipertrofia só em dia de tronco ou corpo inteiro, nunca no dia de pernas.
 6. Toda decisão grava `why: [{t, ev}]` com o id de uma evidência existente em `evidencias.json`.
 7. Iniciante limitado a RPE 8; perna longe de esporte forte de pernas.
+
+## Auditoria (qualidade do plano)
+- `auditoria/referencias.json` é a régua, **separada** de `data/objetivos.json`: não ajuste a régua para o motor passar. Mudança na régua só com fonte nova verificada.
+- `auditoria/personas.mjs`: perfis-gabarito. Gabarito quebrou → ou o motor piorou, ou a expectativa estava errada; decida e explique no commit. Falhas conhecidas ficam em `CONHECIDOS` (tests/auditoria.test.mjs) até o motor ser corrigido.
+- `auditoria/linha-de-base.json` é uma catraca: quando o motor melhorar, suba os números; nunca afrouxe sem motivo.
 
 ## Regras de conteúdo
 - Toda afirmação científica nova precisa de fonte verificada (PubMed, com DOI) em `evidencias.json`. Marque como "convenção prática" o que for costume e não evidência, e como "extrapolação" o que vier de outra população ou esporte.
