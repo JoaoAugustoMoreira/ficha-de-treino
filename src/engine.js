@@ -186,7 +186,9 @@ function buildPlan(pf){
       if(d.min-5+exMinutes(e)<=minutes){ d.ex.push(e); d.min=Math.round(d.min+exMinutes(e)); credit(p,2); break; } } });
   /* 5. escolha de cada exercício: local, dores e "evitar" (pickOpts), nível técnico e variação na semana */
   const W=[2.5,1,0][lv]; const habCore=skills.includes("costas")?HAB.costas.core:null;
-  days.forEach(d=>{ const dayUsed=new Set(); d.ex.forEach((e,i)=>{ e.id=d.key+"x"+i; const def=LIB[e.p]; let opts=pickOpts(def,pf); const uns=unsafeFor(def,pf);
+  /* id = dia + padrão de movimento (+ nº se o padrão se repete no dia), nunca a posição: assim uma atualização do motor que muda a ordem
+     ou o número de exercícios não leva o rascunho nem a troca de um exercício para outro */
+  days.forEach(d=>{ const dayUsed=new Set(), nP={}; d.ex.forEach((e,i)=>{ nP[e.p]=(nP[e.p]||0)+1; e.id=d.key+"_"+e.p+(nP[e.p]>1?nP[e.p]:""); const def=LIB[e.p]; let opts=pickOpts(def,pf); const uns=unsafeFor(def,pf);
     const rot=(e.o||0)%opts.length; opts=opts.slice(rot).concat(opts.slice(0,rot));
     /* dor vem antes de tudo: variação, prevenção e nível nunca trocam um exercício seguro por um que não é */
     const score=(n,ix)=>uns(n)*1000+(e.prevNome?(n===e.prevNome?-100:e.prevAlt.includes(n)?-90+e.prevAlt.indexOf(n):0):0)-(recom.has(n)?6:0)+ix+(Math.max(0,complexity(n)-1))*W+((used[e.p]||[]).includes(n)?4:0)+(dayUsed.has(n)?60:0)-(e.pref&&e.pref.includes(n)?20-e.pref.indexOf(n):0)-(habCore&&e.p==="core"&&habCore.includes(n)?10:0);

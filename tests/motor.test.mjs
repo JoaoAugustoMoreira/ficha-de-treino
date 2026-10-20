@@ -229,3 +229,14 @@ test("perfis aleatórios: sem máquina em casa, sem exercício repetido no dia, 
     }
   }
 });
+
+test("id do exercício não depende da posição: dia + padrão, único no plano", () => {
+  for (const pf of [perfil(), perfil({ exp: "mais1", dias: [1, 2, 3, 4, 5, 6], tempo: 90 }), perfil({ divisao: "abc", exp: "6a12", dores: ["ombro"], local: "casa" })]) {
+    const ids = M.buildPlan(pf).days.flatMap(d => d.ex.map(e => { assert.match(e.id, new RegExp(`^${d.key}_${e.p}\\d*$`), e.id); return e.id; }));
+    assert.equal(new Set(ids).size, ids.length);
+  }
+  /* um exercício a mais no dia (prioridade) não muda o id dos outros */
+  const a = M.buildPlan(perfil({ exp: "6a12" })), b = M.buildPlan(perfil({ exp: "6a12", prioridades: ["panturrilha"] }));
+  const sq = p => p.days[0].ex.find(e => e.p === "squat").id;
+  assert.equal(sq(a), sq(b));
+});

@@ -30,7 +30,8 @@ const store={mode:"local",db:null,uid:null,
 /* ---------- histórico, e1RM e sugestão de carga ---------- */
 function historyFor(name){ return state.sessions.filter(s=>s.ex&&s.ex[name]).sort((a,b)=>b.ts-a.ts).map(s=>({date:s.date,leve:s.leve,sets:s.ex[name]})); }
 function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") return ex.low?5:2.5; return /cabo|máquina|cadeira|mesa|peck|leg press|flexora|extensora|abdução/i.test(name)?2.5:1; }
-function chosen(ex){ const i=state.prefs.swap[ex.id]||0; return ex.opts[i]||ex.opts[0]; }
+/* a troca guarda o NOME escolhido (versões antigas guardavam a posição na lista); nome que saiu das opções volta para a 1ª */
+function chosen(ex){ const v=state.prefs.swap[ex.id]; if(typeof v==="string") return ex.opts.includes(v)?v:ex.opts[0]; return ex.opts[v||0]||ex.opts[0]; }
 /* Trocar exercício: lista própria da página. O menu nativo (<select> transparente por cima do botão) não abria no app do Claude no celular. */
 function openSwap(ex,btn,all){ const cur=chosen(ex); const sh=$("#sheet"); const syn=o=>EXBYNAME[o]&&EXBYNAME[o].sinonimos?`<small class="syn">${esc(EXBYNAME[o].sinonimos.slice(0,2).join(", "))}</small>`:"";
   const list=ex.opts.map((o,i)=>[o,i]).filter(([o,i])=>all||i<5||o===cur);
@@ -45,7 +46,7 @@ function openSwap(ex,btn,all){ const cur=chosen(ex); const sh=$("#sheet"); const
   const f=$('#sheet .sopt[aria-pressed="true"]')||$("#sheet .sopt"); if(f) f.focus({preventScroll:true}); }
 async function applySwap(ex,i){ if(ex.opts[i]===chosen(ex)) return; flushDraft();
   Object.keys((draft.data&&draft.data.values)||{}).forEach(k=>{ if(k.startsWith(ex.id+"-")) draft.data.values[k]=""; });
-  state.prefs.swap[ex.id]=i; renderDay(); setStatus("Trocado para "+ex.opts[i]);
+  state.prefs.swap[ex.id]=ex.opts[i]; renderDay(); setStatus("Trocado para "+ex.opts[i]);
   try{ await store.put("prefs",state.prefs); }catch(err){ setStatus("Trocado só nesta tela: não consegui salvar."); } }
 /* exercícios por tempo (prancha): a faixa vira segundos; o resto do plano não muda */
 const isTimed=n=>/\(seg\)|prancha/i.test(n||"");
@@ -86,21 +87,24 @@ function draftLocal(){ try{ const d=JSON.parse(localStorage.getItem(DK)||"null")
 function collect(){ const v={}; $$("#day input[id]:not([type=checkbox])").forEach(i=>{ if(i.value.trim()) v[i.id]=i.value; }); return v; }
 function buildDraft(){ const prev=draft.data&&draft.data.date===todayISO()?(draft.data.values||{}):{}; const shown=new Set($$("#day input[id]:not([type=checkbox])").map(i=>i.id));
   const values={}; Object.entries(prev).forEach(([k,v])=>{ if(!shown.has(k)) values[k]=v; else if(v!=="") values[k]=""; }); Object.assign(values,collect());
-  return {type:"draft",date:todayISO(),day:state.current,values,ts:Date.now()}; }
+  return {type:"draft",date:todayISO(),day:state.current,values,names:Object.assign({},draft.data&&draft.data.date===todayISO()&&draft.data.names||{},dayNames()),ts:Date.now()}; }
+/* exercício de cada campo do rascunho: o valor só volta para o mesmo exercício (se o plano mudou numa atualização, não vai parar em outro) */
+function dayNames(){ const d=state.plan&&state.plan.days.find(x=>x.key===state.current); const o={}; if(d) d.ex.forEach(e=>{ o[e.id]=chosen(e); }); return o; }
+function sameEx(k,names){ if(!names) return true; const id=k.replace(/-(kg|r|p|d)-\d+$/,""), cur=dayNames(); return !(id in names)||!(id in cur)||names[id]===cur[id]; }
 function wl(d){ try{ localStorage.setItem(DK,JSON.stringify(d)); }catch(e){} }
-function mergeD(a,b){ const ok=x=>x&&x.type==="draft"&&x.date===todayISO(); if(!ok(a)) return ok(b)?b:null; if(!ok(b)) return a; const [o,n]=(a.ts||0)>(b.ts||0)?[b,a]:[a,b]; return Object.assign({},n,{values:Object.assign({},o.values||{},n.values||{})}); }
+function mergeD(a,b){ const ok=x=>x&&x.type==="draft"&&x.date===todayISO(); if(!ok(a)) return ok(b)?b:null; if(!ok(b)) return a; const [o,n]=(a.ts||0)>(b.ts||0)?[b,a]:[a,b]; return Object.assign({},n,{values:Object.assign({},o.values||{},n.values||{}),names:Object.assign({},o.names||{},n.names||{})}); }
 async function pushDraft(){ if(!draft.ready||!draft.dirty||!draft.data) return; if(draft.writing){ draft.again=true; return; } draft.writing=true;
   try{ await store.saveDraft(draft.data,draft.remote); draft.remote=true; const f={}; Object.entries(draft.data.values||{}).forEach(([k,v])=>{ if(v!=="") f[k]=v; });
-    if(Object.keys(f).length){ await store.saveDraft({type:"draftbak",date:todayISO(),ts:Date.now(),values:f},draft.bakR,"rascunho_bak"); draft.bakR=true; draft.bak={date:todayISO(),values:Object.assign({},(draft.bak&&draft.bak.date===todayISO()&&draft.bak.values)||{},f)}; } }catch(e){}
+    if(Object.keys(f).length){ await store.saveDraft({type:"draftbak",date:todayISO(),ts:Date.now(),values:f,names:draft.data.names},draft.bakR,"rascunho_bak"); draft.bakR=true; draft.bak={date:todayISO(),values:Object.assign({},(draft.bak&&draft.bak.date===todayISO()&&draft.bak.values)||{},f),names:Object.assign({},draft.bak&&draft.bak.names||{},draft.data.names||{})}; } }catch(e){}
   draft.writing=false; if(draft.again){ draft.again=false; pushDraft(); } }
 function scheduleDraft(){ if(!isTrainDay()) return; draft.dirty=true; draft.data=buildDraft(); wl(draft.data); clearTimeout(draft.timer); draft.timer=setTimeout(pushDraft,1200); }
 function flushDraft(){ if(!draft.dirty||!isTrainDay()) return; clearTimeout(draft.timer); draft.data=buildDraft(); wl(draft.data); pushDraft(); }
-function restoreDraft(){ const d=draft.data; if(!d||d.date!==todayISO()) return; Object.entries(d.values||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el&&!el.value&&v!=="") el.value=v; }); }
+function restoreDraft(){ const d=draft.data; if(!d||d.date!==todayISO()) return; Object.entries(d.values||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el&&!el.value&&v!==""&&sameEx(k,d.names)) el.value=v; }); }
 async function clearDayDraft(prefix){ const rest={}; Object.entries((draft.data&&draft.data.values)||{}).forEach(([k,v])=>{ if(!k.startsWith(prefix)&&v!=="") rest[k]=v; });
   draft.data=Object.keys(rest).length?Object.assign({},draft.data,{values:rest,ts:Date.now()}):null; clearTimeout(draft.timer);
   if(draft.data){ wl(draft.data); try{ await store.saveDraft(draft.data,false); }catch(e){} } else { try{ localStorage.removeItem(DK); }catch(e){} try{ if(store.mode==="db") await store.col().doc("rascunho").delete(); }catch(e){} draft.remote=false; draft.dirty=false; } }
 function recoverBak(){ const b=draft.bak; if(!b||b.date!==todayISO()){ setStatus("Nada digitado hoje para recuperar."); return; } let n=0;
-  Object.entries(b.values||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el&&!el.value){ el.value=v; n++; } }); if(n){ scheduleDraft(); syncDone(); } setStatus(n?`${n} campos recuperados.`:"Nada a recuperar nesta aba."); }
+  Object.entries(b.values||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el&&!el.value&&sameEx(k,b.names)){ el.value=v; n++; } }); if(n){ scheduleDraft(); syncDone(); } setStatus(n?`${n} campos recuperados.`:"Nada a recuperar nesta aba."); }
 document.addEventListener("input",e=>{ if(e.target.closest&&e.target.closest("#day")&&e.target.type!=="checkbox"&&e.target.id){ scheduleDraft(); const m=/^(.+)-(kg|r|p)-0$/.exec(e.target.id); if(m) readiness(m[1]); updateProgress(); } });
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden") flushDraft(); });
 window.addEventListener("pagehide",flushDraft);
