@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.0 — 2026-10-22 · semana leve planejada
+- **Ciclo de 7 semanas:** 6 normais + 1 semana leve (deload). Na semana leve o "Treino leve" liga sozinho: metade das séries, esforço 6, mesmas cargas e mesmos dias; o treino não conta para a progressão. Dá para pular a semana (fica salvo só para aquela semana).
+- **Início** mostra "Semana N · semana leve daqui a X semanas"; na semana leve, um aviso no Início e no treino.
+- **Evidência nova `deload`** (conferida no PubMed): reduzir séries e esforço por 1 semana não atrapalhou a hipertrofia (Pancar 2026); parar 1 semana inteira atrasou um pouco a força em treinados (Coleman 2024); atletas fazem a cada ~5–6 semanas (Rogerson 2024). Força da evidência: baixa. O app diz que o motivo é controlar o cansaço.
+
 ## 0.14.0 — 2026-10-22 · progressão no motor, com testes
 A sugestão de carga ficava na interface, sem nenhum teste (os bugs desta semana nasceram ali). Agora é `sugerirCarga` em `engine.js`, com 15 testes em `tests/progressao.test.mjs`, e ganhou as regras já validadas na ficha Força + BJJ:
 - **Esforço longe do alvo:** RPE médio 1,5+ ponto fora do alvo num treino, ou 1+ ponto no mesmo sentido em 2 treinos seguidos, ajusta a carga pela força estimada (para cima, no máximo +10%). O card explica: "esforço 9, acima do alvo 8".

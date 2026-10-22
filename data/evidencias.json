@@ -623,5 +623,20 @@
     "fontes": [
       "Iversen et al., 2021 — Sports Medicine — doi:10.1007/s40279-021-01490-1"
     ]
+  },
+  {
+    "id": "deload",
+    "tema": "Semana leve (deload)",
+    "regra": "Reduzir séries e esforço por 1 semana, mantendo os dias de treino, não atrapalhou a hipertrofia; parar de treinar 1 semana inteira atrasou um pouco a força em quem já treinava. Atletas de força e físico costumam fazer a cada ~5–6 semanas. O ganho extra não é comprovado: o motivo é controlar o cansaço (convenção prática).",
+    "usadoEm": [
+      "semana leve planejada"
+    ],
+    "tipo": "ensaios clínicos + levantamento",
+    "forca": "baixa",
+    "fontes": [
+      "Coleman et al., 2024 — PeerJ — doi:10.7717/peerj.16777",
+      "Pancar et al., 2026 — Scientific Reports — doi:10.1038/s41598-026-40612-5",
+      "Rogerson et al., 2024 — Sports Medicine Open — doi:10.1186/s40798-024-00691-y"
+    ]
   }
 ]

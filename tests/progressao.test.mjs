@@ -86,3 +86,12 @@ test("incremento por equipamento: halter 2 kg, máquina 2,5, perna 5, isolado li
   assert.equal(M.incOf({ k: "A" }, "Cadeira extensora"), 2.5);
   assert.equal(M.incOf({ k: "A" }, "Elevação lateral com elástico"), 1);
 });
+
+test("semana leve planejada a cada 7 semanas (6 normais + 1 leve), nunca nas primeiras 6", () => {
+  const pf = { inicio: "2026-01-05" };                       // segunda-feira
+  const sem = n => { const d = new Date("2026-01-05T12:00:00"); d.setDate(d.getDate() + 7 * (n - 1)); return M.cicloSemana(pf, d.toISOString().slice(0, 10)); };
+  for (let n = 1; n <= 6; n++) assert.equal(sem(n).deload, false, "semana " + n);
+  assert.equal(sem(7).deload, true); assert.equal(sem(8).deload, false); assert.equal(sem(14).deload, true);
+  assert.equal(sem(5).falta, 2);
+  assert.ok(M.buildPlan({ exp: "mais1", objetivo: "hipertrofia", dias: [1, 3, 5], tempo: 60, local: "completa", dores: [], prioridades: [], esportes: [], inicio: "2025-01-01" }).why.some(w => w.ev === "deload"));
+});

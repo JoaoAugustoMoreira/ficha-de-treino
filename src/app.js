@@ -124,7 +124,7 @@ function tabs(){
   $("#tabs").classList.remove("scroll"); $("#tabs").style.gridTemplateColumns="repeat(4,1fr)";
   const sel=k=>k==="treino"?isTrainDay():k===state.current;
   $("#tabs").innerHTML=list.map(([k,a,b])=>`<button class="tab" role="tab" id="tab-${k}" aria-selected="${sel(k)}" data-k="${k}" type="button"><b>${a}</b><small>${esc(b)}</small></button>`).join("");
-  $$("#tabs .tab").forEach(b=>b.onclick=()=>{ flushDraft(); const k=b.dataset.k; state.current=k==="treino"?(isTrainDay()?state.current:defaultTab()):k; state.leve=false; render(); window.scrollTo({top:0}); });
+  $$("#tabs .tab").forEach(b=>b.onclick=()=>{ flushDraft(); const k=b.dataset.k; state.current=k==="treino"?(isTrainDay()?state.current:defaultTab()):k; state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); });
 }
 function dayChips(){ const t=new Date().getDay();
   const list=state.plan.days.map((d,i)=>[d.key,d.dow.length?DOWN[d.dow[0]]:"Treino "+(i+1),d.n.replace("Corpo inteiro","Corpo"),d.dow.includes(t)]);
@@ -136,7 +136,7 @@ function onbTabs(){ const list=[["onb",state.pf?"Editar":"Começar","questionár
   $$("#tabs .tab").forEach(b=>b.onclick=()=>{ if($("#q-go")) state.onbDraft=readForm(); state.current=b.dataset.k; render(); window.scrollTo({top:0}); }); }
 function render(){ hideTip(); $("#day").onclick=null; $("#day").onchange=null; $("#saveBar").hidden=!(state.plan&&isTrainDay()&&!state.editing); if(!state.pf||state.editing){ onbTabs(); if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else renderOnb(); return; } tabs();
   if(state.current==="hist") renderHist(); else if(state.current==="perfil") renderPerfil(); else if(state.current==="plano") renderPlano(); else if(state.current==="inicio") renderHome(); else if(state.current==="guia") renderGuia(); else if(state.current==="faq") renderFaq(); else if(state.current==="cardio") renderCardio(); else renderDay();
-  if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
+  if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
 }
 /* ---------- início: resumo do dia e atalhos ---------- */
 function localWarn(){ return store.mode==="local"?`<details class="card koralocal"><summary><b>Seus treinos estão salvos só neste aparelho</b></summary><div class="gb">
@@ -164,7 +164,7 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
   const thisW=lifts.filter(s=>weekStart(s.date)===wk); const vol=thisW.reduce((a,s)=>a+tonnage(s),0);
   let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=isoLocal(dd); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
   const since=isoDaysAgo(6), v7=lifts.length?setsByMuscle(lifts.filter(s=>s.date>=since)):((pl.vol&&pl.vol.v)||{}); const frac={}; MUSCLES.forEach(m=>frac[m]=(v7[m]||0)/((pl.target||{})[m]||1));
-  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>${localWarn()}
+  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>${localWarn()}${(()=>{ const c=cicloSemana(pf,today); return deloadAtivo()?`<p class="banner dl"><b>Semana leve planejada</b> (semana ${c.semana}): treinos com metade das séries e esforço 6.</p>`:c.semana>0?`<p class="note">Semana ${c.semana} · semana leve daqui a ${c.falta} semana${c.falta>1?"s":""}</p>`:""; })()}
     ${hero}
     <div class="wstrip">${strip}</div>
     <div class="kpis"><div class="kpi"><b>${thisW.length}/${pl.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${vol?kfmt(vol):"0"}</b><span>volume na semana</span></div><div class="kpi"><b>${streak}</b><span>semana${streak===1?"":"s"} seguida${streak===1?"":"s"} na meta</span></div></div>
@@ -176,7 +176,7 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
       ${pl.cardio.n?`<button class="card tile" type="button" data-go="cardio"><span class="ti">♥</span><b>Cardio</b><small>${pl.cardio.n}× por semana</small></button>`:""}
       <button class="card tile" type="button" data-go="faq"><span class="ti">?</span><b>Ajuda</b><small>RPE e dúvidas</small></button>
     </div></div>`;
-  $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=false; render(); window.scrollTo({top:0}); });   if($("#bkCopy")) $("#bkCopy").onclick=copyBackup;
+  $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); });   if($("#bkCopy")) $("#bkCopy").onclick=copyBackup;
 }
 function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
@@ -297,6 +297,11 @@ async function saveProfile(){
 function defaultTab(){ const t=new Date().getDay(); const d=state.plan&&state.plan.days.find(x=>x.dow.includes(t)); return d?d.key:(state.plan&&state.plan.cardio.dias.includes(t)?"cardio":(state.plan?state.plan.days[0].key:"perfil")); }
 
 /* ---------- treino do dia ---------- */
+/* semana leve planejada: liga o "Treino leve" sozinho; a pessoa pode pular a semana (fica salvo só para esta semana) */
+function deloadAtivo(){ return !!(state.pf&&cicloSemana(state.pf,todayISO()).deload&&state.prefs.deloadPulado!==weekStart(todayISO())); }
+function deloadBanner(){ if(!state.pf) return ""; const c=cicloSemana(state.pf,todayISO());
+  if(deloadAtivo()) return `<div class="banner dl"><b>Semana ${c.semana}: semana leve planejada.</b> Metade das séries, esforço 6 (sobrando 4), mesmas cargas. Na semana que vem, volte ao normal. Serve para o corpo recuperar; não precisa parar de treinar. <button class="link" id="pularDeload" type="button">Pular esta semana leve</button></div>`;
+  return ""; }
 function nSets(ex){ return state.leve?Math.max(1,Math.ceil(ex.sets/2)):ex.sets; }
 function lastTxt(name){ const h=historyFor(name)[0]; return h?`${dstr(h.date)} · ${h.sets.map(s=>`${fmt(s.kg)}×${s.reps}${s.rpe?" @"+fmt(s.rpe):""}`).join("  ")}`:""; }
 function plainRx(ex,n){ if(ex.k==="P") return `Faça <b>${n} séries</b> de <b>${ex.lo} a ${ex.hi} repetições</b>, o mais rápido possível. Pare antes de cansar. Descanse <b>1,5 min</b>.`; const r=ex.rpe[ex.rpe.length-1], sobra=Math.max(0,Math.round(10-r)); const rest=ex.rest>=60?(ex.rest%60?fmt(ex.rest/60)+" min":ex.rest/60+" min"):ex.rest+" s";
@@ -380,6 +385,7 @@ function renderDay(){
     ${sampleFn&&needsWeekly()?`<button class="link" id="goAn" type="button">Fazer a análise da semana →</button>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
     ${d.mob?`<details class="gd mobb"><summary>Mobilidade · 5 min</summary><div class="gb"><p>${d.mob.map(esc).join("<br>")}</p></div></details>`:""}
+    ${deloadBanner()}
     ${state.prefs.tourVisto?"":tourHtml()}
     ${cards}
     <button type="button" class="ghost" id="addEx">＋ Adicionar exercício</button>
@@ -389,6 +395,7 @@ function renderDay(){
       <label>Minutos<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></details></div>`;
   restoreDraft(); syncDone(); d.ex.forEach(e=>readiness(e.id));
   $("#addEx").onclick=()=>{ flushDraft(); openAdd(d,$("#addEx")); };
+  if($("#pularDeload")) $("#pularDeload").onclick=()=>{ state.prefs.deloadPulado=weekStart(todayISO()); state.leve=false; store.put("prefs",state.prefs).catch(()=>{}); renderDay(); setStatus("Semana leve pulada. A próxima vem daqui a 7 semanas."); };
   /* guia "Como ler esta tela": aparece até a pessoa tocar em Entendi; volta pelo menu ⋯ */
   if($("#tourOk")) $("#tourOk").onclick=()=>{ state.prefs.tourVisto=true; store.put("prefs",state.prefs).catch(()=>{}); renderDay(); };
   if($("#tourGuia")) $("#tourGuia").onclick=()=>{ flushDraft(); state.current="guia"; render(); window.scrollTo({top:0}); };
@@ -486,7 +493,7 @@ async function saveDay(){
   const w={fc:num($(`#${d.key}-w-fc`).value),min:num($(`#${d.key}-w-min`).value)}; Object.keys(w).forEach(k=>{ if(!(w[k]>=0)) delete w[k]; }); readEffort(d.key+"-w",w); if(Object.keys(w).length) s.watch=w;
   return persist(s,d.key+"x",d.key+"-w"); }
 async function persist(s,...prefixes){ const btn=$("#saveBtn"); btn.disabled=true;
-  try{ state.sessions.push(s); await store.put("s_"+s.ts,s); setStatus(s.cardio?`Cardio salvo em ${dstr(s.date)}.`:`Treino salvo em ${dstr(s.date)}. No próximo, a ficha já mostra as cargas novas.`); for(const p of prefixes) await clearDayDraft(p); state.leve=false; render(); window.scrollTo({top:0}); }
+  try{ state.sessions.push(s); await store.put("s_"+s.ts,s); setStatus(s.cardio?`Cardio salvo em ${dstr(s.date)}.`:`Treino salvo em ${dstr(s.date)}. No próximo, a ficha já mostra as cargas novas.`); for(const p of prefixes) await clearDayDraft(p); state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); }
   catch(e){ state.sessions.pop(); setStatus("Não foi possível salvar. Verifique a conexão e tente de novo."); }
   btn.disabled=false; }
 
@@ -707,7 +714,7 @@ document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==
     <p class="exnote">Seus dados estão salvos na sua conta, mas a conexão falhou agora. <b>Não precisa se cadastrar de novo.</b> Verifique a internet e tente outra vez.</p>
     <div class="askrow"><button class="ckbtn" type="button" onclick="location.reload()">Tentar de novo</button></div></article></div>`; return; }
   state.sessions=o.sessions||[]; state.checkins=o.checkins||[]; state.prefs=Object.assign({swap:{}},o.prefs||{}); state.pf=o.pf||null; state.analysis=o.analysis||null; state.anHist=(o.anHist||[]).sort((a,b)=>a.semana<b.semana?1:-1);
-  if(state.pf) state.plan=withExtras(buildPlan(state.pf));
+  if(state.pf) state.plan=withExtras(buildPlan(state.pf)); state.leve=deloadAtivo();
   const dd=o.draft&&o.draft.type==="draft"&&o.draft.date===todayISO()?o.draft:null; draft.remote=!!dd; draft.bakR=!!(o.bak&&o.bak.date===todayISO()); draft.bak=draft.bakR?o.bak:null;
   draft.data=mergeD(dd,draft.data); draft.ready=true;
   state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")&&Object.values(draft.data.values||{}).some(v=>v!=="")?draft.data.day:"inicio";

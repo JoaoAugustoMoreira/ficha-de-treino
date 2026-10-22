@@ -229,6 +229,7 @@ function buildPlan(pf){
   const semTreino=["peito","costas","pernas","posterior","ombros"].filter(m=>!freq[m]);
   if(semTreino.length) notes.push(`Com ${lift} dias, a divisão "${sp.nome}" deixa ${semTreino.join(", ")} sem treino na semana. Escolha "Automático" ou marque mais dias.`);
   if(arr.pen>=2) notes.push("Com os dias de musculação e de esporte que você marcou, algum treino de pernas ficou perto de uma atividade forte. Se puder, deixe 1 dia entre eles.");
+  add(`A cada ${CICLO} semanas, 1 semana leve (deload): metade das séries e esforço 6, nos mesmos dias. Serve para controlar o cansaço; parar de vez atrasaria a força.`,"deload");
   if(tecnica(pf)) notes.push("Semanas 1 e 2: fase de técnica. Use cargas em que sobram 3–4 repetições e foque em aprender o movimento.");
   return {sk,split:sp.nome,por:sp.por,goal:G.nome,goal2:G2?G2.nome:null,days,cardio,notes,lift,vol,target,tWhy,freq,why,skills,rf,
     targetRange:range};
@@ -263,6 +264,11 @@ function workSets(sets){ const kgs=sets.map(s=>s.kg||0), mx=Math.max(...kgs), to
     const mode=Object.keys(cnt).map(Number).filter(k=>cnt[k]>=2).sort((a,b)=>cnt[b]-cnt[a]||b-a)[0];
     if(mode!=null){ const rest=sets.filter(s=>(s.kg||0)===mode); if(e1rm(top[0].kg||0,top[0].reps||0,top[0].rpe)<=Math.max(...rest.map(x=>e1rm(x.kg||0,x.reps||0,x.rpe)))) return rest; } }
   return top; }
+/* ---------- ciclo de 7 semanas: 6 normais + 1 semana leve (deload: metade das séries, RPE 6, mesmos dias) ---------- */
+const CICLO=7;
+function cicloSemana(pf,iso){ if(!pf||!pf.inicio) return {semana:0,deload:false,falta:CICLO};
+  const w=Math.floor((new Date(iso+"T12:00:00")-new Date(pf.inicio+"T12:00:00"))/(7*864e5))+1, r=w%CICLO;
+  return {semana:w,deload:w>=CICLO&&r===0,falta:r===0?0:CICLO-r}; }
 /* ---------- progressão de carga (testada em tests/progressao.test.mjs) ----------
    h = histórico do exercício, do mais novo para o mais antigo, sem treinos leves: [{date, sets:[{kg,reps,rpe?}]}].
    Ordem das regras: 1ª vez → técnica → regredir (2 treinos abaixo do mínimo) → RPE longe do alvo → topo da faixa → estagnação → +1 rep. */
@@ -305,4 +311,4 @@ function sugerirCarga(ex,name,h,o){ o=o||{}; const inc=o.inc!=null?o.inc:incOf(e
 }
 const sessE1=sets=>Math.max(0,...sets.map(s=>e1rm(s.kg||0,s.reps||0,s.rpe)));
 const roundTo=(v,s)=>Math.round(v/s)*s;
-if(typeof module!=="undefined") module.exports={sugerirCarga,incOf,workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
+if(typeof module!=="undefined") module.exports={cicloSemana,CICLO,sugerirCarga,incOf,workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};

@@ -1,6 +1,6 @@
 # Auditoria dos planos do Kora
 
-Versão 0.11.0 · 2000 perfis aleatórios (semente fixa) + 16 perfis-gabarito. Gerado por `npm run auditar`.
+Versão 0.15.0 · 2000 perfis aleatórios (semente fixa) + 16 perfis-gabarito. Gerado por `npm run auditar`.
 
 A régua está em `auditoria/referencias.json`, separada do motor. Cada critério diz se é **evidência** (com fonte) ou **convenção prática**.
 
@@ -186,4 +186,4 @@ Intermediário, joga futebol forte no domingo, musculação seg/ter/qui/sex, 60 
 
 ## Base de evidências
 
-10 de 45 evidências sem DOI em nenhuma fonte: `rpe`, `variacao`, `4x4`, `atividade`, `proteina`, `vfc`, `potencia`, `aquecimento`, `recuperacao`, `volume-sessao`.
+10 de 46 evidências sem DOI em nenhuma fonte: `rpe`, `variacao`, `4x4`, `atividade`, `proteina`, `vfc`, `potencia`, `aquecimento`, `recuperacao`, `volume-sessao`.
