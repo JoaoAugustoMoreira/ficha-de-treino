@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.0 — 2026-10-22 · opções para quem treina há anos
+- **Dia de força e dia de hipertrofia** (quem treina há mais de 1 ano, objetivo hipertrofia ou misto): os treinos A (Superior A, Inferior A, Empurrar A…) ficam de força, com compostos 4–6 reps e 3 min de descanso; os treinos B ficam de hipertrofia, 8–12 reps. Os acessórios não mudam. O nome do treino mostra "· Força" ou "· Hipertrofia". Variar dentro da semana rende mais força em treinados (evidência `periodizacao`). Se o dia de força não couber no tempo, o descanso cai para 2,5 e depois 2 min. Desliga com `pf.ondulacao = "nao"`.
+- **Bi-sets em treinos de até 45 min:** acessórios opostos (bíceps + tríceps, elevação lateral + posterior de ombro, extensora + flexora, glúteo + adutor, panturrilha + abdômen) ficam lado a lado, 1 série de cada e descanso depois do par. Mesmo volume, menos tempo (evidência `tempo-eficiente`). O cronômetro dá 15 s para trocar.
+
 ## 0.15.0 — 2026-10-22 · semana leve planejada
 - **Ciclo de 7 semanas:** 6 normais + 1 semana leve (deload). Na semana leve o "Treino leve" liga sozinho: metade das séries, esforço 6, mesmas cargas e mesmos dias; o treino não conta para a progressão. Dá para pular a semana (fica salvo só para aquela semana).
 - **Início** mostra "Semana N · semana leve daqui a X semanas"; na semana leve, um aviso no Início e no treino.

@@ -71,7 +71,7 @@ Nunca treinou, academia completa, seg/qua/sex, 60 min.
 ### ✅ Saúde depois dos 50, 2 dias — nota 100
 55 anos, quer saúde, academia básica, ter/qui, 45 min.
 
-- Plano: Corpo inteiro (full body), 2 dias · Corpo inteiro A (7 ex, 45 min), Corpo inteiro B (7 ex, 41 min)
+- Plano: Corpo inteiro (full body), 2 dias · Corpo inteiro A (7 ex, 43 min), Corpo inteiro B (7 ex, 39 min)
 - Séries/semana: peito 4, costas 4, pernas 4, posterior 5, ombros 6, glúteos 5
 
 ### ✅ Intermediário, 4 dias, hipertrofia — nota 95
@@ -84,9 +84,9 @@ Nunca treinou, academia completa, seg/qua/sex, 60 min.
 ### ✅ Avançado, 6 dias, hipertrofia — nota 96
 Mais de 1 ano, seg a sáb, 75 min.
 
-- Plano: Empurrar / Puxar / Pernas, 6 dias · Empurrar A (6 ex, 58 min), Puxar A (6 ex, 62 min), Pernas A (7 ex, 75 min), Empurrar B (5 ex, 50 min), Puxar B (4 ex, 49 min), Pernas B (6 ex, 65 min)
+- Plano: Empurrar / Puxar / Pernas, 6 dias · Empurrar A · Força (6 ex, 66 min), Puxar A · Força (6 ex, 74 min), Pernas A · Força (7 ex, 75 min), Empurrar B · Hipertrofia (5 ex, 50 min), Puxar B · Hipertrofia (4 ex, 49 min), Pernas B · Hipertrofia (6 ex, 65 min)
 - Séries/semana: peito 20, costas 24, pernas 16, posterior 16, ombros 23.5, glúteos 16
-- Alertas: costas: 24 séries/semana, acima de 20; ombros: 23.5 séries/semana, acima de 20; Empurrar A: 11 séries diretas de peito num treino; Puxar A: 12 séries diretas de costas num treino; Puxar B: 12 séries diretas de costas num treino
+- Alertas: costas: 24 séries/semana, acima de 20; ombros: 23.5 séries/semana, acima de 20; Empurrar A · Força: 11 séries diretas de peito num treino; Puxar A · Força: 12 séries diretas de costas num treino; Puxar B · Hipertrofia: 12 séries diretas de costas num treino
 
 ### ✅ Força, 4 dias — nota 97
 Mais de 1 ano, quer ficar mais forte, 90 min.
@@ -98,7 +98,7 @@ Mais de 1 ano, quer ficar mais forte, 90 min.
 ### ✅ Emagrecimento em casa — nota 100
 Iniciante, treina em casa, 3 dias, 45 min.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (5 ex, 41 min), Corpo inteiro B (6 ex, 44 min), Corpo inteiro C (5 ex, 37 min)
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (5 ex, 41 min), Corpo inteiro B (6 ex, 44 min), Corpo inteiro C (5 ex, 35 min)
 - Séries/semana: peito 8, costas 9, pernas 8, posterior 6, ombros 9, glúteos 7.5
 
 ### ✅ Iniciante com dor no joelho e na lombar — nota 99
@@ -118,7 +118,7 @@ Intermediário, musculação seg/qua/sex 60 min, jiu-jitsu forte ter e qui.
 ### ✅ Corredor, provas no sábado — nota 99
 Mais de 1 ano, corre forte ter e sáb, musculação seg/qua/sex, 60 min.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (6 ex, 60 min), Corpo inteiro B (6 ex, 56 min), Corpo inteiro C (6 ex, 60 min)
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A · Força (6 ex, 60 min), Corpo inteiro B (6 ex, 56 min), Corpo inteiro C · Hipertrofia (6 ex, 56 min)
 - Séries/semana: peito 12, costas 12, pernas 9, posterior 7, ombros 11.5, glúteos 8
 - Alertas: posterior: 7 séries/semana, abaixo de 8
 
@@ -145,7 +145,7 @@ Intermediária, quer glúteos, 4 dias, 60 min.
 ### ✅ Um pouco de tudo, 5 dias — nota 100
 Mais de 1 ano, objetivo misto, 5 dias, 60 min.
 
-- Plano: Superior / Inferior + corpo inteiro, 5 dias · Superior A (7 ex, 59 min), Inferior A (6 ex, 57 min), Superior B (6 ex, 60 min), Inferior B (6 ex, 49 min), Corpo inteiro (5 ex, 53 min)
+- Plano: Superior / Inferior + corpo inteiro, 5 dias · Superior A · Força (7 ex, 59 min), Inferior A · Força (6 ex, 57 min), Superior B · Hipertrofia (6 ex, 60 min), Inferior B · Hipertrofia (6 ex, 49 min), Corpo inteiro (5 ex, 53 min)
 - Séries/semana: peito 15, costas 17, pernas 16, posterior 14, ombros 13.8, glúteos 14
 - Alertas: costas: 17 séries/semana, acima de 16
 

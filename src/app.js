@@ -365,7 +365,7 @@ function renderDay(){
     const dica=(EXBYNAME[name]&&EXBYNAME[name].dica)||ex.how;
     return `<article class="card ex" data-ex="${ex.id}" data-sets="${n}">
       <div class="ctop"><div class="ctitle"><div class="exname">${ex.k==="P"?"⚡ ":""}${esc(name)}</div>
-      <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div></div>
+      <div class="rx"><b>${n} × ${ex.lo}–${ex.hi}${ex.secs?" s":""}</b> · RPE ${fmt(ex.rpe[ex.rpe.length-1])} · ${ex.rest>=60?fmt(Math.round(ex.rest/6)/10)+" min":ex.rest+" s"}</div>${ex.bs?`<div class="rx bis">🔁 Bi-set com ${esc(chosen(d.ex.find(e=>e.id===ex.par)||ex))}: 1 série de cada, descanso depois do par</div>`:""}</div>
       <div class="icons"><button type="button" class="ib infob" aria-label="Por quê e como fazer">ⓘ</button><button type="button" class="ib swapbtn" data-swap="${ex.id}" aria-haspopup="dialog" aria-label="Trocar exercício">⇄</button><button type="button" class="ib addafter" data-after="${ex.id}" aria-haspopup="dialog" aria-label="Adicionar exercício depois deste">＋</button></div></div>
       <div class="info" hidden>${(ex.why||[]).map(w=>`<p>${esc(w.t)}</p>`).join("")}${dica?`<p><b>Como fazer:</b> ${esc(dica)}</p>`:""}${ex.custom?`<button type="button" class="link rmex" data-rm="${ex.id}">Remover da ficha</button>`:""}</div>
       <div class="donesum"></div><div class="body">
@@ -433,7 +433,12 @@ function okSet(b){ const c=b.closest(".card"), id=c.dataset.ex, i=b.dataset.i, h
   hid.value="1"; try{ if(!actx){ const A=window.AudioContext||window.webkitAudioContext; if(A) actx=new A(); } if(actx&&actx.state==="suspended") actx.resume(); }catch(e){}
   const d=state.plan.days.find(x=>x.key===state.current), ex=d.ex.find(e=>e.id===id), n=Number(c.dataset.sets);
   const nm=c.querySelector(".exname").textContent; const lastOf=[...Array(n).keys()].every(j=>setDone(id,j));
-  startRest(ex.rest,lastOf?`Próximo exercício · depois de ${nm}`:`${nm} · série ${Number(i)+2} de ${n}`); syncDone(); scheduleDraft(); }
+  /* bi-set: depois do 1º exercício, 15 s para trocar; depois do 2º, o descanso normal */
+  const par=ex.par&&d.ex.find(e=>e.id===ex.par);
+  if(ex.bs==="a"&&par) startRest(15,`Bi-set: agora ${chosen(par)} · série ${Number(i)+1}`);
+  else if(ex.bs==="b"&&par&&!lastOf) startRest(ex.rest,`Bi-set · depois: ${chosen(par)} · série ${Number(i)+2}`);
+  else startRest(ex.rest,lastOf?`Próximo exercício · depois de ${nm}`:`${nm} · série ${Number(i)+2} de ${n}`);
+  syncDone(); scheduleDraft(); }
 
 /* ---------- cronômetro de descanso ---------- */
 const rest={end:0,timer:null,lock:null,fired:false};

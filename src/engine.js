@@ -112,7 +112,7 @@ function buildPlan(pf){
   const freq={}; MUSCLES.forEach(m=>freq[m]=0); tms.forEach(t=>new Set(t.s.map(s=>LIB[s.p].m)).forEach(m=>freq[m]++));
   /* 4. distribuição: compostos primeiro (contam fração para os auxiliares), depois acessórios até completar a meta, dentro do tempo */
   const cap=(lv===0?6:8)+(volPos>0?2:0), maxSets=lv===0?3:4, minutes=(Number(pf.tempo)||60)-5;
-  const days=tms.map((tm,di)=>({key:"d"+(di+1),n:tm.n,ex:[],tm}));
+  const days=tms.map((tm,di)=>({key:"d"+(di+1),n:tm.n,ex:[],tm,tk:sp.t[di%sp.t.length]}));
   const got={}; MUSCLES.forEach(m=>got[m]=0);
   /* "braços" é um grupo só, mas bíceps e tríceps são contados à parte: puxadas ajudam o bíceps, empurrões o tríceps; cada um tem metade da meta */
   const ARM={bi:0,tri:0}, armKey=p=>["biceps","hpull","vpull"].includes(p)?"bi":["triceps","hpush","incline","vpush","chest"].includes(p)?"tri":null;
@@ -203,6 +203,24 @@ function buildPlan(pf){
     (used[e.p]=used[e.p]||[]).push(pick); dayUsed.add(pick); delete e.pref; delete e.o; delete e.i; delete e.prevAlt; });
     /* a única opção segura para a dor já está no treino: sai o exercício repetido (melhor que trocar por um inseguro) */
     if(d.ex.some(e=>e.dup)){ d.ex.filter(e=>e.dup).forEach(e=>credit(e.p,-e.sets)); d.ex=d.ex.filter(e=>!e.dup); d.min=Math.round(d.ex.reduce((a,e)=>a+exMinutes(e),0)+5); } });
+  /* treinado (mais de 1 ano): dia de FORÇA (treinos "A": compostos 4–6 reps, 3 min) e dia de HIPERTROFIA (treinos "B": 8–12 reps).
+     Variar dentro da semana rende mais força em quem já treina (Moesgaard 2022). Acessórios não mudam. */
+  if(lv===2&&["hipertrofia","misto"].includes(pf.objetivo)&&pf.ondulacao!=="nao"){
+    const FORCA=new Set(["UA","LA","PA","PuA","LgA","FA"]), HIPER=new Set(["UB","LB","PB","PuB","LgB","FC"]); let mudou=0;
+    days.forEach(d=>{ const f=FORCA.has(d.tk), hp=HIPER.has(d.tk); if(!f&&!hp) return;
+      d.ex.filter(e=>e.k==="C"&&!e.skill&&!e.prevNome).forEach(e=>{ Object.assign(e,f?{lo:4,hi:6,rest:180}:{lo:8,hi:12,rest:120}); e.rpe=e.rpe.map((r,i)=>f?[8,8,8.5,8.5][i]||8.5:[8,8.5,9,9][i]||9);
+        e.why.push({t:f?"Dia de força: carga alta (4–6 reps) e 3 min de descanso nos principais.":"Dia de hipertrofia: 8–12 reps nos principais.",ev:"periodizacao"}); mudou++; });
+      /* descanso do dia de força: 3 min se couber; senão 2,5; senão 2 (o original, que sempre coube) */
+      const tot=()=>d.ex.reduce((a,e)=>a+exMinutes(e),0)+5, fortes=d.ex.filter(e=>e.rest===180); let m=tot();
+      for(const r of [150,120]){ if(!f||m<=(Number(pf.tempo)||60)) break; fortes.forEach(e=>e.rest=r); m=tot(); }
+      d.min=Math.round(m); d.n=d.n+(f?" · Força":" · Hipertrofia"); });
+    if(mudou) add("Você treina há mais de 1 ano: os treinos A são de força (4–6 reps nos principais) e os B de hipertrofia (8–12). Variar dentro da semana rende mais força em quem já treina.","periodizacao"); }
+  /* treino curto (até 45 min): acessórios opostos em bi-set (1 série de cada, descanso depois do par). Mesmo volume, menos tempo */
+  if((Number(pf.tempo)||60)<=45){ const PARES=[["biceps","triceps"],["lateral","rear"],["quad","ham"],["glute","adductor"],["calves","core"]];
+    days.forEach(d=>{ let poupou=0; PARES.forEach(([a,b])=>{ const x=d.ex.find(e=>e.p===a&&e.k==="A"&&!e.bs), y=d.ex.find(e=>e.p===b&&e.k==="A"&&!e.bs); if(!x||!y) return;
+        x.bs="a"; y.bs="b"; x.par=y.id; y.par=x.id; d.ex.splice(d.ex.indexOf(y),1); d.ex.splice(d.ex.indexOf(x)+1,0,y);
+        poupou+=Math.min(x.sets,y.sets)*Math.min(x.rest,y.rest)/60; x.why.push({t:"Bi-set com o exercício seguinte: 1 série de cada e descanso depois do par. Mesmo volume em menos tempo.",ev:"tempo-eficiente"}); });
+      if(poupou) d.min=Math.max(10,Math.round(d.min-poupou)); }); }
   /* dias da semana: organiza em volta dos esportes */
   const dows=(pf.dias||[1,3,5]).map(Number).sort((a,b)=>((a+6)%7)-((b+6)%7));
   const arr=arrangeDays(days,dows,pf); const ordered=arr.order.map(i=>days[i]);

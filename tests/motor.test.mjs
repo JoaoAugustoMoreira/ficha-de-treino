@@ -251,3 +251,24 @@ test("séries de trabalho: tentativa mais pesada no fim, aquecimento e back-off 
   assert.deepEqual(kgs([s(40, 8), s(45, 6), s(45, 6)]), [45, 45]);          // subiu no meio e manteve
   assert.deepEqual(kgs([s(160, 10), s(200, 8)]), [200]);                    // 2 séries: a mais pesada
 });
+
+test("treinado (mais de 1 ano): treinos A de força e B de hipertrofia nos compostos", () => {
+  const p = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 4, 5], tempo: 75 }));
+  const A = p.days.find(d => /Superior A/.test(d.n)), B = p.days.find(d => /Superior B/.test(d.n));
+  assert.match(A.n, /Força/); assert.match(B.n, /Hipertrofia/);
+  for (const e of A.ex.filter(e => e.k === "C" && !e.skill && !e.prevNome)) { assert.equal(e.lo, 4); assert.equal(e.hi, 6); }
+  for (const e of B.ex.filter(e => e.k === "C" && !e.skill && !e.prevNome)) { assert.equal(e.lo, 8); assert.equal(e.hi, 12); }
+  for (const d of p.days) assert.ok(d.min <= 75 + 1, `${d.n}: ${d.min} min`);
+  const m = M.buildPlan(perfil({ exp: "6a12", dias: [1, 2, 4, 5], tempo: 75 }));     // intermediário: sem ondulação
+  assert.ok(!m.days.some(d => /Força|Hipertrofia/.test(d.n)));
+  const off = M.buildPlan(perfil({ exp: "mais1", dias: [1, 2, 4, 5], tempo: 75, ondulacao: "nao" }));
+  assert.ok(!off.days.some(d => /Força/.test(d.n)));
+});
+
+test("treino curto (até 45 min): acessórios opostos viram bi-set, lado a lado, sem perder séries", () => {
+  const pf = perfil({ exp: "6a12", dias: [1, 2, 4, 5], tempo: 45 });
+  const p = M.buildPlan(pf); const pares = p.days.flatMap(d => d.ex.filter(e => e.bs === "a").map(e => [d, e]));
+  assert.ok(pares.length > 0, "nenhum bi-set em treino de 45 min");
+  for (const [d, e] of pares) { const i = d.ex.indexOf(e); assert.equal(d.ex[i + 1].id, e.par); assert.equal(d.ex[i + 1].bs, "b"); }
+  assert.ok(!M.buildPlan(perfil({ exp: "6a12", dias: [1, 2, 4, 5], tempo: 75 })).days.some(d => d.ex.some(e => e.bs)), "bi-set em treino longo");
+});
