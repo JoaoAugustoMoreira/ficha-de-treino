@@ -21,3 +21,9 @@ test("armazenamento: falha ao carregar a conta não abre um app vazio", () => {
   assert.match(app, /if\(o\.failed\)/, "a inicialização trata a falha da conta");
   assert.doesNotMatch(app, /catch\(e\)\{ this\.mode="local"; \}/, "não pode cair para o modo local em silêncio");
 });
+
+test("armazenamento: navegador que não guarda nada não finge que salvou", () => {
+  assert.match(app, /localStorage\.setItem\(k,"1"\)/, "a inicialização testa se o navegador guarda dados");
+  assert.match(app, /if\(!this\.saveLocal\(\)\) throw/, "no modo local, gravação que falhou vira erro na tela");
+  assert.match(app, /function noSaveWarn\(\)/, "aviso para quem está num navegador que apaga tudo");
+});

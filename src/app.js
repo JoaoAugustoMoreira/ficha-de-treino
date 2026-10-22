@@ -13,8 +13,12 @@ function readSports(){ return $$(".esprow").map(r=>{ const i=r.dataset.i; return
 /* ---------- estado e armazenamento ---------- */
 let state={pf:null,plan:null,sessions:[],checkins:[],prefs:{swap:{}},analysis:null,current:null,leve:false,editing:false};
 const LS="ficha-iniciante";
-const store={mode:"local",db:null,uid:null,
-  async init(){ try{ if(window.claude&&claude.use){ const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]); const uid=user?await user.id():null; if(db&&uid){ this.db=db; this.uid=uid; this.mode="db"; } } }catch(e){} },
+const store={mode:"local",db:null,uid:null,lsOk:true,
+  async init(){ try{ if(window.claude&&claude.use){ const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]); const uid=user?await user.id():null; if(db&&uid){ this.db=db; this.uid=uid; this.mode="db"; } } }catch(e){}
+    /* navegador que não guarda nada (aba anônima, navegador de dentro do WhatsApp/Instagram, cookies bloqueados): antes o app dizia
+       "Plano criado" e perdia tudo ao fechar a página. Agora testa a gravação e avisa. */
+    try{ const k=LS+"-teste"; localStorage.setItem(k,"1"); this.lsOk=localStorage.getItem(k)==="1"; localStorage.removeItem(k); }catch(e){ this.lsOk=false; }
+    if(this.mode==="local"){ try{ if(navigator.storage&&navigator.storage.persist) navigator.storage.persist().catch(()=>{}); }catch(e){} } },
   col(){ return this.db.collection("data/users/"+this.uid); },
   /* ARMAZENAMENTO É CONTRATO: a chave LS, o caminho data/users/<id> e os ids dos documentos (perfil, prefs, s_<ts>, ck_…) nunca mudam
      entre versões, senão quem já usa perde o histórico (tests/armazenamento.test.mjs). */
@@ -35,10 +39,11 @@ const store={mode:"local",db:null,uid:null,
       }catch(e){}
       return o; }
     return this.local(); },
-  saveLocal(){ try{ localStorage.setItem(LS,JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs,analysis:state.analysis})); }catch(e){} },
+  saveLocal(){ try{ const t=JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs,analysis:state.analysis}); localStorage.setItem(LS,t); return localStorage.getItem(LS)===t; }catch(e){ return false; } },
   /* na conta, também guarda uma cópia neste aparelho (serve de reserva e de backup) */
-  async put(id,v){ if(this.mode==="db"){ await this.col().doc(id).set(v); this.saveLocal(); return; } this.saveLocal(); },
-  async del(id){ if(this.mode==="db") return this.col().doc(id).delete(); this.saveLocal(); },
+  /* no modo local, gravação que não pegou é erro (a tela mostra "não consegui salvar"), nunca sucesso silencioso */
+  async put(id,v){ if(this.mode==="db"){ await this.col().doc(id).set(v); this.saveLocal(); return; } if(!this.saveLocal()) throw new Error("local"); },
+  async del(id){ if(this.mode==="db") return this.col().doc(id).delete(); if(!this.saveLocal()) throw new Error("local"); },
   async saveDraft(d,merge,id){ if(this.mode!=="db") return; const ref=this.col().doc(id||"rascunho"); if(merge){ try{ await ref.update(d); return; }catch(e){} } await ref.set(d); }
 };
 
@@ -139,7 +144,10 @@ function render(){ hideTip(); $("#day").onclick=null; $("#day").onchange=null; $
   if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
 }
 /* ---------- início: resumo do dia e atalhos ---------- */
-function localWarn(){ return store.mode==="local"?`<details class="card koralocal"><summary><b>Seus treinos estão salvos só neste aparelho</b></summary><div class="gb">
+function noSaveWarn(){ return store.mode==="local"&&!store.lsOk?`<article class="card koranosave"><div class="exname">Este navegador não está guardando o Kora</div>
+  <p class="exnote">O que você preencher aqui <b>some quando fechar a página</b>. Isso acontece em aba anônima, no navegador de dentro do WhatsApp ou do Instagram e com cookies bloqueados.</p>
+  <p class="exnote">Abra o link <b>no app do Claude, entrando na sua conta</b>, ou no Safari/Chrome normal.</p></article>`:""; }
+function localWarn(){ if(store.mode==="local"&&!store.lsOk) return noSaveWarn(); return store.mode==="local"?`<details class="card koralocal"><summary><b>Seus treinos estão salvos só neste aparelho</b></summary><div class="gb">
   <p>Abra o Kora <b>sempre pelo mesmo app</b> (o mesmo navegador ou o mesmo link do WhatsApp). Em outro navegador ou celular ele começa vazio.</p>
   <p>De vez em quando, guarde uma cópia: se precisar trocar de aparelho, é só colar em "Já usei o Kora em outro lugar".</p>
   <div class="askrow"><button class="ckbtn" id="bkCopy" type="button">Copiar backup</button></div>
@@ -200,7 +208,7 @@ const Q_OBJ=[["hipertrofia","Hipertrofia (ganhar músculo)"],["forca","Força"],
 function chipset(name,opts,sel,multi){ return `<div class="qchips" data-name="${name}" data-multi="${multi?1:0}">${opts.map(([v,l])=>`<button type="button" class="qc" data-v="${v}" aria-pressed="${(multi?(sel||[]).map(String).includes(String(v)):String(sel)===String(v))}">${esc(l)}</button>`).join("")}</div>`; }
 function renderOnb(){
   const p=state.onbDraft||state.pf||{};
-  $("#day").innerHTML=`<div class="col">${state.pf?"":`<details class="card koraimp"><summary><b>Já usei o Kora em outro aparelho ou navegador</b></summary><div class="gb">
+  $("#day").innerHTML=`<div class="col">${noSaveWarn()}${state.pf||store.mode!=="local"||!store.lsOk?"":`<p class="note">Você está sem conta Claude aqui: o Kora fica guardado só neste navegador. Tem conta? Abra pelo app do Claude, entrando nela, para salvar em qualquer aparelho.</p>`}${state.pf?"":`<details class="card koraimp"><summary><b>Já usei o Kora em outro aparelho ou navegador</b></summary><div class="gb">
     <p>No lugar onde você usava o Kora, abra <b>Perfil → Backup dos dados</b> (ou "Copiar backup" no Início) e copie o texto. Cole aqui:</p>
     <textarea id="onbBk" rows="4" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px" placeholder='{"kora":1,"sessions":[…'></textarea>
     <div class="askrow"><button class="ckbtn" id="onbImp" type="button">Importar meus treinos</button></div></div></details>`}<div class="wizhead"><div class="exname">${state.pf?"Editar seu plano":"Vamos montar seu treino"}</div><span class="note" id="wizN"></span></div>
@@ -292,7 +300,7 @@ async function saveProfile(){
   if(pf.secundario===pf.objetivo) pf.secundario="";
   if(!pf.inicio) pf.inicio=todayISO();
   const old=state.pf; state.pf=pf; state.plan=withExtras(buildPlan(pf)); state.editing=false;
-  try{ await store.put("perfil",pf); setStatus(old?"Plano atualizado.":"Plano criado. Bom treino!"); }catch(e){ setStatus("Não consegui salvar o perfil. Tente de novo."); }
+  try{ await store.put("perfil",pf); setStatus(old?"Plano atualizado.":"Plano criado. Bom treino!"); }catch(e){ setStatus(store.mode==="local"&&!store.lsOk?"Este navegador não guarda dados: abra pelo app do Claude.":"Não consegui salvar o perfil. Tente de novo."); }
   state.current=old?"inicio":"plano"; render(); window.scrollTo({top:0});
 }
 function defaultTab(){ const t=new Date().getDay(); const d=state.plan&&state.plan.days.find(x=>x.dow.includes(t)); return d?d.key:(state.plan&&state.plan.cardio.dias.includes(t)?"cardio":(state.plan?state.plan.days[0].key:"perfil")); }

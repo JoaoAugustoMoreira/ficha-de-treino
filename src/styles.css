@@ -631,3 +631,5 @@ details>summary{padding-block:10px;margin-block:-4px}
 .rpeh{min-height:32px}
 .toggle{min-height:44px}
 .rx.bis{color:var(--accent);font-weight:600;margin-top:2px}
+.card.koranosave{border-color:var(--warn);background:var(--warn-soft)}
+.card.koranosave .exname{color:var(--warn)}

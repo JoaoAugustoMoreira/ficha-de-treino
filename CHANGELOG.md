@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.17.2 — 2026-10-22 · o Kora não finge que salvou
+O João preencheu o questionário, o app disse "Plano criado", e ao fechar e abrir de novo voltou ao começo. Na conta dele não havia nada salvo: o Kora estava no **modo local** (sem conta Claude naquele lugar) e o navegador não guardava os dados.
+- **Por quê:** no modo local, se o navegador bloqueia ou apaga o armazenamento (aba anônima, navegador de dentro do WhatsApp/Instagram, cookies bloqueados), a gravação falhava em silêncio e a tela mostrava sucesso.
+- **Agora:** ao abrir, o Kora testa se o navegador guarda dados. Se não guarda, mostra no questionário e no Início "Este navegador não está guardando o Kora" e explica onde abrir (app do Claude com a conta, ou Safari/Chrome). Gravação que falha mostra "não consegui salvar", nunca sucesso.
+- **No questionário**, quem está sem conta vê que os dados ficam só naquele navegador e como salvar na conta.
+- No modo local, o Kora pede ao navegador armazenamento persistente (menos chance de ele apagar os dados sozinho).
+
 ## 0.17.1 — 2026-10-22 · pendências da auditoria
 - **Todas as 46 evidências com DOI**, conferidos no PubMed: RPE (Zourdos 2016, Halperin 2022), variação (Kassiano 2022), 4×4 (Helgerud 2007), proteína (Morton 2018, Schoenfeld & Aragon 2018), VFC (Manresa-Rocamora 2021, Düking 2021), potência (Markovic 2007, Slimani 2016), aquecimento (Fradkin 2010, Behm 2016), recuperação (Craven 2022, Stults-Kolehmainen 2012), séries por treino (Schoenfeld 2019) e OMS 2020 (Bull et al., BJSM). Corrigida a revista de Fradkin 2010 (J Strength Cond Res). Teste novo: toda evidência precisa de DOI.
 - **Corpo inteiro C** ganhou a dobradiça de quadril como opção: em treinos curtos de 3 dias o posterior ficava só com o dia B. Planos com erro na auditoria: 1,7% → 1,0% (catraca atualizada).
