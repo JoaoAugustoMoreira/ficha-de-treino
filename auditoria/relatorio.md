@@ -1,6 +1,6 @@
 # Auditoria dos planos do Kora
 
-Versão 0.15.0 · 2000 perfis aleatórios (semente fixa) + 16 perfis-gabarito. Gerado por `npm run auditar`.
+Versão 0.17.0 · 2000 perfis aleatórios (semente fixa) + 16 perfis-gabarito. Gerado por `npm run auditar`.
 
 A régua está em `auditoria/referencias.json`, separada do motor. Cada critério diz se é **evidência** (com fonte) ou **convenção prática**.
 
@@ -9,22 +9,22 @@ A régua está em `auditoria/referencias.json`, separada do motor. Cada critéri
 | | |
 |---|---|
 | Nota média | **95/100** |
-| Mediana | 97 |
+| Mediana | 98 |
 | 10% piores abaixo de | 87 |
 | Pior nota | 67 |
-| Planos com pelo menos 1 erro | 33 (1.7%) |
+| Planos com pelo menos 1 erro | 19 (1%) |
 | Perfis-gabarito aprovados | 16 de 16 |
 
 ## Por critério
 
 | Critério | Peso | Nota média | Planos com achado | Base |
 |---|---|---|---|---|
-| Volume semanal por músculo | 25 | 91 | 67.7% | evidência (`volume`) |
-| Frequência por músculo | 10 | 91 | 17.3% | evidência (`frequencia`) |
+| Volume semanal por músculo | 25 | 91 | 64.4% | evidência (`volume`) |
+| Frequência por músculo | 10 | 92 | 15.4% | evidência (`frequencia`) |
 | Faixa de repetições | 10 | 100 | 0% | evidência (`faixa-reps`) |
 | Proximidade da falha (RPE) | 10 | 100 | 0% | evidência (`falha`) |
 | Descanso entre séries | 5 | 96 | 3.9% | evidência (`descanso`) |
-| Equilíbrio entre músculos | 10 | 89 | 20.8% | convenção prática (`volume`) |
+| Equilíbrio entre músculos | 10 | 88 | 21.3% | convenção prática (`volume`) |
 | Organização do treino | 10 | 98 | 11.1% | convenção prática (`volume-sessao`) |
 | Coerência com o perfil | 15 | 100 | 0.5% | regras do app |
 | Motivo e evidência | 5 | 100 | 0% | regras do app |
@@ -33,40 +33,39 @@ A régua está em `auditoria/referencias.json`, separada do motor. Cada critéri
 
 | Gravidade | Critério | Planos | Exemplo |
 |---|---|---|---|
-| erro | Volume semanal por músculo | 21 (1.1%) | posterior: 3 séries/semana, abaixo de 10 |
-| erro | Volume semanal por músculo | 14 (0.7%) | glúteos: 3 séries/semana, abaixo de 10 |
+| erro | Volume semanal por músculo | 13 (0.7%) | glúteos: 3 séries/semana, abaixo de 10 |
+| erro | Volume semanal por músculo | 8 (0.4%) | posterior: 3 séries/semana, abaixo de 10 |
 | erro | Volume semanal por músculo | 4 (0.2%) | pernas: 4 séries/semana, abaixo de 10 |
 | erro | Volume semanal por músculo | 3 (0.2%) | peito: 2 séries/semana, abaixo de 6 |
 | erro | Volume semanal por músculo | 2 (0.1%) | ombros: 4.5 séries/semana, abaixo de 10 |
-| alerta | Volume semanal por músculo | 692 (34.6%) | ombros: 16.3 séries/semana, acima de 14 |
-| alerta | Volume semanal por músculo | 402 (20.1%) | peito: 15 séries/semana, acima de 14 |
-| alerta | Equilíbrio entre músculos | 341 (17.1%) | costas/peito = 0.6 (11 × 18 séries; esperado 0.75–1.6) |
+| alerta | Volume semanal por músculo | 688 (34.4%) | ombros: 16.3 séries/semana, acima de 14 |
+| alerta | Volume semanal por músculo | 392 (19.6%) | peito: 15 séries/semana, acima de 14 |
+| alerta | Equilíbrio entre músculos | 359 (18%) | costas/peito = 0.6 (11 × 18 séries; esperado 0.75–1.6) |
 | alerta | Volume semanal por músculo | 237 (11.9%) | costas: 16 séries/semana, acima de 14 |
-| alerta | Frequência por músculo | 211 (10.6%) | 1× por semana: pernas, posterior, glúteos (divisão escolhida pela pessoa) |
-| alerta | Volume semanal por músculo | 204 (10.2%) | posterior: 3 séries/semana, abaixo de 4 |
-| alerta | Volume semanal por músculo | 189 (9.5%) | glúteos: 12 séries/semana, acima de 10 |
-| alerta | Volume semanal por músculo | 184 (9.2%) | glúteos: 3.5 séries/semana, abaixo de 4 |
-| alerta | Volume semanal por músculo | 166 (8.3%) | peito: 6 séries/semana, abaixo de 8 |
+| alerta | Frequência por músculo | 202 (10.1%) | 1× por semana: pernas, posterior, glúteos (divisão escolhida pela pessoa) |
+| alerta | Volume semanal por músculo | 195 (9.8%) | glúteos: 12 séries/semana, acima de 10 |
+| alerta | Volume semanal por músculo | 175 (8.8%) | peito: 6 séries/semana, abaixo de 8 |
+| alerta | Volume semanal por músculo | 167 (8.4%) | glúteos: 7 séries/semana, abaixo de 10 |
 | alerta | Organização do treino | 160 (8%) | Costas e bíceps: 11 séries diretas de costas num treino |
-| alerta | Volume semanal por músculo | 150 (7.5%) | pernas: 6 séries/semana, abaixo de 8 |
+| alerta | Volume semanal por músculo | 156 (7.8%) | pernas: 6 séries/semana, abaixo de 8 |
+| alerta | Volume semanal por músculo | 147 (7.4%) | ombros: 6.3 séries/semana, abaixo de 8 |
 | alerta | Organização do treino | 140 (7%) | Peito: 13 séries diretas de peito num treino |
-| alerta | Volume semanal por músculo | 132 (6.6%) | ombros: 6.3 séries/semana, abaixo de 8 |
+| alerta | Volume semanal por músculo | 135 (6.8%) | posterior: 7 séries/semana, abaixo de 10 |
 | alerta | Volume semanal por músculo | 122 (6.1%) | pernas: 15 séries/semana, acima de 14 |
-| alerta | Equilíbrio entre músculos | 112 (5.6%) | posterior/pernas = 0 (0 × 6 séries; esperado 0.5–1.6) |
-| alerta | Volume semanal por músculo | 85 (4.3%) | posterior: 12 séries/semana, acima de 10 |
+| alerta | Equilíbrio entre músculos | 105 (5.3%) | posterior/pernas = 0 (0 × 6 séries; esperado 0.5–1.6) |
+| alerta | Volume semanal por músculo | 100 (5%) | costas: 6 séries/semana, abaixo de 8 |
+| alerta | Volume semanal por músculo | 92 (4.6%) | posterior: 12 séries/semana, acima de 10 |
+| alerta | Volume semanal por músculo | 83 (4.2%) | ombros: 2.5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | alerta | Volume semanal por músculo | 82 (4.1%) | posterior: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
-| alerta | Volume semanal por músculo | 82 (4.1%) | ombros: 2.5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | alerta | Volume semanal por músculo | 82 (4.1%) | glúteos: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
-| alerta | Volume semanal por músculo | 79 (4%) | costas: 6 séries/semana, abaixo de 8 |
 
 ## Perfis-gabarito
 
-### ✅ Iniciante, 3 dias, hipertrofia — nota 99
+### ✅ Iniciante, 3 dias, hipertrofia — nota 100
 Nunca treinou, academia completa, seg/qua/sex, 60 min.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 55 min), Corpo inteiro B (7 ex, 59 min), Corpo inteiro C (6 ex, 52 min)
-- Séries/semana: peito 8, costas 9, pernas 8, posterior 5, ombros 8, glúteos 10.5
-- Alertas: posterior: 5 séries/semana, abaixo de 6
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 55 min), Corpo inteiro B (7 ex, 59 min), Corpo inteiro C (6 ex, 53 min)
+- Séries/semana: peito 8, costas 9, pernas 8, posterior 8, ombros 8, glúteos 9
 
 ### ✅ Saúde depois dos 50, 2 dias — nota 100
 55 anos, quer saúde, academia básica, ter/qui, 45 min.
@@ -98,36 +97,34 @@ Mais de 1 ano, quer ficar mais forte, 90 min.
 ### ✅ Emagrecimento em casa — nota 100
 Iniciante, treina em casa, 3 dias, 45 min.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (5 ex, 41 min), Corpo inteiro B (6 ex, 44 min), Corpo inteiro C (5 ex, 35 min)
-- Séries/semana: peito 8, costas 9, pernas 8, posterior 6, ombros 9, glúteos 7.5
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (5 ex, 41 min), Corpo inteiro B (6 ex, 44 min), Corpo inteiro C (6 ex, 43 min)
+- Séries/semana: peito 8, costas 9, pernas 8, posterior 9, ombros 9, glúteos 9
 
-### ✅ Iniciante com dor no joelho e na lombar — nota 99
+### ✅ Iniciante com dor no joelho e na lombar — nota 100
 Nunca treinou, 3 dias, 60 min, joelho e lombar doem.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 55 min), Corpo inteiro B (7 ex, 59 min), Corpo inteiro C (6 ex, 52 min)
-- Séries/semana: peito 8, costas 9, pernas 8, posterior 5, ombros 8, glúteos 10.5
-- Alertas: posterior: 5 séries/semana, abaixo de 6
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 55 min), Corpo inteiro B (7 ex, 59 min), Corpo inteiro C (6 ex, 53 min)
+- Séries/semana: peito 8, costas 9, pernas 8, posterior 8, ombros 8, glúteos 9
 
-### ✅ Jiu-jitsu forte ter/qui — nota 97
+### ✅ Jiu-jitsu forte ter/qui — nota 98
 Intermediário, musculação seg/qua/sex 60 min, jiu-jitsu forte ter e qui.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 56 min), Corpo inteiro C (7 ex, 55 min), Corpo inteiro B (6 ex, 58 min)
-- Séries/semana: peito 12, costas 9, pernas 8, posterior 5, ombros 10.5, glúteos 10.5
-- Alertas: costas: 9 séries/semana, abaixo de 10; pernas: 8 séries/semana, abaixo de 10; posterior: 5 séries/semana, abaixo de 10
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro C (7 ex, 59 min), Corpo inteiro A (7 ex, 56 min), Corpo inteiro B (6 ex, 58 min)
+- Séries/semana: peito 12, costas 9, pernas 8, posterior 8, ombros 10.5, glúteos 12
+- Alertas: costas: 9 séries/semana, abaixo de 10; pernas: 8 séries/semana, abaixo de 10; posterior: 8 séries/semana, abaixo de 10
 
-### ✅ Corredor, provas no sábado — nota 99
+### ✅ Corredor, provas no sábado — nota 100
 Mais de 1 ano, corre forte ter e sáb, musculação seg/qua/sex, 60 min.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A · Força (6 ex, 60 min), Corpo inteiro B (6 ex, 56 min), Corpo inteiro C · Hipertrofia (6 ex, 56 min)
-- Séries/semana: peito 12, costas 12, pernas 9, posterior 7, ombros 11.5, glúteos 8
-- Alertas: posterior: 7 séries/semana, abaixo de 8
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A · Força (6 ex, 60 min), Corpo inteiro B (6 ex, 56 min), Corpo inteiro C · Hipertrofia (5 ex, 53 min)
+- Séries/semana: peito 12, costas 11, pernas 9, posterior 9, ombros 10.3, glúteos 9.5
 
-### ✅ Pouco tempo: 30 min, 3 dias — nota 83
+### ✅ Pouco tempo: 30 min, 3 dias — nota 80
 Intermediário, hipertrofia, 30 min por treino.
 
 - Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (3 ex, 30 min), Corpo inteiro B (3 ex, 30 min), Corpo inteiro C (3 ex, 30 min)
-- Séries/semana: peito 6, costas 6, pernas 6, posterior 3, ombros 5.5, glúteos 4.5
-- Alertas: peito: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); ombros: 5.5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); glúteos: 4.5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); 1× por semana: posterior, ombros, glúteos
+- Séries/semana: peito 6, costas 4, pernas 6, posterior 5, ombros 5, glúteos 5.5
+- Alertas: peito: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 4 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); ombros: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); glúteos: 5.5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); 1× por semana: ombros, glúteos; costas/peito = 0.7 (4 × 6 séries; esperado 0.75–1.6)
 
 ### ✅ Escolheu ABC com 3 dias — nota 85
 Intermediário que quer a divisão clássica ABC, 3 dias, 75 min.
@@ -156,12 +153,12 @@ Nunca treinou, saúde, em casa, sáb/dom, 30 min.
 - Séries/semana: peito 2, costas 4, pernas 4, posterior 5, ombros 3, glúteos 2
 - Alertas: peito: 2 séries/semana, abaixo de 4; ombros: 3 séries/semana, abaixo de 4; glúteos: 2 séries/semana, abaixo de 4; costas/peito = 2 (4 × 2 séries; esperado 0.75–1.6)
 
-### ✅ Não quer agachamento livre nem supino — nota 98
+### ✅ Não quer agachamento livre nem supino — nota 99
 Intermediário, 3 dias, escreveu 'agachamento livre, supino reto com barra' em evitar.
 
-- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 60 min), Corpo inteiro B (6 ex, 58 min), Corpo inteiro C (7 ex, 59 min)
-- Séries/semana: peito 10, costas 9, pernas 10, posterior 6, ombros 11.5, glúteos 12.5
-- Alertas: costas: 9 séries/semana, abaixo de 10; posterior: 6 séries/semana, abaixo de 10
+- Plano: Corpo inteiro (full body), 3 dias · Corpo inteiro A (7 ex, 60 min), Corpo inteiro B (6 ex, 58 min), Corpo inteiro C (6 ex, 58 min)
+- Séries/semana: peito 10, costas 9, pernas 10, posterior 9, ombros 9.5, glúteos 14
+- Alertas: costas: 9 séries/semana, abaixo de 10; posterior: 9 séries/semana, abaixo de 10; ombros: 9.5 séries/semana, abaixo de 10
 
 ### ✅ Futebol forte domingo, 4 dias — nota 100
 Intermediário, joga futebol forte no domingo, musculação seg/ter/qui/sex, 60 min.
@@ -178,12 +175,12 @@ Intermediário, joga futebol forte no domingo, musculação seg/ter/qui/sex, 60 
 | 74 | hipertrofia · >1 ano · 7 dias · 45 min · completa · divisão abcde | peito: 21 séries/semana, acima de 20; pernas: 3 séries/semana, abaixo de 10 (divisão abcde com 6 dias, escolhida pela pessoa; o app avisa); posterior: 7 séries/semana, abaixo de 10 (divisão abcde com 6 dias, escolhida pela pessoa; o app avisa); glúteos: 3 séries/semana, abaixo de 10 (divisão abcde com 6 dias, escolhida pela pessoa; o app avisa) |
 | 75 | hipertrofia · 6–12 meses · 3 dias · 30 min · completa · divisão abc · dor: joelho · Dança moderada | peito: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 8 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | 75 | hipertrofia · >1 ano · 3 dias · 30 min · casa · divisão ulf · dor: joelho · prioridade: braços · Jiu-jitsu / luta leve | peito: 4 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 4 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
-| 76 | hipertrofia · >1 ano · 3 dias · 30 min · basica · divisão full · prioridade: abdômen · Futebol moderada | peito: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 2 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | 76 | hipertrofia · >1 ano · 2 dias · 30 min · casa · divisão abc · prioridade: abdômen | peito: 4 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 8 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 0 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 0 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | 76 | hipertrofia · >1 ano · 2 dias · 30 min · casa · dor: joelho · prioridade: braços/abdômen | peito: 2 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 4 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 2 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 2 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | 77 | hipertrofia · 6–12 meses · 3 dias · 30 min · completa · divisão ulf | peito: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); costas: 6 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); pernas: 3 séries/semana, abaixo de 10 (limite de tempo/dias do perfil); posterior: 5 séries/semana, abaixo de 10 (limite de tempo/dias do perfil) |
 | 77 | forca · >1 ano · 2 dias · 30 min · completa · prioridade: pernas/posterior/adutores/abdômen · Vôlei / basquete / handebol leve | peito: 2 séries/semana, abaixo de 6 (limite de tempo/dias do perfil); costas: 4 séries/semana, abaixo de 6 (limite de tempo/dias do perfil); pernas: 2 séries/semana, abaixo de 6 (limite de tempo/dias do perfil); posterior: 4 séries/semana, abaixo de 6 (limite de tempo/dias do perfil) |
+| 78 | forca · 6–12 meses · 5 dias · 60 min · basica · divisão abcde · prioridade: adutores/ombros · Tênis / beach tennis / padel moderada | peito: 13 séries/semana, acima de 12; pernas: 3 séries/semana, abaixo de 6; ombros: 22 séries/semana, acima de 16; glúteos: 3 séries/semana, abaixo de 6 |
 
 ## Base de evidências
 
-10 de 46 evidências sem DOI em nenhuma fonte: `rpe`, `variacao`, `4x4`, `atividade`, `proteina`, `vfc`, `potencia`, `aquecimento`, `recuperacao`, `volume-sessao`.
+Todas as evidências têm DOI.

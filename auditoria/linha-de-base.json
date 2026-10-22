@@ -2,5 +2,5 @@
   "_sobre": "Catraca da auditoria (2.000 perfis, semente 7). O teste falha se a nota média cair ou se a fração de planos com erro subir. Quando o motor melhorar, rode `npm run auditar` e suba estes números; nunca os afrouxe sem explicar no commit.",
   "perfis": 2000,
   "notaMediaMin": 95,
-  "fracaoComErroMax": 0.0165
+  "fracaoComErroMax": 0.01
 }

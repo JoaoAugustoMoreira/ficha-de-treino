@@ -31,3 +31,8 @@ test("auditor: régua aponta para evidências que existem", () => {
   const ref = JSON.parse(readFileSync(new URL("../auditoria/referencias.json", import.meta.url), "utf8"));
   for (const [k, v] of Object.entries(ref)) if (v && v.ev) assert.ok(ids.has(v.ev), `${k}: ${v.ev}`);
 });
+
+test("base de evidências: toda evidência tem ao menos uma fonte com DOI", () => {
+  const sem = M.DATA.evidencias.filter(e => !(e.fontes || []).some(f => /doi:/i.test(f))).map(e => e.id);
+  assert.deepEqual(sem, [], "sem DOI: " + sem.join(", "));
+});

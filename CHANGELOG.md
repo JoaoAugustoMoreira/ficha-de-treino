@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.17.1 — 2026-10-22 · pendências da auditoria
+- **Todas as 46 evidências com DOI**, conferidos no PubMed: RPE (Zourdos 2016, Halperin 2022), variação (Kassiano 2022), 4×4 (Helgerud 2007), proteína (Morton 2018, Schoenfeld & Aragon 2018), VFC (Manresa-Rocamora 2021, Düking 2021), potência (Markovic 2007, Slimani 2016), aquecimento (Fradkin 2010, Behm 2016), recuperação (Craven 2022, Stults-Kolehmainen 2012), séries por treino (Schoenfeld 2019) e OMS 2020 (Bull et al., BJSM). Corrigida a revista de Fradkin 2010 (J Strength Cond Res). Teste novo: toda evidência precisa de DOI.
+- **Corpo inteiro C** ganhou a dobradiça de quadril como opção: em treinos curtos de 3 dias o posterior ficava só com o dia B. Planos com erro na auditoria: 1,7% → 1,0% (catraca atualizada).
+
 ## 0.17.0 — 2026-10-22 · medir resultado
 - **Seus resultados** (Progresso): constância nas últimas semanas (treinos feitos ÷ planejados, com orientação) e força estimada do 1º ao último treino de cada exercício (treino leve não entra). Função `resultados` no motor, com teste.
 - **Como está o Kora para você?** (Início, depois de 1 semana de uso): as 10 perguntas da escala SUS, nota de 0 a 100 e campo livre. Dá para adiar 7 dias. No fim, **Enviar para o João pelo WhatsApp**, com a nota e as respostas (a pessoa vê a mensagem antes de enviar). `notaSUS` no motor, com teste.

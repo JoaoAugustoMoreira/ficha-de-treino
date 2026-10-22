@@ -69,8 +69,8 @@
     "tipo": "validação / meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Zourdos et al., 2016 — Journal of Strength and Conditioning Research",
-      "Halperin et al., 2022 — Sports Medicine"
+      "Zourdos et al., 2016 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0000000000001049",
+      "Halperin et al., 2022 — Sports Medicine — doi:10.1007/s40279-021-01559-x"
     ]
   },
   {
@@ -111,7 +111,7 @@
     "tipo": "revisão sistemática",
     "forca": "baixa a moderada",
     "fontes": [
-      "Kassiano et al., 2022 — Journal of Strength and Conditioning Research"
+      "Kassiano et al., 2022 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0000000000004258"
     ]
   },
   {
@@ -139,7 +139,7 @@
     "tipo": "ensaio clínico",
     "forca": "moderada",
     "fontes": [
-      "Helgerud et al., 2007 — Medicine & Science in Sports & Exercise"
+      "Helgerud et al., 2007 — Medicine & Science in Sports & Exercise — doi:10.1249/mss.0b013e3180304570"
     ]
   },
   {
@@ -153,7 +153,7 @@
     "tipo": "diretriz",
     "forca": "alta",
     "fontes": [
-      "Organização Mundial da Saúde, 2020 — Diretrizes de atividade física"
+      "Organização Mundial da Saúde (Bull et al.), 2020 — British Journal of Sports Medicine — doi:10.1136/bjsports-2020-102955"
     ]
   },
   {
@@ -166,8 +166,8 @@
     "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Morton et al., 2018 — British Journal of Sports Medicine",
-      "Schoenfeld & Aragon, 2018 — Journal of the International Society of Sports Nutrition"
+      "Morton et al., 2018 — British Journal of Sports Medicine — doi:10.1136/bjsports-2017-097608",
+      "Schoenfeld & Aragon, 2018 — Journal of the International Society of Sports Nutrition — doi:10.1186/s12970-018-0215-1"
     ]
   },
   {
@@ -180,8 +180,8 @@
     "tipo": "meta-análise",
     "forca": "baixa a moderada",
     "fontes": [
-      "Manresa-Rocamora et al., 2021 — Int. J. Environ. Res. Public Health",
-      "Düking et al., 2021 — Journal of Science and Medicine in Sport"
+      "Manresa-Rocamora et al., 2021 — Int. J. Environ. Res. Public Health — doi:10.3390/ijerph181910299",
+      "Düking et al., 2021 — Journal of Science and Medicine in Sport — doi:10.1016/j.jsams.2021.04.012"
     ]
   },
   {
@@ -194,8 +194,8 @@
     "tipo": "meta-análise",
     "forca": "moderada",
     "fontes": [
-      "Markovic, 2007 — British Journal of Sports Medicine",
-      "Slimani et al., 2016 — Journal of Human Kinetics"
+      "Markovic, 2007 — British Journal of Sports Medicine — doi:10.1136/bjsm.2007.035113",
+      "Slimani et al., 2016 — Journal of Human Kinetics — doi:10.1515/hukin-2016-0026"
     ]
   },
   {
@@ -209,8 +209,8 @@
     "tipo": "revisão sistemática",
     "forca": "moderada",
     "fontes": [
-      "Fradkin et al., 2010 — Journal of Science and Medicine in Sport",
-      "Behm et al., 2016 — Applied Physiology, Nutrition, and Metabolism"
+      "Fradkin, Zazryn & Smoliga, 2010 — Journal of Strength and Conditioning Research — doi:10.1519/JSC.0b013e3181c643a0",
+      "Behm et al., 2016 — Applied Physiology, Nutrition, and Metabolism — doi:10.1139/apnm-2015-0235"
     ]
   },
   {
@@ -223,8 +223,8 @@
     "tipo": "meta-análise + convenção prática",
     "forca": "baixa a moderada",
     "fontes": [
-      "Craven et al., 2022 — Sports Medicine",
-      "Stults-Kolehmainen & Bartholomew, 2012 — Medicine & Science in Sports & Exercise"
+      "Craven et al., 2022 — Sports Medicine — doi:10.1007/s40279-022-01706-y",
+      "Stults-Kolehmainen & Bartholomew, 2012 — Medicine & Science in Sports & Exercise — doi:10.1249/MSS.0b013e31825f67a0"
     ]
   },
   {
@@ -237,7 +237,7 @@
     "tipo": "convenção prática",
     "forca": "baixa",
     "fontes": [
-      "Schoenfeld, Grgic & Krieger, 2019 — Journal of Sports Sciences"
+      "Schoenfeld, Grgic & Krieger, 2019 — Journal of Sports Sciences — doi:10.1080/02640414.2018.1555906"
     ]
   },
   {
