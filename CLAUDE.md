@@ -44,5 +44,10 @@ Kora (core + cor, "coração" em latim) é um app de treino de musculação para
 - Commits em português, com o que mudou e por quê.
 - Link de teste para os amigos: artifact do claude.ai publicado a partir de `dist/ficha-de-treino.html` (atualizado pelo Claude no app, não pelo repositório).
 
+## Dados de quem usa (não quebrar)
+- **Armazenamento é contrato:** nunca mude `LS`/`DK` (localStorage), o caminho `data/users/<id>` nem os ids dos documentos (`perfil`, `prefs`, `s_<ts>`, `ck_<semana>`, `rascunho`…). Precisa mudar? Escreva uma migração que leia o formato antigo. `tests/armazenamento.test.mjs` protege isso.
+- Amigos que abrem pelo link sem convite ficam no **modo local** (dados só naquele navegador). Para salvar na conta, o João precisa convidá-los por e-mail no menu Compartilhar do artifact; a migração local → conta é automática.
+- Republicar o artifact sempre no mesmo link e sem mudar `capabilities` (omitir o campo mantém o que está salvo).
+
 ## Fora deste repositório
 A ficha pessoal do João ("Ficha Força + BJJ") é outro artifact, com outro código. **Não alterar a partir deste projeto.**

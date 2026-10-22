@@ -16,13 +16,28 @@ const LS="ficha-iniciante";
 const store={mode:"local",db:null,uid:null,
   async init(){ try{ if(window.claude&&claude.use){ const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]); const uid=user?await user.id():null; if(db&&uid){ this.db=db; this.uid=uid; this.mode="db"; } } }catch(e){} },
   col(){ return this.db.collection("data/users/"+this.uid); },
+  /* ARMAZENAMENTO É CONTRATO: a chave LS, o caminho data/users/<id> e os ids dos documentos (perfil, prefs, s_<ts>, ck_…) nunca mudam
+     entre versões, senão quem já usa perde o histórico (tests/armazenamento.test.mjs). */
+  local(){ try{ return JSON.parse(localStorage.getItem(LS)||"null")||{}; }catch(e){ return {}; } },
   async load(){
-    if(this.mode==="db"){ try{ const snap=await this.col().get(); const o={sessions:[],checkins:[],pf:null,prefs:null,draft:null,bak:null,analysis:null};
+    if(this.mode==="db"){ let snap=null;
+      for(let k=0;k<2&&!snap;k++){ try{ snap=await this.col().get(); }catch(e){ await new Promise(r=>setTimeout(r,1500)); } }
+      /* a conta não respondeu: NÃO cai para um app vazio (a pessoa achava que tinha perdido tudo e se recadastrava) */
+      if(!snap){ this.failed=true; return {failed:true}; }
+      const o={sessions:[],checkins:[],pf:null,prefs:null,draft:null,bak:null,analysis:null};
       snap.docs.forEach(d=>{ const v=d.data(); if(!v) return; if(d.id==="perfil") o.pf=v; else if(d.id==="prefs") o.prefs=v; else if(d.id==="rascunho") o.draft=v; else if(d.id==="rascunho_bak") o.bak=v; else if(d.id==="analise") o.analysis=v; else if(d.id.startsWith("an_")) (o.anHist=o.anHist||[]).push(v); else if(v.type==="session") o.sessions.push(v); else if(v.type==="checkin") o.checkins.push(v); });
-      return o; }catch(e){ this.mode="local"; } }
-    try{ return JSON.parse(localStorage.getItem(LS)||"null")||{}; }catch(e){ return {}; } },
+      /* migração: o que estava só neste navegador (modo local) sobe para a conta, sem apagar nada */
+      const L=this.local(); try{
+        const ids=new Set(o.sessions.map(x=>x.ts)); for(const x of (L.sessions||[])){ if(x&&x.type==="session"&&!ids.has(x.ts)){ await this.col().doc("s_"+x.ts).set(x); o.sessions.push(x); this.migrated=(this.migrated||0)+1; } }
+        const wk=new Set(o.checkins.map(x=>x.week)); for(const x of (L.checkins||[])){ if(x&&x.week&&!wk.has(x.week)){ await this.col().doc("ck_"+x.week).set(x); o.checkins.push(x); } }
+        if(!o.pf&&L.pf){ await this.col().doc("perfil").set(L.pf); o.pf=L.pf; this.migrated=this.migrated||1; }
+        if(!o.prefs&&L.prefs){ await this.col().doc("prefs").set(L.prefs); o.prefs=L.prefs; }
+      }catch(e){}
+      return o; }
+    return this.local(); },
   saveLocal(){ try{ localStorage.setItem(LS,JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs,analysis:state.analysis})); }catch(e){} },
-  async put(id,v){ if(this.mode==="db") return this.col().doc(id).set(v); this.saveLocal(); },
+  /* na conta, também guarda uma cópia neste aparelho (serve de reserva e de backup) */
+  async put(id,v){ if(this.mode==="db"){ await this.col().doc(id).set(v); this.saveLocal(); return; } this.saveLocal(); },
   async del(id){ if(this.mode==="db") return this.col().doc(id).delete(); this.saveLocal(); },
   async saveDraft(d,merge,id){ if(this.mode!=="db") return; const ref=this.col().doc(id||"rascunho"); if(merge){ try{ await ref.update(d); return; }catch(e){} } await ref.set(d); }
 };
@@ -140,6 +155,11 @@ function render(){ hideTip(); $("#day").onclick=null; $("#day").onchange=null; $
   if(isTrainDay()){ $("#day").insertAdjacentHTML("afterbegin",dayChips()); $$(".dchip").forEach(b=>b.onclick=()=>{ flushDraft(); state.current=b.dataset.k; state.leve=false; render(); window.scrollTo({top:0}); }); const on=$(".dchip[aria-pressed=true]"); if(on) on.scrollIntoView({block:"nearest",inline:"center"}); }
 }
 /* ---------- início: resumo do dia e atalhos ---------- */
+function localWarn(){ return store.mode==="local"?`<details class="card koralocal"><summary><b>Seus treinos estão salvos só neste aparelho</b></summary><div class="gb">
+  <p>Abra o Kora <b>sempre pelo mesmo app</b> (o mesmo navegador ou o mesmo link do WhatsApp). Em outro navegador ou celular ele começa vazio.</p>
+  <p>De vez em quando, guarde uma cópia: se precisar trocar de aparelho, é só colar em "Já usei o Kora em outro lugar".</p>
+  <div class="askrow"><button class="ckbtn" id="bkCopy" type="button">Copiar backup</button></div>
+  <p class="note">Para salvar na sua conta Claude (em qualquer aparelho), peça ao João um convite por e-mail para o Kora.</p></div></details>`:""; }
 function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new Date().getDay();
   const d=pl.days.find(x=>x.dow.includes(t)), cardioToday=pl.cardio.n&&pl.cardio.dias.includes(t);
   const lifts=state.sessions.filter(s=>s.ex&&Object.keys(s.ex).length);
@@ -160,7 +180,7 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
   const thisW=lifts.filter(s=>weekStart(s.date)===wk); const vol=thisW.reduce((a,s)=>a+tonnage(s),0);
   let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=isoLocal(dd); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
   const since=isoDaysAgo(6), v7=lifts.length?setsByMuscle(lifts.filter(s=>s.date>=since)):((pl.vol&&pl.vol.v)||{}); const frac={}; MUSCLES.forEach(m=>frac[m]=(v7[m]||0)/((pl.target||{})[m]||1));
-  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>
+  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>${localWarn()}
     ${hero}
     <div class="wstrip">${strip}</div>
     <div class="kpis"><div class="kpi"><b>${thisW.length}/${pl.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${vol?kfmt(vol):"0"}</b><span>volume na semana</span></div><div class="kpi"><b>${streak}</b><span>semana${streak===1?"":"s"} seguida${streak===1?"":"s"} na meta</span></div></div>
@@ -172,7 +192,8 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
       ${pl.cardio.n?`<button class="card tile" type="button" data-go="cardio"><span class="ti">♥</span><b>Cardio</b><small>${pl.cardio.n}× por semana</small></button>`:""}
       <button class="card tile" type="button" data-go="faq"><span class="ti">?</span><b>Ajuda</b><small>RPE e dúvidas</small></button>
     </div></div>`;
-  $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=false; render(); window.scrollTo({top:0}); }); }
+  $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=false; render(); window.scrollTo({top:0}); });   if($("#bkCopy")) $("#bkCopy").onclick=copyBackup;
+}
 function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
     <article class="card"><ul class="plano">${pl.days.map(d=>`<li><b>${d.dow.length?DOWN[d.dow[0]]:"—"}</b><span>${esc(d.n)}</span><small>${d.ex.length} exercícios · ~${d.min} min</small></li>`).join("")}${c.n?`<li><b>Cardio</b><span>${c.n}× por semana</span><small>${esc((c.mods||[]).join(", "))}</small></li>`:""}</ul></article>
@@ -194,7 +215,10 @@ const Q_OBJ=[["hipertrofia","Hipertrofia (ganhar músculo)"],["forca","Força"],
 function chipset(name,opts,sel,multi){ return `<div class="qchips" data-name="${name}" data-multi="${multi?1:0}">${opts.map(([v,l])=>`<button type="button" class="qc" data-v="${v}" aria-pressed="${(multi?(sel||[]).map(String).includes(String(v)):String(sel)===String(v))}">${esc(l)}</button>`).join("")}</div>`; }
 function renderOnb(){
   const p=state.onbDraft||state.pf||{};
-  $("#day").innerHTML=`<div class="col"><div class="wizhead"><div class="exname">${state.pf?"Editar seu plano":"Vamos montar seu treino"}</div><span class="note" id="wizN"></span></div>
+  $("#day").innerHTML=`<div class="col">${state.pf?"":`<details class="card koraimp"><summary><b>Já usei o Kora em outro aparelho ou navegador</b></summary><div class="gb">
+    <p>No lugar onde você usava o Kora, abra <b>Perfil → Backup dos dados</b> (ou "Copiar backup" no Início) e copie o texto. Cole aqui:</p>
+    <textarea id="onbBk" rows="4" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px" placeholder='{"kora":1,"sessions":[…'></textarea>
+    <div class="askrow"><button class="ckbtn" id="onbImp" type="button">Importar meus treinos</button></div></div></details>`}<div class="wizhead"><div class="exname">${state.pf?"Editar seu plano":"Vamos montar seu treino"}</div><span class="note" id="wizN"></span></div>
   <div class="prog"><div class="bar"><i id="wizBar"></i></div></div>
   <article class="card q"><h3>1. Sobre você</h3><p class="exnote">Opcional, menos a pergunta de saúde.</p><div class="ckgrid">
     <label>Nome<input id="q-nome" value="${esc(p.nome||"")}" autocomplete="given-name"></label>
@@ -240,6 +264,7 @@ function renderOnb(){
   splitHint(); wizard();
   if($("#q-cancel")) $("#q-cancel").onclick=()=>{ state.editing=false; state.current="perfil"; render(); };
   $("#q-go").onclick=saveProfile; if($("#goGuia")) $("#goGuia").onclick=()=>{ state.onbDraft=readForm(); state.current="guia"; render(); window.scrollTo({top:0}); };
+  if($("#onbImp")) $("#onbImp").onclick=()=>importBackup($("#onbBk").value);
 }
 function splitHint(){ const box=$("#splitHint"); if(!box) return;
   const tmp={habilidades:chipVal("habilidades",true),sono:num(($("#q-sono")||{}).value),estresse:Number(chipVal("estresse"))||3,esportes:readSports(),exp:chipVal("exp"),dias:chipVal("dias",true).map(Number),divisao:chipVal("divisao"),objetivo:chipVal("objetivo")||"misto",tempo:Number(chipVal("tempo"))||60,local:chipVal("local")||"completa",prioridades:chipVal("prioridades",true),dores:chipVal("dores",true),inicio:todayISO()};
@@ -633,16 +658,27 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
       <div class="askrow" id="resetConfirm" hidden><button class="ckbtn" id="resetYes" type="button" style="background:var(--plate-red)">Sim, apagar tudo</button><button class="ghost" id="resetNo" type="button">Cancelar</button></div></div></details>
     <details><summary>Backup dos dados</summary><p class="note">Copie o texto abaixo e guarde (ex.: nas Notas). Para restaurar, cole e toque em Importar.</p>
       <textarea id="bk" rows="5" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px">${esc(JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs}))}</textarea>
-      <div class="askrow" style="margin-top:8px"><button class="ghost" id="bkImp" type="button">Importar</button></div></details></div>`;
+      <div class="askrow" style="margin-top:8px"><button class="ckbtn" id="bkCopy" type="button">Copiar backup</button><button class="ghost" id="bkImp" type="button">Importar</button></div></details></div>`;
   $("#toPlano").onclick=()=>{ state.current="plano"; render(); window.scrollTo({top:0}); };
   $("#resetAsk").onclick=()=>{ $("#resetConfirm").hidden=false; $("#resetAsk").hidden=true; };
   $("#resetNo").onclick=()=>{ $("#resetConfirm").hidden=true; $("#resetAsk").hidden=false; };
   $("#resetYes").onclick=resetAll;
   $("#editPf").onclick=()=>{ state.editing=true; render(); window.scrollTo({top:0}); };
-  $("#bkImp").onclick=async()=>{ let o; try{ o=JSON.parse($("#bk").value); }catch(e){ setStatus("Texto de backup inválido."); return; }
-    const ids=new Set(state.sessions.map(s=>s.ts)); const add=(o.sessions||[]).filter(s=>s&&s.type==="session"&&!ids.has(s.ts));
-    try{ for(const s of add){ await store.put("s_"+s.ts,s); state.sessions.push(s); } if(o.pf&&!state.pf) { state.pf=o.pf; await store.put("perfil",o.pf); } setStatus(`${add.length} treinos importados.`); }catch(e){ setStatus("Falha ao importar."); } };
+  $("#bkImp").onclick=()=>importBackup($("#bk").value);
+  $("#bkCopy").onclick=copyBackup;
 }
+/* ---------- backup: copiar e importar (também na primeira tela, para ninguém precisar se recadastrar) ---------- */
+const backupText=()=>JSON.stringify({kora:1,sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs});
+async function copyBackup(){ try{ await navigator.clipboard.writeText(backupText()); setStatus("Backup copiado. Cole nas Notas ou mande para você mesmo no WhatsApp."); }catch(e){ state.current="perfil"; render(); setStatus("Copie o texto em Perfil → Backup dos dados."); } }
+async function importBackup(txt){ let o; try{ o=JSON.parse(String(txt||"").trim()); }catch(e){ setStatus("Texto de backup inválido: copie o texto inteiro, do { até o }."); return; }
+  const ids=new Set(state.sessions.map(s=>s.ts)); const add=(o.sessions||[]).filter(s=>s&&s.type==="session"&&!ids.has(s.ts));
+  const wk=new Set((state.checkins||[]).map(c=>c.week)); const ck=(o.checkins||[]).filter(c=>c&&c.week&&!wk.has(c.week));
+  try{ for(const s of add){ await store.put("s_"+s.ts,s); state.sessions.push(s); }
+    for(const c of ck){ state.checkins.push(c); await store.put("ck_"+c.week,c); }
+    if(o.pf&&!state.pf){ state.pf=o.pf; await store.put("perfil",o.pf); }
+    if(o.prefs&&!(state.prefs&&state.prefs.extra)){ state.prefs=Object.assign({swap:{}},o.prefs,state.prefs&&Object.keys(state.prefs.swap||{}).length?{swap:state.prefs.swap}:{}); await store.put("prefs",state.prefs); }
+    if(state.pf){ state.plan=withExtras(buildPlan(state.pf)); state.editing=false; if(state.current==="onb") state.current="inicio"; }
+    render(); setStatus(`${add.length} treino${add.length===1?"":"s"} importado${add.length===1?"":"s"}.`); }catch(e){ setStatus("Falha ao importar. Tente de novo."); } }
 
 /* ---------- análise pelo Claude ---------- */
 let sampleFn=null, askCtl=null;
@@ -677,12 +713,15 @@ document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==
 (async()=>{
   draft.data=draftLocal(); if($("#koraH")) $("#koraH").onclick=koraNote; 
   await store.init(); const o=await store.load();
+  if(o.failed){ $("#day").innerHTML=`<div class="col"><article class="card"><div class="exname">Não consegui carregar seus treinos</div>
+    <p class="exnote">Seus dados estão salvos na sua conta, mas a conexão falhou agora. <b>Não precisa se cadastrar de novo.</b> Verifique a internet e tente outra vez.</p>
+    <div class="askrow"><button class="ckbtn" type="button" onclick="location.reload()">Tentar de novo</button></div></article></div>`; return; }
   state.sessions=o.sessions||[]; state.checkins=o.checkins||[]; state.prefs=Object.assign({swap:{}},o.prefs||{}); state.pf=o.pf||null; state.analysis=o.analysis||null; state.anHist=(o.anHist||[]).sort((a,b)=>a.semana<b.semana?1:-1);
   if(state.pf) state.plan=withExtras(buildPlan(state.pf));
   const dd=o.draft&&o.draft.type==="draft"&&o.draft.date===todayISO()?o.draft:null; draft.remote=!!dd; draft.bakR=!!(o.bak&&o.bak.date===todayISO()); draft.bak=draft.bakR?o.bak:null;
   draft.data=mergeD(dd,draft.data); draft.ready=true;
   state.current=draft.data&&state.plan&&(state.plan.days.some(d=>d.key===draft.data.day)||draft.data.day==="cardio")&&Object.values(draft.data.values||{}).some(v=>v!=="")?draft.data.day:"inicio";
-  render(); 
+  render(); if(store.migrated) setStatus("Seus treinos deste aparelho foram copiados para a sua conta.");
   try{ if(window.claude&&claude.use) claude.use("sample").then(f=>{ sampleFn=f||null; if(sampleFn&&state.pf&&!state.editing&&state.current!=="perfil"&&state.current!=="guia"&&state.current!=="cardio") render(); }).catch(()=>{}); }catch(e){}
 })();
 

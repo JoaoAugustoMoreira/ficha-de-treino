@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.0 — 2026-10-22 · ninguém perde o histórico
+Um amigo abriu o Kora, encontrou o app vazio, se recadastrou e achou que tinha perdido os treinos.
+- **Por quê:** quem abre pelo link sem convite usa o Kora no **modo local**: os dados ficam só no navegador daquele aparelho (o `user` do claude.ai só identifica a organização do dono e convidados). Abrir em outro navegador ou app (ex.: primeiro no navegador do WhatsApp, depois no Safari) mostra um Kora vazio. As atualizações não apagam nada: a chave e o caminho dos dados nunca mudaram.
+- **"Já usei o Kora em outro aparelho ou navegador"** na primeira tela: cola o backup e volta tudo, sem recadastro.
+- **Aviso no Início** para quem está no modo local, com **Copiar backup** (também em Perfil → Backup).
+- **Migração automática:** se a pessoa passar a usar a conta (ex.: convidada por e-mail), o que estava no navegador sobe para a conta, sem apagar nada. Na conta, cada gravação também guarda uma cópia no aparelho.
+- **Sem queda silenciosa:** se a conta não responde, o app tenta de novo e mostra "Não consegui carregar seus treinos — não precisa se cadastrar de novo", em vez de abrir o questionário vazio (antes caía para o modo local e o novo cadastro ficava só no aparelho).
+- **Contrato de armazenamento** (`tests/armazenamento.test.mjs`): o teste quebra se alguém mudar a chave do navegador, o caminho na conta ou os ids dos documentos.
+
 ## 0.12.3 — 2026-10-20 · série mais pesada que deu certo vira a carga nova
 - A regra da 0.12.2 tratava toda série mais pesada no fim como tentativa. Quem fazia 20 × 9, 20 × 10 e subia para 25 × 7 a RPE 8,5 tinha a progressão calculada a partir dos 20. Agora a série mais pesada do fim só é tentativa se **não superou a força estimada (e1RM)** das outras; se superou, é a carga nova.
 
