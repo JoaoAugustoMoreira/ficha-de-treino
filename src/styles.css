@@ -623,3 +623,10 @@ header h1 .tagline{font:400 12.5px/1.2 var(--body);letter-spacing:0;color:var(--
 .addsets{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .sheetl .sopt small{display:block}
 #addEx{align-self:stretch}
+
+/* alvos de toque: nada clicável menor que ~40 px de altura (robô de usabilidade, 0.13.1) */
+.link{min-height:40px;display:inline-flex;align-items:center}
+details>summary{padding-block:10px;margin-block:-4px}
+.menu>summary{padding-block:0;margin-block:0}
+.rpeh{min-height:32px}
+.toggle{min-height:44px}

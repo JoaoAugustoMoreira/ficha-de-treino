@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.1 — 2026-10-22 · primeiro uso
+- **Guia "Como ler esta tela" de volta.** Ele explica ✓, RPE, números em cinza, cronômetro, ⇄, ⓘ e ＋. Existia no código mas deixou de aparecer na 0.4.0. Agora aparece no primeiro treino até tocar em "Entendi" e volta pelo menu ⋯ → "Como ler esta tela".
+- **Robô de usabilidade** (`auditoria/robo-usabilidade.js`): faz as 7 tarefas principais na tela de celular e mede toques, alvos pequenos e rolagem lateral. Resultado em `auditoria/usabilidade.md`: 7 de 7 tarefas, 14 toques.
+- **Alvos de toque** de links e seções recolhíveis com pelo menos 40 px de altura.
+
 ## 0.13.0 — 2026-10-22 · ninguém perde o histórico
 Um amigo abriu o Kora, encontrou o app vazio, se recadastrou e achou que tinha perdido os treinos.
 - **Por quê:** quem abre pelo link sem convite usa o Kora no **modo local**: os dados ficam só no navegador daquele aparelho (o `user` do claude.ai só identifica a organização do dono e convidados). Abrir em outro navegador ou app (ex.: primeiro no navegador do WhatsApp, depois no Safari) mostra um Kora vazio. As atualizações não apagam nada: a chave e o caminho dos dados nunca mudaram.

@@ -325,8 +325,8 @@ function tourHtml(){ return `<article class="card tour" id="tour"><div class="ex
     <li>A <b>caixa colorida</b> diz o que fazer hoje: <span class="tag t-up">⬆ SUBIR</span> a carga, <span class="tag t-keep">= MANTER</span> e tentar +1 repetição, <span class="tag t-down">⬇ REDUZIR</span> ou <span class="tag t-new">★ PRIMEIRA VEZ</span> (escolha uma carga e anote).</li>
     <li>Cada linha é uma série. <b>Números em cinza são a sugestão.</b> Fez igual? Só toque em <b>✓</b>. Fez diferente? Digite o que fez e depois toque em ✓.</li>
     <li><b>RPE</b> é a nota de esforço: <b>10 − repetições que ainda sairiam</b>. Sobraram 2 → 8. Sobrou 1 → 9. Não saía mais nenhuma → 10. Anote pelo menos na 1ª série: a ficha responde na hora se deve mudar a carga.</li>
-    <li>O <b>✓</b> inicia o cronômetro de descanso. Ele apita quando acabar.</li>
-    <li><b>⇄ Trocar</b> muda o exercício (aparelho ocupado, dor, não gostou). <b>Como fazer</b> explica a execução.</li>
+    <li>O <b>✓</b> inicia o cronômetro de descanso. Ele apita quando acabar. Com o RPE anotado, aparece embaixo <b>o que fazer na próxima série</b> (subir, manter ou reduzir).</li>
+    <li><b>⇄</b> troca o exercício (aparelho ocupado, dor, não gostou). <b>ⓘ</b> explica o porquê e como fazer. <b>＋</b> adiciona um exercício logo depois.</li>
     <li>No fim, toque em <b>Salvar treino de hoje</b>. Pronto: no próximo treino a ficha já calcula as cargas.</li></ol>
   <div class="askrow"><button class="ckbtn" id="tourOk" type="button">Entendi</button><button class="ghost" id="tourGuia" type="button">Ver o guia completo</button></div></article>`; }
 /* ---------- exercícios que a pessoa adiciona (prefs.extra[dia] = [{uid, nome, p, sets}]) ----------
@@ -390,11 +390,13 @@ function renderDay(){
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>${esc(d.n)}</h2><p class="meta">${d.dow.length?DOWN[d.dow[0]]+" · ":""}${d.ex.length} exercícios · ~${d.min||""} min${d.sport&&d.sport.length?" · + "+esc(d.sport.map(x=>x.split(" (")[0]).join(", ")):""}</p></div>
       <details class="menu"><summary aria-label="Opções do dia">⋯</summary><div class="menub">
         <label class="toggle"><input type="checkbox" id="leve" ${state.leve?"checked":""}> Treino leve hoje</label>
-        <button class="link" id="recBtn" type="button">Recuperar o que digitei</button></div></details></div>
+        <button class="link" id="recBtn" type="button">Recuperar o que digitei</button>
+        <button class="link" id="tourShow" type="button">❔ Como ler esta tela</button></div></details></div>
     ${avisos.map(a=>`<p class="aviso">${esc(a)}</p>`).join("")}
     ${sampleFn&&needsWeekly()?`<button class="link" id="goAn" type="button">Fazer a análise da semana →</button>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
     ${d.mob?`<details class="gd mobb"><summary>Mobilidade · 5 min</summary><div class="gb"><p>${d.mob.map(esc).join("<br>")}</p></div></details>`:""}
+    ${state.prefs.tourVisto?"":tourHtml()}
     ${cards}
     <button type="button" class="ghost" id="addEx">＋ Adicionar exercício</button>
     <details class="gd"><summary>Dados do ${wear!=="nenhum"?wearName(wear):"treino"} (opcional)</summary><div class="cgrid">
@@ -403,6 +405,10 @@ function renderDay(){
       <label>Minutos<input inputmode="numeric" id="${d.key}-w-min" placeholder="55"></label></div></details></div>`;
   restoreDraft(); syncDone(); d.ex.forEach(e=>readiness(e.id));
   $("#addEx").onclick=()=>{ flushDraft(); openAdd(d,$("#addEx")); };
+  /* guia "Como ler esta tela": aparece até a pessoa tocar em Entendi; volta pelo menu ⋯ */
+  if($("#tourOk")) $("#tourOk").onclick=()=>{ state.prefs.tourVisto=true; store.put("prefs",state.prefs).catch(()=>{}); renderDay(); };
+  if($("#tourGuia")) $("#tourGuia").onclick=()=>{ flushDraft(); state.current="guia"; render(); window.scrollTo({top:0}); };
+  $("#tourShow").onclick=()=>{ state.prefs.tourVisto=false; renderDay(); const t=$("#tour"); if(t) t.scrollIntoView({block:"start"}); };
   $$(".addafter").forEach(b=>b.onclick=()=>{ flushDraft(); openAdd(d,b,b.dataset.after); });
   $$(".rmex").forEach(b=>b.onclick=()=>{ const ex=d.ex.find(e=>e.id===b.dataset.rm); if(ex&&confirm(`Remover ${chosen(ex)} da ficha? O histórico dele continua salvo.`)) { flushDraft(); removeExtra(d,ex); } });
   $$(".okb").forEach(b=>b.onclick=()=>okSet(b));
