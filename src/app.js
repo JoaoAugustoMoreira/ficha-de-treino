@@ -44,7 +44,6 @@ const store={mode:"local",db:null,uid:null,
 
 /* ---------- histórico, e1RM e sugestão de carga ---------- */
 function historyFor(name){ return state.sessions.filter(s=>s.ex&&s.ex[name]).sort((a,b)=>b.ts-a.ts).map(s=>({date:s.date,leve:s.leve,sets:s.ex[name]})); }
-function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") return ex.low?5:2.5; return /cabo|máquina|cadeira|mesa|peck|leg press|flexora|extensora|abdução/i.test(name)?2.5:1; }
 /* a troca guarda o NOME escolhido (versões antigas guardavam a posição na lista); nome que saiu das opções volta para a 1ª */
 function chosen(ex){ const v=state.prefs.swap[ex.id]; if(typeof v==="string") return ex.opts.includes(v)?v:ex.opts[0]; return ex.opts[v||0]||ex.opts[0]; }
 /* Trocar exercício: lista própria da página. O menu nativo (<select> transparente por cima do botão) não abria no app do Claude no celular. */
@@ -66,22 +65,7 @@ async function applySwap(ex,i){ if(ex.opts[i]===chosen(ex)) return; flushDraft()
 /* exercícios por tempo (prancha): a faixa vira segundos; o resto do plano não muda */
 const isTimed=n=>/\(seg\)|prancha/i.test(n||"");
 function viewEx(ex,name){ return isTimed(name)?Object.assign({},ex,{lo:20,hi:40,secs:true}):ex; }
-function suggest(ex){
-  const name=chosen(ex), inc=incOf(ex,name); const h=historyFor(name).filter(x=>!x.leve);
-  if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:ex.lo,cls:"",html:`<span class="tag t-keep">⚡ Potência</span> Rápido, longe da falha`}; }
-  const U=ex.secs?" s":" reps";
-  if(!h.length) return {kg:ex.secs?0:"",reps:ex.secs?ex.lo:ex.hi,cls:"",html:ex.secs?`<span class="tag t-new">★ 1ª vez</span> Segure ${ex.lo} s com boa postura; se for fácil, vá até ${ex.hi} s`:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${ex.hi} reps saírem fáceis, suba na próxima série`};
-  if(tecnica(state.pf)) { const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:ex.hi,cls:"",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
-  const last=h[0].sets, work=workSets(last), L=work[0].kg||0;
-  const allTop=work.length>=Math.min(ex.sets,last.length)&&work.every(s=>s.reps>=ex.hi); const lr=work[work.length-1]?.rpe; const tgt=ex.rpe[ex.rpe.length-1];
-  if(allTop&&L===0) return {kg:0,reps:ex.secs?ex.hi+5:ex.hi,cls:"up",html:ex.secs?`<span class="tag t-up">⬆ Evolua</span> Tente <strong>${ex.hi+5} s</strong>, ou acrescente carga nas costas`:/elástico/i.test(chosen(ex))?`<span class="tag t-up">⬆ Evolua</span> Topo da faixa: use um elástico mais forte ou encurte o elástico`:`<span class="tag t-up">⬆ Evolua</span> Peso do corpo no topo: faça mais reps, acrescente carga (mochila) ou troque por uma variação mais difícil no ⇄`};
-  if(allTop&&!(lr>tgt+0.5)){ const pct=ex.k==="C"?(ex.low?0.05:0.025):0.05; let nk=roundTo(L*(1+pct),inc); if(nk<=L) nk=L+inc;
-    return {kg:nk,reps:ex.lo,cls:"up",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${ex.lo} reps`}; }
-  const below=s=>workSets(s.sets).some(x=>x.reps<ex.lo);
-  if(h.length>=2&&below(h[0])&&below(h[1])){ const nk=Math.max(0,roundTo(L*0.9,inc)); return {kg:nk,reps:ex.hi,cls:"stall",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong>`}; }
-  const minR=Math.min(...work.map(s=>s.reps)); const tr=Math.min(ex.hi,minR+1);
-  return {kg:L,reps:tr,cls:"",html:`<span class="tag t-keep">= Mantenha</span> ${L?`<strong>${fmt(L)} kg</strong> · `:""}meta ${tr}${U}`};
-}
+function suggest(ex){ const name=chosen(ex); return sugerirCarga(ex,name,historyFor(name).filter(x=>!x.leve),{tecnica:tecnica(state.pf),inc:incOf(ex,name)}); }
 /* leitura durante o treino: usa a ÚLTIMA série com RPE digitado (não só a 1ª), porque a pessoa pode ter mudado a carga no meio
    (ex.: 160 kg × 10 a RPE 6, depois 200 kg × 8 a RPE 9: a próxima série parte dos 200 kg, não volta para 160) */
 function readiness(id){

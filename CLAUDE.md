@@ -10,6 +10,7 @@ Kora (core + cor, "coração" em latim) é um app de treino de musculação para
 
 ## Estrutura
 - `src/engine.js` — motor sem DOM: gera o plano (`buildPlan`) a partir do perfil. Testado em `tests/`.
+- Progressão de carga: `sugerirCarga` e `workSets` no `engine.js` (testes em `tests/progressao.test.mjs`). Nunca coloque regra de progressão na interface.
 - `src/app.js` — interface (telas, registro de treino, rascunho, histórico, análise semanal com o Claude).
 - `src/charts.js` — Desempenho: mapa muscular, treinos/semana, dias de treino, volume semanal, equilíbrio muscular.
 - `src/corpo.js` — contornos anatômicos do boneco (gerado por `scripts/importar-corpo.mjs` a partir de react-native-body-highlighter, MIT; licença em `vendor/`). Não edite à mão.

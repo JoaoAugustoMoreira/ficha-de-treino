@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.14.0 — 2026-10-22 · progressão no motor, com testes
+A sugestão de carga ficava na interface, sem nenhum teste (os bugs desta semana nasceram ali). Agora é `sugerirCarga` em `engine.js`, com 15 testes em `tests/progressao.test.mjs`, e ganhou as regras já validadas na ficha Força + BJJ:
+- **Esforço longe do alvo:** RPE médio 1,5+ ponto fora do alvo num treino, ou 1+ ponto no mesmo sentido em 2 treinos seguidos, ajusta a carga pela força estimada (para cima, no máximo +10%). O card explica: "esforço 9, acima do alvo 8".
+- **Reduzir** só depois de 2 treinos seguidos abaixo do mínimo, e quem caiu só na última série indo à falha não conta (o card lembra de parar com 1–2 sobrando). A redução é pela força estimada, não mais −10% fixo.
+- **Estagnação:** 3 treinos sem subir carga nem reps → "⚠ Parado: troque a variação ou reduza 10% e reconstrua".
+- **Back-off** no fim não impede mais o "topo da faixa".
+
 ## 0.13.1 — 2026-10-22 · primeiro uso
 - **Guia "Como ler esta tela" de volta.** Ele explica ✓, RPE, números em cinza, cronômetro, ⇄, ⓘ e ＋. Existia no código mas deixou de aparecer na 0.4.0. Agora aparece no primeiro treino até tocar em "Entendi" e volta pelo menu ⋯ → "Como ler esta tela".
 - **Robô de usabilidade** (`auditoria/robo-usabilidade.js`): faz as 7 tarefas principais na tela de celular e mede toques, alvos pequenos e rolagem lateral. Resultado em `auditoria/usabilidade.md`: 7 de 7 tarefas, 14 toques.

@@ -263,6 +263,46 @@ function workSets(sets){ const kgs=sets.map(s=>s.kg||0), mx=Math.max(...kgs), to
     const mode=Object.keys(cnt).map(Number).filter(k=>cnt[k]>=2).sort((a,b)=>cnt[b]-cnt[a]||b-a)[0];
     if(mode!=null){ const rest=sets.filter(s=>(s.kg||0)===mode); if(e1rm(top[0].kg||0,top[0].reps||0,top[0].rpe)<=Math.max(...rest.map(x=>e1rm(x.kg||0,x.reps||0,x.rpe)))) return rest; } }
   return top; }
+/* ---------- progressão de carga (testada em tests/progressao.test.mjs) ----------
+   h = histórico do exercício, do mais novo para o mais antigo, sem treinos leves: [{date, sets:[{kg,reps,rpe?}]}].
+   Ordem das regras: 1ª vez → técnica → regredir (2 treinos abaixo do mínimo) → RPE longe do alvo → topo da faixa → estagnação → +1 rep. */
+function incOf(ex,name){ if(/halter/i.test(name)) return 2; if(ex.k==="C") return ex.low?5:2.5; return /cabo|máquina|cadeira|mesa|peck|leg press|flexora|extensora|abdução/i.test(name)?2.5:1; }
+function sugerirCarga(ex,name,h,o){ o=o||{}; const inc=o.inc!=null?o.inc:incOf(ex,name), U=ex.secs?" s":" reps", lo=ex.lo, hi=ex.hi;
+  if(ex.k==="P"){ const L=h.length?Math.max(...h[0].sets.map(s=>s.kg||0)):""; return {kg:L===0?0:L,reps:lo,cls:"",regra:"potencia",html:`<span class="tag t-keep">⚡ Potência</span> Rápido, longe da falha`}; }
+  if(!h.length) return {kg:ex.secs?0:"",reps:ex.secs?lo:hi,cls:"",regra:"primeira",html:ex.secs?`<span class="tag t-new">★ 1ª vez</span> Segure ${lo} s com boa postura; se for fácil, vá até ${hi} s`:`<span class="tag t-new">★ 1ª vez</span> Comece leve. Se as ${hi} reps saírem fáceis, suba na próxima série`};
+  if(o.tecnica){ const L=Math.max(...h[0].sets.map(s=>s.kg||0)); return {kg:L,reps:hi,cls:"",regra:"tecnica",html:`<span class="tag t-keep">= Técnica</span> Mantenha ${fmt(L)} kg`}; }
+  const last=h[0].sets, W=workSets(last), L=W[0].kg||0;
+  const tm=ex.rpe.reduce((a,b)=>a+b,0)/ex.rpe.length, tLast=ex.rpe[ex.rpe.length-1];
+  /* topo batido: todas as séries de trabalho no topo; back-off e aquecimento (mais leves) não contam */
+  const naoLeves=last.filter(s=>(s.kg||0)>=L).length, allTop=W.length>=Math.min(ex.sets,naoLeves)&&W.every(s=>s.reps>=hi);
+  const comR=W.filter(s=>s.rpe>=5&&s.rpe<=10), avg=comR.length?comR.reduce((a,s)=>a+s.rpe,0)/comR.length:null, lr=W[W.length-1].rpe;
+  const best=Math.max(...W.map(s=>e1rm(s.kg||0,s.reps||0,s.rpe))), meanReps=Math.round(W.reduce((a,s)=>a+(s.reps||0),0)/W.length);
+  const carga=(reps,dir)=>{ const x=best/(1+(reps+10-tm)/30)/inc; return Math.max(0,(dir<0?Math.floor(x):dir>0?Math.ceil(x):Math.round(x))*inc); };
+  const clampR=r=>Math.max(lo,Math.min(hi,r));
+  if(allTop&&L===0) return {kg:0,reps:ex.secs?hi+5:hi,cls:"up",regra:"corpo",html:ex.secs?`<span class="tag t-up">⬆ Evolua</span> Tente <strong>${hi+5} s</strong>, ou acrescente carga nas costas`:/elástico/i.test(name)?`<span class="tag t-up">⬆ Evolua</span> Topo da faixa: use um elástico mais forte ou encurte o elástico`:`<span class="tag t-up">⬆ Evolua</span> Peso do corpo no topo: faça mais reps, acrescente carga (mochila) ou troque por uma variação mais difícil no ⇄`};
+  /* 1) regredir: 2 treinos seguidos abaixo do mínimo. Só a última série caindo, indo à falha (RPE 9,5+), não conta: foi excesso de esforço */
+  const abaixo=sess=>{ const w=workSets(sess.sets), b=w.filter(x=>(x.reps||0)<lo&&!(x.rpe>0&&x.rpe<tm-0.5)); const lastFail=b.length===1&&w.length>=2&&b[0]===w[w.length-1]&&b[0].rpe>=9.5; return b.length>0&&!lastFail; };
+  if(L>0&&h.length>=2&&abaixo(h[0])&&abaixo(h[1])){ const nk=Math.max(0,Math.min(L-inc,carga(lo+1,-1)));
+    return {kg:nk,reps:lo+1,cls:"stall",regra:"regredir",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong> · ${lo+1}${U} (2 treinos abaixo de ${lo})`}; }
+  /* 2) esforço longe do alvo: 1,5+ ponto num treino, ou 1+ ponto no mesmo sentido em 2 treinos (o erro de estimar o RPE é ~1 rep) */
+  const gapOf=sess=>{ const w=workSets(sess.sets).filter(s=>s.rpe>=5&&s.rpe<=10); return w.length?w.reduce((a,s)=>a+s.rpe,0)/w.length-tm:0; };
+  const gap=avg==null?0:avg-tm, pgap=h[1]?gapOf(h[1]):0;
+  const sure=avg!=null&&(Math.abs(gap)>=1.5||(Math.abs(gap)>=1&&Math.abs(pgap)>=1&&Math.sign(gap)===Math.sign(pgap)));
+  if(sure&&L>0){ if(gap>0){ const reps=clampR(meanReps), nk=Math.max(0,Math.min(L-inc,carga(reps,-1)));
+      return {kg:nk,reps,cls:"stall",regra:"rpe-alto",html:`<span class="tag t-down">⬇ Reduza</span> <strong>${fmt(nk)} kg</strong> · ${reps}${U} (esforço ${fmt(Math.round(avg*10)/10)}, acima do alvo ${fmt(tm)})`}; }
+    const reps=allTop?lo+1:clampR(meanReps); let nk=Math.max(L+inc,carga(reps,0)); nk=Math.min(nk,roundTo(L*1.1,inc)>L?roundTo(L*1.1,inc):L+inc);
+    return {kg:nk,reps,cls:"up",regra:"rpe-baixo",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${reps}${U} (sobraram reps: esforço ${fmt(Math.round(avg*10)/10)}, alvo ${fmt(tm)})`}; }
+  /* 3) topo da faixa em todas as séries */
+  if(allTop&&!(lr>tLast+0.5)){ const pct=ex.k==="C"?(ex.low?0.05:0.025):0.05; let nk=roundTo(L*(1+pct),inc); if(nk<=L) nk=L+inc;
+    return {kg:nk,reps:lo,cls:"up",regra:"topo",html:`<span class="tag t-up">⬆ Suba</span> <strong>${fmt(nk)} kg</strong> · ${lo} reps`}; }
+  /* 4) estagnação: 3 treinos sem subir carga nem reps */
+  if(h.length>=3&&L>0){ const sc=sess=>{ const w=workSets(sess.sets); return (w[0].kg||0)*1000+w.reduce((a,s)=>a+(s.reps||0),0); };
+    if(sc(h[0])<=sc(h[1])&&sc(h[1])<=sc(h[2])) return {kg:L,reps:Math.min(hi,Math.min(...W.map(s=>s.reps))+1),cls:"stall",regra:"estagnado",html:`<span class="tag t-down">⚠ Parado</span> 3 treinos sem progredir com ${fmt(L)} kg: troque a variação no ⇄, ou reduza 10% e reconstrua`}; }
+  /* 5) dupla progressão: mesma carga, +1 rep */
+  const b0=W.filter(x=>(x.reps||0)<lo), fail=b0.length===1&&W.length>=2&&b0[0]===W[W.length-1]&&b0[0].rpe>=9.5;
+  const tr=Math.min(hi,Math.max(lo,Math.min(...W.map(s=>s.reps))+1));
+  return {kg:L,reps:tr,cls:"",regra:"manter",html:`<span class="tag t-keep">= Mantenha</span> ${L?`<strong>${fmt(L)} kg</strong> · `:""}meta ${tr}${U}${fail?" · a última série foi até a falha: pare com 1–2 sobrando":""}`};
+}
 const sessE1=sets=>Math.max(0,...sets.map(s=>e1rm(s.kg||0,s.reps||0,s.rpe)));
 const roundTo=(v,s)=>Math.round(v/s)*s;
-if(typeof module!=="undefined") module.exports={workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
+if(typeof module!=="undefined") module.exports={sugerirCarga,incOf,workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
