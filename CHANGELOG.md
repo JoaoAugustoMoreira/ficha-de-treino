@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.17.2 — 2026-10-22 · o Kora não finge que salvou
-O João preencheu o questionário, o app disse "Plano criado", e ao fechar e abrir de novo voltou ao começo. Na conta dele não havia nada salvo: o Kora estava no **modo local** (sem conta Claude naquele lugar) e o navegador não guardava os dados.
+Um amigo (sem convite, no **modo local**) preencheu o questionário, o app disse "Plano criado", e ao fechar e abrir de novo voltou ao começo: o navegador dele não guardava os dados.
 - **Por quê:** no modo local, se o navegador bloqueia ou apaga o armazenamento (aba anônima, navegador de dentro do WhatsApp/Instagram, cookies bloqueados), a gravação falhava em silêncio e a tela mostrava sucesso.
 - **Agora:** ao abrir, o Kora testa se o navegador guarda dados. Se não guarda, mostra no questionário e no Início "Este navegador não está guardando o Kora" e explica onde abrir (app do Claude com a conta, ou Safari/Chrome). Gravação que falha mostra "não consegui salvar", nunca sucesso.
 - **No questionário**, quem está sem conta vê que os dados ficam só naquele navegador e como salvar na conta.
