@@ -95,3 +95,21 @@ test("semana leve planejada a cada 7 semanas (6 normais + 1 leve), nunca nas pri
   assert.equal(sem(5).falta, 2);
   assert.ok(M.buildPlan({ exp: "mais1", objetivo: "hipertrofia", dias: [1, 3, 5], tempo: 60, local: "completa", dores: [], prioridades: [], esportes: [], inicio: "2025-01-01" }).why.some(w => w.ev === "deload"));
 });
+
+test("resultados: constância das últimas semanas e força estimada do 1º ao último treino", () => {
+  const S = (date, ts, kg, reps, rpe, leve) => ({ type: "session", date, ts, ...(leve ? { leve: true } : {}), ex: { "Supino reto com barra": [{ kg, reps, rpe }, { kg, reps, rpe }] } });
+  const ss = [S("2026-10-05", 1, 60, 8, 8), S("2026-10-07", 2, 60, 9, 8), S("2026-10-14", 3, 62.5, 8, 8), S("2026-10-19", 4, 40, 8, 6, true)];
+  const r = M.resultados(ss, 3, "2026-10-22");
+  assert.equal(r.semanas, 3); assert.equal(r.feitos, 4); assert.equal(r.planejados, 9);
+  assert.equal(r.exercicios.length, 1); assert.equal(r.exercicios[0].sessoes, 3);          // o treino leve não entra na força
+  assert.ok(r.exercicios[0].pct > 0);
+  assert.equal(M.resultados([], 3, "2026-10-22").aderencia, null);
+});
+
+test("SUS: nota de 0 a 100 pela fórmula padrão", () => {
+  assert.equal(M.notaSUS([5, 1, 5, 1, 5, 1, 5, 1, 5, 1]), 100);
+  assert.equal(M.notaSUS([1, 5, 1, 5, 1, 5, 1, 5, 1, 5]), 0);
+  assert.equal(M.notaSUS([3, 3, 3, 3, 3, 3, 3, 3, 3, 3]), 50);
+  assert.equal(M.notaSUS([4, 2, 4, 2, 4, 2, 4, 2, 4, null]), null);
+  assert.equal(M.SUS.length, 10);
+});

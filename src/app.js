@@ -164,7 +164,7 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
   const thisW=lifts.filter(s=>weekStart(s.date)===wk); const vol=thisW.reduce((a,s)=>a+tonnage(s),0);
   let streak=0; { let w=wk; for(let k=0;k<52;k++){ const dd=new Date(w+"T12:00:00"); dd.setDate(dd.getDate()-7); w=isoLocal(dd); const n=lifts.filter(s=>weekStart(s.date)===w).length; if(n>=pl.lift) streak++; else break; } }
   const since=isoDaysAgo(6), v7=lifts.length?setsByMuscle(lifts.filter(s=>s.date>=since)):((pl.vol&&pl.vol.v)||{}); const frac={}; MUSCLES.forEach(m=>frac[m]=(v7[m]||0)/((pl.target||{})[m]||1));
-  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>${localWarn()}${(()=>{ const c=cicloSemana(pf,today); return deloadAtivo()?`<p class="banner dl"><b>Semana leve planejada</b> (semana ${c.semana}): treinos com metade das séries e esforço 6.</p>`:c.semana>0?`<p class="note">Semana ${c.semana} · semana leve daqui a ${c.falta} semana${c.falta>1?"s":""}</p>`:""; })()}
+  $("#day").innerHTML=`<div class="col"><div class="hello"><h2>${hi}${pf.nome?", "+esc(pf.nome.split(" ")[0]):""}</h2><p class="note">${esc(dataTxt.charAt(0).toUpperCase()+dataTxt.slice(1))} · ${esc(SPLITS[pl.sk].nome.split(" (")[0])}</p></div>${localWarn()}${susHtml()}${(()=>{ const c=cicloSemana(pf,today); return deloadAtivo()?`<p class="banner dl"><b>Semana leve planejada</b> (semana ${c.semana}): treinos com metade das séries e esforço 6.</p>`:c.semana>0?`<p class="note">Semana ${c.semana} · semana leve daqui a ${c.falta} semana${c.falta>1?"s":""}</p>`:""; })()}
     ${hero}
     <div class="wstrip">${strip}</div>
     <div class="kpis"><div class="kpi"><b>${thisW.length}/${pl.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${vol?kfmt(vol):"0"}</b><span>volume na semana</span></div><div class="kpi"><b>${streak}</b><span>semana${streak===1?"":"s"} seguida${streak===1?"":"s"} na meta</span></div></div>
@@ -177,6 +177,7 @@ function renderHome(){ const pl=state.plan, pf=state.pf, today=todayISO(), t=new
       <button class="card tile" type="button" data-go="faq"><span class="ti">?</span><b>Ajuda</b><small>RPE e dúvidas</small></button>
     </div></div>`;
   $$("#day [data-go]").forEach(b=>b.onclick=()=>{ state.current=b.dataset.go; state.leve=deloadAtivo(); render(); window.scrollTo({top:0}); });   if($("#bkCopy")) $("#bkCopy").onclick=copyBackup;
+  bindSus();
 }
 function renderPlano(){ const pl=state.plan, sp=SPLITS[pl.sk], c=pl.cardio;
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><div><h2>Seu plano está pronto</h2><p class="meta">${esc(sp.nome)} · ${pl.lift} dias por semana</p></div></div>
@@ -380,7 +381,8 @@ function renderDay(){
       <details class="menu"><summary aria-label="Opções do dia">⋯</summary><div class="menub">
         <label class="toggle"><input type="checkbox" id="leve" ${state.leve?"checked":""}> Treino leve hoje</label>
         <button class="link" id="recBtn" type="button">Recuperar o que digitei</button>
-        <button class="link" id="tourShow" type="button">❔ Como ler esta tela</button></div></details></div>
+        <button class="link" id="tourShow" type="button">❔ Como ler esta tela</button>
+        <button class="link" id="probBtn" type="button">⚠️ Achei um problema</button></div></details></div>
     ${avisos.map(a=>`<p class="aviso">${esc(a)}</p>`).join("")}
     ${sampleFn&&needsWeekly()?`<button class="link" id="goAn" type="button">Fazer a análise da semana →</button>`:""}
     <div class="prog"><div class="bar"><i id="progBar"></i></div><span id="progTxt"></span></div>
@@ -399,6 +401,7 @@ function renderDay(){
   /* guia "Como ler esta tela": aparece até a pessoa tocar em Entendi; volta pelo menu ⋯ */
   if($("#tourOk")) $("#tourOk").onclick=()=>{ state.prefs.tourVisto=true; store.put("prefs",state.prefs).catch(()=>{}); renderDay(); };
   if($("#tourGuia")) $("#tourGuia").onclick=()=>{ flushDraft(); state.current="guia"; render(); window.scrollTo({top:0}); };
+  $("#probBtn").onclick=()=>{ flushDraft(); openProblema(); };
   $("#tourShow").onclick=()=>{ state.prefs.tourVisto=false; renderDay(); const t=$("#tour"); if(t) t.scrollIntoView({block:"start"}); };
   $$(".addafter").forEach(b=>b.onclick=()=>{ flushDraft(); openAdd(d,b,b.dataset.after); });
   $$(".rmex").forEach(b=>b.onclick=()=>{ const ex=d.ex.find(e=>e.id===b.dataset.rm); if(ex&&confirm(`Remover ${chosen(ex)} da ficha? O histórico dele continua salvo.`)) { flushDraft(); removeExtra(d,ex); } });
@@ -519,6 +522,39 @@ function recSignals(cks,wear){ const a=cks.slice().sort((x,y)=>x.week<y.week?-1:
   const bv=base("vfc"); if(cur.vfc&&bv){ const p=(cur.vfc/bv-1)*100; if(p<=-10){ n++; out.push(`<div class="al">VFC ${fmt(cur.vfc)} ms, ${fmt(Math.round(-p))}% abaixo da sua média.</div>`);} else out.push(`<p class="note">VFC ${fmt(cur.vfc)} ms vs média ${fmt(Math.round(bv))}: normal.</p>`); }
   if(n>=2) out.push(`<div class="al"><b>${n} sinais de cansaço nesta semana.</b> Considere fazer a próxima semana leve (opção "Treino leve").</div>`);
   return {html:out.join(""),n}; }
+/* ---------- seus resultados, avaliação do app (SUS) e "achei um problema" ---------- */
+function resultadosHtml(){ const r=resultados(state.sessions,state.plan.lift,todayISO()); if(!r.feitos) return "";
+  const pc=Math.round(r.aderencia*100), top=r.exercicios.slice(0,6);
+  return `<article class="card"><div class="exname">Seus resultados</div>
+    <p class="exnote"><b>Constância:</b> ${r.feitos} de ${r.planejados} treinos nas últimas ${r.semanas} semana${r.semanas>1?"s":""} (${pc}%).${pc>=80?" Ótimo: constância é o que mais pesa no resultado.":pc>=50?" Bom. Se puder, encaixe os treinos que faltaram em outro dia da semana.":" Abaixo da metade: vale rever os dias no Perfil para um plano que caiba na sua rotina."}</p>
+    ${top.length?`<p class="exnote"><b>Força estimada</b> (do 1º ao último treino de cada exercício${r.media!=null?`; média ${r.media>=0?"+":""}${fmt(r.media)}%`:""}):</p>
+      <table class="gt"><tbody>${top.map(x=>`<tr><td>${esc(x.nome)}<br><small class="note">${x.sessoes} treinos</small></td><td class="tr">${fmt(x.de)} → ${fmt(x.para)} kg</td><td class="${x.pct>=0?"good":"bad"}">${x.pct>=0?"+":""}${fmt(x.pct)}%</td></tr>`).join("")}</tbody></table>`
+      :`<p class="note">A força estimada aparece quando um exercício tiver 2 treinos salvos.</p>`}</article>`; }
+function waLink(txt){ return "https://wa.me/?text="+encodeURIComponent(txt); }
+function susHtml(){ const p=state.prefs, first=state.sessions.filter(s=>s.ex).map(s=>s.date).sort()[0];
+  if(p.susFeito||!first||(p.susAdiado&&p.susAdiado>todayISO())) return "";
+  const dias=Math.round((new Date(todayISO()+"T12:00:00")-new Date(first+"T12:00:00"))/864e5); if(dias<7) return "";
+  return `<details class="card sus" id="susBox"><summary><b>Como está o Kora para você?</b> <small class="note">10 perguntas · 1 min</small></summary><div class="gb">
+    <p class="note">De 1 (discordo totalmente) a 5 (concordo totalmente). Ajuda o João a deixar o app mais fácil.</p>
+    ${SUS.map((q,i)=>`<div><p style="margin:6px 0 4px">${i+1}. ${esc(q)}</p><div class="qchips susq" data-i="${i}">${[1,2,3,4,5].map(v=>`<button type="button" class="qc" data-v="${v}" aria-pressed="false">${v}</button>`).join("")}</div></div>`).join("")}
+    <label class="ql">Algo que você mudaria? (opcional)<input id="susTxt" maxlength="300"></label>
+    <div class="askrow"><button class="ckbtn" id="susOk" type="button">Ver minha nota</button><button class="ghost" id="susLater" type="button">Agora não</button></div>
+    <div id="susOut"></div></div></details>`; }
+function bindSus(){ if(!$("#susBox")) return; const r=Array(10).fill(null);
+  $$(".susq").forEach(g=>g.querySelectorAll(".qc").forEach(b=>b.onclick=()=>{ r[Number(g.dataset.i)]=Number(b.dataset.v); g.querySelectorAll(".qc").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); }));
+  $("#susLater").onclick=()=>{ const d=new Date(); d.setDate(d.getDate()+7); state.prefs.susAdiado=isoLocal(d); store.put("prefs",state.prefs).catch(()=>{}); render(); };
+  $("#susOk").onclick=()=>{ const n=notaSUS(r); if(n==null){ setStatus(`Responda as 10 perguntas (faltam ${r.filter(x=>x==null).length}).`); return; }
+    const txt=$("#susTxt").value.trim(); state.prefs.susFeito={nota:n,data:todayISO(),r}; store.put("prefs",state.prefs).catch(()=>{});
+    const msg=`Kora ${APP_VERSION} · avaliação: ${n}/100 · respostas ${r.join(",")}${txt?" · "+txt:""}`;
+    $("#susOut").innerHTML=`<p class="exnote">Sua nota para o Kora: <b>${n}/100</b>${n>=68?" (acima da média dos apps)":" (abaixo da média dos apps: sua opinião ajuda muito)"}. Obrigado!</p>
+      <div class="askrow"><a class="ckbtn" style="text-align:center;text-decoration:none" href="${waLink(msg)}" target="_blank" rel="noopener">Enviar para o João pelo WhatsApp</a></div><p class="note">Você vê a mensagem antes de enviar.</p>`; }; }
+function openProblema(){ const sh=$("#sheet"); $("#sheetT").textContent="Achei um problema";
+  $("#sheetL").innerHTML=`<p class="note">Conte o que aconteceu (o que você tocou, o que esperava, o que apareceu). A mensagem leva a versão do app e a tela.</p>
+    <textarea id="probTxt" rows="4" maxlength="600" style="width:100%;box-sizing:border-box;font:15px var(--body);padding:10px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--fg)"></textarea>
+    <a class="ckbtn" id="probGo" style="text-align:center;text-decoration:none" href="#" target="_blank" rel="noopener">Enviar para o João pelo WhatsApp</a>`;
+  const upd=()=>{ $("#probGo").href=waLink(`Kora ${APP_VERSION} · problema na tela "${(state.plan&&state.plan.days.find(d=>d.key===state.current)||{}).n||state.current}": ${$("#probTxt").value.trim()}`); }; $("#probTxt").oninput=upd; upd();
+  const close=()=>{ sh.hidden=true; document.body.style.overflow=""; }; $("#sheetX").onclick=close; sh.querySelector(".sheet-bg").onclick=close; $("#probGo").addEventListener("click",()=>setTimeout(close,300));
+  sh.hidden=false; document.body.style.overflow="hidden"; setTimeout(()=>$("#probTxt").focus(),50); }
 function renderHist(){
   const ss=state.sessions.slice().sort((a,b)=>b.ts-a.ts), wear=state.pf.wear;
   const names=[...new Set(ss.flatMap(s=>Object.keys(s.ex||{})))];
@@ -530,6 +566,7 @@ function renderHist(){
   const W=wear==="whoop", G=wear==="garmin";
   $("#day").innerHTML=`<div class="col"><div class="dayhead"><h2>Progresso</h2></div>
     <div class="kpis"><div class="kpi"><b>${lifts}/${state.plan.lift}</b><span>treinos na semana</span></div><div class="kpi"><b>${cmin}</b><span>min de cardio</span></div><div class="kpi"><b>${ss.filter(s=>s.ex).length}</b><span>treinos no total</span></div></div>
+    ${resultadosHtml()}
     ${perfSection()}
     ${sampleFn?`<article class="card"><div class="exname">Análise semanal</div>${needsWeekly()?'<div class="banner">A análise desta semana ainda não foi feita.</div>':""}<p class="exnote">Faça uma vez por semana (domingo ou segunda). Lê seus registros das últimas 4 semanas e diz o que está indo bem, o que ajustar e se precisa de semana leve. Leva até 1–2 min.</p>
       <div class="askrow"><button class="ckbtn" id="askBtn" type="button">Analisar meu treino</button><button class="ghost" id="askStop" type="button" hidden>Parar</button></div><div class="askout" id="askOut" aria-live="polite"></div></article>`:""}
@@ -660,14 +697,15 @@ function renderPerfil(){ const p=state.pf, pl=state.plan, G=GOALS[p.objetivo];
       <div class="askrow" id="resetConfirm" hidden><button class="ckbtn" id="resetYes" type="button" style="background:var(--plate-red)">Sim, apagar tudo</button><button class="ghost" id="resetNo" type="button">Cancelar</button></div></div></details>
     <details><summary>Backup dos dados</summary><p class="note">Copie o texto abaixo e guarde (ex.: nas Notas). Para restaurar, cole e toque em Importar.</p>
       <textarea id="bk" rows="5" style="width:100%;box-sizing:border-box;font:12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px">${esc(JSON.stringify({sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs}))}</textarea>
-      <div class="askrow" style="margin-top:8px"><button class="ckbtn" id="bkCopy" type="button">Copiar backup</button><button class="ghost" id="bkImp" type="button">Importar</button></div></details></div>`;
+      <div class="askrow" style="margin-top:8px"><button class="ckbtn" id="bkCopy" type="button">Copiar backup</button><button class="ghost" id="bkImp" type="button">Importar</button></div></details>
+    <div class="askrow"><button class="ghost" id="probBtn2" type="button">⚠️ Achei um problema</button></div></div>`;
   $("#toPlano").onclick=()=>{ state.current="plano"; render(); window.scrollTo({top:0}); };
   $("#resetAsk").onclick=()=>{ $("#resetConfirm").hidden=false; $("#resetAsk").hidden=true; };
   $("#resetNo").onclick=()=>{ $("#resetConfirm").hidden=true; $("#resetAsk").hidden=false; };
   $("#resetYes").onclick=resetAll;
   $("#editPf").onclick=()=>{ state.editing=true; render(); window.scrollTo({top:0}); };
   $("#bkImp").onclick=()=>importBackup($("#bk").value);
-  $("#bkCopy").onclick=copyBackup;
+  $("#bkCopy").onclick=copyBackup; $("#probBtn2").onclick=openProblema;
 }
 /* ---------- backup: copiar e importar (também na primeira tela, para ninguém precisar se recadastrar) ---------- */
 const backupText=()=>JSON.stringify({kora:1,sessions:state.sessions,checkins:state.checkins,pf:state.pf,prefs:state.prefs});

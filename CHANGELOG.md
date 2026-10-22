@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.0 — 2026-10-22 · medir resultado
+- **Seus resultados** (Progresso): constância nas últimas semanas (treinos feitos ÷ planejados, com orientação) e força estimada do 1º ao último treino de cada exercício (treino leve não entra). Função `resultados` no motor, com teste.
+- **Como está o Kora para você?** (Início, depois de 1 semana de uso): as 10 perguntas da escala SUS, nota de 0 a 100 e campo livre. Dá para adiar 7 dias. No fim, **Enviar para o João pelo WhatsApp**, com a nota e as respostas (a pessoa vê a mensagem antes de enviar). `notaSUS` no motor, com teste.
+- **Achei um problema** (menu ⋯ do treino e Perfil): a pessoa descreve e envia pelo WhatsApp com a versão do app e a tela.
+- Os dados dos amigos ficam no aparelho deles; por isso o envio é pelo WhatsApp, só quando a pessoa quiser.
+
 ## 0.16.0 — 2026-10-22 · opções para quem treina há anos
 - **Dia de força e dia de hipertrofia** (quem treina há mais de 1 ano, objetivo hipertrofia ou misto): os treinos A (Superior A, Inferior A, Empurrar A…) ficam de força, com compostos 4–6 reps e 3 min de descanso; os treinos B ficam de hipertrofia, 8–12 reps. Os acessórios não mudam. O nome do treino mostra "· Força" ou "· Hipertrofia". Variar dentro da semana rende mais força em treinados (evidência `periodizacao`). Se o dia de força não couber no tempo, o descanso cai para 2,5 e depois 2 min. Desliga com `pf.ondulacao = "nao"`.
 - **Bi-sets em treinos de até 45 min:** acessórios opostos (bíceps + tríceps, elevação lateral + posterior de ombro, extensora + flexora, glúteo + adutor, panturrilha + abdômen) ficam lado a lado, 1 série de cada e descanso depois do par. Mesmo volume, menos tempo (evidência `tempo-eficiente`). O cronômetro dá 15 s para trocar.

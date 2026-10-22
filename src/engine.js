@@ -282,6 +282,20 @@ function workSets(sets){ const kgs=sets.map(s=>s.kg||0), mx=Math.max(...kgs), to
     const mode=Object.keys(cnt).map(Number).filter(k=>cnt[k]>=2).sort((a,b)=>cnt[b]-cnt[a]||b-a)[0];
     if(mode!=null){ const rest=sets.filter(s=>(s.kg||0)===mode); if(e1rm(top[0].kg||0,top[0].reps||0,top[0].rpe)<=Math.max(...rest.map(x=>e1rm(x.kg||0,x.reps||0,x.rpe)))) return rest; } }
   return top; }
+/* ---------- resultados (Progresso) e questionário de usabilidade (SUS) ----------
+   resultados: constância nas últimas semanas (treinos feitos ÷ planejados) e força estimada do 1º ao último treino de cada exercício. */
+function resultados(sessions,liftSemana,hoje){ const ss=(sessions||[]).filter(s=>s&&s.ex&&Object.keys(s.ex).length).sort((a,b)=>a.ts-b.ts);
+  if(!ss.length) return {semanas:0,feitos:0,planejados:0,aderencia:null,exercicios:[],media:null};
+  const ini=weekStart(ss[0].date), fim=weekStart(hoje), nW=Math.max(1,Math.min(4,Math.round((new Date(fim+"T12:00:00")-new Date(ini+"T12:00:00"))/(7*864e5))+1));
+  const corte=new Date(fim+"T12:00:00"); corte.setDate(corte.getDate()-7*(nW-1)); const c0=isoLocal(corte);
+  const feitos=ss.filter(s=>s.date>=c0).length, planejados=Math.max(1,(liftSemana||3)*nW);
+  const porEx={}; ss.filter(s=>!s.leve).forEach(s=>Object.entries(s.ex).forEach(([n,sets])=>{ const w=workSets(sets); if(!w.length||!(w[0].kg>0)) return; (porEx[n]=porEx[n]||[]).push(Math.max(...w.map(x=>e1rm(x.kg,x.reps||0,x.rpe)))); }));
+  const exercicios=Object.entries(porEx).filter(([,v])=>v.length>=2).map(([nome,v])=>({nome,de:Math.round(v[0]*10)/10,para:Math.round(v[v.length-1]*10)/10,pct:Math.round((v[v.length-1]/v[0]-1)*1000)/10,sessoes:v.length})).sort((a,b)=>b.sessoes-a.sessoes||b.pct-a.pct);
+  const media=exercicios.length?Math.round(exercicios.reduce((a,x)=>a+x.pct,0)/exercicios.length*10)/10:null;
+  return {semanas:nW,feitos,planejados,aderencia:Math.min(1,feitos/planejados),exercicios,media}; }
+/* SUS (System Usability Scale): 10 frases de 1 (discordo totalmente) a 5 (concordo totalmente); ímpares positivas, pares negativas; nota 0–100 */
+const SUS=["Eu gostaria de usar o Kora com frequência.","Achei o Kora mais complicado do que precisava.","Achei o Kora fácil de usar.","Eu precisaria de ajuda de alguém para conseguir usar o Kora.","As partes do Kora funcionam bem juntas.","Achei o Kora confuso ou inconsistente em vários pontos.","A maioria das pessoas aprenderia a usar o Kora rápido.","Achei o Kora trabalhoso de usar.","Me senti confiante usando o Kora.","Precisei aprender muita coisa antes de conseguir usar o Kora."];
+function notaSUS(r){ if(!Array.isArray(r)||r.length!==10||r.some(x=>!(x>=1&&x<=5))) return null; return r.reduce((a,x,i)=>a+(i%2===0?x-1:5-x),0)*2.5; }
 /* ---------- ciclo de 7 semanas: 6 normais + 1 semana leve (deload: metade das séries, RPE 6, mesmos dias) ---------- */
 const CICLO=7;
 function cicloSemana(pf,iso){ if(!pf||!pf.inicio) return {semana:0,deload:false,falta:CICLO};
@@ -329,4 +343,4 @@ function sugerirCarga(ex,name,h,o){ o=o||{}; const inc=o.inc!=null?o.inc:incOf(e
 }
 const sessE1=sets=>Math.max(0,...sets.map(s=>e1rm(s.kg||0,s.reps||0,s.rpe)));
 const roundTo=(v,s)=>Math.round(v/s)*s;
-if(typeof module!=="undefined") module.exports={cicloSemana,CICLO,sugerirCarga,incOf,workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
+if(typeof module!=="undefined") module.exports={resultados,notaSUS,SUS,cicloSemana,CICLO,sugerirCarga,incOf,workSets,complexity,HAB,buildPlan,weeklyVolume,arrangeDays,sportLoad,regionOf,pickOpts,liftDays,splitFor,autoSplit,e1rm,sessE1,LIB,EXBYNAME,SPLITS,GOALS,MUSCLES,SPORTS,LOWER,UPPER,DOWN,beginner,tecnica};
